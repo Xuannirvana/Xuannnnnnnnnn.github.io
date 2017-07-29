@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>创建 github 个人博客(一)：搭建博客基础页面 | Komorebi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="github blog" />
+  
+  
+  
+  
+  <meta name="description" content="现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。">
+<meta name="keywords" content="github blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="创建 Github 个人博客(一)：搭建博客基础页面">
+<meta property="og:url" content="http://yoursite.com/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyl3w5wj31kw0yoaiu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcykhxlbj31kw0xggtm.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcylv8fkj31kw0dy42y.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfc10zrt7j31kw0tcjx9.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfcymfif2j31kw0ypgu4.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyj5d3uj31kw0yrjyl.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcyjvaofj317s0yi44h.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcymovenj31kw10gwok.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcykpcpoj31kw0pjaeo.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcyiik04j315u0zmq8v.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcympialj31kw0xigs1.jpg">
+<meta property="og:updated_time" content="2017-07-15T14:09:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="创建 Github 个人博客(一)：搭建博客基础页面">
+<meta name="twitter:description" content="现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyl3w5wj31kw0yoaiu.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Komorebi" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="Komorebi" rel="home"> Komorebi </a>
+            
+          </h1>
+
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-创建-Github-个人博客-一-：搭建博客基础页面" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      创建 Github 个人博客(一)：搭建博客基础页面
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="article-date">
+	  <time datetime="2017-06-09T15:25:01.000Z" itemprop="datePublished">六月 9, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p>
+<a id="more"></a>
+<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>要创建 GitHub 的个人技术博客，首先需要进入<a href="https://github.com/" target="_blank" rel="external">Github官网</a>注册一个 GitHub 的账号。</p>
+<p>（如果已经有 <code>github</code> 账号，可跳前两个步骤，直接进入第三步。）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyl3w5wj31kw0yoaiu.jpg" alt=""></p>
+<h2 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h2><p>账号注册成功之后会跳到一个账户初始设置的页面，一般情况下我们采用默认设置就行。不用做任何更改，直接点击绿色 <code>Continue</code> 按钮。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcykhxlbj31kw0xggtm.jpg" alt=""></p>
+<h3 id="验证邮箱"><a href="#验证邮箱" class="headerlink" title="验证邮箱"></a>验证邮箱</h3><p>初始设置完成之后，打开你注册账号时填写的邮箱，查看 GitHub 发给你的邮件。</p>
+<p>我们需要对邮箱进行验证，后面生成的个人主页才会被接受和发布。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcylv8fkj31kw0dy42y.jpg" alt=""></p>
+<p>点击验证邮箱，验证成功后跳转到如下页面。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfc10zrt7j31kw0tcjx9.jpg" alt=""></p>
+<p>点击第二个按钮，创建一个新项目。</p>
+<h2 id="创建页面仓库"><a href="#创建页面仓库" class="headerlink" title="创建页面仓库"></a>创建页面仓库</h2><p>这个页面用来填写关于你新建的这个仓库的一些初始化设置。</p>
+<p>（找不到页面入口的可以点击这里<a href="https://github.com/new" target="_blank" rel="external">创建页面仓库</a>）</p>
+<p>注意：</p>
+<ol>
+<li><p>仓库名称尽量跟你的 GitHub 用户名（注册账号时填写的用户名）保持一致。</p>
+</li>
+<li><p>因为 Github Pages 发布的页面统一使用 <code>github.io</code> 域名，所以你的仓库名还需要在你的用户名后面加上后缀 <code>.github.io</code>。</p>
+</li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfcymfif2j31kw0ypgu4.jpg" alt=""></p>
+<p>其他的一些可选选项根据自己需求填写，完成之后点击绿色按钮 <code>Create reponsitory</code> 创建仓库。</p>
+<h2 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h2><p>仓库创建好后，接下来就是在仓库中生成我们的页面。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyj5d3uj31kw0yrjyl.jpg" alt=""></p>
+<p>点击页面内的 <code>setting</code> ，进入设置页面。</p>
+<p>在生成完整的页面之前，我们需要先给我们的页面设置一个主题样式，所以滑到页面后面，可以看到有一个主题选择按钮，点击 <code>choose a theme</code>。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcyjvaofj317s0yi44h.jpg" alt=""></p>
+<p>在主题页面选择一个自己喜欢的主题，选定后点击 <code>select theme</code></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcymovenj31kw10gwok.jpg" alt=""></p>
+<p>主题设置成功后会跳转到一个“README“文件的配置页面。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcykpcpoj31kw0pjaeo.jpg" alt=""></p>
+<p>因为我们是将“README”作为我们博客的首页，所以选择直接将它提交到主分支即可。</p>
+<p>其他的设置在后面我们都可以修改，所以这里不做任何改动，采用默认设置。</p>
+<p>然后点击绿色 <code>Commit changes</code> 按钮。</p>
+<p>到这为止，我们的 GitHub 博客就已经搭建好了。</p>
+<h2 id="博客地址"><a href="#博客地址" class="headerlink" title="博客地址"></a>博客地址</h2><p>那么，别人要怎么访问我们的博客呢？</p>
+<p>还是进入到我们刚刚选择主题时的 <code>setting</code> 页面。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcyiik04j315u0zmq8v.jpg" alt=""></p>
+<p>在主题选择这一栏的上方，有一个链接。点击这个链接，就可以看到我们的博客首页了，里面有我们刚刚设置的博客主题，和“REANME”文件里的内容。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcympialj31kw0xigs1.jpg" alt=""></p>
+<p>这个链接地址就是我们的博客地址，别人也就可以通过这个地址来访问我们 GitHub 博客了。</p>
+<hr>
+<p>参考：<a href="http://blog.csdn.net/renfufei/article/details/37725057/" target="_blank" rel="external">铁锚的CSDN博客</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/github/">github</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github-blog/">github blog</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          创建 Github 个人博客(二)：配合使用 hexo 开发博客
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册账号"><span class="nav-number">1.</span> <span class="nav-text">注册账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始设置"><span class="nav-number">2.</span> <span class="nav-text">初始设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证邮箱"><span class="nav-number">2.1.</span> <span class="nav-text">验证邮箱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建页面仓库"><span class="nav-number">3.</span> <span class="nav-text">创建页面仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成页面"><span class="nav-number">4.</span> <span class="nav-text">生成页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客地址"><span class="nav-number">5.</span> <span class="nav-text">博客地址</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2017 Komorebi All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
