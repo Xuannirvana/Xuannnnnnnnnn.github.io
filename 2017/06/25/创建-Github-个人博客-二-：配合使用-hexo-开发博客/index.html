@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fgxfh04943j31140baae1.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fgxfhczaskj30mc01qjri.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfice2lyj30ms01s0tb.jpg">
-<meta property="og:updated_time" content="2017-07-29T14:57:47.000Z">
+<meta property="og:updated_time" content="2017-07-29T15:04:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建 Github 个人博客(二)：配合使用 hexo 开发博客">
 <meta name="twitter:description" content="在《创建 Github 个人博客(一)：搭建博客基础页面》中我们讲了怎么去搭建一个 GitHub 博客的基础页面。实际上，基础页面搭建完成之后，我们就已经可以通过 Github Pages 直接写 HTML 静态博客了。 但是尝试之后我们会发现，这种博客使用起来相当麻烦。页面不够好看，操作又不方便，后期维护起来又很繁杂。所以，我们需要借用一些静态博客框架来辅助我们开发 github 博客。 现在比">
@@ -171,16 +171,14 @@ var themeMenus = {};
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
 <p>注意：Hexo 官网上的安装命令是 <code>npm install -g hexo-cli</code>，安装时不要忘记前面加上<code>sudo</code>，否则会因为权限问题报错。</p>
 <ul>
-<li><p>选装 cnpm</p>
-<p>  因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常。所以我们可以利用淘宝提供的国内镜像。</p>
-<p>  命令行执行以下代码：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm --registry=https://registry.npm.taobao.org install -g cnpm</div></pre></td></tr></table></figure>
-</li>
+<li>选装 cnpm</li>
 </ul>
-<pre><code>安装完后最好通过 `cnpm -v` 命令查看其版本号，或关闭终端重新打开。安装完直接使用有可能会出现错误。
-
-`cnpm` 跟 `npm` 用法完全一致，只是在执行命令时将 `npm` 改为 `cnpm`（如果使用了淘宝镜像，后面操作将以 `cnpm` 代替 `npm`）
-</code></pre><p>（2）输入管理员密码即开始安装 </p>
+<p>因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常。所以我们可以利用淘宝提供的国内镜像。</p>
+<p>命令行执行以下代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm --registry=https://registry.npm.taobao.org install -g cnpm</div></pre></td></tr></table></figure>
+<p>安装完后最好通过 <code>cnpm -v</code> 命令查看其版本号，或关闭终端重新打开。安装完直接使用有可能会出现错误。</p>
+<p><code>cnpm</code> 跟 <code>npm</code> 用法完全一致，只是在执行命令时将 <code>npm</code> 改为 <code>cnpm</code>（如果使用了淘宝镜像，后面操作将以 <code>cnpm</code> 代替 <code>npm</code>）</p>
+<p>（2）输入管理员密码即开始安装 </p>
 <p>（3）新建一个文件夹，例如 <code>blog</code>。用来存放自己博客相关的文件。</p>
 <p>（4）在终端里通过 <code>cd</code> 命令进入到 <code>blog</code> 文件夹。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfdois13j30r804gwf5.jpg" alt=""></p>
