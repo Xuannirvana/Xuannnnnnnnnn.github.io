@@ -11,95 +11,65 @@
 </li>
 </ul>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>当 Node.js 和 Git 都安装好了之后，就可以正式安装 hexo 了。</p>
+<p>（1）打开命令行工具（Mac：终端 <code>Terminal</code> / windows：CMD） ，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<p><strong>注意：Hexo 官网上的安装命令是 <code>npm install -g hexo-cli</code>，安装时不要忘记前面加上<code>sudo</code>，否则会因为权限问题报错。</strong></p>
 <ul>
-<li><p>打开命令行工具（Mac：终端 <code>Terminal</code> / windows：CMD） ，执行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<li><p><strong>选装 cnpm</strong></p>
+<p>  因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常。所以我们可以利用淘宝提供的国内镜像。</p>
+<p>  命令行执行以下代码：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm --registry=https://registry.npm.taobao.org install -g cnpm</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>**注意：Hexo 官网上的安装命令是 `npm install -g hexo-cli`，安装时不要忘记前面加上`sudo`，否则会因为权限问题报错。**
-* **选装 cnpm**
+<pre><code>安装完后最好通过 `cnpm -v` 命令查看其版本号，或关闭终端重新打开。安装完直接使用有可能会出现错误。
 
-    因为 npm 安装插件是从国外服务器下载，受网络影响大，可能出现异常。所以我们可以利用淘宝提供的国内镜像。
-
-    命令行执行以下代码：
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm --registry=https://registry.npm.taobao.org install -g cnpm</div></pre></td></tr></table></figure>
-
-
-    安装完后最好通过 `cnpm -v` 命令查看其版本号，或关闭终端重新打开。安装完直接使用有可能会出现错误。
-
-    `cnpm` 跟 `npm` 用法完全一致，只是在执行命令时将 `npm` 改为 `cnpm`（如果使用了淘宝镜像，后面操作将以 `cnpm` 代替 `npm`）
-</code></pre><ul>
-<li><p>输入管理员密码即开始安装 </p>
-</li>
-<li><p>新建一个文件夹，例如 <code>blog</code>。用来存放自己博客相关的文件。</p>
-</li>
-<li><p>在终端里通过 <code>cd</code> 命令进入到 <code>blog</code> 文件夹。</p>
-<p>  <img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfdois13j30r804gwf5.jpg" alt=""></p>
-</li>
-<li><p>确定进入到 <code>blog</code> 文件夹之后，执行以下命令，对 <code>blog</code> 文件夹进行初始化。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>初始化完成之后，执行以下命令，安装所有的依赖和插件。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>安装完成后，执行以下命令，开启 hexo 本地服务器。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo sever		或简写 hexo s</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<pre><code>当看到以下命令出现，就表示服务器启动成功。
-
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fgxfek2yetj30ru0143yr.jpg)
-
-然后就可以在浏览器中打开 &lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt; 来查看博客了。
-
-![](https://ws4.sinaimg.cn/large/006tNc79gy1fgxff2rb0oj30qk0d1n3y.jpg)
-</code></pre><p>至此，我们的 hexo 静态博客框架安装就完成了。</p>
+`cnpm` 跟 `npm` 用法完全一致，只是在执行命令时将 `npm` 改为 `cnpm`（如果使用了淘宝镜像，后面操作将以 `cnpm` 代替 `npm`）
+</code></pre><p>（2）输入管理员密码即开始安装 </p>
+<p>（3）新建一个文件夹，例如 <code>blog</code>。用来存放自己博客相关的文件。</p>
+<p>（4）在终端里通过 <code>cd</code> 命令进入到 <code>blog</code> 文件夹。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfdois13j30r804gwf5.jpg" alt=""></p>
+<p>（5）确定进入到 <code>blog</code> 文件夹之后，执行以下命令，对 <code>blog</code> 文件夹进行初始化。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>（6）初始化完成之后，执行以下命令，安装所有的依赖和插件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>（7）安装完成后，执行以下命令，开启 hexo 本地服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo sever		或简写 hexo s</div></pre></td></tr></table></figure>
+<p>当看到以下命令出现，就表示服务器启动成功。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfek2yetj30ru0143yr.jpg" alt=""></p>
+<p>然后就可以在浏览器中打开 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 来查看博客了。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fgxff2rb0oj30qk0d1n3y.jpg" alt=""></p>
+<p>至此，我们的 hexo 静态博客框架安装就完成了。</p>
 <h2 id="关联-github"><a href="#关联-github" class="headerlink" title="关联 github"></a>关联 github</h2><p>现阶段，我们只是在本地搭建好了博客页面，其他人是无法访问的。所以，本地安装完成之后，接下来我们需要关联 github。</p>
-<ul>
-<li>用编辑器打开 <code>blog</code> 文件夹里面的一个 <code>_config.yml</code> 的文件。</li>
-<li><p>将文件末尾修改为以下内容：</p>
-<p>  注：<code>runjaelyn</code> 改为你自己 <code>github</code> 的用户名</p>
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span> </div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/runjaelyn/runjaelyn.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
+<p>（1）用编辑器打开 <code>blog</code> 文件夹里面的一个 <code>_config.yml</code> 的文件。将文件末尾修改为以下内容：</p>
+<p>注：<code>runjaelyn</code> 改为你自己 <code>github</code> 的用户名</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span> </div><div class="line"><span class="attr">  type:</span> <span class="string">git</span></div><div class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/runjaelyn/runjaelyn.github.io.git</span></div><div class="line"><span class="attr">  branch:</span> <span class="string">master</span></div></pre></td></tr></table></figure>
 <p style="color:red">注意：在配置所有的 _config.yml 文件时（包括后面会用到的主题 theme 文件夹中的），所有的冒号 : 后边都要加一个空格，否则执行 hexo 命令会报错。</p>
 
+<p>（2）修改完成并保存。然后通过 <code>cd</code> 命令进入到 <code>blog</code> 文件夹目录，在命令行执行生成静态页面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate		或简写 hexo g</div></pre></td></tr></table></figure>
 <ul>
-<li>修改完成并保存。然后通过 <code>cd</code> 命令进入到 <code>blog</code> 文件夹目录，在命令行执行生成静态页面的命令：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate		或简写 hexo g</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<pre><code>* 此时若出现如下报错：
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR Local hexo not found <span class="keyword">in</span> ~/blog</div><div class="line">ERROR Try runing: <span class="string">'npm install hexo --save'</span></div></pre></td></tr></table></figure>
-
-
-* 则执行命令：
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo --save</div></pre></td></tr></table></figure>
-
-
-* 若无报错，自行忽略此步骤。
-</code></pre><ul>
-<li><p>静态页面生成成功之后，执行配置命令 <code>deploy</code>，部署网站。（以后每次部署网站前，都需要预先生成静态文件）</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy		或简写 hexo d</div></pre></td></tr></table></figure>
+<li><p>此时若出现如下报错：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR Local hexo not found <span class="keyword">in</span> ~/blog</div><div class="line">ERROR Try runing: <span class="string">'npm install hexo --save'</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><p>部署网站执行成功后，会显示类似于下列的命令。</p>
-<p>  <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgxffveqejj31100ae782.jpg" alt=""></p>
+<li><p>则执行命令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo --save</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>若无报错，自行忽略此步骤。</li>
+</ul>
+<p>（3）静态页面生成成功之后，执行配置命令 <code>deploy</code>，部署网站。（以后每次部署网站前，都需要预先生成静态文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy		或简写 hexo d</div></pre></td></tr></table></figure>
+<p>（4）部署网站执行成功后，会显示类似于下列的命令。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgxffveqejj31100ae782.jpg" alt=""></p>
 <ul>
 <li><p>但是，也有可能会出现几种报错的情况：</p>
   <p style="color:red">1. 无法连接 Git 或找不到 Git。</p>
 
-<p>  则执行如下命令来安装 <code>hexo-deployer-git</code></p>
+<p>  则执行如下命令来安装 <code>hexo-deployer-git</code>。</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-</li>
-</ul>
 </li>
 </ul>
 <pre><code>![](https://ws3.sinaimg.cn/large/006tNc79gy1fgxfg618n4j30qw05ktae.jpg)
@@ -124,39 +94,23 @@
 ![](https://ws4.sinaimg.cn/large/006tNc79gy1fgxfh04943j31140baae1.jpg)
 
 依次输入你自己的 github 账号和密码就可以了。
-</code></pre><ul>
-<li><p>以上报错问题解决好了之后，重新执行配置命令 <code>deploy</code>，部署网站。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy		或简写 hexo d</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>显示成功之后，打开浏览器，输入你自己的 GitHub 地址。</p>
-<p>  <img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgxfhczaskj30mc01qjri.jpg" alt=""></p>
-<p>  <code>runjaelyn</code> 改为你自己的用户名。</p>
-</li>
-</ul>
+</code></pre><p>（5）以上报错问题解决好了之后，重新执行配置命令 <code>deploy</code>，部署网站。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy		或简写 hexo d</div></pre></td></tr></table></figure>
+<p>（6）显示成功之后，打开浏览器，输入你自己的 GitHub 地址。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fgxfhczaskj30mc01qjri.jpg" alt=""></p>
+<p><code>runjaelyn</code> 改为你自己的用户名。</p>
 <p>至此，我们刚刚在本地搭建的博客页面，现在就已经关联到了 github 上，其他人可以通过你的 Github 博客地址访问你的博客了。</p>
 <h2 id="发表新文章"><a href="#发表新文章" class="headerlink" title="发表新文章"></a>发表新文章</h2><p>博客搭建好了之后，我们就可以开始往博客里添加我们的博客内容了。</p>
-<ul>
-<li><p>通过 <code>cd</code> 进入到 <code>blog</code> 文件夹，执行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"文章标题"</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<pre><code>创建成功后会有如下提示：
-
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fgxfice2lyj30ms01s0tb.jpg)
-
-创建成功后，打开 `blog` 文件夹里的 `source／_posts` ，就可以看到我们刚刚通过 hexo `new` 出来的文章 `.md` 文件。    
-
-然后我们就可以添加我们的文章内容了（内容遵循 `Markdown` 的语法规则）。 
-</code></pre><ul>
-<li><p>文章编辑好保存后，执行如下命令，重新生成并部署：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean </div><div class="line">hexo g </div><div class="line">hexo d</div></pre></td></tr></table></figure>
-</li>
-<li><p>成功后刷新博客就可以看到新文章已经显示在页面了。</p>
-</li>
-</ul>
+<p>（1）通过 <code>cd</code> 进入到 <code>blog</code> 文件夹，执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"文章标题"</span></div></pre></td></tr></table></figure>
+<p>创建成功后会有如下提示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fgxfice2lyj30ms01s0tb.jpg" alt=""></p>
+<p>创建成功后，打开 <code>blog</code> 文件夹里的 <code>source／_posts</code> ，就可以看到我们刚刚通过 hexo <code>new</code> 出来的文章 <code>.md</code> 文件。    </p>
+<p>然后我们就可以添加我们的文章内容了（内容遵循 <code>Markdown</code> 的语法规则）。 </p>
+<p>（2）文章编辑好保存后，执行如下命令，重新生成并部署：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean </div><div class="line">hexo g </div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<p>（3）成功后刷新博客就可以看到新文章已经显示在页面了。</p>
 <p>到此为止，我们的博客就搭建完成了。</p>
 <p>如果觉得 hexo 默认主题样式不好看的话，还可以自己去网上找其他主题，更换主题模式。</p>
 <p>以后，我们就都可以通过 hexo 来管理操作我们的博客了。</p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" data-id="cj5o7dbvg0005tlwcnhs00nhj" class="article-share-link">分享</a><div class="tags"><a href="/tags/github-blog/">github blog</a></div><div class="post-nav"><a href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/" class="pre">创建 Github 个人博客(三)：设置 hexo 博客主题</a><a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="next">创建 Github 个人博客(一)：搭建博客基础页面</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/内存空间/">内存空间</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/JavaScript-堆-栈/" style="font-size: 15px;">JavaScript 堆 栈</a> <a href="/tags/github-blog/" style="font-size: 15px;">github blog</a> <a href="/tags/github-博客/" style="font-size: 15px;">github 博客</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/JavaScript-内存空间/">JavaScript 内存空间</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/">创建 Github 个人博客(三)：设置 hexo 博客主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/">创建 Github 个人博客(二)：配合使用 hexo 开发博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/">创建 Github 个人博客(一)：搭建博客基础页面</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">Komorebi.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://yoursite.com/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" data-id="cj5p1ifr30000yowctfl9uafr" class="article-share-link">分享</a><div class="tags"><a href="/tags/github-blog/">github blog</a></div><div class="post-nav"><a href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/" class="pre">创建 Github 个人博客(三)：设置 hexo 博客主题</a><a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="next">创建 Github 个人博客(一)：搭建博客基础页面</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://yoursite.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/内存空间/">内存空间</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/github-blog/" style="font-size: 15px;">github blog</a> <a href="/tags/JavaScript-堆-栈/" style="font-size: 15px;">JavaScript 堆 栈</a> <a href="/tags/github-博客/" style="font-size: 15px;">github 博客</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/JavaScript-内存空间/">JavaScript 内存空间</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/">创建 Github 个人博客(三)：设置 hexo 博客主题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/">创建 Github 个人博客(二)：配合使用 hexo 开发博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/">创建 Github 个人博客(一)：搭建博客基础页面</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">Komorebi.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
