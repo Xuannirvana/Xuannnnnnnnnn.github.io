@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-29T15:17:52.000Z</updated>
+  <updated>2017-08-02T15:24:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/07/29/JavaScript-%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/"/>
     <id>http://yoursite.com/2017/07/29/JavaScript-内存空间/</id>
     <published>2017-07-28T17:32:10.000Z</published>
-    <updated>2017-07-29T15:17:52.000Z</updated>
+    <updated>2017-08-02T15:24:20.000Z</updated>
     
     <content type="html"><![CDATA[<p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
 <a id="more"></a>
