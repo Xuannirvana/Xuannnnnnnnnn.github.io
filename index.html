@@ -1,3 +1,420 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Komorebi</title><meta name="description" content="A Blog Powered By Hexo"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Komorebi"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link active">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><ul class="home post-list"><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/07/29/JavaScript-内存空间/" class="post-title-link">JavaScript 内存空间</a></h2><div class="post-info">2017年7月29日</div><div class="post-content"><p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p></div><a href="/2017/07/29/JavaScript-内存空间/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/" class="post-title-link">创建 Github 个人博客(三)：设置 hexo 博客主题</a></h2><div class="post-info">2017年7月15日</div><div class="post-content"><p>之前写了两篇文章来教大家怎么去创建 GitHub 个人博客，然后再怎么配合 hexo 去开发博客。<br></div><a href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" class="post-title-link">创建 Github 个人博客(二)：配合使用 hexo 开发博客</a></h2><div class="post-info">2017年6月25日</div><div class="post-content"><p>在<a href="https://runjaelyn.github.io/2017/06/09/%E5%88%9B%E5%BB%BA-Github-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%80-%EF%BC%9A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E9%A1%B5%E9%9D%A2/" target="_blank">《创建 Github 个人博客(一)：搭建博客基础页面》</a>中我们讲了怎么去搭建一个 GitHub 博客的基础页面。实际上，基础页面搭建完成之后，我们就已经可以通过 Github Pages 直接写 HTML 静态博客了。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/"/>
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Komorebi">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Komorebi">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: false,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/07/29/JavaScript-内存空间/">JavaScript 内存空间</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年7月29日
+        </span>
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
+          <div class="read-more">
+            <a href="/2017/07/29/JavaScript-内存空间/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/">创建 Github 个人博客(三)：设置 hexo 博客主题</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年7月15日
+        </span>
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>之前写了两篇文章来教大家怎么去创建 GitHub 个人博客，然后再怎么配合 hexo 去开发博客。<br>
+          <div class="read-more">
+            <a href="/2017/07/15/创建-Github-个人博客-三-：设置博客-hexo-主题/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/">创建 Github 个人博客(二)：配合使用 hexo 开发博客</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年6月25日
+        </span>
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>在<a href="https://runjaelyn.github.io/2017/06/09/%E5%88%9B%E5%BB%BA-Github-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%80-%EF%BC%9A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E9%A1%B5%E9%9D%A2/" target="_blank">《创建 Github 个人博客(一)：搭建博客基础页面》</a>中我们讲了怎么去搭建一个 GitHub 博客的基础页面。实际上，基础页面搭建完成之后，我们就已经可以通过 Github Pages 直接写 HTML 静态博客了。</p>
 <p>但是尝试之后我们会发现，这种博客使用起来相当麻烦。页面不够好看，操作又不方便，后期维护起来又很繁杂。所以，我们需要借用一些静态博客框架来辅助我们开发 github 博客。</p>
-<p>现在比较流行的静态博客框架也比较多，不同的静态程序可以说都有各自的好处。这篇文章我们主要讲的是使用 <a href="https://hexo.io/" target="_blank" rel="external">HEXO</a> 这个框架来搭建 GitHub 个人博客。</p></div><a href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" class="read-more">...阅读全文</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="post-title-link">创建 Github 个人博客(一)：搭建博客基础页面</a></h2><div class="post-info">2017年6月9日</div><div class="post-content"><p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p></div><a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="read-more">...阅读全文</a></article></li></ul></main><footer><div class="paginator"></div><div class="copyright"><p>© 2015 - 2017 <a href="http://yoursite.com">ChingKa</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
+<p>现在比较流行的静态博客框架也比较多，不同的静态程序可以说都有各自的好处。这篇文章我们主要讲的是使用 <a href="https://hexo.io/" target="_blank" rel="external">HEXO</a> 这个框架来搭建 GitHub 个人博客。</p>
+          <div class="read-more">
+            <a href="/2017/06/25/创建-Github-个人博客-二-：配合使用-hexo-开发博客/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/">创建 Github 个人博客(一)：搭建博客基础页面</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年6月9日
+        </span>
+      </div>
+    </header>
+
+    
+    
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p>
+          <div class="read-more">
+            <a href="/2017/06/09/创建-Github-个人博客-一-：搭建博客基础页面/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    
+    
+  </nav>
+
+
+          </div>
+          
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ChingKa</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  </body>
+</html>
