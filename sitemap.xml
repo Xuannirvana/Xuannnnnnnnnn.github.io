@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2017-08-03T03:44:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/07/29/JavaScript-%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/</loc>
     
     <lastmod>2017-08-02T15:42:19.000Z</lastmod>
