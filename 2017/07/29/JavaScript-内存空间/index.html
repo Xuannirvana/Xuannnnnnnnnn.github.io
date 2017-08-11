@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fhkp5we07vj31560hctb9.jpg">
-<meta property="og:updated_time" content="2017-08-03T05:04:46.000Z">
+<meta property="og:updated_time" content="2017-08-11T07:25:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 内存空间">
 <meta name="twitter:description" content="JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。">
@@ -233,7 +233,7 @@
 <li>不需要时将内存释放、归还</li>
 </ol>
 <p>为了便于理解，我们使用一个简单的例子来解释这个周期。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;               <span class="comment">// 第一步：分配变量 a 所需要的空间</span></div><div class="line"><span class="built_in">console</span>.log(a + <span class="number">100</span>);     <span class="comment">// 第二步：使用分配到的内存空间</span></div><div class="line">a = <span class="literal">null</span>;                 <span class="comment">// 第三步：使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;               <span class="comment">// 第一步：分配变量 a 所需要的空间</span></div><div class="line"><span class="built_in">console</span>.log(a + <span class="number">100</span>);     <span class="comment">// 第二步：使用分配到的内存空间</span></div><div class="line">a = <span class="literal">null</span>;                 <span class="comment">// 第三步：使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
 <p>前两步我们都很好理解，JavaScript 在定义变量的时候就完成了内存分配。第三步释放内存空间则是我们需要重点理解的一个点。</p>
 <h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>JavaScript 有垃圾回收机制，那么这个机制的原理是什么呢？</p>
 <p><strong>垃圾回收机制</strong>：其实就是找到那些不再继续使用的变量，什么是不再使用？就是生命周期结束的变量，可能是全局的和局部的。找到之后，释放其占用的内存。垃圾收集器每隔固定的时间段就会执行一次释放操作。</p>
@@ -258,7 +258,7 @@
 <p>因此，引用类型的值都是通过引用访问的。</p>
 </blockquote>
 <h3 id="图解举例"><a href="#图解举例" class="headerlink" title="图解举例"></a>图解举例</h3><p>为了更好的搞懂栈内存与堆内存，我们可以结合以下例子与图解进行理解。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">"hello world"</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> c = <span class="literal">null</span>;   <span class="comment">// 栈</span></div><div class="line">	</div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">m</span>: <span class="number">20</span> &#125;;   <span class="comment">// 变量 obj 存在于栈中，&#123; m: 20 &#125; 作为对象存在于堆内存中</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];   <span class="comment">// 变量 arr 存在于栈中，[1, 2, 3] 作为对象存在于堆内存中</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">"hello world"</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> c = <span class="literal">null</span>;   <span class="comment">// 栈</span></div><div class="line">	</div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">m</span>: <span class="number">20</span> &#125;;   <span class="comment">// 变量 obj 存在于栈中，&#123; m: 20 &#125; 作为对象存在于堆内存中</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];   <span class="comment">// 变量 arr 存在于栈中，[1, 2, 3] 作为对象存在于堆内存中</span></div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhknbpz837j30za0j0q56.jpg" alt=""></p>
 <blockquote>
@@ -266,12 +266,12 @@
 </blockquote>
 <h3 id="扩展练习"><a href="#扩展练习" class="headerlink" title="扩展练习"></a>扩展练习</h3><p>大致了解了 JavaScript 的内存空间，我们就可以借助内存空间的特性来验证一下引用类型的特点了。</p>
 <p>例一：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg" alt=""></p>
 <p>在栈内存中的数据发生复制行为时，系统会自动为新的变量分配一个新值。<code>var b = a</code> 执行之后，<code>a</code> 和 <code>b</code> 的值虽然都等于 20，但是他们其实已经是相互独立互不影响的值了。所以，我们修改了 <code>b</code> 的值以后，<code>a</code> 的值并不会发生变化。</p>
 <p>例二：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;</div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;</div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg" alt=""></p>
 <p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
