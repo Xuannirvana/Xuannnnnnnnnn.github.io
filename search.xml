@@ -10,7 +10,7 @@
 <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>我们先不急着解释“变量提升”是什么意思，先看几段代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifiwogx2wj30z001g74o.jpg" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fig8gla57mj314k01u0t6.jpg" alt=""></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
 <p>运行结果：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg" alt=""></p>
