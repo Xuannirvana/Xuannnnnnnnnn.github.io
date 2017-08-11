@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-11T07:24:57.000Z</updated>
+  <updated>2017-08-11T08:27:27.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>变量提升和函数提升</title>
-    <link href="http://yoursite.com/2017/08/11/article5/"/>
-    <id>http://yoursite.com/2017/08/11/article5/</id>
+    <link href="http://yoursite.com/2017/08/11/hoisting/"/>
+    <id>http://yoursite.com/2017/08/11/hoisting/</id>
     <published>2017-08-11T07:10:05.000Z</published>
-    <updated>2017-08-11T07:24:57.000Z</updated>
+    <updated>2017-08-11T08:27:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，本来是准备写一篇讲解执行上下文的博客，但是在那之前，决定先把变量提升和函数提升单独提出来写了。</p>
 <a id="more"></a>
