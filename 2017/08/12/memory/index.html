@@ -42,7 +42,8 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fhknbpz837j30za0j0q56.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg">
-<meta property="og:updated_time" content="2017-08-12T08:13:35.000Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fih0gklmthj316u0go0w6.jpg">
+<meta property="og:updated_time" content="2017-08-12T08:17:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 内存空间">
 <meta name="twitter:description" content="JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。">
@@ -273,8 +274,7 @@
 <p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
 <p>因此，当我们改变 <code>person2</code> 的时候，就是在改变堆内存中 <code>person2</code> 指向的这个对象。而同时，<code>person1</code> 指向的也是这个对象，所以 <code>person1</code> 也会跟着发生变化。这就是引用类型的特性。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们通过一个表格对栈内存和堆内存做一个总结：</p>
-<table><br>    <tr><br>        <th>栈内存</th><br>        <th>堆内存</th><br>    </tr><br>    <tr><br>        <td>存储基本数据类型</td><br>        <td>存储引用数据类型</td><br>    </tr><br>    <tr><br>        <td>按值访问</td><br>        <td>按引用（地址）访问</td><br>    </tr><br>    <tr><br>        <td>存储的值大小固定</td><br>        <td>存储的值大小不定，可动态调整</td><br>    </tr><br>    <tr><br>        <td>由系统自动分配内存空间</td><br>        <td>由程序员通过代码进行分配</td><br>    </tr><br>    <tr><br>        <td>主要用来执行程序</td><br>        <td>主要用来存放对象</td><br>    </tr><br>    <tr><br>        <td>空间小，运行效率高</td><br>        <td>空间大，运行效率相对较低</td><br>    </tr><br>    <tr><br>        <td>先进后出，后进先出</td><br>        <td>无序存储，可根据引用（地址）直接获取</td><br>    </tr><br></table>
-
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fih0gklmthj316u0go0w6.jpg" alt=""></p>
 
       
     </div>
