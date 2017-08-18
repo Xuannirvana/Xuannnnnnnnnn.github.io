@@ -192,7 +192,7 @@
     <link href="http://yoursite.com/2017/08/18/dom/"/>
     <id>http://yoursite.com/2017/08/18/dom/</id>
     <published>2017-08-18T14:09:03.000Z</published>
-    <updated>2017-08-18T14:23:44.000Z</updated>
+    <updated>2017-08-18T14:26:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。</p>
 <a id="more"></a>
@@ -209,21 +209,21 @@
 <ul>
 <li><code>DOM Core</code>（核心）：提供了 DOM 模型、内存管理、命名约定等方便访问和操作 HTML 页面的内容。</li>
 <li><code>DOM HTML</code>：提供了一些 HTML 页面相关的对象以及 HTML 标签的属性和方法等。</li>
+<li>注意：DOM 1 级中忽略了事件模型。</li>
 </ul>
-<p>注意：DOM 1 级中忽略了事件模型。</p>
 <p>（3）<strong>DOM 2 级</strong>：是基于 DOM 1 级并且扩展了 DOM 1 级，还添加了视图、事件以及 CSS 样式的内容。</p>
 <ul>
-<li>DOM View：描述 HTML 文档的各种视图的接口。</li>
-<li>DOM Events：描述了事件流、事件监听注册、事件接口以及文档事件接口等内容。</li>
-<li>DOM Style：描述了 CSS 样式的接口。</li>
-<li>DOM Traversal and Range：描述遍历和操作 HTML 文档的接口。</li>
+<li><code>DOM View</code>：描述 HTML 文档的各种视图的接口。</li>
+<li><code>DOM Events</code>：描述了事件流、事件监听注册、事件接口以及文档事件接口等内容。</li>
+<li><code>DOM Style</code>：描述了 CSS 样式的接口。</li>
+<li><code>DOM Traversal and Range</code>：描述遍历和操作 HTML 文档的接口。</li>
 </ul>
 <p>（4）<strong>DOM 3 级</strong>：引入了统一的文档读取和保存的方法，</p>
 <ul>
-<li>DOM Load and Save: 描述了文档的读取和保存的接口。</li>
-<li>DOM Validation: 描述了文档验证的接口。</li>
+<li><code>DOM Load and Save</code>：描述了文档的读取和保存的接口。</li>
+<li><code>DOM Validation</code>：描述了文档验证的接口。</li>
+<li>注意：DOM 3 级的引入的主要是对 XML 文档的支持，对于 HTML 文档的用处并不大。</li>
 </ul>
-<p>注意：DOM 3 级的引入的主要是对 XML 文档的支持，对于 HTML 文档的用处并不大。</p>
 <h3 id="DOM-的组成"><a href="#DOM-的组成" class="headerlink" title="DOM 的组成"></a>DOM 的组成</h3><ul>
 <li><code>Core DOM</code>：也称核心DOM编程，定义了一套标准针对任何结构化文档的对象，包括HTML。 </li>
 <li><code>XML DOM</code>：定义了一套标准的针对 XML 文档的对象。 </li>
