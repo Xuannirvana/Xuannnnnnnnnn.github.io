@@ -188,11 +188,11 @@
   </entry>
   
   <entry>
-    <title>Document 对象</title>
+    <title>DOM - Document 对象</title>
     <link href="http://yoursite.com/2017/08/18/document/"/>
     <id>http://yoursite.com/2017/08/18/document/</id>
     <published>2017-08-18T14:29:56.000Z</published>
-    <updated>2017-08-18T15:06:16.000Z</updated>
+    <updated>2017-08-18T15:08:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>Document 对象表示浏览器加载的 HTML 页面，并作为查找 HTML 页面内容的入口。它提供了全局函数，例如如何从 HTML 页面中查找指定标签或者在 HTML 页面中如何创建标签等。</p>
 <a id="more"></a>
@@ -295,7 +295,7 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="DOM" scheme="http://yoursite.com/tags/DOM/"/>
+      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
