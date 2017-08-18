@@ -4,7 +4,21 @@
   <url>
     <loc>http://yoursite.com/2017/08/18/dom/</loc>
     
-    <lastmod>2017-08-18T14:12:28.000Z</lastmod>
+    <lastmod>2017-08-18T14:23:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/13/hoisting/</loc>
+    
+    <lastmod>2017-08-18T14:13:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/09/12/memory/</loc>
+    
+    <lastmod>2017-08-18T14:13:03.000Z</lastmod>
     
   </url>
   
@@ -26,20 +40,6 @@
     <loc>http://yoursite.com/2017/06/09/signupBlog/</loc>
     
     <lastmod>2017-08-12T14:09:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/13/hoisting/</loc>
-    
-    <lastmod>2017-08-12T13:32:31.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/08/12/memory/</loc>
-    
-    <lastmod>2017-08-12T08:17:49.000Z</lastmod>
     
   </url>
   
