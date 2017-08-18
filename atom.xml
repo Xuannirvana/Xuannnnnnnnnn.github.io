@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-12T13:32:31.000Z</updated>
+  <updated>2017-08-18T14:12:28.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>DOM 文档对象模型</title>
+    <link href="http://yoursite.com/2017/08/18/dom/"/>
+    <id>http://yoursite.com/2017/08/18/dom/</id>
+    <published>2017-08-18T14:09:03.000Z</published>
+    <updated>2017-08-18T14:12:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM"></a>什么是DOM</h3><p>W3C 制定了一套书写 HTML 分析器的标准接口规范 – <strong>DOM</strong>。</p>
+<p>DOM 的全称是 Document Object Model，译为<strong>文档对象模型</strong>。说的通俗一点，DOM 就是为 HTML 文档提供的一个API（接口）。提供这个接口有什么用呢？有了这个接口，我们就可以去操作 HTML 文档了。</p>
+<blockquote>
+<p>文档代表的是数据，而 DOM 则代表了如何去处理这些数据。简言之，它会将 Web 页面和脚本或程序语言连接起来。</p>
+</blockquote>
+<h3 id="为什么要使用DOM"><a href="#为什么要使用DOM" class="headerlink" title="为什么要使用DOM"></a>为什么要使用DOM</h3><p>相比起一成不变的静态页面，大家更喜欢动态化的 HTML 文档。而 JavaScript，就可以满足大家对动态化文档的需求。</p>
+<p>通过 JavaScript，我们可以重构整个 HTML 文档，可以添加、删除、修改或重排页面上的项目。但是，JavaScript 并不能直接操作我们的文档。想要改变 HTML 中的某一个元素，JavaScript 需要找到访问该元素的入口。这个入口，连同对 HTML 元素进行一系列操作的方法和属性，都是通过文档对象模型（DOM）来获得的。</p>
+<h3 id="DOM-的发展历程"><a href="#DOM-的发展历程" class="headerlink" title="DOM 的发展历程"></a>DOM 的发展历程</h3><p>DOM 的级别包含了从第 0 级到第 3 级。</p>
+<p>注：第 0 级和第 3 级并不是 W3C 的标准。</p>
+<ul>
+<li>DOM 0 级: 定义了 Document 对象的一些属性和方法。</li>
+<li><p>DOM 1 级：是 W3C 在 1998 年 10 月提出的第一个正式的 W3C DOM 标准。</p>
+<ul>
+<li>DOM Core（核心）：提供了 DOM 模型、内存管理、命名约定等方便访问和操作 HTML 页面的内容。</li>
+<li><p>DOM HTML：提供了一些 HTML 页面相关的对象以及 HTML 标签的属性和方法等。</p>
+<blockquote>
+<p>注意：DOM 1 级中忽略了事件模型。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>DOM 2 级：是基于 DOM 1 级并且扩展了 DOM 1 级，还添加了视图、事件以及 CSS 样式的内容。</p>
+<ul>
+<li>DOM View：描述 HTML 文档的各种视图的接口。</li>
+<li>DOM Events：描述了事件流、事件监听注册、事件接口以及文档事件接口等内容。</li>
+<li>DOM Style：描述了 CSS 样式的接口。</li>
+<li>DOM Traversal and Range：描述遍历和操作 HTML 文档的接口。</li>
+</ul>
+</li>
+<li><p>DOM 3 级：引入了统一的文档读取和保存的方法，</p>
+<ul>
+<li>DOM Load and Save: 描述了文档的读取和保存的接口。</li>
+<li><p>DOM Validation: 描述了文档验证的接口。</p>
+<blockquote>
+<p>注意：DOM 3 级的引入的主要是对 XML 文档的支持，对于 HTML 文档的用处并不大。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="DOM-的组成"><a href="#DOM-的组成" class="headerlink" title="DOM 的组成"></a>DOM 的组成</h3><ul>
+<li>Core DOM：也称核心DOM编程，定义了一套标准针对任何结构化文档的对象，包括HTML。 </li>
+<li>XML DOM：定义了一套标准的针对 XML 文档的对象。 </li>
+<li>HTML DOM:定义了一套标准的针对 HTML 文档的对象。</li>
+</ul>
+<h2 id="DOM-节点"><a href="#DOM-节点" class="headerlink" title="DOM 节点"></a>DOM 节点</h2><h3 id="DOM-节点树结构"><a href="#DOM-节点树结构" class="headerlink" title="DOM 节点树结构"></a>DOM 节点树结构</h3><p>DOM 将 HTML 页面表示为一个树形结构，方便访问和操作 HTML 页面中的内容。具体如何表示，我们可以通过以下示例来理解。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>  <span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">h1</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span> hello world <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7h5l70msj31680vkn20.jpg" alt=""></p>
+<p>当浏览器加载 HTML 页面时，就会创建这个 HTML 页面的模型。这个模型就叫做 DOM 树结构。</p>
+<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>节点<code>node</code>是个网络术语，表示网络中的连接点。一个网络是由各种不同的节点构成的集合。</p>
+<p>在 DOM 树结构中主要由以下四种节点组成：</p>
+<ul>
+<li>文档节点：表示整个 HTML 页面（相当于<code>document</code>对象）。当需要访问任何标签、属性或文本时，都可以通过文档节点进行导航。</li>
+<li>元素节点：表示 HTML 页面中的标签（即 HTML 页面的结构）。当访问 DOM 树时，需要从查找元素节点（标签）开始。</li>
+<li>文本节点：表示 HTML 页面中的标签所包含的文本内容。</li>
+<li>属性节点：表示 HTML 页面中的开始标签包含的属性。</li>
+</ul>
+<p>附：代码注释也是一个注释节点，但一般情况不作考虑。</p>
+<p>注意：在 DOM 树结构中，属性节点比较特殊，它并不是所有元素节点的子节点。</p>
+<p>根据节点的分类，前面的 DOM 树结构就可以更详细的表示为如下示例。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi7j1z4ppgj31820y6n3j.jpg" alt=""></p>
+<h3 id="判断节点类型"><a href="#判断节点类型" class="headerlink" title="判断节点类型"></a>判断节点类型</h3><p>当通过 DOM 节点树获取 HTML 页面的某个节点时，我们如何可以判断出当前节点时哪种类型的呢？</p>
+<table><br>    <tr><br>        <th>节点类型</th><br>        <th>nodeName</th><br>        <th>nodeType</th><br>        <th>nodeValue</th><br>    </tr><br>    <tr><br>        <td>文档节点</td><br>        <td>#document</td><br>        <td>9</td><br>        <td>null</td><br>    </tr><br>        <tr><br>        <td>元素节点</td><br>        <td>标签名</td><br>        <td>1</td><br>        <td>null</td><br>    </tr><br>        <tr><br>        <td>属性节点</td><br>        <td>属性名</td><br>        <td>2</td><br>        <td>属性值</td><br>    </tr><br>        <tr><br>        <td>文本节点</td><br>        <td>#text</td><br>        <td>3</td><br>        <td>文本内容</td><br>    </tr><br></table>
+
+<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><p>W3C 提供的 DOM 标准通过一系列对象实现，其中主要以 Document 对象、Element 对象和 Node 对象为主。</p>
+<p>我们学习 DOM 标准的 API 内容，也主要通过 Document 对象、Element 对象和 Node 对象这三个对象学习。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
+    
+    
+      <category term="DOM" scheme="http://yoursite.com/tags/DOM/"/>
+    
+  </entry>
   
   <entry>
     <title>变量提升和函数提升</title>
