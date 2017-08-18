@@ -304,7 +304,7 @@
     <link href="http://yoursite.com/2017/08/18/dom/"/>
     <id>http://yoursite.com/2017/08/18/dom/</id>
     <published>2017-08-18T14:09:03.000Z</published>
-    <updated>2017-08-18T14:33:53.000Z</updated>
+    <updated>2017-08-18T15:13:48.000Z</updated>
     
     <content type="html"><![CDATA[<p>应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。</p>
 <a id="more"></a>
@@ -361,6 +361,11 @@
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fio8kq8dxcj314y0aq0u9.jpg" alt=""></p>
 <h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><p>W3C 提供的 DOM 标准通过一系列对象实现，其中主要以 Document 对象、Element 对象和 Node 对象为主。</p>
 <p>我们学习 DOM 标准的 API 内容，也主要通过 Document 对象、Element 对象和 Node 对象这三个对象学习。</p>
+<ul>
+<li><a href="https://runjaelyn.github.io/2017/08/18/document/" target="_blank" rel="external">DOM - Document 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/18/node/" target="_blank" rel="external">DOM - Node 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/18/element/" target="_blank" rel="external">DOM - Element 对象</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
