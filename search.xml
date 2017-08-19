@@ -3,45 +3,316 @@
   
     
     <entry>
+      <title><![CDATA[DOM - Element 对象]]></title>
+      <url>/2017/08/19/element/</url>
+      <content type="html"><![CDATA[<p>DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。</p>
+<p>Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。</p>
+<a id="more"></a>
+<h2 id="Element-与-Node"><a href="#Element-与-Node" class="headerlink" title="Element 与 Node"></a>Element 与 Node</h2><p><strong>元素与节点的区别：</strong></p>
+<p>通过节点访问或操作 HTML 页面内容:</p>
+<ul>
+<li>元素节点: 表示 HTML 页面中的标签。</li>
+<li>属性节点: 表示 HTML 页面中标签的属性。</li>
+<li>文本节点: 表示 HTML 页面中标签的文本内容。</li>
+</ul>
+<p>通过元素访问或操作 HTML 页面内容:</p>
+<ul>
+<li>元素: 表示 HTML 页面中的标签。</li>
+</ul>
+<p>也就是说，使用节点方式时，标签、属性和文本是同级关系；而使用元素方式时，只有标签。属性和文本成为了标签的一部分。</p>
+<h2 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h2><p>由于 Element 对象是继承于 Document 对象的，所以 Document 对象的属性和方法，Element 对象都可以直接使用。</p>
+<p>我们已经掌握如何通过 Document 对象获取 HTML 页面标签:</p>
+<ul>
+<li><code>getElementById()</code>方法: 通过标签的<code>id</code>属性值获取指定标签。</li>
+<li><code>getElementsByClassName()</code>方法: 通过标签的<code>class</code>属性值获取指定标签。</li>
+<li><code>getElementsByTagName()</code>方法: 通过标签名获取指定标签。</li>
+<li><code>getElementsByName()</code>方法: 通过标签的<code>name</code>属性值获取指定标签。</li>
+<li><code>querySelector()</code>方法: 通过 CSS 选择器方式获取匹配的第一个标签。</li>
+<li><code>querySelectorAll()</code>方法: 通过 CSS 选择器方式获取匹配的所有标签。</li>
+</ul>
+<p>以上获取 HTML 页面标签的方法，在 Element 对象中同样可以使用。</p>
+<p>注意：获取的 HTML 页面中的标签，既是 Node 对象，也是 Element 对象。</p>
+<h2 id="遍历元素"><a href="#遍历元素" class="headerlink" title="遍历元素"></a>遍历元素</h2><h3 id="获取父元素"><a href="#获取父元素" class="headerlink" title="获取父元素"></a>获取父元素</h3><p>通过 HTML 页面的指定标签查找其父元素。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">子元素.parentElement</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sonEle = <span class="built_in">document</span>.getElementById(<span class="string">"son"</span>);</div><div class="line"><span class="keyword">let</span> fatherEle = son.parentElement;</div><div class="line"><span class="built_in">console</span>.log( fatherEle );         <span class="comment">// &lt;div id="father"&gt;...&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p>注意：</p>
+<p><code>parentNode</code>和<code>parentElement</code>两个方法都可以用来获取父级，但是有区别：</p>
+<ul>
+<li><code>parentNode</code>表示获取指定元素的父节点。这个父节点可能是元素节点，也可能是文档节点。</li>
+<li><code>parentElement</code>表示获取指定元素的父元素节点。该元素没有父节点，或者它的父节点不是一个元素节点，则返回<code>null</code>。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> htmlNode = <span class="built_in">document</span>.documentElement;     <span class="comment">// 获取 html 元素</span></div><div class="line"><span class="built_in">console</span>.log( htmlNode.parentNode );          <span class="comment">// #document</span></div><div class="line"><span class="built_in">console</span>.log( htmlNode.parentElement );       <span class="comment">// null</span></div></pre></td></tr></table></figure>
+<p>原因在于<code>html</code>的父节点<code>document</code>并不是一个元素节点，而是一个文档节点。</p>
+<h3 id="获取子元素"><a href="#获取子元素" class="headerlink" title="获取子元素"></a>获取子元素</h3><p>通过 HTML 页面的指定标签查找其子元素。</p>
+<p><strong><code>firstElementChild</code></strong>：获取指定标签的第一个子元素。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父元素.firstElementChild</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fatherEle = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">let</span> sonELe = fatherEle.firstElementChild;</div><div class="line"><span class="built_in">console</span>.log( sonELe );      <span class="comment">// &lt;div id="son1"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p><strong><code>lastElementChild</code></strong>：获取指定标签的最后一个子元素。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父元素.lastElementChild</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fatherEle = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">let</span> sonELe = fatherEle.lastElementChild;</div><div class="line"><span class="built_in">console</span>.log( sonELe );      <span class="comment">// &lt;div id="son3"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p><strong><code>children</code></strong>：获取指定标签的所有子元素。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父元素.children</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fatherEle = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">let</span> sonELe = fatherEle.children;</div><div class="line"><span class="built_in">console</span>.log( sonELe );      <span class="comment">//  [ div#son1, div#son2, div#son3 ]</span></div></pre></td></tr></table></figure>
+<p><code>childNodes</code>和<code>children</code>两种方法都是用来获取所有子级，但是有区别：</p>
+<ul>
+<li><code>childNodes</code>返回指定元素的子元素集合，包括 HTML 节点、所有属性、文本节点。</li>
+<li><code>children</code>返回指定元素的子元素集合，但它只返回 HTML 元素节点。</li>
+</ul>
+<h3 id="获取兄弟元素"><a href="#获取兄弟元素" class="headerlink" title="获取兄弟元素"></a>获取兄弟元素</h3><p>通过 HTML 页面的指定标签查找兄弟元素。</p>
+<p><strong><code>previousElementSibling</code></strong>: 获取指定节点的前一个兄弟节点。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">兄弟元素.previousElementSibling</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> brother2Ele = <span class="built_in">document</span>.getElementById(<span class="string">"brother2"</span>);</div><div class="line"><span class="keyword">var</span> brotherEle = brother2Ele.previousElementSibling;</div><div class="line"><span class="built_in">console</span>.log( brotherEle );       <span class="comment">// &lt;div id="brother1"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p><strong><code>nextElementSibling</code></strong>: 获取指定节点的后一个兄弟节点。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">兄弟节点.nextElementSibling</div></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>	</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"brother3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> brother2Ele = <span class="built_in">document</span>.getElementById(<span class="string">"brother2"</span>);</div><div class="line"><span class="keyword">var</span> brotherEle = brother2Ele.nextElementSibling;</div><div class="line"><span class="built_in">console</span>.log( brotherEle );      <span class="comment">// &lt;div id="brother3"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="操作属性"><a href="#操作属性" class="headerlink" title="操作属性"></a>操作属性</h2><p>Element 对象提供的属性操作的方法，是实际开发中应用最多的。（因为 Element 对象操作属性要比 Node 对象简便。）</p>
+<h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><p>获取 HTML 页面标签的指定属性值。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.getAttribute( 属性名 )</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"a标签"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.getAttribute(<span class="string">"title"</span>);</div><div class="line"><span class="built_in">console</span>.log( aAttr );      <span class="comment">// a标签</span></div></pre></td></tr></table></figure>
+<h3 id="设置属性"><a href="#设置属性" class="headerlink" title="设置属性"></a>设置属性</h3><p>设置 HTML 页面标签的指定属性。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.setAttribute( 属性名, 属性值 )</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.setAttribute(<span class="string">"title"</span>, <span class="string">"a标签"</span>);</div><div class="line"><span class="built_in">console</span>.log( aEle );      <span class="comment">// &lt;a href="#" id="link" title="a标签"&gt;&lt;/a&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h3><p>删除 HTML 页面标签的指定属性。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.removeAttribute( 属性名 )</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"a标签"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.removeAttribute(<span class="string">"title"</span>);</div><div class="line"><span class="built_in">console</span>.log( aEle );       <span class="comment">// &lt;a href="#" id="link"&gt;&lt;/a&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="判断是否含有属性"><a href="#判断是否含有属性" class="headerlink" title="判断是否含有属性"></a>判断是否含有属性</h3><p>判断 HTML 页面标签的是否含有属性。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.hasAttribute( 属性名 )</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"a标签"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.hasAttribute(<span class="string">"title"</span>);</div><div class="line"><span class="built_in">console</span>.log( aAttr );    <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容"></a>操作内容</h2><h3 id="获取或更新文本"><a href="#获取或更新文本" class="headerlink" title="获取或更新文本"></a>获取或更新文本</h3><p><strong><code>nodeValue</code></strong></p>
+<p>通过学习 DOM 查询我们知道，获取或更新文本就是对文本节点的操作。文本节点的 nodeValue 属性可以得到文本内容，也可以设置文本内容。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文本节点.nodeValue</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);    <span class="comment">// 获取 &lt;a&gt; 标签</span></div><div class="line"><span class="keyword">let</span> aVal = aEle.firstChild.nodeValue;          <span class="comment">// 先获取 &lt;a&gt; 标签的文本节点，再获取文本节点中的文本内容</span></div><div class="line"><span class="built_in">console</span>.log( aVal );                           <span class="comment">// "我是一个"</span></div></pre></td></tr></table></figure>
+<p><strong><code>innerText</code></strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.innerText</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="comment">// 获取文本</span></div><div class="line"><span class="keyword">let</span> aText = aEle.innerText;</div><div class="line"><span class="built_in">console</span>.log( aText );                   <span class="comment">// "我是一个"</span></div><div class="line"><span class="comment">// 更新文本</span></div><div class="line">aEle.innerText = <span class="string">"我换了一个新文本"</span>;</div><div class="line"><span class="keyword">let</span> newText = aEle.innerText;</div><div class="line"><span class="built_in">console</span>.log( newText );                 <span class="comment">// "我换了一个新文本"</span></div></pre></td></tr></table></figure>
+<p><strong><code>textContent</code></strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.textContent</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="comment">// 获取文本</span></div><div class="line"><span class="keyword">let</span> aText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( aText );                  <span class="comment">// "我是一个i标签"</span></div><div class="line"><span class="comment">// 更新文本</span></div><div class="line">aEle.textContent = <span class="string">"我换了一个新文本"</span>;</div><div class="line"><span class="keyword">let</span> newText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( newText );                <span class="comment">// "我换了一个新文本"</span></div></pre></td></tr></table></figure>
+<p>以上三个属性的对比：</p>
+<table><br>    <tr><br>        <th>属性名</th><br>        <th>获取文本的结果</th><br>    </tr><br>    <tr><br>        <td>nodeValue</td><br>        <td>不能获取子元素中的文本内容</td><br>    </tr><br>    <tr><br>        <td>innerText</td><br>        <td>不能获取被 CSS 样式隐藏的文本内容</td><br>    </tr><br>    <tr><br>        <td>textContent</td><br>        <td>可以获取全部文本内容</td><br>    </tr><br></table>
+
+<p>注意：并不建议使用<code>innerText</code>属性，因为它并不属性任何标准，而且性能不好。</p>
+<h3 id="获取或更新-HTML"><a href="#获取或更新-HTML" class="headerlink" title="获取或更新 HTML"></a>获取或更新 HTML</h3><p><strong><code>innerHTML</code></strong>：我们可以通过 innerHTML 属性来获取或更新 HTML 页面的指定标签所包含的 HTML 代码内容。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.innerHTML</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="comment">// 获取 HTML</span></div><div class="line"><span class="keyword">let</span> aHtml = aEle.innerHTML;</div><div class="line"><span class="built_in">console</span>.log( aHtml );      <span class="comment">// "我是一个 &lt;i style="display: none"&gt;i标签&lt;/i&gt;"</span></div><div class="line"><span class="comment">// 更新 HTML</span></div><div class="line">aEle.innerHTML = <span class="string">"&lt;span&gt;我是a标签里的span标签&lt;/span&gt;"</span>;</div><div class="line"><span class="keyword">let</span> newHtml = aEle.innerHTML;</div><div class="line"><span class="built_in">console</span>.log( newHtml );    <span class="comment">// "&lt;span&gt;我是a标签里的span标签&lt;/span&gt;"</span></div></pre></td></tr></table></figure>
+<p><strong><code>innerHTML</code>属性和 DOM 操作的优缺点：</strong></p>
+<p><code>innerHTML</code>属性:</p>
+<ul>
+<li><p>优点:</p>
+<ul>
+<li>和 DOM 操作方法相比，可以使用更少的代码添加大量的新标签。</li>
+<li>向页面中添加大量新元素时，速度比 DOM 操作更快。</li>
+<li>当需要移除元素中的所有内容时，它更简单（直接设置一个空字符串即可）。</li>
+</ul>
+</li>
+<li><p>缺点:</p>
+<ul>
+<li>不应该用它来添加来自于用户输入的内容，因为存在安全隐患。</li>
+<li>在添加一个很大的 DOM 片段时，这个方法很难独立区分出每一个元素。</li>
+<li>事件处理程序可能不像预期那样生效。</li>
+</ul>
+</li>
+</ul>
+<p>DOM 操作:</p>
+<ul>
+<li><p>优点:</p>
+<ul>
+<li>如果 DOM 片段中拥有大量的兄弟节点，处理其中一个元素节点时使用这种方法更合适。</li>
+<li>不会影响事件处理程序。</li>
+<li>可以轻易地使用脚本来逐步添加元素。</li>
+</ul>
+</li>
+<li><p>缺点:</p>
+<ul>
+<li>如果需要对页面内容进行大量修改，它的速度比 innerHTML 属性更慢。</li>
+<li>与使用 innerHTML 属性相比，它需要更多的代码来实现同样的功能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS-操作"><a href="#CSS-操作" class="headerlink" title="CSS 操作"></a>CSS 操作</h2><h3 id="操作内联样式"><a href="#操作内联样式" class="headerlink" title="操作内联样式"></a>操作内联样式</h3><p>HTML 页面标签的内联样式主要是通过 style 属性进行设置，所以 DOM 操作标签的内联样式也是通过 style 属性来完成的。</p>
+<h4 id="设置内联样式"><a href="#设置内联样式" class="headerlink" title="设置内联样式"></a>设置内联样式</h4><p>想改变 HTML 页面标签的内联样式，我们可以通过以下方式实现。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.style.样式属性名 = 样式属性值</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line">box.style.height = <span class="string">"100px"</span>;</div><div class="line">box.style.backgroundColor = <span class="string">"red"</span>;</div><div class="line"><span class="built_in">console</span>.log( box );      <span class="comment">// &lt;div id="box" style="height: 100px; background-color: red;"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>在修改例如<code>background-color</code>这样的 CSS 属性时，不能使用<code>element.style.background-color</code>这种方式，浏览器会解析成 JavaScript 的表达式。最终会报错。</p>
+<p>所有例如<code>background-color</code>这样的 CSS 属性在使用时，必须要改为驼峰式命名方式（例如 <code>backgroundColor</code>）。</p>
+<h4 id="设置多个内联样式"><a href="#设置多个内联样式" class="headerlink" title="设置多个内联样式"></a>设置多个内联样式</h4><p>上面<code>元素.style.样式属性名</code>的方式每次只能设置单个内联样式，当我们需要同时设置多个内联样式时，可以通过以下方法实现。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.style.cssText = 样式</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line">box.style.cssText = <span class="string">"height: 100px; background-color: red;"</span></div><div class="line"><span class="built_in">console</span>.log( box );      <span class="comment">// &lt;div id="box" style="height: 100px; background-color: red;"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="获取内联样式"><a href="#获取内联样式" class="headerlink" title="获取内联样式"></a>获取内联样式</h4><p>获取 HTML 页面标签的内联样式，我们同样可以通过以下方式实现。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.style.样式属性名</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="built_in">console</span>.log( box.style.height );      <span class="comment">// 100px</span></div></pre></td></tr></table></figure>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><p>内联样式<code>style</code>也是元素的一个属性，所以也可以通过前面提到的操作属性的方式来操作内联样式。</p>
+<p><strong>设置内联样式</strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.setAttribute( <span class="string">"style"</span>, 样式 );</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line">box.setAttribute(<span class="string">"style"</span>, <span class="string">"background-color:red"</span>);</div><div class="line"><span class="built_in">console</span>.log( box );      <span class="comment">// &lt;div id="box" style="background-color: red"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>获取内联样式</strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.getAttribute( <span class="string">"style"</span> );</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span> <span class="attr">style</span>=<span class="string">"height: 100px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="keyword">let</span> boxStyle = box.getAttribute(<span class="string">"style"</span>);</div><div class="line"><span class="built_in">console</span>.log( boxStyle )     <span class="comment">// "height: 100px"</span></div></pre></td></tr></table></figure>
+<h3 id="操作样式表样式"><a href="#操作样式表样式" class="headerlink" title="操作样式表样式"></a>操作样式表样式</h3><p>通过<code>element.style</code>属性，我们只能获取内联样式内容，并不能获取 CSS 样式表内容。所以，我们还需要以下方法来获取样式表中的样式。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// IE Chrome</span></div><div class="line"><span class="built_in">document</span>.styleSheets[样式表下标].rules[样式下标].style.样式属性名</div><div class="line"></div><div class="line"><span class="comment">// Firefox</span></div><div class="line"><span class="built_in">document</span>.styleSheets[样式表下标].cssRules[样式下标].style.样式属性名</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: red;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取样式</span></div><div class="line"><span class="keyword">let</span> myStyle = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].rules[<span class="number">0</span>].style.backgroundColor;</div><div class="line"><span class="built_in">console</span>.log( myStyle );       <span class="comment">// "red"</span></div><div class="line"></div><div class="line"><span class="comment">// 更新样式</span></div><div class="line"><span class="built_in">document</span>.styleSheets[<span class="number">0</span>].rules[<span class="number">0</span>].style.backgroundColor = <span class="string">"blue"</span>;</div></pre></td></tr></table></figure>
+<h3 id="获取最终样式"><a href="#获取最终样式" class="headerlink" title="获取最终样式"></a>获取最终样式</h3><p>前面两种获取元素样式的方法，一个是获取内联样式，一个是获取样式表样式。但是，当一个元素身上两种样式都存在时，我们怎么确定用哪种方式去获取。所以，还有第三种方法，获取元素的最终样式，也就是元素最终在页面上显示的样式。</p>
+<p><strong><code>getComputedStyle()</code></strong></p>
+<p>我们可以通过这个方法获取 HTML 页面标签的当前样式内容（内联样式及外联样式）。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.getComputedStyle( 元素, <span class="literal">null</span> ).样式属性名</div></pre></td></tr></table></figure>
+<p>该方法会返回一个包含当前所有的 CSS 样式的对象，然后我们可以再通过<code>object.样式属性名</code>的方式得到指定的样式属性值。</p>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: red;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="keyword">let</span> myStyle = <span class="built_in">window</span>.getComputedStyle( box, <span class="literal">null</span> ).height;</div><div class="line"><span class="built_in">console</span>.log( myStyle );       <span class="comment">// "100px"</span></div></pre></td></tr></table></figure>
+<p><strong><code>currentStyle</code></strong></p>
+<p>IE 8 及之前版本的浏览器并不支持<code>getComputedStyle()</code>方法。如果，在 IE 8 及之前版本的浏览器，我们需要使用这个属性实现。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.currentStyle.属性样式名</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: red;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="keyword">let</span> myStyle = box.currentStyle.height;</div><div class="line"><span class="built_in">console</span>.log( myStyle );       <span class="comment">// "100px"</span></div></pre></td></tr></table></figure>
+<p><strong>提供兼容方案</strong></p>
+<p>用户既可能使用 IE 8 及之前的版本，也可能使用 IE 9 及之后的版本，还可能使用其他浏览器。所以，我们在实际开发中，需要提供一个全浏览器兼容的解决方案。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">elem, attrName</span>)</span>&#123;</div><div class="line">    <span class="comment">// 判断 window.getComputedStyle() 方法是否存在</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle)&#123;</div><div class="line">        <span class="keyword">return</span> getComputedStyle(elem, <span class="literal">null</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> elem.currentStyle[attrName];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取元素尺寸"><a href="#获取元素尺寸" class="headerlink" title="获取元素尺寸"></a>获取元素尺寸</h3><h4 id="获取可见尺寸"><a href="#获取可见尺寸" class="headerlink" title="获取可见尺寸"></a>获取可见尺寸</h4><p>获取 HTML 页面标签的可见宽度和高度的属性如下:</p>
+<ul>
+<li>可见宽度: <code>clientWidth</code></li>
+<li>可见高度: <code>clientHeight</code></li>
+</ul>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">10px</span> solid black;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">11px</span>;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">12px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="built_in">console</span>.log( box.clientWidth );      <span class="comment">// 122</span></div><div class="line"><span class="built_in">console</span>.log( box.clientHeight );     <span class="comment">// 122</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>可见宽度的值实际上是标签的宽度，再加上内边距的宽度的值。我们可以总结出如下公式:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clientWidth = width + padding-left + padding-right</div></pre></td></tr></table></figure>
+<h4 id="获取实际尺寸"><a href="#获取实际尺寸" class="headerlink" title="获取实际尺寸"></a>获取实际尺寸</h4><p>获取 HTML 页面标签的实际宽度和高度的属性如下:</p>
+<ul>
+<li>宽度: <code>offsetWidth</code></li>
+<li>高度: <code>offsetHeight</code></li>
+</ul>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#box</span>&#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">10px</span> solid black;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">11px</span>;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">12px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="built_in">console</span>.log( box.offsetWidth );       <span class="comment">// 142</span></div><div class="line"><span class="built_in">console</span>.log( box.offsetHeight );      <span class="comment">// 142</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>可见宽度的值实际上是标签的宽度，再加上内边距的宽度的值。我们可以总结出如下公式:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">offsetWidth = width + padding-left + padding-right + border-width</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> DOM </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> element </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[DOM - Node 对象]]></title>
       <url>/2017/08/19/node/</url>
       <content type="html"><![CDATA[<p>Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面<a href="https://runjaelyn.github.io/2017/07/18/dom/" target="_blank" rel="external">《DOM 文档对象模型》</a>中已经讲过了。</p>
 <p>所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。</p>
 <a id="more"></a>
 <h2 id="遍历节点"><a href="#遍历节点" class="headerlink" title="遍历节点"></a>遍历节点</h2><h3 id="获取父节点"><a href="#获取父节点" class="headerlink" title="获取父节点"></a>获取父节点</h3><p>通过 HTML 页面的指定标签查找其父节点。</p>
-<p><strong>parentNode</strong></p>
+<p><strong><code>parentNode</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">子节点.parentNode</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> sonNode = <span class="built_in">document</span>.getElementById(<span class="string">"son"</span>);</div><div class="line"><span class="keyword">let</span> fatherNode = sonNode.parentNode;</div><div class="line"><span class="built_in">console</span>.log( fatherNode );      <span class="comment">// &lt;div id="father"&gt;...&lt;/div&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="获取子节点"><a href="#获取子节点" class="headerlink" title="获取子节点"></a>获取子节点</h3><p>通过 HTML 页面的指定标签查找其子节点。</p>
-<p><strong>firstChild</strong></p>
-<p>获取指定标签的第一个子节点。</p>
+<p><strong><code>firstChild</code></strong>：获取指定标签的第一个子节点。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父节点.firstChild</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fatherNode = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">var</span> sonNode = fatherNode.firstChild;</div><div class="line"><span class="built_in">console</span>.log( sonNode );      <span class="comment">// #text</span></div></pre></td></tr></table></figure>
-<p><strong>lastChild</strong></p>
-<p>获取指定标签的最后一个子节点。</p>
+<p><strong><code>lastChild</code></strong>：获取指定标签的最后一个子节点。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父节点.lastChild</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fatherNode = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">var</span> sonNode = fatherNode.lastChild;</div><div class="line"><span class="built_in">console</span>.log( sonNode );      <span class="comment">// #text</span></div></pre></td></tr></table></figure>
-<p><strong>childNodes</strong></p>
+<p><strong><code>childNodes</code></strong>：获取指定标签的所有子节点。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父节点.childNodes</div></pre></td></tr></table></figure>
 <p>例：</p>
-<p>获取指定标签的所有子节点。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fatherNode = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">var</span> sonNode = fatherNode.childNodes;</div><div class="line"><span class="built_in">console</span>.log( sonNode );      <span class="comment">// [text, div#son1, text, div#son2, text, div#son3, text]</span></div></pre></td></tr></table></figure>
 <p>注意：以上三种方法获取出来的子节点都包含了<code>#text</code>。我们通过前面讲的节点类型可以知道，<code>#text</code>表示的是文本节点。也就是说，换行符或者空格符都属于文本节点。</p>
 <p>想要只获取到元素节点，那么其中一个解决办法就是写 html 代码时不要换行和空格：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fatherNode = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);</div><div class="line"><span class="keyword">var</span> sonNode = fatherNode.childNodes;</div><div class="line"><span class="built_in">console</span>.log( sonNode );       <span class="comment">// [div#son1, div#son2, div#son3]</span></div></pre></td></tr></table></figure>
-<p>但是这种方法对于我们来说并不适用，规范的代码格式才更有利于我们后期对代码的维护和修改。所以后面在 Element 对象中我们还有其他解决办法。</p>
+<p>但是这种方法对于我们来说并不适用，规范的代码格式才更有利于我们后期对代码的维护和修改。所以后面在<a href="https://runjaelyn.github.io/2017/07/18/element/" target="_blank" rel="external">《DOM - Element 对象》</a>中我们还有其他解决办法。</p>
 <h3 id="获取兄弟节点"><a href="#获取兄弟节点" class="headerlink" title="获取兄弟节点"></a>获取兄弟节点</h3><p>通过 HTML 页面的指定标签查找兄弟节点。</p>
 <p><strong><code>previousSibling</code></strong>：获取指定节点的前一个兄弟节点。</p>
 <p>语法结构：</p>
@@ -71,19 +342,21 @@
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fib9k9484uj317s0o2tch.jpg" alt=""></p>
 <p>从上面结果可以看到，新创建的<code>&lt;a&gt;</code>标签作为<code>&lt;body&gt;</code>的子元素插入到了前面新建的<code>&lt;div&gt;</code>之前。</p>
 <h2 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h2><p>从 HTML 页面中删除指定元素节点（标签）。</p>
-<p><strong>removeChild()</strong></p>
+<p><strong><code>removeChild()</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父节点.removeChild( 子节点 )</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> father = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);     <span class="comment">// 获取父节点</span></div><div class="line"><span class="keyword">var</span> son = <span class="built_in">document</span>.getElementById(<span class="string">"son"</span>);           <span class="comment">// 获取子节点</span></div><div class="line">father.removeChild( son );                          <span class="comment">// 删除子节点</span></div></pre></td></tr></table></figure>
 <h2 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h2><p>将 HTML 页面中指定元素节点（标签）替换掉。</p>
+<p><strong><code>replaceChild()</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">父节点.replaceChild( 新子节点, 旧子节点 )</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> father = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);    <span class="comment">// 获取父节点</span></div><div class="line"><span class="keyword">var</span> son = <span class="built_in">document</span>.getElementById(<span class="string">"son"</span>);          <span class="comment">// 获取已有子节点</span></div><div class="line"><span class="keyword">var</span> newChild = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);        <span class="comment">// 创建新节点</span></div><div class="line">father.replaceChild( newChild, son );              <span class="comment">// 新节点替换已有旧子节点</span></div></pre></td></tr></table></figure>
 <h2 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h2><p>将 HTML 页面中指定元素节点（标签）进行复制。</p>
+<p><strong><code>cloneNode()</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">选中节点.cloneNode( 布尔值 )</div></pre></td></tr></table></figure>
 <p>说明：<code>cloneNode()</code>方法的参数<code>boolean</code>表示是否采用深度克隆。如果为<code>true</code>，则该节点的所有后代节点也都会被克隆；如果为<code>false</code>，则只克隆该节点本身。</p>
