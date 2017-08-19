@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="DOM 文档对象模型"/>
+
+
+
+
+  <meta name="keywords" content="DOM," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/07/18/dom/"/>
+
+
+<meta name="description" content="应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。">
+<meta name="keywords" content="DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM 文档对象模型">
+<meta property="og:url" content="http://yoursite.com/2017/07/18/dom/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7h5l70msj31680vkn20.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fi7j1z4ppgj31820y6n3j.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fio8kq8dxcj314y0aq0u9.jpg">
+<meta property="og:updated_time" content="2017-08-19T06:36:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM 文档对象模型">
+<meta name="twitter:description" content="应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fi7h5l70msj31680vkn20.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> DOM 文档对象模型 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          DOM 文档对象模型
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年7月18日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是DOM"><span class="toc-text">什么是DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用DOM"><span class="toc-text">为什么要使用DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-的发展历程"><span class="toc-text">DOM 的发展历程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-的组成"><span class="toc-text">DOM 的组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-节点"><span class="toc-text">DOM 节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-节点树结构"><span class="toc-text">DOM 节点树结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点"><span class="toc-text">节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断节点类型"><span class="toc-text">判断节点类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM-API"><span class="toc-text">DOM API</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。</p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM"></a>什么是DOM</h3><p>W3C 制定了一套书写 HTML 分析器的标准接口规范 – <strong>DOM</strong>。</p>
+<p>DOM 的全称是 Document Object Model，译为<strong>文档对象模型</strong>。说的通俗一点，DOM 就是为 HTML 文档提供的一个API（接口）。提供这个接口有什么用呢？有了这个接口，我们就可以去操作 HTML 文档了。</p>
+<blockquote>
+<p>文档代表的是数据，而 DOM 则代表了如何去处理这些数据。简言之，它会将 Web 页面和脚本或程序语言连接起来。</p>
+</blockquote>
+<h3 id="为什么要使用DOM"><a href="#为什么要使用DOM" class="headerlink" title="为什么要使用DOM"></a>为什么要使用DOM</h3><p>相比起一成不变的静态页面，大家更喜欢动态化的 HTML 文档。而 JavaScript，就可以满足大家对动态化文档的需求。</p>
+<p>通过 JavaScript，我们可以重构整个 HTML 文档，可以添加、删除、修改或重排页面上的项目。但是，JavaScript 并不能直接操作我们的文档。想要改变 HTML 中的某一个元素，JavaScript 需要找到访问该元素的入口。这个入口，连同对 HTML 元素进行一系列操作的方法和属性，都是通过文档对象模型（DOM）来获得的。</p>
+<h3 id="DOM-的发展历程"><a href="#DOM-的发展历程" class="headerlink" title="DOM 的发展历程"></a>DOM 的发展历程</h3><p>DOM 的级别包含了从第 0 级到第 3 级。（注：第 0 级和第 3 级并不是 W3C 的标准）</p>
+<p>（1）<strong>DOM 0 级</strong>: 定义了 Document 对象的一些属性和方法。</p>
+<p>（2）<strong>DOM 1 级</strong>：是 W3C 在 1998 年 10 月提出的第一个正式的 W3C DOM 标准。</p>
+<ul>
+<li><code>DOM Core</code>（核心）：提供了 DOM 模型、内存管理、命名约定等方便访问和操作 HTML 页面的内容。</li>
+<li><code>DOM HTML</code>：提供了一些 HTML 页面相关的对象以及 HTML 标签的属性和方法等。</li>
+<li>注意：DOM 1 级中忽略了事件模型。</li>
+</ul>
+<p>（3）<strong>DOM 2 级</strong>：是基于 DOM 1 级并且扩展了 DOM 1 级，还添加了视图、事件以及 CSS 样式的内容。</p>
+<ul>
+<li><code>DOM View</code>：描述 HTML 文档的各种视图的接口。</li>
+<li><code>DOM Events</code>：描述了事件流、事件监听注册、事件接口以及文档事件接口等内容。</li>
+<li><code>DOM Style</code>：描述了 CSS 样式的接口。</li>
+<li><code>DOM Traversal and Range</code>：描述遍历和操作 HTML 文档的接口。</li>
+</ul>
+<p>（4）<strong>DOM 3 级</strong>：引入了统一的文档读取和保存的方法，</p>
+<ul>
+<li><code>DOM Load and Save</code>：描述了文档的读取和保存的接口。</li>
+<li><code>DOM Validation</code>：描述了文档验证的接口。</li>
+<li>注意：DOM 3 级的引入的主要是对 XML 文档的支持，对于 HTML 文档的用处并不大。</li>
+</ul>
+<h3 id="DOM-的组成"><a href="#DOM-的组成" class="headerlink" title="DOM 的组成"></a>DOM 的组成</h3><ul>
+<li><code>Core DOM</code>：也称核心 DOM 编程，定义了一套标准针对任何结构化文档的对象，包括HTML。 </li>
+<li><code>XML DOM</code>：定义了一套标准的针对 XML 文档的对象。 </li>
+<li><code>HTML DOM</code>：定义了一套标准的针对 HTML 文档的对象。</li>
+</ul>
+<h2 id="DOM-节点"><a href="#DOM-节点" class="headerlink" title="DOM 节点"></a>DOM 节点</h2><h3 id="DOM-节点树结构"><a href="#DOM-节点树结构" class="headerlink" title="DOM 节点树结构"></a>DOM 节点树结构</h3><p>DOM 将 HTML 页面表示为一个树形结构，方便访问和操作 HTML 页面中的内容。具体如何表示，我们可以通过以下示例来理解。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span> hello world <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fi7h5l70msj31680vkn20.jpg" alt=""></p>
+<p>当浏览器加载 HTML 页面时，就会创建这个 HTML 页面的模型。这个模型就叫做 DOM 树结构。</p>
+<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p>节点<code>node</code>是个网络术语，表示网络中的连接点。一个网络是由各种不同的节点构成的集合。</p>
+<p>在 DOM 树结构中主要由以下四种节点组成：</p>
+<ul>
+<li>文档节点：表示整个 HTML 页面（相当于<code>document</code>对象）。当需要访问任何标签、属性或文本时，都可以通过文档节点进行导航。</li>
+<li>元素节点：表示 HTML 页面中的标签（即 HTML 页面的结构）。当访问 DOM 树时，需要从查找元素节点（标签）开始。</li>
+<li>文本节点：表示 HTML 页面中的标签所包含的文本内容。</li>
+<li>属性节点：表示 HTML 页面中的开始标签包含的属性。</li>
+</ul>
+<p>附：代码注释也是一个注释节点，但一般情况不作考虑。</p>
+<p>注意：在 DOM 树结构中，属性节点比较特殊，它并不是所有元素节点的子节点。</p>
+<p>根据节点的分类，前面的 DOM 树结构就可以更详细的表示为如下示例。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fi7j1z4ppgj31820y6n3j.jpg" alt=""></p>
+<h3 id="判断节点类型"><a href="#判断节点类型" class="headerlink" title="判断节点类型"></a>判断节点类型</h3><p>当通过 DOM 节点树获取 HTML 页面的某个节点时，我们如何可以判断出当前节点时哪种类型的呢？</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fio8kq8dxcj314y0aq0u9.jpg" alt=""></p>
+<h2 id="DOM-API"><a href="#DOM-API" class="headerlink" title="DOM API"></a>DOM API</h2><p>W3C 提供的 DOM 标准通过一系列对象实现，其中主要以 Document 对象、Element 对象和 Node 对象为主。</p>
+<p>我们学习 DOM 标准的 API 内容，也主要通过 Document 对象、Element 对象和 Node 对象这三个对象学习。</p>
+<ul>
+<li><a href="https://runjaelyn.github.io/2017/08/18/document/" target="_blank" rel="external">DOM - Document 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/18/node/" target="_blank" rel="external">DOM - Node 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/18/element/" target="_blank" rel="external">DOM - Element 对象</a></li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/DOM/">DOM</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/08/18/document/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">DOM - Document 对象</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/07/15/themeBlog/">
+        <span class="next-text nav-default">创建 Github 个人博客(三)：设置 hexo 博客主题</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ChingKa</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>
