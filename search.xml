@@ -565,8 +565,8 @@
 <p>我们学习 DOM 标准的 API 内容，也主要通过 Document 对象、Element 对象和 Node 对象这三个对象学习。</p>
 <ul>
 <li><a href="https://runjaelyn.github.io/2017/08/18/document/" target="_blank" rel="external">DOM - Document 对象</a></li>
-<li><a href="https://runjaelyn.github.io/2017/08/18/node/" target="_blank" rel="external">DOM - Node 对象</a></li>
-<li><a href="https://runjaelyn.github.io/2017/08/18/element/" target="_blank" rel="external">DOM - Element 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/19/node/" target="_blank" rel="external">DOM - Node 对象</a></li>
+<li><a href="https://runjaelyn.github.io/2017/08/19/element/" target="_blank" rel="external">DOM - Element 对象</a></li>
 </ul>
 ]]></content>
       
