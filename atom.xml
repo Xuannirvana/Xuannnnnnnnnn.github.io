@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-19T07:40:32.000Z</updated>
+  <updated>2017-08-23T08:54:09.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/19/element/"/>
     <id>http://yoursite.com/2017/08/19/element/</id>
     <published>2017-08-19T06:58:49.000Z</published>
-    <updated>2017-08-19T07:40:32.000Z</updated>
+    <updated>2017-08-23T08:54:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。</p>
 <p>Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。</p>
@@ -263,7 +263,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="keyword">let</span> myStyle = box.currentStyle.height;</div><div class="line"><span class="built_in">console</span>.log( myStyle );       <span class="comment">// "100px"</span></div></pre></td></tr></table></figure>
 <p><strong>提供兼容方案</strong></p>
 <p>用户既可能使用 IE 8 及之前的版本，也可能使用 IE 9 及之后的版本，还可能使用其他浏览器。所以，我们在实际开发中，需要提供一个全浏览器兼容的解决方案。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">elem, attrName</span>)</span>&#123;</div><div class="line">    <span class="comment">// 判断 window.getComputedStyle() 方法是否存在</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle)&#123;</div><div class="line">        <span class="keyword">return</span> getComputedStyle(elem, <span class="literal">null</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> elem.currentStyle[attrName];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">elem, attrName</span>)</span>&#123;</div><div class="line">    <span class="comment">// 判断 window.getComputedStyle() 方法是否存在</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle)&#123;</div><div class="line">        <span class="keyword">return</span> getComputedStyle(elem, <span class="literal">null</span>)[attrName];</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">return</span> elem.currentStyle[attrName];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="获取元素尺寸"><a href="#获取元素尺寸" class="headerlink" title="获取元素尺寸"></a>获取元素尺寸</h3><h4 id="获取可见尺寸"><a href="#获取可见尺寸" class="headerlink" title="获取可见尺寸"></a>获取可见尺寸</h4><p>获取 HTML 页面标签的可见宽度和高度的属性如下：</p>
 <ul>
 <li>可见宽度：<code>clientWidth</code></li>
@@ -301,6 +301,8 @@
     
     
       <category term="element" scheme="http://yoursite.com/tags/element/"/>
+    
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
     
   </entry>
   
