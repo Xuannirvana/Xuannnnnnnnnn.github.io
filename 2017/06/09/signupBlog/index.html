@@ -340,6 +340,22 @@
     
   </div>
 
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '792b05f1447d7b23685e',
+          client_secret: 'b82ff6382b1d35b2c06d5507398a3296824676d1',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
 
         </div>  
       </main>
@@ -379,21 +395,6 @@
       <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     
   </div>
-
-  <div id="gitmentContainer"></div>
-  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-  <script>
-  var gitment = new Gitment({
-      owner: 'runJaelyn',
-      repo: 'runJaelyn.github.io',
-      oauth: {
-          client_id: '792b05f1447d7b23685e',
-          client_secret: 'b82ff6382b1d35b2c06d5507398a3296824676d1',
-      },
-  });
-  gitment.render('gitmentContainer');
-  </script>
 
 
 <div class="copyright">
