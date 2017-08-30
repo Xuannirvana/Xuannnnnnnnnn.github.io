@@ -50,7 +50,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fin3m9ez6jj314k04y0t0.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fin3l2v90pj314k034q2y.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fin57kxptxj31460nwgpi.jpg">
-<meta property="og:updated_time" content="2017-08-30T06:09:37.000Z">
+<meta property="og:updated_time" content="2017-08-30T11:42:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Event 事件 - 扩展">
 <meta name="twitter:description" content="我们在《Event 事件 - 基础》中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。">
@@ -273,8 +273,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</div></pre></td></tr></table></figure>
 <h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><p>相对于浏览器位置：</p>
 <ul>
-<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。</li>
-<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器页面（客户区）的垂直坐标。</li>
+<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的水平坐标。</li>
+<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的垂直坐标。</li>
+</ul>
+<p>相对于页面位置：</p>
+<ul>
+<li><code>event.pageX</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的水平坐标。</li>
+<li><code>event.pageY</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的垂直坐标。</li>
 </ul>
 <p>相对于屏幕位置：</p>
 <ul>

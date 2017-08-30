@@ -49,8 +49,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</div></pre></td></tr></table></figure>
 <h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><p>相对于浏览器位置：</p>
 <ul>
-<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。</li>
-<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器页面（客户区）的垂直坐标。</li>
+<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的水平坐标。</li>
+<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的垂直坐标。</li>
+</ul>
+<p>相对于页面位置：</p>
+<ul>
+<li><code>event.pageX</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的水平坐标。</li>
+<li><code>event.pageY</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的垂直坐标。</li>
 </ul>
 <p>相对于屏幕位置：</p>
 <ul>
@@ -784,9 +789,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         

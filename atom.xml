@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-30T06:09:37.000Z</updated>
+  <updated>2017-08-30T11:42:14.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/30/event02/"/>
     <id>http://yoursite.com/2017/08/30/event02/</id>
     <published>2017-08-30T02:49:43.000Z</published>
-    <updated>2017-08-30T06:09:37.000Z</updated>
+    <updated>2017-08-30T11:42:14.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
 <a id="more"></a>
@@ -66,8 +66,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</div></pre></td></tr></table></figure>
 <h4 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h4><p>相对于浏览器位置：</p>
 <ul>
-<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器页面（或客户区）的水平坐标。</li>
-<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器页面（客户区）的垂直坐标。</li>
+<li><code>event.clientX</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的水平坐标。</li>
+<li><code>event.clientY</code>：返回当事件被触发时鼠标指针向对于浏览器文档显示区（或客户区）的垂直坐标。</li>
+</ul>
+<p>相对于页面位置：</p>
+<ul>
+<li><code>event.pageX</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的水平坐标。</li>
+<li><code>event.pageY</code>：返回当事件被触发时鼠标指针向对于 HTML 文档页面的垂直坐标。</li>
 </ul>
 <p>相对于屏幕位置：</p>
 <ul>
@@ -812,9 +817,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="document" scheme="http://yoursite.com/tags/document/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
