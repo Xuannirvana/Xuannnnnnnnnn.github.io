@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/07/15/themeBlog/</loc>
+    
+    <lastmod>2017-08-30T03:00:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/09/signupBlog/</loc>
+    
+    <lastmod>2017-08-30T03:00:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/06/25/hexoBlog/</loc>
+    
+    <lastmod>2017-08-30T03:00:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/08/30/event02/</loc>
     
     <lastmod>2017-08-30T02:59:36.000Z</lastmod>
@@ -40,27 +61,6 @@
     <loc>http://yoursite.com/2017/08/19/node/</loc>
     
     <lastmod>2017-08-19T07:05:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/07/15/themeBlog/</loc>
-    
-    <lastmod>2017-08-12T14:32:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/06/25/hexoBlog/</loc>
-    
-    <lastmod>2017-08-12T14:29:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/06/09/signupBlog/</loc>
-    
-    <lastmod>2017-08-12T14:09:33.000Z</lastmod>
     
   </url>
   

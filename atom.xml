@@ -901,7 +901,7 @@
     <link href="http://yoursite.com/2017/07/15/themeBlog/"/>
     <id>http://yoursite.com/2017/07/15/themeBlog/</id>
     <published>2017-07-15T09:10:43.000Z</published>
-    <updated>2017-08-12T14:32:17.000Z</updated>
+    <updated>2017-08-30T03:00:55.000Z</updated>
     
     <content type="html"><![CDATA[<p>之前写了两篇文章来教大家怎么去创建 GitHub 个人博客，然后再怎么配合 hexo 去开发博客。<br><a id="more"></a></p>
 <ul>
@@ -975,6 +975,8 @@
     
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
+      <category term="theme" scheme="http://yoursite.com/tags/theme/"/>
+    
   </entry>
   
   <entry>
@@ -982,7 +984,7 @@
     <link href="http://yoursite.com/2017/06/25/hexoBlog/"/>
     <id>http://yoursite.com/2017/06/25/hexoBlog/</id>
     <published>2017-06-25T06:31:42.000Z</published>
-    <updated>2017-08-12T14:29:47.000Z</updated>
+    <updated>2017-08-30T03:00:23.000Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2017/06/09/signupBlog/" target="_blank" rel="external">《创建 Github 个人博客(一)：搭建博客基础页面》</a>中我们讲了怎么去搭建一个 GitHub 博客的基础页面。实际上，基础页面搭建完成之后，我们就已经可以通过 Github Pages 直接写 HTML 静态博客了。</p>
 <a id="more"></a>
@@ -1096,6 +1098,8 @@
     
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
   </entry>
   
   <entry>
@@ -1103,7 +1107,7 @@
     <link href="http://yoursite.com/2017/06/09/signupBlog/"/>
     <id>http://yoursite.com/2017/06/09/signupBlog/</id>
     <published>2017-06-09T15:25:01.000Z</published>
-    <updated>2017-08-12T14:09:33.000Z</updated>
+    <updated>2017-08-30T03:00:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p>
 <a id="more"></a>
@@ -1160,6 +1164,8 @@
     
     
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
   </entry>
   
