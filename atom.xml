@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-30T02:59:36.000Z</updated>
+  <updated>2017-08-30T03:02:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/30/event02/"/>
     <id>http://yoursite.com/2017/08/30/event02/</id>
     <published>2017-08-30T02:49:43.000Z</published>
-    <updated>2017-08-30T02:59:36.000Z</updated>
+    <updated>2017-08-30T03:02:04.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
 <a id="more"></a>
@@ -29,7 +29,7 @@
 <p>如果我们要在点击完<code>&lt;p&gt;</code>标签后获取到它里面的内容，常规做法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">para.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( para.textContent );        <span class="comment">// 我是一个p标签</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <p>上述代码可以使用 this 关键字进行改写:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">para.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.textContent );        <span class="comment">// 我是一个p标签</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">para.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( <span class="keyword">this</span>.textContent );        <span class="comment">// 我是一个p标签</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <h3 id="监听器的-this-兼容优化方案"><a href="#监听器的-this-兼容优化方案" class="headerlink" title="监听器的 this 兼容优化方案"></a>监听器的 this 兼容优化方案</h3><p>通过<code>addEventListener()</code>方法为 HTML 页面的标签绑定事件时，<code>this</code>关键字指代绑定该事件的标签元素。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"para"</span>&gt;</span> 我是一个p标签 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">para.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( <span class="keyword">this</span> );        <span class="comment">// &lt;p id="para"&gt; 我是一个p标签 &lt;/p&gt;</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
