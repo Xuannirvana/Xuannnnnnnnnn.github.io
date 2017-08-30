@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-30T02:44:47.000Z</updated>
+  <updated>2017-08-30T02:46:57.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/30/event01/"/>
     <id>http://yoursite.com/2017/08/30/event01/</id>
     <published>2017-08-30T02:41:30.000Z</published>
-    <updated>2017-08-30T02:44:47.000Z</updated>
+    <updated>2017-08-30T02:46:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>Javascript 使我们可以动态的去创建操作一个页面。当我们在与浏览器交互的时候，浏览器就会触发各种事件。</p>
 <p>比如我们打开某一个网页的时候，浏览器需要加载完成这个网页，就会触发一个加载事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个点击事件。<br><a id="more"></a></p>
@@ -35,8 +35,7 @@
 </li>
 <li><strong>事件处理函数</strong>：事件发生时要进行的操作，又叫做”事件句柄”或”事件监听器”。</li>
 </ul>
-<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><table><br>    <tr><br>        <th>事件类型</th><br>        <th>事件类型</th><br>        <th>触发时机</th><br>    </tr><br>    <tr><br>        <td rowspan="7">鼠标事件</td><br>        <td>click</td><br>        <td>鼠标点击操作</td><br>    </tr><br>    <tr><br>        <td>dblclick</td><br>        <td>鼠标双击操作</td><br>    </tr><br>    <tr><br>        <td>mousedown</td><br>        <td>按下鼠标按键</td><br>    </tr><br>    <tr><br>        <td>mouseup</td><br>        <td>抬起鼠标按键</td><br>    </tr><br>    <tr><br>        <td>mousemove</td><br>        <td>鼠标指针在元素上方移动</td><br>    </tr><br>    <tr><br>        <td>mouseover</td><br>        <td>鼠标指针进入元素</td><br>    </tr><br>    <tr><br>        <td>mouseout</td><br>        <td>鼠标指针移出元素</td><br>    </tr><br>    <tr><br>        <td rowspan="3">键盘事件</td><br>        <td>keydown</td><br>        <td>按下键盘按键</td><br>    </tr><br>    <tr><br>        <td>keyup</td><br>        <td>抬起键盘按键</td><br><br>    </tr><br>    <tr><br>        <td>keypress</td><td>按下或按住键盘按键</td><br>    </tr><br>    <tr><br>        <td rowspan="3">表单事件</td><br>        <td>focus</td><br>        <td>input 获得焦点</td><br>    </tr><br>    <tr><br>        <td>blur</td><br>        <td>input 失去焦点</td><br>    </tr><br>    <tr><br>        <td>change</td><br>        <td>更改 input 元素的内容</td><br>    </tr><br>    <tr><br>        <td>页面事件</td><br>        <td>load</td><br>        <td>页面加载完成</td><br>    </tr><br></table>
-
+<h2 id="事件分类"><a href="#事件分类" class="headerlink" title="事件分类"></a>事件分类</h2><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fj1k1o62ovj316q0umaep.jpg" alt=""></p>
 <h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p>为 HTML 页面指定标签绑定指定事件，可以通过以下三种方式实现:</p>
 <ul>
 <li>HTML 标签的事件属性：这种方式 HTML 代码和 JavaScript 逻辑不能很好地分离，所以不建议使用。</li>
