@@ -166,7 +166,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">list.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>( event.target.nodeName === <span class="string">"A"</span> )&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">"我是a标签"</span> )</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <p>这种将事件绑定在其祖先元素身上的方式，我们就可以称之为<strong>事件委托</strong>。</p>
 <blockquote>
-<p>事件委托原理：事件委托就是利用的 DOM 事件的事件捕获阶段。把具体节点上发生的事件，委托给更大范围的节点去处理。</p>
+<p>事件委托原理：事件委托就是利用的 DOM 事件的事件冒泡阶段。把具体节点上发生的事件，委托给更大范围的节点去处理。</p>
 </blockquote>
 ]]></content>
       
@@ -563,9 +563,9 @@
         
         <tags>
             
-            <tag> element </tag>
-            
             <tag> dom </tag>
+            
+            <tag> element </tag>
             
         </tags>
         
@@ -668,6 +668,8 @@
         
         
         <tags>
+            
+            <tag> dom </tag>
             
             <tag> node </tag>
             
@@ -782,6 +784,8 @@
         
         <tags>
             
+            <tag> dom </tag>
+            
             <tag> document </tag>
             
         </tags>
@@ -862,7 +866,7 @@
         
         <tags>
             
-            <tag> DOM </tag>
+            <tag> dom </tag>
             
         </tags>
         

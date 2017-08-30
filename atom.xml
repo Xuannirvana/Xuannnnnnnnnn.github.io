@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-30T03:02:04.000Z</updated>
+  <updated>2017-08-30T06:09:37.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/30/event02/"/>
     <id>http://yoursite.com/2017/08/30/event02/</id>
     <published>2017-08-30T02:49:43.000Z</published>
-    <updated>2017-08-30T03:02:04.000Z</updated>
+    <updated>2017-08-30T06:09:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
 <a id="more"></a>
@@ -183,7 +183,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">list.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>( event.target.nodeName === <span class="string">"A"</span> )&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">"我是a标签"</span> )</div><div class="line">    &#125;</div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <p>这种将事件绑定在其祖先元素身上的方式，我们就可以称之为<strong>事件委托</strong>。</p>
 <blockquote>
-<p>事件委托原理：事件委托就是利用的 DOM 事件的事件捕获阶段。把具体节点上发生的事件，委托给更大范围的节点去处理。</p>
+<p>事件委托原理：事件委托就是利用的 DOM 事件的事件冒泡阶段。把具体节点上发生的事件，委托给更大范围的节点去处理。</p>
 </blockquote>
 ]]></content>
     
@@ -586,9 +586,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="element" scheme="http://yoursite.com/tags/element/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="element" scheme="http://yoursite.com/tags/element/"/>
     
   </entry>
   
@@ -597,7 +597,7 @@
     <link href="http://yoursite.com/2017/08/19/node/"/>
     <id>http://yoursite.com/2017/08/19/node/</id>
     <published>2017-08-19T06:37:40.000Z</published>
-    <updated>2017-08-19T07:05:59.000Z</updated>
+    <updated>2017-08-30T03:35:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面<a href="https://runjaelyn.github.io/2017/07/18/dom/" target="_blank" rel="external">《DOM 文档对象模型》</a>中已经讲过了。</p>
 <p>所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。</p>
@@ -695,6 +695,8 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
     
   </entry>
@@ -704,7 +706,7 @@
     <link href="http://yoursite.com/2017/08/18/document/"/>
     <id>http://yoursite.com/2017/08/18/document/</id>
     <published>2017-08-18T14:29:56.000Z</published>
-    <updated>2017-08-21T03:27:42.000Z</updated>
+    <updated>2017-08-30T03:35:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>Document 对象表示浏览器加载的 HTML 页面，并作为查找 HTML 页面内容的入口。它提供了全局函数，例如如何从 HTML 页面中查找指定标签或者在 HTML 页面中如何创建标签等。</p>
 <a id="more"></a>
@@ -810,6 +812,8 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
       <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
@@ -819,7 +823,7 @@
     <link href="http://yoursite.com/2017/07/18/dom/"/>
     <id>http://yoursite.com/2017/07/18/dom/</id>
     <published>2017-07-18T14:09:03.000Z</published>
-    <updated>2017-08-22T01:44:17.000Z</updated>
+    <updated>2017-08-30T03:35:13.000Z</updated>
     
     <content type="html"><![CDATA[<p>应用程序开发过程中，程序不是直接对 HTML 文档进行操作的，而是首先由 HTML 分析器对 HTML 文档进行分析。然后，应用程序通过 HTML 分析器所提供的 DOM 接口对分析结果进行操作，从而间接的实现了对 HTML 文档的操作。</p>
 <a id="more"></a>
@@ -892,7 +896,7 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="DOM" scheme="http://yoursite.com/tags/DOM/"/>
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
     
   </entry>
   
