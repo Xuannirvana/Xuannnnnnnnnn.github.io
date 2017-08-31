@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="搭建 Github 个人博客(四)：配置博客评论功能"/>
+
+
+
+
+  <meta name="keywords" content="博客,github,gitment," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/08/31/commentBlog/"/>
+
+
+<meta name="description" content="之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。 所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。">
+<meta name="keywords" content="博客,github,gitment">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建 Github 个人博客(四)：配置博客评论功能">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/commentBlog/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。 所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fixisaw6chj31kw19e0zu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fixizjs8nfj31gk130tii.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fiw2mnzjhlj31ka0s0wja.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fj2oa7gadhj314k04q74l.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fj2u71luagj31kw0j3gvq.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fixi2dvwwyj31ce0saq5m.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fixi3pioplj317o0qg406.jpg">
+<meta property="og:updated_time" content="2017-08-31T07:52:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建 Github 个人博客(四)：配置博客评论功能">
+<meta name="twitter:description" content="之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。 所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fixisaw6chj31kw19e0zu.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> 搭建 Github 个人博客(四)：配置博客评论功能 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          搭建 Github 个人博客(四)：配置博客评论功能
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年8月31日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#评论系统选择"><span class="toc-text">评论系统选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申请一个Github-OAuth-Application"><span class="toc-text">申请一个Github OAuth Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在博客中调用-gitment"><span class="toc-text">在博客中调用 gitment</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调用-gitment-的位置"><span class="toc-text">调用 gitment 的位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化评论"><span class="toc-text">初始化评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全问题"><span class="toc-text">安全问题</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。</p>
+<p>所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。</p>
+<a id="more"></a>
+<h2 id="评论系统选择"><a href="#评论系统选择" class="headerlink" title="评论系统选择"></a>评论系统选择</h2><p>现在很多的技术博客都是程序员们自己搭建的，所以博客本身并不带有评论功能。这时候我们就需要借助第三方的评论系统，来为自己的博客添加评论功能。</p>
+<p>上网搜了一下，现在使用人数比较多的几个第三方评论系统：</p>
+<ul>
+<li><strong>多说</strong>：以前是比较火的，但是在 2017 年 6 月 1 日已经正式关停服务，所以没法再使用了。</li>
+<li><strong>畅言</strong>：搜狐旗下产品。但是需要个人博客备案后才能使用（我不会备案，所以放弃）。</li>
+<li><strong>友言</strong>：JiaThis 旗下产品。但由于它是 Http 请求，而 Github Pages 现在是 Https 请求，在 Https 站点无法调用 Http 请求，所以也无法使用。</li>
+<li><strong>网易云跟帖</strong>：我屁颠颠的去搜，结果告诉我，云跟帖产品将于2017年8月1日停止服务… …然后，没有然后了。</li>
+<li><strong>Disqus</strong>：国外的评论系统。火是很火，但是国内被墙了，而且官网全英文。所以我放弃了。</li>
+</ul>
+<p>我能找到的几个主流的评论系统基本上已经全军覆没了。无意中看到有很多人在推荐 <strong>gitment</strong>，所以就去搜了一下。</p>
+<blockquote>
+<p>gitment 是国内的大神<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">孙士权</a>基于 GitHub 的 Issues 开发的一款的评论系统。</p>
+</blockquote>
+<p>因此最终我选择了用 gitment 来搭建设置博客的评论功能（其实也没啥选择，只有这个能用）。</p>
+<h2 id="申请一个Github-OAuth-Application"><a href="#申请一个Github-OAuth-Application" class="headerlink" title="申请一个Github OAuth Application"></a>申请一个Github OAuth Application</h2><p>使用 gitment 的第一步，就是需要去申请一个 GitHub 的 OAuth Application。</p>
+<p>（1）点击个人头像选择 <strong>Settings</strong> 进入设置页面。</p>
+<p>（2）选择下图左侧红框选中的选项 <strong>OAuth Apps</strong>。</p>
+<p>（3）看到出现下图右侧中的提示，点击绿色按钮 <strong>Register a new application</strong> 注册一个应用程序。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fixisaw6chj31kw19e0zu.jpg" alt=""></p>
+<p>（4）按照下图填写相关信息。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fixizjs8nfj31gk130tii.jpg" alt=""></p>
+<p>（5）注册成功之后会跳转到一个新页面，在新页面中我们可以得到我们的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，如下图所示：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fiw2mnzjhlj31ka0s0wja.jpg" alt=""></p>
+<p style="color: gray">（我也不知道这两串数字能不能展示出来，所以先糊了再说。）</p>
+
+<p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
+<h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">    owner: 'Your GitHub username',</div><div class="line">    repo: 'The repo to store comments',</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: 'Your client ID',</div><div class="line">        client_secret: 'Your client secret',</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render('gitmentContainer');</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
+<ol>
+<li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
+<li><code>The repo to store comments</code>：填写存放评论的 GitHub 仓库名（由于 gitment 的评论是通过 issues 来存放的，所以建议这里填写个人博客所在的仓库）。</li>
+<li><code>Your client ID</code>：前面所申请到的 Client ID。</li>
+<li><code>Your client secret</code>：前面所申请到的 Client Secret。</li>
+</ol>
+<p>填完之后把代码保存然后执行以下命令上传到 Github 就可以了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
+<h3 id="调用-gitment-的位置"><a href="#调用-gitment-的位置" class="headerlink" title="调用 gitment 的位置"></a>调用 gitment 的位置</h3><p>上面的那一大段代码，到底添加到什么地方，是我纠结了半天的问题。搜索了很多都没有详细解释这一块内容的，原作者的博客中也只写了下面这一句话。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fj2oa7gadhj314k04q74l.jpg" alt=""></p>
+<p>我找了很久这个“你的页面”到底是指的哪个页面。</p>
+<p>后来发现，实际上，这段代码的作用就是调用 gitment 并添加评论功能。所以，你博客里哪个页面需要评论功能，就在哪个页面添加这个代码。但是又会有一个新的问题，我们的每一篇博文都需要有评论功能，总不能每发一篇博文都去添加一次。</p>
+<p>所以我去翻了一下我的主题文件目录。（我用的是<strong>Even</strong>主题，其他主题应该也差不多）。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fj2u71luagj31kw0j3gvq.jpg" alt=""></p>
+<p>我在主题文件里找到一个<code>comments.swig</code>文件，然后将上面的代码按照上图所示位置添加进去。再保存上传以后就成功了。</p>
+<h2 id="初始化评论"><a href="#初始化评论" class="headerlink" title="初始化评论"></a>初始化评论</h2><p>由于 gitment 的原理是为每一遍博文以其 URL 作为标识创建一个 GitHub issue，对该篇博客的评论就是对这个 issue 的评论。因此，我们需要为每篇博文初始化一下评论系统，初始化后，你可以在你的 GitHub 上会创建相对应的 issue。</p>
+<p>接下来，介绍一下如何初始化评论系统：</p>
+<p>（1）上面的代码添加成功并上传后，你就可以在你的博文页下面看到一个评论框。还有一个报错提示，提示该篇博文的评论系统还没初始化。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fixi2dvwwyj31ce0saq5m.jpg" alt=""></p>
+<p>（2）点击登录之后，使用自己的 GitHub 账号登录后，就可以在上面错误信息处看到一个 <strong>Initialize Comments</strong> 的按钮。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fixi3pioplj317o0qg406.jpg" alt=""></p>
+<p>（3）点击 <strong>Initialize Comments</strong> 按钮后，就可以开始对该篇博文进行评论了，同时也可以在对应的 GitHub 仓库看到相应的 issue。</p>
+<h2 id="安全问题"><a href="#安全问题" class="headerlink" title="安全问题"></a>安全问题</h2><p>因为我们在页面填写的 Client ID 和 Client Secret 别人都是可以看到的。虽然我也不知道这两串数字具体有什么用，但是如果这两串数字还有其他作用的话，那么明文显示在页面代码中就会存在安全性问题。但是也没有想到好的解决办法，所以暂时的办法就是创建一个小号，用小号的 Client ID 和 Client Secret。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/博客/">博客</a>
+            
+              <a href="/tags/github/">github</a>
+            
+              <a href="/tags/gitment/">gitment</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/08/30/event02/">
+        <span class="next-text nav-default">Event 事件 - 扩展</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jaelyn</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>
