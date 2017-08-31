@@ -43,7 +43,7 @@
 <meta property="og:description" content="Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面《DOM 文档对象模型》中已经讲过了。 所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fib8vmtmywj30um0du75x.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fib9k9484uj317s0o2tch.jpg">
-<meta property="og:updated_time" content="2017-08-30T03:35:53.000Z">
+<meta property="og:updated_time" content="2017-08-31T08:40:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM - Node 对象">
 <meta name="twitter:description" content="Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面《DOM 文档对象模型》中已经讲过了。 所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。">
@@ -215,7 +215,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历节点"><span class="toc-text">遍历节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取父节点"><span class="toc-text">获取父节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取子节点"><span class="toc-text">获取子节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取兄弟节点"><span class="toc-text">获取兄弟节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点"><span class="toc-text">插入节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除节点"><span class="toc-text">删除节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#替换节点"><span class="toc-text">替换节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复制节点"><span class="toc-text">复制节点</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#遍历节点"><span class="toc-text">遍历节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取父节点"><span class="toc-text">获取父节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取子节点"><span class="toc-text">获取子节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取兄弟节点"><span class="toc-text">获取兄弟节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入节点"><span class="toc-text">插入节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除节点"><span class="toc-text">删除节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#替换节点"><span class="toc-text">替换节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复制节点"><span class="toc-text">复制节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作文本节点"><span class="toc-text">操作文本节点</span></a></li></ol>
     </div>
   </div>
 
@@ -306,6 +306,13 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> father = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);    <span class="comment">// 获取节点</span></div><div class="line"><span class="keyword">var</span> newFather = father.cloneNode( <span class="literal">true</span> );          <span class="comment">// 复制已获取节点</span></div><div class="line"><span class="built_in">document</span>.body.appendChild( newFather );            <span class="comment">// 将复制好的新节点添加到 body 中</span></div></pre></td></tr></table></figure>
+<h2 id="操作文本节点"><a href="#操作文本节点" class="headerlink" title="操作文本节点"></a>操作文本节点</h2><p><strong><code>nodeValue</code></strong></p>
+<p>通过学习 DOM 查询我们知道，获取或更新文本就是对文本节点的操作。文本节点的 nodeValue 属性可以得到文本内容，也可以设置文本内容。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文本节点.nodeValue</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);<span class="comment">// 获取 &lt;a&gt; 标签</span></div><div class="line"><span class="keyword">let</span> aVal = aEle.firstChild.nodeValue;      <span class="comment">// 先获取 &lt;a&gt; 标签的文本节点，再获取文本节点中的文本内容</span></div><div class="line"><span class="built_in">console</span>.log( aVal );                       <span class="comment">// "我是一个"</span></div></pre></td></tr></table></figure>
 
       
     </div>

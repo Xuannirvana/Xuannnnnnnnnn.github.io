@@ -311,7 +311,7 @@
     <link href="http://yoursite.com/2017/08/19/element/"/>
     <id>http://yoursite.com/2017/08/19/element/</id>
     <published>2017-08-19T06:58:49.000Z</published>
-    <updated>2017-08-24T02:58:02.000Z</updated>
+    <updated>2017-08-31T08:40:20.000Z</updated>
     
     <content type="html"><![CDATA[<p>DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。</p>
 <p>Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。</p>
@@ -428,14 +428,7 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"a标签"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.hasAttribute(<span class="string">"title"</span>);</div><div class="line"><span class="built_in">console</span>.log( aAttr );    <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容"></a>操作内容</h2><h3 id="获取或更新文本"><a href="#获取或更新文本" class="headerlink" title="获取或更新文本"></a>获取或更新文本</h3><p><strong><code>nodeValue</code></strong></p>
-<p>通过学习 DOM 查询我们知道，获取或更新文本就是对文本节点的操作。文本节点的 nodeValue 属性可以得到文本内容，也可以设置文本内容。</p>
-<p>语法结构：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文本节点.nodeValue</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);<span class="comment">// 获取 &lt;a&gt; 标签</span></div><div class="line"><span class="keyword">let</span> aVal = aEle.firstChild.nodeValue;      <span class="comment">// 先获取 &lt;a&gt; 标签的文本节点，再获取文本节点中的文本内容</span></div><div class="line"><span class="built_in">console</span>.log( aVal );                       <span class="comment">// "我是一个"</span></div></pre></td></tr></table></figure>
-<p><strong><code>innerText</code></strong></p>
+<h2 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容"></a>操作内容</h2><h3 id="获取或更新文本"><a href="#获取或更新文本" class="headerlink" title="获取或更新文本"></a>获取或更新文本</h3><p><strong><code>innerText</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.innerText</div></pre></td></tr></table></figure>
 <p>例：</p>
@@ -447,7 +440,7 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="comment">// 获取文本</span></div><div class="line"><span class="keyword">let</span> aText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( aText );                  <span class="comment">// "我是一个i标签"</span></div><div class="line"><span class="comment">// 更新文本</span></div><div class="line">aEle.textContent = <span class="string">"我换了一个新文本"</span>;</div><div class="line"><span class="keyword">let</span> newText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( newText );                <span class="comment">// "我换了一个新文本"</span></div></pre></td></tr></table></figure>
-<p>以上三个属性的对比：</p>
+<p>除了这里我们提到的两个属性可以操作文本内容外，前面的<a href="https://runjaelyn.github.io/2017/08/19/node/" target="_blank" rel="external">《DOM - Node 对象》</a>中的<code>nodeValue</code>属性也可以操作文本内容，所以我们对这三个属性做一个对比：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fip2956ymaj315y094dhc.jpg" alt=""></p>
 <p>注意：并不建议使用<code>innerText</code>属性，因为它并不属性任何标准，而且性能不好。</p>
 <h3 id="获取或更新-HTML"><a href="#获取或更新-HTML" class="headerlink" title="获取或更新 HTML"></a>获取或更新 HTML</h3><p><strong><code>innerHTML</code></strong>：我们可以通过 innerHTML 属性来获取或更新 HTML 页面的指定标签所包含的 HTML 代码内容。</p>
@@ -602,7 +595,7 @@
     <link href="http://yoursite.com/2017/08/19/node/"/>
     <id>http://yoursite.com/2017/08/19/node/</id>
     <published>2017-08-19T06:37:40.000Z</published>
-    <updated>2017-08-30T03:35:53.000Z</updated>
+    <updated>2017-08-31T08:40:44.000Z</updated>
     
     <content type="html"><![CDATA[<p>Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面<a href="https://runjaelyn.github.io/2017/07/18/dom/" target="_blank" rel="external">《DOM 文档对象模型》</a>中已经讲过了。</p>
 <p>所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。</p>
@@ -688,6 +681,13 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> father = <span class="built_in">document</span>.getElementById(<span class="string">"father"</span>);    <span class="comment">// 获取节点</span></div><div class="line"><span class="keyword">var</span> newFather = father.cloneNode( <span class="literal">true</span> );          <span class="comment">// 复制已获取节点</span></div><div class="line"><span class="built_in">document</span>.body.appendChild( newFather );            <span class="comment">// 将复制好的新节点添加到 body 中</span></div></pre></td></tr></table></figure>
+<h2 id="操作文本节点"><a href="#操作文本节点" class="headerlink" title="操作文本节点"></a>操作文本节点</h2><p><strong><code>nodeValue</code></strong></p>
+<p>通过学习 DOM 查询我们知道，获取或更新文本就是对文本节点的操作。文本节点的 nodeValue 属性可以得到文本内容，也可以设置文本内容。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文本节点.nodeValue</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);<span class="comment">// 获取 &lt;a&gt; 标签</span></div><div class="line"><span class="keyword">let</span> aVal = aEle.firstChild.nodeValue;      <span class="comment">// 先获取 &lt;a&gt; 标签的文本节点，再获取文本节点中的文本内容</span></div><div class="line"><span class="built_in">console</span>.log( aVal );                       <span class="comment">// "我是一个"</span></div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -817,9 +817,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="document" scheme="http://yoursite.com/tags/document/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
@@ -942,7 +942,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">    owner: 'Your GitHub username',</div><div class="line">    repo: 'The repo to store comments',</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: 'Your client ID',</div><div class="line">        client_secret: 'Your client secret',</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render('gitmentContainer');</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>

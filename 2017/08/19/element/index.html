@@ -42,7 +42,7 @@
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。 Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fip2956ymaj315y094dhc.jpg">
-<meta property="og:updated_time" content="2017-08-24T02:58:02.000Z">
+<meta property="og:updated_time" content="2017-08-31T08:40:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM - Element 对象">
 <meta name="twitter:description" content="DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。 Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。">
@@ -336,14 +336,7 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"a标签"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="keyword">var</span> aAttr = aEle.hasAttribute(<span class="string">"title"</span>);</div><div class="line"><span class="built_in">console</span>.log( aAttr );    <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容"></a>操作内容</h2><h3 id="获取或更新文本"><a href="#获取或更新文本" class="headerlink" title="获取或更新文本"></a>获取或更新文本</h3><p><strong><code>nodeValue</code></strong></p>
-<p>通过学习 DOM 查询我们知道，获取或更新文本就是对文本节点的操作。文本节点的 nodeValue 属性可以得到文本内容，也可以设置文本内容。</p>
-<p>语法结构：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">文本节点.nodeValue</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);<span class="comment">// 获取 &lt;a&gt; 标签</span></div><div class="line"><span class="keyword">let</span> aVal = aEle.firstChild.nodeValue;      <span class="comment">// 先获取 &lt;a&gt; 标签的文本节点，再获取文本节点中的文本内容</span></div><div class="line"><span class="built_in">console</span>.log( aVal );                       <span class="comment">// "我是一个"</span></div></pre></td></tr></table></figure>
-<p><strong><code>innerText</code></strong></p>
+<h2 id="操作内容"><a href="#操作内容" class="headerlink" title="操作内容"></a>操作内容</h2><h3 id="获取或更新文本"><a href="#获取或更新文本" class="headerlink" title="获取或更新文本"></a>获取或更新文本</h3><p><strong><code>innerText</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">元素.innerText</div></pre></td></tr></table></figure>
 <p>例：</p>
@@ -355,7 +348,7 @@
 <p>例：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"link"</span>&gt;</span> 我是一个 <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"display: none"</span>&gt;</span>i标签<span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> aEle = <span class="built_in">document</span>.getElementById(<span class="string">"link"</span>);</div><div class="line"><span class="comment">// 获取文本</span></div><div class="line"><span class="keyword">let</span> aText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( aText );                  <span class="comment">// "我是一个i标签"</span></div><div class="line"><span class="comment">// 更新文本</span></div><div class="line">aEle.textContent = <span class="string">"我换了一个新文本"</span>;</div><div class="line"><span class="keyword">let</span> newText = aEle.textContent;</div><div class="line"><span class="built_in">console</span>.log( newText );                <span class="comment">// "我换了一个新文本"</span></div></pre></td></tr></table></figure>
-<p>以上三个属性的对比：</p>
+<p>除了这里我们提到的两个属性可以操作文本内容外，前面的<a href="https://runjaelyn.github.io/2017/08/19/node/" target="_blank" rel="external">《DOM - Node 对象》</a>中的<code>nodeValue</code>属性也可以操作文本内容，所以我们对这三个属性做一个对比：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fip2956ymaj315y094dhc.jpg" alt=""></p>
 <p>注意：并不建议使用<code>innerText</code>属性，因为它并不属性任何标准，而且性能不好。</p>
 <h3 id="获取或更新-HTML"><a href="#获取或更新-HTML" class="headerlink" title="获取或更新 HTML"></a>获取或更新 HTML</h3><p><strong><code>innerHTML</code></strong>：我们可以通过 innerHTML 属性来获取或更新 HTML 页面的指定标签所包含的 HTML 代码内容。</p>
