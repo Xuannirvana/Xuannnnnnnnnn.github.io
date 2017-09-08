@@ -938,9 +938,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="element" scheme="http://yoursite.com/tags/element/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="element" scheme="http://yoursite.com/tags/element/"/>
     
   </entry>
   
@@ -1171,9 +1171,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
-    
       <category term="document" scheme="http://yoursite.com/tags/document/"/>
+    
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
     
   </entry>
   
