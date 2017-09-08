@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="变量提升和函数提升"/>
+
+
+
+
+  <meta name="keywords" content="变量提升,预解析,函数提升," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/09/09/hoisting/"/>
+
+
+<meta name="description" content="变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。">
+<meta name="keywords" content="变量提升,预解析,函数提升">
+<meta property="og:type" content="article">
+<meta property="og:title" content="变量提升和函数提升">
+<meta property="og:url" content="http://yoursite.com/2017/09/09/hoisting/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fig8e7r6czj31be01mt95.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fifl2cd863j314m03k0sx.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fifl54evdwj315o01mjrt.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fifm5nw8cgj314o05et97.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fifrz1e3xdj314k03a0sw.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fifs0wlmlbj314s03qdfw.jpg">
+<meta property="og:updated_time" content="2017-09-08T02:44:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="变量提升和函数提升">
+<meta name="twitter:description" content="变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fig8e7r6czj31be01mt95.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> 变量提升和函数提升 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          变量提升和函数提升
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年9月9日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#变量提升"><span class="toc-text">变量提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预解析"><span class="toc-text">预解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数提升"><span class="toc-text">函数提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量提升和函数提升"><span class="toc-text">变量提升和函数提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数内部的提升"><span class="toc-text">函数内部的提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
+<a id="more"></a>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>我们先不急着解释“变量提升”是什么意思，先看几段代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fig8e7r6czj31be01mt95.jpg" alt=""></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg" alt=""></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg" alt=""></p>
+<p>我们看到上面三段代码。第一段代码报错，因为<code>a</code>未定义，找不到变量<code>a</code>，这个比较容易理解。而第二段和第三段代码的运行结果都是<code>undefined</code>，那就说明，在浏览器执行<code>console.log(a)</code>时，就已经找到定义的变量<code>a</code>了，但是却没有找到它的值。</p>
+<p>为什么会有这样的结果呢？第三段代码中的<code>10</code>去哪里了呢？</p>
+<p>其实出现这样的结果就是因为我们的“变量提升”。</p>
+<h3 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h3><p>在 JavaScript 解释器正式开始执行 JavaScript 代码之前，浏览器会做一些“准备工作”。也就是说在代码执行之前，还有一个代码预解析的过程。</p>
+<p>在这个预解析过程中，浏览器会找到代码中所有通过<code>var</code>声明的变量，然后把这些变量的声明提升到代码头部。但因为只提升变量的声明，不提升变量的赋值，所以未赋值的变量默认值为<code>undefined</code>。而这一系列的操作，其实就是我们所说的“变量提升”。</p>
+<p>也就是说，我们的第三段代码，在正式执行之前，已经变成了下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line">a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>我们可以看到，在预解析的过程中，提升的只是变量的声明，赋值语句还是停留在原位置。这就是为什么我们的第三段代码运行结果<code>a</code>的值不是<code>10</code>。因为在执行输出<code>a</code>的时候，变量<code>a</code>的赋值还没执行。</p>
+<p>注：变量提升只针对通过<code>var</code>声明的变量。</p>
+<h2 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h2><p>其实在预解析过程中，除了做“变量提升”的准备工作之外，浏览器还要做一个“函数提升”的准备工作。前面弄明白了“变量提升”之后其实“函数提升”就很好理解了。</p>
+<p>在代码预解析过程中除了提升所有<code>var</code>声明的变量之外，还会把所有的声明式函数提升到代码头部，这个过程就叫做“函数提升”。</p>
+<p>我们通过代码来理解一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fn();</div><div class="line"><span class="comment">// 声明式函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fifl2cd863j314m03k0sx.jpg" alt=""></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fn();</div><div class="line"><span class="comment">// 函数表达式</span></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifl54evdwj315o01mjrt.jpg" alt=""></p>
+<p>我们看到第一段代码，在定义函数之前调用函数<code>fn()</code>，可以正常的执行输出。就是因为我们的声明式函数被提升到了代码头部，也就是说在 JavaScript 解释器正式执行代码之前，我们的代码已经变成了如下样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明式函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure>
+<p>但是第二段代码调用函数<code>fn()</code>就出现了报错。这是因为<strong>“函数提升”只针对声明式函数，函数表达式不会有“函数提升”的过程。</strong></p>
+<p>附：其实对于函数表达式，提升的是变量名，而不是函数。也就是说，我们的第二段代码，在 JavaScript 解释器正式执行代码之前，代码是如下样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="literal">undefined</span>;</div><div class="line">fn();</div><div class="line"><span class="comment">// 函数表达式</span></div><div class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以在执行第四行赋值语句之前，<code>fn</code>只是一个值为<code>undefined</code>的普通变量，并不是函数名，所以调用变量名会报错。</p>
+<h2 id="变量提升和函数提升"><a href="#变量提升和函数提升" class="headerlink" title="变量提升和函数提升"></a>变量提升和函数提升</h2><p>前面我们分别解释“变量提升”和“函数提升”。那么，如果当两种情况同时存在呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line"><span class="keyword">var</span> foo = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> foo = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>运行结果都是：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fifm5nw8cgj314o05et97.jpg" alt=""></p>
+<p>那这样的结果是不是就说明是变量先提升，函数后提升呢？这样代码执行时后面的函数将前面的变量覆盖了，所以最终结果显示为函数。</p>
+<p>其实不是，在《你不知道的 JavaScript（上卷）》书中的第40页写道：</p>
+<blockquote>
+<p>函数声明和变量声明都会被提升。但是一个值的注意的细节（这个细节可以出现在有多个“重复”声明的代码中）是函数会首先提升，然后才是变量。</p>
+</blockquote>
+<p>我们上面的代码，在经过一系列的代码提升之后，变成了下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> foo;</div><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line">foo = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>正常情况下，发生“重复命名”时，后面的会覆盖前面的。但是，因为我们第四行的代码只是一个变量声明，并没有被赋值，所以当它跟函数声明重名时，是覆盖不了函数的，也就是说它是被忽略的。</p>
+<p>我们可以写个例子验证一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fifrz1e3xdj314k03a0sw.jpg" alt=""></p>
+<p>但是，如果变量被赋值了，那么后面的就会覆盖前面的了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="string">"hello world"</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fifs0wlmlbj314s03qdfw.jpg" alt=""></p>
+<h2 id="函数内部的提升"><a href="#函数内部的提升" class="headerlink" title="函数内部的提升"></a>函数内部的提升</h2><p>JavaScript 在执行一个代码段之前，都会进行预解析过程中的这些“准备工作”。通过上面的例子我们可以发现，所有的代码都是在全局范围下执行的，也就是说，我们所有的变量提升或者函数提升都是将它们提升到全局范围的最头部。</p>
+<p>但是，这个“代码段”其实是分三种情况的 —— 全局代码、函数体代码、<code>eval()</code>代码。</p>
+<p>首先，全局代码应该很好理解了，就像我们前面的那些例子中的代码，直接写在某个外部的<code>.js</code>文件中，或者就是包含在<code>&lt;script&gt;</code>标签范围内的代码。这两种都属于全局范围中的代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="comment">// 全局范围的代码段</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其次，函数体代码，就是指写在某个函数内部的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 函数体内部的代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当预解析发生时，函数体内部如果也有<code>var</code>声明的变量或者声明式函数，那么它们同样的也会发生提升。但是，因为函数体内部的代码作用范围就只在函数体内部，所以它们的提升也只会提升到当前函数体内部的最头部。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>变量提升后：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	a = <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后，<code>eval</code>函数，这种不常用，也不推荐大家使用。所以也不讲了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>介绍完预解析过程中发生“变量提升”和“函数提升”的各种情况，我们来做一个总结。</p>
+<p>在预解析的过程中浏览器到底做了哪些准备工作：</p>
+<blockquote>
+<ul>
+<li>找到所有<code>var</code>声明的变量和声明式函数；</li>
+<li>将变量的声明和声明式函数提升到当前作用域（代码段范围内）头部；</li>
+<li>变量名和函数名重复时先提升函数声明，再提升变量声明（执行时未赋值的变量声明会被忽略）；</li>
+</ul>
+</blockquote>
+<p>附：总结里提到的“作用域”其实就是我们前文说的“代码段”的作用范围。但是担心有些人对作用域的概念也不是太明白，所以为了方便大家理解，我们前面都没有提到作用域这个概念。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/变量提升/">变量提升</a>
+            
+              <a href="/tags/预解析/">预解析</a>
+            
+              <a href="/tags/函数提升/">函数提升</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/09/08/Array/">
+        <span class="next-text nav-default">数组的循环和迭代</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jaelyn</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>
