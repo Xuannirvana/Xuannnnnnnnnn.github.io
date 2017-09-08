@@ -12,7 +12,7 @@
 
 
 
-  <meta name="description" content="执行上下文"/>
+  <meta name="description" content="执行上下文（Execution Context）"/>
 
 
 
@@ -37,7 +37,7 @@
 <meta name="description" content="执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。 但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。">
 <meta name="keywords" content="执行上下文,压栈出栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="执行上下文">
+<meta property="og:title" content="执行上下文（Execution Context）">
 <meta property="og:url" content="http://yoursite.com/2017/09/10/ExecutionContext/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。 但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。">
@@ -48,9 +48,9 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fih6npspxsj31kw0ikq7b.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fih6tgch25j31kw0gptdg.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fih963p8buj31kw0fuq79.jpg">
-<meta property="og:updated_time" content="2017-09-08T03:19:32.000Z">
+<meta property="og:updated_time" content="2017-09-08T03:29:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="执行上下文">
+<meta name="twitter:title" content="执行上下文（Execution Context）">
 <meta name="twitter:description" content="执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。 但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。">
 <meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fih36fiku8j31d40ke41y.jpg">
 
@@ -79,7 +79,7 @@
 
 
 
-    <title> 执行上下文 · Komorebi </title>
+    <title> 执行上下文（Execution Context） · Komorebi </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -204,7 +204,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          执行上下文
+          执行上下文（Execution Context）
         
       </h1>
 
