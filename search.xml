@@ -3,10 +3,11 @@
   
     
     <entry>
-      <title><![CDATA[ExecutionContext]]></title>
+      <title><![CDATA[执行上下文]]></title>
       <url>/2017/09/10/ExecutionContext/</url>
-      <content type="html"><![CDATA[<h1 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
+      <content type="html"><![CDATA[<p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
 <p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
+<a id="more"></a>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在理解执行上下文的内部原理之前，我们先来弄明白“执行上下文”的字面意思。</p>
 <p>“上下文”这个词不是我们第一次听说。在学生时代做语文阅读题的时候，我们常常会看到这种题目：</p>
 <blockquote>
@@ -900,9 +901,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> element </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         
