@@ -34,13 +34,13 @@
 <link rel="canonical" href="http://yoursite.com/2017/09/21/canvasBasic/"/>
 
 
-<meta name="description" content="canvas 画布&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
+<meta name="description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
 <meta name="keywords" content="canvas">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas 画布 - 基础">
 <meta property="og:url" content="http://yoursite.com/2017/09/21/canvasBasic/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="canvas 画布&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
+<meta property="og:description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzj6yhhlj30x20i0jrp.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzrc82bmj30xc0k23yw.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fjr039irokj30xc0jwweu.jpg">
@@ -52,10 +52,10 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9if5ozbj30xa0j6mxi.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg">
-<meta property="og:updated_time" content="2017-09-21T12:13:45.000Z">
+<meta property="og:updated_time" content="2017-09-21T12:16:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 基础">
-<meta name="twitter:description" content="canvas 画布&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
+<meta name="twitter:description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzj6yhhlj30x20i0jrp.jpg">
 
 
@@ -224,14 +224,14 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#canvas-画布"><span class="toc-text">canvas 画布</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个画布"><span class="toc-text">创建一个画布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-JavaScript-绘制图像"><span class="toc-text">使用 JavaScript 绘制图像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#渲染上下文"><span class="toc-text">渲染上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#canvas-绘制矩形"><span class="toc-text">canvas 绘制矩形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制矩形的方法"><span class="toc-text">绘制矩形的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加样式"><span class="toc-text">添加样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制路径"><span class="toc-text">绘制路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制路径的方法"><span class="toc-text">绘制路径的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加样式-1"><span class="toc-text">添加样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制其他图形"><span class="toc-text">绘制其他图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化路径"><span class="toc-text">初始化路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beginPath"><span class="toc-text">beginPath()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化样式"><span class="toc-text">初始化样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#save"><span class="toc-text">save()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#restore"><span class="toc-text">restore()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#保存多个样式"><span class="toc-text">保存多个样式</span></a></li></ol></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建一个画布"><span class="toc-text">创建一个画布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-JavaScript-绘制图像"><span class="toc-text">使用 JavaScript 绘制图像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#渲染上下文"><span class="toc-text">渲染上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#canvas-绘制矩形"><span class="toc-text">canvas 绘制矩形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制矩形的方法"><span class="toc-text">绘制矩形的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加样式"><span class="toc-text">添加样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制路径"><span class="toc-text">绘制路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制路径的方法"><span class="toc-text">绘制路径的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加样式-1"><span class="toc-text">添加样式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制其他图形"><span class="toc-text">绘制其他图形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化路径"><span class="toc-text">初始化路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beginPath"><span class="toc-text">beginPath()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化样式"><span class="toc-text">初始化样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#save"><span class="toc-text">save()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#restore"><span class="toc-text">restore()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#保存多个样式"><span class="toc-text">保存多个样式</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <h1 id="canvas-画布"><a href="#canvas-画布" class="headerlink" title="canvas 画布"></a>canvas 画布</h1><p><code>&lt;canvas&gt;</code>画布是 HTML5 新增的元素，用于图形的绘制。但<code>&lt;canvas&gt;</code>标签只是图形容器，需要结合 JavaScript 才能绘制图形。</p>
+        <p><code>&lt;canvas&gt;</code>画布是 HTML5 新增的元素，用于图形的绘制。但<code>&lt;canvas&gt;</code>标签只是图形容器，需要结合 JavaScript 才能绘制图形。</p>
 <a id="more"></a>
 <h2 id="创建一个画布"><a href="#创建一个画布" class="headerlink" title="创建一个画布"></a>创建一个画布</h2><p>我们要绘制图形，必须先创建一个画布，然后再去画布上绘制各式的图形。</p>
 <p>一个画布在网页中是一个矩形，通过<code>&lt;canvas&gt;</code>标签来创建。同一个页面中可以存在多个画布。</p>
