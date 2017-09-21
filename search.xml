@@ -3,6 +3,185 @@
   
     
     <entry>
+      <title><![CDATA[canvas 画布 - 基础]]></title>
+      <url>/2017/09/21/canvasBasic/</url>
+      <content type="html"><![CDATA[<h1 id="canvas-画布"><a href="#canvas-画布" class="headerlink" title="canvas 画布"></a>canvas 画布</h1><p><code>&lt;canvas&gt;</code>画布是 HTML5 新增的元素，用于图形的绘制。但<code>&lt;canvas&gt;</code>标签只是图形容器，需要结合 JavaScript 才能绘制图形。</p>
+<a id="more"></a>
+<h2 id="创建一个画布"><a href="#创建一个画布" class="headerlink" title="创建一个画布"></a>创建一个画布</h2><p>我们要绘制图形，必须先创建一个画布，然后再去画布上绘制各式的图形。</p>
+<p>一个画布在网页中是一个矩形，通过<code>&lt;canvas&gt;</code>标签来创建。同一个页面中可以存在多个画布。</p>
+<p>例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"600"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面代码中我们创建了一个<code>class</code>名为<code>myCanvas</code>的画布，同时设置了它的宽高都为 600px。</p>
+<blockquote>
+<p>注意：<code>&lt;canvas&gt;</code>的宽高不要在 CSS 中去设置。画布的默认大小的 300 * 150。如果通过 CSS 放大画布，会连同画布中包含的所有内容的尺寸一起放大。</p>
+</blockquote>
+<p>画布添加好了之后，这个时候我们在页面上是看不到这个画布的，因为它没有颜色。所以我们还可以通过 CSS 样式设置画布的背景颜色。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#myCanvas</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#eee</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样我们就可以在页面上看到画布的区域了。</p>
+<h2 id="使用-JavaScript-绘制图像"><a href="#使用-JavaScript-绘制图像" class="headerlink" title="使用 JavaScript 绘制图像"></a>使用 JavaScript 绘制图像</h2><p><code>&lt;canvas&gt;</code>元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成。</p>
+<h3 id="渲染上下文"><a href="#渲染上下文" class="headerlink" title="渲染上下文"></a>渲染上下文</h3><p>在<code>&lt;canvas&gt;</code>中绘制图形，必须先要拿到<code>&lt;canvas&gt;</code>的上下文。说的通俗一点就是在画图前要先拿到画笔。这个上下文，就相当于是一个画笔。</p>
+<p>语法结构：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">画布元素<span class="selector-class">.getContext</span>(<span class="string">"2d"</span>)</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取到画布元素</span></div><div class="line"><span class="keyword">let</span> myCanvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);;</div><div class="line"><span class="comment">// 获取到画布的上下文：后面就可以根据上下文在画布上作画了</span></div><div class="line"><span class="keyword">let</span> ctx = myCanvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
+<p>拿到这个画布的上下文之后，我们就可以通过它的一些 API 去进行图形的绘制了。</p>
+<h3 id="canvas-绘制矩形"><a href="#canvas-绘制矩形" class="headerlink" title="canvas 绘制矩形"></a>canvas 绘制矩形</h3><p>HTML 中的元素<code>&lt;canvas&gt;</code>只支持一种原生的图形绘制，就是矩形。所有其他图形的绘制都至少需要生成一条路径。也就是说，画矩形可以只调用一个 API 就能完成，而其他的图形都不行，</p>
+<h4 id="绘制矩形的方法"><a href="#绘制矩形的方法" class="headerlink" title="绘制矩形的方法"></a>绘制矩形的方法</h4><p><code>&lt;canvas&gt;</code>的上下文提供了四种方法绘制矩形：</p>
+<ol>
+<li><p>绘制一个填充的矩形（填充色默认为黑色）</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fillRect(x, y, width, height)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>绘制一个矩形的边框（边框样式默认为 1px 的黑色实线）</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">strokeRect(x, y, width, height)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>绘制一个既没填充也没边框的矩形</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rect(x, y, width, height)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>清除制定矩形区域，让清除部分完全透明（类似于橡皮擦功能）</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clearRect(x, y, width, height)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参数说明：</p>
+<ul>
+<li><code>x</code>和<code>y</code>：指定了在<code>&lt;canvas&gt;</code>画布上所绘制矩形的起点（左上角）坐标。</li>
+<li><code>width</code>和<code>height</code>：设置矩形的宽高尺寸（存在边框的话，边框会在<code>width</code>上占据一个边框的宽度，<code>height</code>同理）。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1. 绘制一个填充的矩形（填充色默认为黑色）</span></div><div class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 2. 绘制一个矩形的边框（边框样式默认为 1px 的黑色实线）</span></div><div class="line">ctx.strokeRect(<span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 3. 绘制一个既没填充也没边框的矩形</span></div><div class="line">ctx.rect(<span class="number">150</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 4. 清除整个画布内容</span></div><div class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, myCanvas.width, myCanvas.height);</div></pre></td></tr></table></figure>
+<h4 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h4><p><code>&lt;canvas&gt;</code>的上下文提供几种操作样式的属性。</p>
+<p><strong><code>fillStyle</code></strong>：设置图形的填充颜色。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个填充的矩形（填充色为橙色）</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">120</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><strong><code>strokeStyle</code></strong>：设置图形的轮廓颜色。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 1px 的红色实线）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.strokeRect(<span class="number">260</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><strong><code>lineWidth</code></strong>：设置当前绘制线的粗细（属性值必须是正数）。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 10px 的红色实线）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.strokeRect(<span class="number">380</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><strong><code>lineJoin</code></strong>：设置线条与线条间交接处的样式（默认值为<code>miter</code>）。</p>
+<p>其他样式取值：</p>
+<ul>
+<li><code>round</code>：圆角</li>
+<li><code>bevel</code>：斜角</li>
+<li><code>miter</code>：直角</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 10px 的红色实线，线条交接处为圆角）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.lineJoin = <span class="string">"round"</span>;</div><div class="line">ctx.strokeRect(<span class="number">380</span>, <span class="number">270</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><p>图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>绘制路径起点。</li>
+<li>绘制路径终点。</li>
+<li>连接两点绘制出线段。</li>
+</ol>
+<h4 id="绘制路径的方法"><a href="#绘制路径的方法" class="headerlink" title="绘制路径的方法"></a>绘制路径的方法</h4><p><strong><code>moveTo(x, y)</code></strong>：设置路径的起点坐标<code>(x, y)</code>。<br><strong><code>lineTo(x, y)</code></strong>：设置路径的终点坐标<code>(x, y)</code>。<br><strong><code>stroke()</code></strong>：连接两个点，绘制路径。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<h4 id="添加样式-1"><a href="#添加样式-1" class="headerlink" title="添加样式"></a>添加样式</h4><p><strong><code>lineCap</code></strong>：设置每一条线段两端的样式（默认是<code>butt</code>方形）。</p>
+<p>三种取值：</p>
+<ul>
+<li><code>butt</code>：线段两端以方形结束。</li>
+<li><code>round</code>：线段两端以圆形结束。</li>
+<li><code>square</code>：线段两端以方形结束。但是增加了一个宽度与线段相同，高度是线段宽度一半的矩形。</li>
+</ul>
+<h3 id="绘制其他图形"><a href="#绘制其他图形" class="headerlink" title="绘制其他图形"></a>绘制其他图形</h3><p><code>&lt;canvas&gt;</code>画布中没有提供直接画其他图形（例如三角形、五边形等等）的方法，所以我们只能通过多条路径来绘制。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>创建图形的起始点。</li>
+<li>绘制路径的其他点。</li>
+<li>将路径闭合。</li>
+<li>一旦路径生成，就能通过描边或填充路径区域来渲染图形。</li>
+</ol>
+<p>我们以绘制三角形为例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置起始点坐标</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置下一个点的坐标</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line"><span class="comment">// 设置下一个点的坐标</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置最后一个点，坐标回到初始位置，使图形闭合</span></div><div class="line">ctx.lineTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 依次连接设置的点，绘制出图形轮廓</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p>在上面代码中，我们是通过自己设置终点和起点在同一位置来达到图形闭合的效果。除了这个方法之外，<code>&lt;canvas&gt;</code>的上下文还提供了一个方法来达到闭合路径的效果。</p>
+<p><strong><code>closePath()</code></strong>：闭合路径。</p>
+<p>所以，上面的例子我们也可以写成如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置起始点坐标</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置下一个点的坐标</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line"><span class="comment">// 设置下一个点的坐标</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 闭合图形</span></div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 依次连接设置的点，绘制出图形轮廓</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p>以上的例子中我们绘制出了一个空心的三角形。那如果我们需要绘制一个实心的三角形呢？</p>
+<p><code>&lt;canvas&gt;</code>的上下文除了提供<code>stroke()</code>方法绘制图形轮廓外，还提供了一个方法来填充图形。</p>
+<p><strong><code>fill()</code></strong>：通过填充路径的内容区域生成实心的图形。</p>
+<p>所以，想要绘制一个实心三角形，只需要把上例中最后一行代码改写成如下代码即可：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="初始化路径"><a href="#初始化路径" class="headerlink" title="初始化路径"></a>初始化路径</h4><p>如果我们在同一个画布中画两个三角形，第一个绘制成空心，第二个绘制成一个实心。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个三角形</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>); </div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 绘制图形轮廓</span></div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>代码运行后我们会发现页面上的显示效果跟我们想要的并不一样。两个三角形都成了实心。如下图所示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzj6yhhlj30x20i0jrp.jpg" alt=""></p>
+<p>那如果我们把两个三角形的代码顺序换一下。把第一个换成实心，第二个换成空心。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzrc82bmj30xc0k23yw.jpg" alt=""></p>
+<p>然后我们可以看到这样效果就对了，这是为什么呢。</p>
+<blockquote>
+<p>说明：我们在同一个画布中，每一次绘制的路径实际上都被保存在了内存（栈）空间中，所以当我们最后通过<code>fill()</code>方法作路径填充时，它会把整个内存空间中的所有路径都填充上。因此，我们在每次开始绘制一个新图形之前，都应该先把内存空间里保存的其他图形路径清除了。</p>
+</blockquote>
+<h4 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath()"></a>beginPath()</h4><p><strong><code>beginPath()</code></strong>：清空路径容器。绘制新图形前清空前面已有的路径（不会清除掉样式）。</p>
+<p>本质上，一个图形是由很多子路径构成，这些子路径都是在一个列表中，所有的子路径（线、弧形等等）构成图形。而每次这个方法调用后之后，路径列表清空重置，然后我们就可以重新绘制新的图形。</p>
+<p>所以，在上面的例子中，我们在绘制第二个新的三角形之前，要先清空掉第一个三角形的路径。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个三角形</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>); </div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 绘制图形轮廓</span></div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line"><span class="comment">// 绘制新图形前，清空掉上一个图形中的路径（必须）。</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>这样，我们第一个空心三角形，第二个实心三角形才算完成了。如下图：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjr039irokj30xc0jwweu.jpg" alt=""></p>
+<p>建议：在实际开发中，为了避免每次去区分哪个图形是先绘制的哪个图形是后绘制的，我们一般会在每一次绘制图形之前都做一次清空。</p>
+<h4 id="初始化样式"><a href="#初始化样式" class="headerlink" title="初始化样式"></a>初始化样式</h4><p>如果我们在同一个画布中画两个实心三角形，第一个填充橙色，第二个填充默认色。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>); </div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 设置填充色为橙色</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line"><span class="comment">// 绘制图形轮廓</span></div><div class="line">ctx.fill();</div><div class="line">	</div><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>代码运行后我们会发现页面上的显示效果跟我们想要的还是不一样。第二个三角形我们并没有设置填充色，但是页面上两个三角形都显示橙色。如下图所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr4dx1tozj30xe0jq74o.jpg" alt=""></p>
+<p>如果想要第二个三角形显示默认色，我们就必须再给第二个三角形设置一次<code>fillStyle</code>属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 设置填充色为黑色</span></div><div class="line">ctx.fillStyle = <span class="string">"black"</span>;</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>这样就可以达到我们想要的效果了，如下图所示。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjr4n3ujqcj30xc0lqaah.jpg" alt=""></p>
+<p>但是，当我们绘制一个图形用到很多样式后，想要再绘制下一个新图形并采用默认样式时，就必须自己手动的依次去把所有样式都设置回默认的属性。这样对于开发人员来说就太麻烦了，而且还需要去记住每一个属性的默认属性值。</p>
+<p>所以，<code>&lt;canvas&gt;</code>的上下文提供了可以直接初始化所有样式的方法。</p>
+<h4 id="save"><a href="#save" class="headerlink" title="save()"></a>save()</h4><p><strong><code>save()</code></strong>：将当前样式压入栈中，即把当前样式保存在内存（栈）空间中。</p>
+<p>在画布里还没有绘制任何图形使用任何样式前，我们先调用该方法将当前画布的所有默认样式保存下来。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取到画布</span></div><div class="line"><span class="keyword">let</span> myCanvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line"><span class="comment">// 获取到画布的上下文：后面就可以根据上下文在画布上作画了</span></div><div class="line"><span class="keyword">let</span> ctx = myCanvas.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">// 保存当前样式</span></div><div class="line">ctx.save();</div></pre></td></tr></table></figure>
+<p>这个时候各部分状态如下图：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjr8fck148j31gq0je0wn.jpg" alt=""></p>
+<p>当我们给第一个三角形执行以下代码填充了颜色后：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置填充色为橙色</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div></pre></td></tr></table></figure>
+<p>这个时候各部分状态如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjr8kywnvtj31go0iqads.jpg" alt=""></p>
+<p>我们可以看到，对于栈空间来说，保存在里面的还是我们的默认样式，没有发生任何变化。因为只有调用<code>save()</code>才会保存当前样式进栈空间里。</p>
+<p>但是，“当前应用样式”却不再是默认样式了。因此，当我们后面再绘制其他图形的时候，这些图形都会应用“当前应用样式”。</p>
+<p>这也就是为什么我们前面例子中的第二个三角形并没有设置填充色结果也显示橙色的原因了。</p>
+<p>那现在，我们题目要求第二个三角形填充默认色。而“当前应用样式”中已经没有默认样式了，但是栈空间里有，所以我们接下来就需要把默认样式从栈空间里取出来。</p>
+<h4 id="restore"><a href="#restore" class="headerlink" title="restore()"></a>restore()</h4><p><strong><code>restore()</code></strong>：将保存在栈空间顶部的样式出栈。</p>
+<p>当我们在绘制过程中又需要用到默认样式时，我们就可以调用该方法把之前保存在栈空间中的默认样式取出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line"><span class="comment">// 取出栈空间中的默认样式</span></div><div class="line">ctx.restore();</div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>这个时候各部分状态入下图：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9mktkj1j31h40jcn10.jpg" alt=""></p>
+<p>这个时候，我们栈空间中被保存的默认样式又重新被取了出来，并且应用到了“当前应用样式”中。所以最终我们就可以完成第一个三角形为橙色，第二个三角形为默认色的要求了。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9if5ozbj30xa0j6mxi.jpg" alt=""></p>
+<h4 id="保存多个样式"><a href="#保存多个样式" class="headerlink" title="保存多个样式"></a>保存多个样式</h4><p>有的时候，我们在绘制过程中除了保存初始的默认样式外，可能后面还会保存一些其他的样式。那这个时候栈空间里是怎样保存的呢？我们需要用的时候又怎么取出来呢？</p>
+<p>图解分析：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg" alt=""></p>
+<p>栈空间的存取方式一直是“先进后出，后进先出”。具体过程解析可以去看<a href="https://runjaelyn.github.io/2017/09/08/memory/" target="_blank" rel="external">《JavaScript 内存空间》</a>这篇博客。</p>
+<p>所以，最后保存的样式在栈空间的最上面，出栈的时候也是最上面的先出来。如果我们想要取出最下层的默认样式，就必须多调用几次<code>restore()</code>先把上面的样式依次取出来才行。</p>
+<p>图解分析：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> canvas </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> canvas </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[执行上下文（Execution Context）]]></title>
       <url>/2017/09/10/ExecutionContext/</url>
       <content type="html"><![CDATA[<p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
@@ -151,7 +330,7 @@
 <h2 id="函数内部的提升"><a href="#函数内部的提升" class="headerlink" title="函数内部的提升"></a>函数内部的提升</h2><p>JavaScript 在执行一个代码段之前，都会进行预解析过程中的这些“准备工作”。通过上面的例子我们可以发现，所有的代码都是在全局范围下执行的，也就是说，我们所有的变量提升或者函数提升都是将它们提升到全局范围的最头部。</p>
 <p>但是，这个“代码段”其实是分三种情况的 —— 全局代码、函数体代码、<code>eval()</code>代码。</p>
 <p>首先，全局代码应该很好理解了，就像我们前面的那些例子中的代码，直接写在某个外部的<code>.js</code>文件中，或者就是包含在<code>&lt;script&gt;</code>标签范围内的代码。这两种都属于全局范围中的代码。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="comment">// 全局范围的代码段</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line">	<span class="comment">// 全局范围的代码段</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>其次，函数体代码，就是指写在某个函数内部的代码。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 函数体内部的代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>当预解析发生时，函数体内部如果也有<code>var</code>声明的变量或者声明式函数，那么它们同样的也会发生提升。但是，因为函数体内部的代码作用范围就只在函数体内部，所以它们的提升也只会提升到当前函数体内部的最头部。</p>
@@ -1129,9 +1308,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> document </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         
@@ -1250,7 +1429,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
