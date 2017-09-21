@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9if5ozbj30xa0j6mxi.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg">
-<meta property="og:updated_time" content="2017-09-21T12:54:58.000Z">
+<meta property="og:updated_time" content="2017-09-21T12:59:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 基础">
 <meta name="twitter:description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
@@ -300,7 +300,7 @@
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 10px 的红色实线，线条交接处为圆角）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.lineJoin = <span class="string">"round"</span>;</div><div class="line">ctx.strokeRect(<span class="number">380</span>, <span class="number">270</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <h2 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h2><p>路径是绘制图形的基本元素。除了矩形有专属的方法可以直接绘制外，其他图形我们都需要用一条一条的路径去组合。所以说白了，路径其实就是指的线段。</p>
-<p><strong>绘制路径的步骤：</strong></p>
+<p><strong>步骤：</strong></p>
 <ol>
 <li>绘制路径起点。</li>
 <li>绘制路径终点。</li>
@@ -310,7 +310,6 @@
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
 <h3 id="添加样式-1"><a href="#添加样式-1" class="headerlink" title="添加样式"></a>添加样式</h3><p><strong><code>lineCap</code></strong>：设置每一条线段两端的样式（默认是<code>butt</code>方形）。</p>
-<p>三种取值：</p>
 <ul>
 <li><code>butt</code>：线段两端以方形结束。</li>
 <li><code>round</code>：线段两端以圆形结束。</li>
