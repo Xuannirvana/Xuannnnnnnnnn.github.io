@@ -460,6 +460,7 @@
 <p>所以，最后保存的样式在栈空间的最上面，出栈的时候也是最上面的先出来。如果我们想要取出最下层的默认样式，就必须多调用几次<code>restore()</code>先把上面的样式依次取出来才行。</p>
 <p>图解分析：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg" alt=""></p>
+<p>如上图所示，我们一共调用了<code>restore()</code>方法三次，才最终取到最底部的默认样式。</p>
 ]]></content>
       
         <categories>
