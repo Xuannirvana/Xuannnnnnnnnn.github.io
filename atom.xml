@@ -294,7 +294,7 @@
     <link href="http://yoursite.com/2017/09/21/canvasBasic/"/>
     <id>http://yoursite.com/2017/09/21/canvasBasic/</id>
     <published>2017-09-21T12:10:23.000Z</published>
-    <updated>2017-09-21T12:18:47.000Z</updated>
+    <updated>2017-09-21T12:54:58.000Z</updated>
     
     <content type="html"><![CDATA[<p><code>&lt;canvas&gt;</code>画布是 HTML5 新增的元素，用于图形的绘制。但<code>&lt;canvas&gt;</code>标签只是图形容器，需要结合 JavaScript 才能绘制图形。</p>
 <a id="more"></a>
@@ -315,29 +315,30 @@
 <figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">画布元素<span class="selector-class">.getContext</span>(<span class="string">"2d"</span>)</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取到画布元素</span></div><div class="line"><span class="keyword">let</span> myCanvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);;</div><div class="line"><span class="comment">// 获取到画布的上下文：后面就可以根据上下文在画布上作画了</span></div><div class="line"><span class="keyword">let</span> ctx = myCanvas.getContext(<span class="string">"2d"</span>);</div></pre></td></tr></table></figure>
-<p>拿到这个画布的上下文之后，我们就可以通过它的一些 API 去进行图形的绘制了。</p>
-<h3 id="canvas-绘制矩形"><a href="#canvas-绘制矩形" class="headerlink" title="canvas 绘制矩形"></a>canvas 绘制矩形</h3><p>HTML 中的元素<code>&lt;canvas&gt;</code>只支持一种原生的图形绘制，就是矩形。所有其他图形的绘制都至少需要生成一条路径。也就是说，画矩形可以只调用一个 API 就能完成，而其他的图形都不行，</p>
-<h4 id="绘制矩形的方法"><a href="#绘制矩形的方法" class="headerlink" title="绘制矩形的方法"></a>绘制矩形的方法</h4><p><code>&lt;canvas&gt;</code>的上下文提供了四种方法绘制矩形：</p>
-<ol>
+<p>不管要绘制什么东西，获取上下文这一步都是必不可少的。只有拿到这个画布的上下文之后，我们才可以通过它的一些 API 去进行图形的绘制。</p>
+<p>接下来我们就具体的来学习一下各种基本图形的绘制。</p>
+<h2 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h2><p>HTML 中的元素<code>&lt;canvas&gt;</code>只支持一种原生的图形绘制，就是矩形。所有其他图形的绘制都至少需要生成一条路径。也就是说，画矩形可以只调用一个 API 就能完成，而其他的图形都不行，</p>
+<h3 id="绘制矩形的方法"><a href="#绘制矩形的方法" class="headerlink" title="绘制矩形的方法"></a>绘制矩形的方法</h3><p><code>&lt;canvas&gt;</code>的上下文提供了四种方法绘制矩形：</p>
+<ul>
 <li><p>绘制一个填充的矩形（填充色默认为黑色）</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fillRect(x, y, width, height)</div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fillRect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li><p>绘制一个矩形的边框（边框样式默认为 1px 的黑色实线）</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">strokeRect(x, y, width, height)</div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">strokeRect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li><p>绘制一个既没填充也没边框的矩形</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rect(x, y, width, height)</div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
+</ul>
+<ul>
 <li><p>清除制定矩形区域，让清除部分完全透明（类似于橡皮擦功能）</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clearRect(x, y, width, height)</div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clearRect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
-</ol>
+</ul>
 <p>参数说明：</p>
 <ul>
 <li><code>x</code>和<code>y</code>：指定了在<code>&lt;canvas&gt;</code>画布上所绘制矩形的起点（左上角）坐标。</li>
@@ -345,7 +346,7 @@
 </ul>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1. 绘制一个填充的矩形（填充色默认为黑色）</span></div><div class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 2. 绘制一个矩形的边框（边框样式默认为 1px 的黑色实线）</span></div><div class="line">ctx.strokeRect(<span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 3. 绘制一个既没填充也没边框的矩形</span></div><div class="line">ctx.rect(<span class="number">150</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 4. 清除整个画布内容</span></div><div class="line">ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, myCanvas.width, myCanvas.height);</div></pre></td></tr></table></figure>
-<h4 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h4><p><code>&lt;canvas&gt;</code>的上下文提供几种操作样式的属性。</p>
+<h3 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h3><p><code>&lt;canvas&gt;</code>的上下文提供几种操作样式的属性（不仅限于操作矩形样式）。</p>
 <p><strong><code>fillStyle</code></strong>：设置图形的填充颜色。</p>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个填充的矩形（填充色为橙色）</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">120</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
@@ -356,7 +357,6 @@
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 10px 的红色实线）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.strokeRect(<span class="number">380</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <p><strong><code>lineJoin</code></strong>：设置线条与线条间交接处的样式（默认值为<code>miter</code>）。</p>
-<p>其他样式取值：</p>
 <ul>
 <li><code>round</code>：圆角</li>
 <li><code>bevel</code>：斜角</li>
@@ -364,24 +364,24 @@
 </ul>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个矩形的边框（边框样式默认为 10px 的红色实线，线条交接处为圆角）</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.lineJoin = <span class="string">"round"</span>;</div><div class="line">ctx.strokeRect(<span class="number">380</span>, <span class="number">270</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
-<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><p>图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。</p>
-<p><strong>步骤：</strong></p>
+<h2 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h2><p>路径是绘制图形的基本元素。除了矩形有专属的方法可以直接绘制外，其他图形我们都需要用一条一条的路径去组合。所以说白了，路径其实就是指的线段。</p>
+<p><strong>绘制路径的步骤：</strong></p>
 <ol>
 <li>绘制路径起点。</li>
 <li>绘制路径终点。</li>
 <li>连接两点绘制出线段。</li>
 </ol>
-<h4 id="绘制路径的方法"><a href="#绘制路径的方法" class="headerlink" title="绘制路径的方法"></a>绘制路径的方法</h4><p><strong><code>moveTo(x, y)</code></strong>：设置路径的起点坐标<code>(x, y)</code>。<br><strong><code>lineTo(x, y)</code></strong>：设置路径的终点坐标<code>(x, y)</code>。<br><strong><code>stroke()</code></strong>：连接两个点，绘制路径。</p>
+<h3 id="绘制路径的方法"><a href="#绘制路径的方法" class="headerlink" title="绘制路径的方法"></a>绘制路径的方法</h3><p><strong><code>moveTo(x, y)</code></strong>：设置路径的起点坐标<code>(x, y)</code>。<br><strong><code>lineTo(x, y)</code></strong>：设置路径的终点坐标<code>(x, y)</code>。<br><strong><code>stroke()</code></strong>：连接两个点，绘制路径。</p>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
-<h4 id="添加样式-1"><a href="#添加样式-1" class="headerlink" title="添加样式"></a>添加样式</h4><p><strong><code>lineCap</code></strong>：设置每一条线段两端的样式（默认是<code>butt</code>方形）。</p>
+<h3 id="添加样式-1"><a href="#添加样式-1" class="headerlink" title="添加样式"></a>添加样式</h3><p><strong><code>lineCap</code></strong>：设置每一条线段两端的样式（默认是<code>butt</code>方形）。</p>
 <p>三种取值：</p>
 <ul>
 <li><code>butt</code>：线段两端以方形结束。</li>
 <li><code>round</code>：线段两端以圆形结束。</li>
 <li><code>square</code>：线段两端以方形结束。但是增加了一个宽度与线段相同，高度是线段宽度一半的矩形。</li>
 </ul>
-<h3 id="绘制其他图形"><a href="#绘制其他图形" class="headerlink" title="绘制其他图形"></a>绘制其他图形</h3><p><code>&lt;canvas&gt;</code>画布中没有提供直接画其他图形（例如三角形、五边形等等）的方法，所以我们只能通过多条路径来绘制。</p>
+<h2 id="绘制其他图形"><a href="#绘制其他图形" class="headerlink" title="绘制其他图形"></a>绘制其他图形</h2><p><code>&lt;canvas&gt;</code>画布中没有提供直接画其他图形（例如三角形、五边形等等）的方法，所以我们只能通过多条路径来绘制。</p>
 <p><strong>步骤：</strong></p>
 <ol>
 <li>创建图形的起始点。</li>
@@ -400,7 +400,7 @@
 <p><strong><code>fill()</code></strong>：通过填充路径的内容区域生成实心的图形。</p>
 <p>所以，想要绘制一个实心三角形，只需要把上例中最后一行代码改写成如下代码即可：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="初始化路径"><a href="#初始化路径" class="headerlink" title="初始化路径"></a>初始化路径</h4><p>如果我们在同一个画布中画两个三角形，第一个绘制成空心，第二个绘制成一个实心。代码如下：</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="初始化路径"><a href="#初始化路径" class="headerlink" title="初始化路径"></a>初始化路径</h3><p>如果我们在同一个画布中画两个三角形，第一个绘制成空心，第二个绘制成一个实心。代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个三角形</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>); </div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 绘制图形轮廓</span></div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
 <p>代码运行后我们会发现页面上的显示效果跟我们想要的并不一样。两个三角形都成了实心。如下图所示：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjqzj6yhhlj30x20i0jrp.jpg" alt=""></p>
@@ -417,7 +417,7 @@
 <p>这样，我们第一个空心三角形，第二个实心三角形才算完成了。如下图：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjr039irokj30xc0jwweu.jpg" alt=""></p>
 <p>建议：在实际开发中，为了避免每次去区分哪个图形是先绘制的哪个图形是后绘制的，我们一般会在每一次绘制图形之前都做一次清空。</p>
-<h4 id="初始化样式"><a href="#初始化样式" class="headerlink" title="初始化样式"></a>初始化样式</h4><p>如果我们在同一个画布中画两个实心三角形，第一个填充橙色，第二个填充默认色。代码如下：</p>
+<h3 id="初始化样式"><a href="#初始化样式" class="headerlink" title="初始化样式"></a>初始化样式</h3><p>如果我们在同一个画布中画两个实心三角形，第一个填充橙色，第二个填充默认色。代码如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>); </div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 设置填充色为橙色</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line"><span class="comment">// 绘制图形轮廓</span></div><div class="line">ctx.fill();</div><div class="line">	</div><div class="line"><span class="comment">// 第二个三角形</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>, <span class="number">200</span>);</div><div class="line">ctx.closePath();</div><div class="line"><span class="comment">// 填充整个图形内部</span></div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
 <p>代码运行后我们会发现页面上的显示效果跟我们想要的还是不一样。第二个三角形我们并没有设置填充色，但是页面上两个三角形都显示橙色。如下图所示：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr4dx1tozj30xe0jq74o.jpg" alt=""></p>
@@ -448,7 +448,7 @@
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9mktkj1j31h40jcn10.jpg" alt=""></p>
 <p>这个时候，我们栈空间中被保存的默认样式又重新被取了出来，并且应用到了“当前应用样式”中。所以最终我们就可以完成第一个三角形为橙色，第二个三角形为默认色的要求了。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjr9if5ozbj30xa0j6mxi.jpg" alt=""></p>
-<h4 id="保存多个样式"><a href="#保存多个样式" class="headerlink" title="保存多个样式"></a>保存多个样式</h4><p>有的时候，我们在绘制过程中除了保存初始的默认样式外，可能后面还会保存一些其他的样式。那这个时候栈空间里是怎样保存的呢？我们需要用的时候又怎么取出来呢？</p>
+<h3 id="保存多个样式"><a href="#保存多个样式" class="headerlink" title="保存多个样式"></a>保存多个样式</h3><p>有的时候，我们在绘制过程中除了保存初始的默认样式外，可能后面还会保存一些其他的样式。那这个时候栈空间里是怎样保存的呢？我们需要用的时候又怎么取出来呢？</p>
 <p>图解分析：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg" alt=""></p>
 <p>栈空间的存取方式一直是“先进后出，后进先出”。具体过程解析可以去看<a href="https://runjaelyn.github.io/2017/09/08/memory/" target="_blank" rel="external">《JavaScript 内存空间》</a>这篇博客。</p>
