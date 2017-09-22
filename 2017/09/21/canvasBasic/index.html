@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjrl4itk4cj30xc0ekjro.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg">
-<meta property="og:updated_time" content="2017-09-22T02:43:40.000Z">
+<meta property="og:updated_time" content="2017-09-22T06:49:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 基础">
 <meta name="twitter:description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
@@ -429,7 +429,7 @@
 <h3 id="保存多个样式"><a href="#保存多个样式" class="headerlink" title="保存多个样式"></a>保存多个样式</h3><p>有的时候，我们在绘制过程中除了保存初始的默认样式外，可能后面还会保存一些其他的样式。那这个时候栈空间里是怎样保存的呢？我们需要用的时候又怎么取出来呢？</p>
 <p>图解分析：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg" alt=""></p>
-<p>栈空间的存取方式一直是“先进后出，后进先出”。具体过程解析可以去看<a href="https://runjaelyn.github.io/2017/10/05/memory/" target="_blank" rel="external">《JavaScript 内存空间》</a>这篇博客。</p>
+<p>栈空间的存取方式一直是“先进后出，后进先出”。具体过程解析可以去看<a href="https://runjaelyn.github.io/2017/12/05/memory/" target="_blank" rel="external">《JavaScript 内存空间》</a>这篇博客。</p>
 <p>所以，最后保存的样式在栈空间的最上面，出栈的时候也是最上面的先出来。如果我们想要取出最下层的默认样式，就必须多调用几次<code>restore()</code>先把上面的样式依次取出来才行。</p>
 <p>图解分析：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg" alt=""></p>
@@ -481,15 +481,15 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/2017/10/05/memory/">
+      <a class="prev" href="/2017/09/22/event02/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">JavaScript 内存空间</span>
+        <span class="prev-text nav-default">Event 事件 - 扩展</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/2017/09/07/Array/">
-        <span class="next-text nav-default">数组的循环和迭代</span>
+      <a class="next" href="/2017/09/13/event01/">
+        <span class="next-text nav-default">Event 事件 - 基础</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
