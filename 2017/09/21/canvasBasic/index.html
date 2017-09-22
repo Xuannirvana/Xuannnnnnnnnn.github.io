@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjrl4itk4cj30xc0ekjro.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjrb9z00thj31jo0lcq7i.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjrboewq38j31gi0lkae6.jpg">
-<meta property="og:updated_time" content="2017-09-21T15:14:27.000Z">
+<meta property="og:updated_time" content="2017-09-22T02:43:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 基础">
 <meta name="twitter:description" content="&amp;lt;canvas&amp;gt;画布是 HTML5 新增的元素，用于图形的绘制。但&amp;lt;canvas&amp;gt;标签只是图形容器，需要结合 JavaScript 才能绘制图形。">
@@ -275,12 +275,12 @@
 </li>
 </ul>
 <ul>
-<li><p>绘制一个既没填充也没边框的矩形</p>
+<li><p>绘制一个既没填充也没边框的矩形（没有任何样式的矩形）</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><p>清除制定矩形区域，让清除部分完全透明（类似于橡皮擦功能）</p>
+<li><p>清除指定矩形区域，让清除部分完全透明（类似于橡皮擦功能）</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clearRect(x, y, width, height)</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -329,7 +329,11 @@
 <li>绘制路径终点。</li>
 <li>连接两点绘制出线段。</li>
 </ol>
-<h3 id="绘制路径的方法"><a href="#绘制路径的方法" class="headerlink" title="绘制路径的方法"></a>绘制路径的方法</h3><p><strong><code>moveTo(x, y)</code></strong>：设置路径的起点坐标<code>(x, y)</code>。<br><strong><code>lineTo(x, y)</code></strong>：设置路径的终点坐标<code>(x, y)</code>。<br><strong><code>stroke()</code></strong>：连接两个点，绘制路径。</p>
+<h3 id="绘制路径的方法"><a href="#绘制路径的方法" class="headerlink" title="绘制路径的方法"></a>绘制路径的方法</h3><ul>
+<li><strong><code>moveTo(x, y)</code></strong>：设置路径的起点坐标<code>(x, y)</code>。</li>
+<li><strong><code>lineTo(x, y)</code></strong>：设置路径的终点坐标<code>(x, y)</code>。</li>
+<li><strong><code>stroke()</code></strong>：连接两个点，绘制路径。</li>
+</ul>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置线条粗细为 30px</span></div><div class="line">ctx.lineWidth = <span class="number">30</span>;</div><div class="line"><span class="comment">// 设置线段起点</span></div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置线段终点</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">200</span>);</div><div class="line"><span class="comment">// 连接起点和终点</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
