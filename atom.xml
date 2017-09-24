@@ -294,7 +294,7 @@
     <link href="http://yoursite.com/2017/11/12/canvasExpand/"/>
     <id>http://yoursite.com/2017/11/12/canvasExpand/</id>
     <published>2017-11-11T16:28:58.000Z</published>
-    <updated>2017-09-24T16:33:30.000Z</updated>
+    <updated>2017-09-24T16:36:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
 <ul>
@@ -333,7 +333,7 @@
 <p><code>&lt;canvas&gt;</code>的上下文提供了一个绘制曲线的方法<code>arcTo()</code>。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arcTo(x1, y1, x2, y2, r);</div></pre></td></tr></table></figure>
-<p>说明：<code>(x1, y1)</code>和<code>(x2, y2)</code>分别是两个点的坐标。结合<code>moveTo(x, y)</code>一起使用。</p>
+<p>说明：<code>(x1, y1)</code>和<code>(x2, y2)</code>分别是两个点的坐标。该方法需结合<code>moveTo(x, y)</code>一起使用。</p>
 <ul>
 <li><code>(x, y)</code>表示曲线起点。</li>
 <li><code>(x1, y1)</code>是控制点，用来控制曲线弯曲方向（曲线并不一定会经过控制点）。</li>
@@ -347,7 +347,7 @@
 <h3 id="二次贝塞尔曲线"><a href="#二次贝塞尔曲线" class="headerlink" title="二次贝塞尔曲线"></a>二次贝塞尔曲线</h3><p><strong><code>quadraticCurveTo()</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quadraticCurveTo(x1, y1, x2, y2);</div></pre></td></tr></table></figure>
-<p>说明：<code>(x1, y1)</code>和<code>(x2, y2)</code>分别是两个点的坐标。结合<code>moveTo(x, y)</code>一起使用。</p>
+<p>说明：<code>(x1, y1)</code>和<code>(x2, y2)</code>分别是两个点的坐标。该方法需结合<code>moveTo(x, y)</code>一起使用。</p>
 <ul>
 <li><code>(x, y)</code>表示曲线起点。</li>
 <li><code>(x1, y1)</code>是控制点，用来控制曲线弯曲方向（曲线并不一定会经过控制点）。</li>
@@ -360,7 +360,7 @@
 <h3 id="三次贝塞尔曲线"><a href="#三次贝塞尔曲线" class="headerlink" title="三次贝塞尔曲线"></a>三次贝塞尔曲线</h3><p><strong><code>bezierCurveTo()</code></strong></p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bezierCurveTo(x1, y1, x2, y2, x3, y3);</div></pre></td></tr></table></figure>
-<p>说明：<code>(x1, y1)</code>、<code>(x2, y2)</code>和<code>(x3, y3)</code>分别是三个点的坐标。结合<code>moveTo(x, y)</code>一起使用。</p>
+<p>说明：<code>(x1, y1)</code>、<code>(x2, y2)</code>和<code>(x3, y3)</code>分别是三个点的坐标。该方法需结合<code>moveTo(x, y)</code>一起使用。</p>
 <ul>
 <li><code>(x, y)</code>表示曲线起点。</li>
 <li><code>(x1, y1)</code>和<code>(x2, y2)</code>是控制点，用来控制曲线弯曲方向（曲线并不一定会经过控制点）。</li>
