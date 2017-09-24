@@ -12,8 +12,12 @@
 
 
 
+  <meta name="description" content="canvas 画布 - 进阶"/>
 
 
+
+
+  <meta name="keywords" content="canvas,画布," />
 
 
 
@@ -27,15 +31,30 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/11/12/canvasExpand/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Komorebi">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
+<meta name="keywords" content="canvas,画布">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas 画布 - 进阶">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/canvasExpand/index.html">
 <meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjuytb18vkj30xc080jrh.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjuyx1y62qj30xa06gjre.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjv1mhqepyj30xa0aawev.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjv1k3csjej30xc09qaag.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv1i16p06j30x80j20tj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjv2nnuxr2j30xa0dcgm9.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjv3qki3j3j30xa0e474y.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjv443z6aoj30xa0cc3z2.jpg">
+<meta property="og:updated_time" content="2017-09-24T16:30:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Komorebi">
+<meta name="twitter:title" content="canvas 画布 - 进阶">
+<meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -62,7 +81,7 @@
 
 
 
-    <title> Komorebi </title>
+    <title> canvas 画布 - 进阶 · Komorebi </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -182,141 +201,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/12/08/ExecutionContext/">执行上下文（Execution Context）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年12月8日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
-<p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
-          <div class="read-more">
-            <a href="/2017/12/08/ExecutionContext/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/06/hoisting/">变量提升和函数提升</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年12月6日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
-          <div class="read-more">
-            <a href="/2017/12/06/hoisting/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/12/05/memory/">JavaScript 内存空间</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年12月5日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
-          <div class="read-more">
-            <a href="/2017/12/05/memory/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/11/12/canvasExpand/">canvas 画布 - 进阶</a>
+          canvas 画布 - 进阶
         
       </h1>
 
@@ -329,14 +219,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制圆形"><span class="toc-text">绘制圆形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制曲线"><span class="toc-text">绘制曲线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二次贝塞尔曲线"><span class="toc-text">二次贝塞尔曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三次贝塞尔曲线"><span class="toc-text">三次贝塞尔曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充说明"><span class="toc-text">补充说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变换"><span class="toc-text">变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#移动"><span class="toc-text">移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转"><span class="toc-text">旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缩放"><span class="toc-text">缩放</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
+        <p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
 <ul>
 <li>绘制矩形</li>
 <li>绘制路径</li>
@@ -466,289 +359,95 @@
 <p>效果展示：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjv443z6aoj30xa0cc3z2.jpg" alt=""></p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/11/10/canvasBasic/">canvas 画布 - 基础</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年11月10日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
         
-          <p><code>&lt;canvas&gt;</code>画布是 HTML5 新增的元素，用于图形的绘制。但<code>&lt;canvas&gt;</code>标签只是图形容器，需要结合 JavaScript 才能绘制图形。</p>
-          <div class="read-more">
-            <a href="/2017/11/10/canvasBasic/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/canvas/">canvas</a>
+            
+              <a href="/tags/画布/">画布</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/02/Array/">数组的循环和迭代</a>
         
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月2日
-        </span>
-      </div>
-    </header>
-
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/12/05/memory/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JavaScript 内存空间</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在 JavaScript 中，关于数组的操作方法有很多。其中，数组的遍历是我们需要掌握的一个重点。</p>
-<p>从 JavaScript 发展到现在，数组的遍历方式也越来越多，所以这篇文章我们主要是讲关于数组的这几种遍历方式的使用方法和分析它们的一些异同点。</p>
-          <div class="read-more">
-            <a href="/2017/10/02/Array/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/09/22/event02/">Event 事件 - 扩展</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年9月22日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
-          <div class="read-more">
-            <a href="/2017/09/22/event02/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/09/13/event01/">Event 事件 - 基础</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年9月13日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>Javascript 使我们可以动态的去创建操作一个页面。当我们在与浏览器交互的时候，浏览器就会触发各种事件。</p>
-<p>比如我们打开某一个网页的时候，浏览器需要加载完成这个网页，就会触发一个加载事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个点击事件。<br>
-          <div class="read-more">
-            <a href="/2017/09/13/event01/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/08/19/element/">DOM - Element 对象</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年8月19日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>DOM 访问或操作 HTML 页面内容主要是依靠 DOM 节点树这个模型。但在 DOM 中的三个主要对象，除了 Document 和 Node 之外，还有一个就是 Element 对象。</p>
-<p>Element 对象描述了所有相同种类的元素所普遍具有的方法和属性，也是访问和操作 HTML 页面内容的主要途径之一。</p>
-          <div class="read-more">
-            <a href="/2017/08/19/element/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/08/19/node/">DOM - Node 对象</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年8月19日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>Node 对象，也就是 DOM 中的节点对象。关于节点对象的名称、值和类型等等知识点，我们在前面<a href="https://runjaelyn.github.io/2017/07/18/dom/" target="_blank" rel="external">《DOM 文档对象模型》</a>中已经讲过了。</p>
-<p>所以这篇文章主要是汇总讲一些操作 DOM 节点的方法。</p>
-          <div class="read-more">
-            <a href="/2017/08/19/node/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2017/11/10/canvasBasic/">
+        <span class="next-text nav-default">canvas 画布 - 基础</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
 
         </div>  
       </main>
@@ -822,6 +521,8 @@
     </div>
 
     
+  
+
 
 
     
