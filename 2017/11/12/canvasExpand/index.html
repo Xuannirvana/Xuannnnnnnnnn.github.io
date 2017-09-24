@@ -34,13 +34,14 @@
 <link rel="canonical" href="http://yoursite.com/2017/11/12/canvasExpand/"/>
 
 
-<meta name="description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
+<meta name="description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
 <meta name="keywords" content="canvas,画布">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas 画布 - 进阶">
 <meta property="og:url" content="http://yoursite.com/2017/11/12/canvasExpand/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
+<meta property="og:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv4fu7xkwj31680dygo4.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjuytb18vkj30xc080jrh.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjuyx1y62qj30xa06gjre.jpg">
@@ -50,11 +51,11 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjv2nnuxr2j30xa0dcgm9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjv3qki3j3j30xa0e474y.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjv443z6aoj30xa0cc3z2.jpg">
-<meta property="og:updated_time" content="2017-09-24T16:30:20.000Z">
+<meta property="og:updated_time" content="2017-09-24T16:33:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 进阶">
-<meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。 绘制圆形&amp;lt;canvas&amp;gt;的上下文提供了一个绘制圆形的方法arc()。 语法结构： 1arc(x, y, r, startAngle, endA">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg">
+<meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv4fu7xkwj31680dygo4.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -237,13 +238,14 @@
 <li>路径和样式初始化</li>
 </ul>
 <p>这一章我们对<code>&lt;canvas&gt;</code>的用法再进行一些深入的扩展讲解。</p>
+<a id="more"></a>
 <h2 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h2><p><code>&lt;canvas&gt;</code>的上下文提供了一个绘制圆形的方法<code>arc()</code>。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arc(x, y, r, startAngle, endAngle, anticlockwise)</div></pre></td></tr></table></figure>
 <p>描述：画一个以<code>(x, y)</code>为圆心、<code>r</code>为半径的圆弧（圆），从<code>startAngle</code>开始到<code>endAngle</code>结束，按照<code>anticlockwise</code>给定的方向（默认为顺时针）来生成。</p>
 <p>参数说明：</p>
-<table><br>    <tr><br>        <th>参数</th><br>        <th>描述</th><br>    </tr><br>    <tr><br>        <td>x</td><br>        <td>圆中心的 x 坐标。</td><br>    </tr><br>    <tr><br>        <td>y</td><br>        <td>圆中心的 y 坐标。</td><br>    </tr><br>    <tr><br>        <td>r</td><br>        <td>圆的半径。</td><br>    </tr><br>    <tr><br>        <td>startAngle</td><br>        <td>起始角，以弧度计。（如下图所示，x 轴正方向是 0 度）</td><br>    </tr><br>    <tr><br>        <td>endAngle</td><br>        <td>结束角，以弧度计。</td><br>    </tr><br>    <tr><br>        <td>anticlockwise</td><br>        <td>可选。规定绘制方向是逆时针还是顺时针。false：顺时针，true：逆时针。</td><br>    </tr><br></table>
-
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv4fu7xkwj31680dygo4.jpg" alt=""></p>
+<p>图解分析：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg" alt=""></p>
 <p><strong>通过角度计算弧度的 JavaScript 表达式：</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">radians = (<span class="built_in">Math</span>.PI / <span class="number">180</span>) * degrees</div></pre></td></tr></table></figure>

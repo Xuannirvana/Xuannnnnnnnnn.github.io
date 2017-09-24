@@ -294,7 +294,7 @@
     <link href="http://yoursite.com/2017/11/12/canvasExpand/"/>
     <id>http://yoursite.com/2017/11/12/canvasExpand/</id>
     <published>2017-11-11T16:28:58.000Z</published>
-    <updated>2017-09-24T16:30:20.000Z</updated>
+    <updated>2017-09-24T16:33:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
 <ul>
@@ -304,13 +304,14 @@
 <li>路径和样式初始化</li>
 </ul>
 <p>这一章我们对<code>&lt;canvas&gt;</code>的用法再进行一些深入的扩展讲解。</p>
+<a id="more"></a>
 <h2 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h2><p><code>&lt;canvas&gt;</code>的上下文提供了一个绘制圆形的方法<code>arc()</code>。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arc(x, y, r, startAngle, endAngle, anticlockwise)</div></pre></td></tr></table></figure>
 <p>描述：画一个以<code>(x, y)</code>为圆心、<code>r</code>为半径的圆弧（圆），从<code>startAngle</code>开始到<code>endAngle</code>结束，按照<code>anticlockwise</code>给定的方向（默认为顺时针）来生成。</p>
 <p>参数说明：</p>
-<table><br>    <tr><br>        <th>参数</th><br>        <th>描述</th><br>    </tr><br>    <tr><br>        <td>x</td><br>        <td>圆中心的 x 坐标。</td><br>    </tr><br>    <tr><br>        <td>y</td><br>        <td>圆中心的 y 坐标。</td><br>    </tr><br>    <tr><br>        <td>r</td><br>        <td>圆的半径。</td><br>    </tr><br>    <tr><br>        <td>startAngle</td><br>        <td>起始角，以弧度计。（如下图所示，x 轴正方向是 0 度）</td><br>    </tr><br>    <tr><br>        <td>endAngle</td><br>        <td>结束角，以弧度计。</td><br>    </tr><br>    <tr><br>        <td>anticlockwise</td><br>        <td>可选。规定绘制方向是逆时针还是顺时针。false：顺时针，true：逆时针。</td><br>    </tr><br></table>
-
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv4fu7xkwj31680dygo4.jpg" alt=""></p>
+<p>图解分析：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fjspljhdnzj312w0hq40s.jpg" alt=""></p>
 <p><strong>通过角度计算弧度的 JavaScript 表达式：</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">radians = (<span class="built_in">Math</span>.PI / <span class="number">180</span>) * degrees</div></pre></td></tr></table></figure>
@@ -429,7 +430,14 @@
     
     <summary type="html">
     
-      &lt;p&gt;在上一章&lt;a href=&quot;https://runjaelyn.github.io/2017/11/10/canvasBasic/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《canvas 画布 - 基础》&lt;/a&gt;中我们讲了关于&lt;code&gt;&amp;lt;can
+      &lt;p&gt;在上一章&lt;a href=&quot;https://runjaelyn.github.io/2017/11/10/canvasBasic/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《canvas 画布 - 基础》&lt;/a&gt;中我们讲了关于&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;的一些基础用法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;绘制矩形&lt;/li&gt;
+&lt;li&gt;绘制路径&lt;/li&gt;
+&lt;li&gt;绘制其他图形（例如：三角形）&lt;/li&gt;
+&lt;li&gt;路径和样式初始化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这一章我们对&lt;code&gt;&amp;lt;canvas&amp;gt;&lt;/code&gt;的用法再进行一些深入的扩展讲解。&lt;/p&gt;
     
     </summary>
     
