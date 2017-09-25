@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjv2nnuxr2j30xa0dcgm9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjv3qki3j3j30xa0e474y.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjv443z6aoj30xa0cc3z2.jpg">
-<meta property="og:updated_time" content="2017-09-24T16:43:36.000Z">
+<meta property="og:updated_time" content="2017-09-25T05:28:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 进阶">
 <meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
@@ -272,6 +272,7 @@
 <li><code>(x, y)</code>表示曲线起点。</li>
 <li><code>(x1, y1)</code>是控制点，用来控制曲线弯曲方向（曲线并不一定会经过控制点）。</li>
 <li><code>(x2, y2)</code>是结束点（曲线并不一定会经过结束点）。</li>
+<li><code>r</code>表示圆弧的半径，用来控制曲线弧度的大小。</li>
 </ul>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 连接三个点间的曲线</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.arcTo(<span class="number">200</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">100</span>, <span class="number">100</span>)</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
@@ -306,7 +307,7 @@
 <li><code>(x3, y3)</code>是结束点。</li>
 </ul>
 <p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 连接四个点间的二次贝塞尔曲线</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">200</span>);</div><div class="line">ctx.bezierCurveTo(<span class="number">200</span>, <span class="number">400</span>, <span class="number">300</span>, <span class="number">100</span>, <span class="number">400</span>, <span class="number">300</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 连接四个点间的三次贝塞尔曲线</span></div><div class="line">ctx.strokeStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">200</span>);</div><div class="line">ctx.bezierCurveTo(<span class="number">200</span>, <span class="number">400</span>, <span class="number">300</span>, <span class="number">100</span>, <span class="number">400</span>, <span class="number">300</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjv1i16p06j30x80j20tj.jpg" alt=""></p>
 <h3 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h3><p>讲了三种绘制曲线的方法，但是我们可以发现，这三种方法都不能让我们精准的确定曲线的弧度。在实际开发中，并不需要我们前端开发人员去研究计算曲线的弧度，每一个点的坐标的都应该是由 UI 设计师提供给我们，而我们需要做的，就是根据点把曲线绘制出来。</p>
@@ -321,7 +322,7 @@
 </ul>
 <p>注意：</p>
 <ol>
-<li><code>translate(x, y)</code>方法控制的是画布的原点，而不是我们绘制的图形。图形的起始点始终是相对于画布的原点<code>(0, 0)</code>设置的，一旦画布原点改变，图形的起始点就会改变，那么图新就会发生位移。</li>
+<li><code>translate(x, y)</code>方法控制的是画布的原点，而不是我们绘制的图形。图形的起始点始终是相对于画布的原点<code>(0, 0)</code>设置的，一旦画布原点改变，图形的起始点就会改变，那么图形就会发生位移。</li>
 <li><code>translate(x, y)</code>连续调用时效果是叠加的。</li>
 </ol>
 <p>例：</p>
@@ -338,8 +339,8 @@
 </ul>
 <p>注意：</p>
 <ol>
-<li>图形的旋转点是该图形的起点。</li>
-<li>图形的旋转点始终在画布的原点位置。如果要改变它，需要结合<code>translate(x, y)</code>方法。</li>
+<li>图形是相对于画布的原点<code>(0, 0)</code>进行旋转的。</li>
+<li>想要更改图形的旋转点，就需要结合<code>translate(x, y)</code>方法去更改画布的原点位置。</li>
 <li><code>rotate(angle)</code>连续调用时效果是叠加的。</li>
 </ol>
 <p>例：</p>
@@ -347,7 +348,7 @@
 <p>效果展示：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjv3qki3j3j30xa0e474y.jpg" alt=""></p>
 <h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><p><strong><code>scale()</code></strong></p>
-<p><code>&lt;canvas&gt;</code>的上下文提供了方法<code>scale()</code>用来对图形进行旋转。</p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了方法<code>scale()</code>用来对图形进行缩放。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scale(x, y)</div></pre></td></tr></table></figure>
 <p>参数说明：</p>
