@@ -41,14 +41,18 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/12/canvasExpand/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化 绘制圆形 绘制曲线 变换效果  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbslpxvwj30xc0d2t9s.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbz98ejrj30x8076weo.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjxc0hoc8hj30xa0deq3a.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjx814dn9xj30xa0i6abl.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjx8k5xxl3j30xa0kmtaa.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjxaf4adoxj30xa07a0t2.jpg">
-<meta property="og:updated_time" content="2017-09-26T14:05:56.000Z">
+<meta property="og:updated_time" content="2017-09-26T14:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas 画布 - 进阶">
 <meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化 绘制圆形 绘制曲线 变换效果  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjx814dn9xj30xa0i6abl.jpg">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -235,7 +239,8 @@
 </ul>
 <p>这一章我们对<code>&lt;canvas&gt;</code>的用法再进行一些深入的扩展讲解。</p>
 <a id="more"></a>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>drawImage()</code>用来插入图片。</p>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><strong><code>drawImage()</code></strong></p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>drawImage()</code>用来插入图片。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drawImage(image, x, y, width, height)</div></pre></td></tr></table></figure>
 <p>参数说明：</p>
@@ -251,8 +256,10 @@
 <p>canvas 操作图片时，必须要等图片加载完才能操作。</p>
 </blockquote>
 <p>因此，我们插图图片的操作，也必须等图片加载完成后才执行。如以下代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个 image 对象</span></div><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line"><span class="comment">// 设置 image 对象的 src 属性</span></div><div class="line">img.src = <span class="string">"IMG_6389.JPG"</span>;</div><div class="line"><span class="comment">// 图片加载完成后插入图片</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个 image 对象</span></div><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line"><span class="comment">// 设置 image 对象的 src 属性</span></div><div class="line">img.src = <span class="string">"IMG_6389.JPG"</span>;</div><div class="line"><span class="comment">// 图片加载完成后插入图片</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    ctx.drawImage(img, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样，我们就完成了在画布中插入图片的操作了。</p>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg" alt=""></p>
 <h2 id="设置背景"><a href="#设置背景" class="headerlink" title="设置背景"></a>设置背景</h2><p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createPattern()</code>用来插入图片。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createPattern(image, repetition)</div></pre></td></tr></table></figure>
@@ -269,9 +276,12 @@
 </ul>
 <p>注意：一般情况下，我们都会将<code>createPattern()</code>返回的对象作为<code>fillStyle</code>的属性值。</p>
 <p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">"dog-img.png"</span>;</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> pattern = ctx.createPattern(img, <span class="string">"repeat"</span>);</div><div class="line">    ctx.fillStyle = pattern;</div><div class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">500</span>, <span class="number">500</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><strong><code>createLinearGradient()</code></strong></p>
-<p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createLinearGradient()</code>用来做线性渐变色。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">"fish.png"</span>;</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> pattern = ctx.createPattern(img, <span class="string">"repeat"</span>);</div><div class="line">    ctx.fillStyle = pattern;</div><div class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbslpxvwj30xc0d2t9s.jpg" alt=""></p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><code>&lt;canvas&gt;</code>的上下文提供了两个方法结合使用来做线性渐变色。</p>
+<p><strong><code>createLinearGradient()</code></strong></p>
+<p>调用该方法可以得到一个<code>CanvasGradient</code>对象。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createLinearGradient(x1, y1, x2, y2)</div></pre></td></tr></table></figure>
 <p>参数说明:</p>
@@ -280,7 +290,7 @@
 <li><code>x2</code>和<code>y2</code>：表示渐变的终点坐标。</li>
 </ul>
 <p><strong><code>addColorStop()</code></strong></p>
-<p><code>createLinearGradient()</code>方法的返回值是一个对象，而这个对象还提供了一个方法<code>addColorStop()</code>。</p>
+<p><code>createLinearGradient()</code>方法的返回值是<code>CanvasGradient</code>对象，而这个对象提供了一个方法<code>addColorStop()</code>，用来设置渐变色的位置和颜色。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addColorStop(position, color)</div></pre></td></tr></table></figure>
 <p>参数说明：</p>
@@ -289,7 +299,9 @@
 <li><code>color</code>：颜色值。参数必须是一个有效的 CSS 颜色值（如<code>#fff</code>、<code>rgb(0,0,0)</code>等）</li>
 </ul>
 <p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 确定渐变范围 (0,0) 是渐变起始位置，(0,400) 是渐变结束位置。</span></div><div class="line"><span class="keyword">let</span> color = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>);</div><div class="line"><span class="comment">// 设置渐变色</span></div><div class="line">color.addColorStop(<span class="number">0</span>, <span class="string">"orange"</span>);</div><div class="line">color.addColorStop(<span class="number">0.5</span>, <span class="string">"tomato"</span>);</div><div class="line">color.addColorStop(<span class="number">1</span>, <span class="string">"pink"</span>);</div><div class="line"></div><div class="line">ctx.fillStyle = color;</div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">400</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 确定渐变范围 (0, 0) 是渐变起始位置，(400, 0) 是渐变结束位置。</span></div><div class="line"><span class="keyword">let</span> color = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">0</span>);</div><div class="line"><span class="comment">// 设置渐变色</span></div><div class="line">color.addColorStop(<span class="number">0</span>, <span class="string">"orange"</span>);</div><div class="line">color.addColorStop(<span class="number">0.5</span>, <span class="string">"tomato"</span>);</div><div class="line">color.addColorStop(<span class="number">1</span>, <span class="string">"pink"</span>);</div><div class="line"></div><div class="line">ctx.fillStyle = color;</div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbz98ejrj30x8076weo.jpg" alt=""></p>
 <h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p><strong><code>createRadialGradient()</code></strong></p>
 <p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createRadialGradient()</code>用来做径向渐变色。</p>
 <p>语法结构：</p>
@@ -303,6 +315,8 @@
 </ul>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> color = ctx.createRadialGradient(<span class="number">200</span>, <span class="number">200</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置渐变色</span></div><div class="line">color.addColorStop(<span class="number">0</span>, <span class="string">"orange"</span>);</div><div class="line">color.addColorStop(<span class="number">0.5</span>, <span class="string">"tomato"</span>);</div><div class="line">color.addColorStop(<span class="number">1</span>, <span class="string">"pink"</span>);</div><div class="line"></div><div class="line">ctx.fillStyle = color;</div><div class="line">ctx.arc(<span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjxc0hoc8hj30xa0deq3a.jpg" alt=""></p>
 <h2 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h2><p><code>&lt;canvas&gt;</code>的上下文提供了两种绘制文本的方式。</p>
 <h3 id="填充文字"><a href="#填充文字" class="headerlink" title="填充文字"></a>填充文字</h3><p><strong><code>filltext()</code></strong></p>
 <p>语法结构：</p>
