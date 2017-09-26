@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="canvas 画布 - 进阶"/>
+
+
+
+
+  <meta name="keywords" content="canvas,画布," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/09/12/canvasExpand/"/>
+
+
+<meta name="description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化 绘制圆形 绘制曲线 变换效果  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta name="keywords" content="canvas,画布">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas 画布 - 进阶">
+<meta property="og:url" content="http://yoursite.com/2017/09/12/canvasExpand/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化 绘制圆形 绘制曲线 变换效果  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbslpxvwj30xc0d2t9s.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbz98ejrj30x8076weo.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjxc0hoc8hj30xa0deq3a.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fjx814dn9xj30xa0i6abl.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjx8k5xxl3j30xa0kmtaa.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjxaf4adoxj30xa07a0t2.jpg">
+<meta property="og:updated_time" content="2017-09-26T15:29:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas 画布 - 进阶">
+<meta name="twitter:description" content="在上一章《canvas 画布 - 基础》中我们讲了关于&amp;lt;canvas&amp;gt;的一些基础用法：  绘制矩形 绘制路径 绘制其他图形（例如：三角形） 路径和样式初始化 绘制圆形 绘制曲线 变换效果  这一章我们对&amp;lt;canvas&amp;gt;的用法再进行一些深入的扩展讲解。">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> canvas 画布 - 进阶 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          canvas 画布 - 进阶
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年9月12日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入图片"><span class="toc-text">插入图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置背景"><span class="toc-text">设置背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渐变色"><span class="toc-text">渐变色</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#线性渐变"><span class="toc-text">线性渐变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#径向渐变"><span class="toc-text">径向渐变</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制文本"><span class="toc-text">绘制文本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#填充文字（实心）"><span class="toc-text">填充文字（实心）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#边框文字（空心）"><span class="toc-text">边框文字（空心）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本样式"><span class="toc-text">文本样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#font"><span class="toc-text">font</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#textAlign"><span class="toc-text">textAlign</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#textBaseline"><span class="toc-text">textBaseline</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#measureText"><span class="toc-text">measureText()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文字阴影"><span class="toc-text">文字阴影</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
+<ul>
+<li>绘制矩形</li>
+<li>绘制路径</li>
+<li>绘制其他图形（例如：三角形）</li>
+<li>路径和样式初始化</li>
+<li>绘制圆形</li>
+<li>绘制曲线</li>
+<li>变换效果</li>
+</ul>
+<p>这一章我们对<code>&lt;canvas&gt;</code>的用法再进行一些深入的扩展讲解。</p>
+<a id="more"></a>
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p><strong><code>drawImage()</code></strong></p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>drawImage()</code>用来插入图片。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drawImage(image, x, y, width, height)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>image</code>：表示 image 对象。</li>
+<li><code>x</code>和<code>y</code>：表示图片在画布中的起始坐标。</li>
+<li><code>width</code>和<code>height</code>：可选。用来控制图片插入画布时的尺寸。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个 image 对象</span></div><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line"><span class="comment">// 设置 image 对象的 src 属性</span></div><div class="line">img.src = <span class="string">"IMG_6389.JPG"</span>;</div><div class="line"><span class="comment">// 插入图片</span></div><div class="line">ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<p>运行代码之后我们会发现画布中并没有看到我们的图片。所以，在画布中插入图片还有一个需要注意的点：</p>
+<blockquote>
+<p>canvas 操作图片时，必须要等图片加载完才能操作。</p>
+</blockquote>
+<p>因此，我们插图图片的操作，也必须等图片加载完成后才执行。如以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个 image 对象</span></div><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line"><span class="comment">// 设置 image 对象的 src 属性</span></div><div class="line">img.src = <span class="string">"IMG_6389.JPG"</span>;</div><div class="line"><span class="comment">// 图片加载完成后插入图片</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    ctx.drawImage(img, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，我们就完成了在画布中插入图片的操作了。</p>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbpgh5frj30xa0903yt.jpg" alt=""></p>
+<h2 id="设置背景"><a href="#设置背景" class="headerlink" title="设置背景"></a>设置背景</h2><p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createPattern()</code>用来插入图片。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createPattern(image, repetition)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>image</code>：图像源。</li>
+<li><code>repetition</code>：设置背景图像是否平铺。<ul>
+<li><code>repeat</code>：平铺。</li>
+<li><code>repeat-x</code>：横向平铺。</li>
+<li><code>repeat-y</code>：纵向平铺。</li>
+<li><code>no-repeat</code>：不平铺。</li>
+</ul>
+</li>
+</ul>
+<p>注意：一般情况下，我们都会将<code>createPattern()</code>返回的对象作为<code>fillStyle</code>的属性值。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">"fish.png"</span>;</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> pattern = ctx.createPattern(img, <span class="string">"repeat"</span>);</div><div class="line">    ctx.fillStyle = pattern;</div><div class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbslpxvwj30xc0d2t9s.jpg" alt=""></p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><code>&lt;canvas&gt;</code>的上下文提供了两个方法结合使用来做线性渐变色。</p>
+<p><strong><code>createLinearGradient()</code></strong></p>
+<p>调用该方法可以得到一个<code>CanvasGradient</code>对象。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createLinearGradient(x1, y1, x2, y2)</div></pre></td></tr></table></figure>
+<p>参数说明:</p>
+<ul>
+<li><code>x1</code>和<code>y1</code>：表示渐变的起点坐标。</li>
+<li><code>x2</code>和<code>y2</code>：表示渐变的终点坐标。</li>
+</ul>
+<p><strong><code>addColorStop()</code></strong></p>
+<p><code>createLinearGradient()</code>方法的返回值是<code>CanvasGradient</code>对象，而这个对象提供了一个方法<code>addColorStop()</code>，用来设置渐变色的位置和颜色。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addColorStop(position, color)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>position</code>：参数的取值范围在 0 ～ 1 之间。用来表示渐变中颜色所在的相对位置。</li>
+<li><code>color</code>：颜色值。参数必须是一个有效的 CSS 颜色值（如<code>#fff</code>、<code>rgb(0,0,0)</code>等）</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 确定渐变范围 (0, 0) 是渐变起始位置，(400, 0) 是渐变结束位置。</span></div><div class="line"><span class="keyword">let</span> color = ctx.createLinearGradient(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">0</span>);</div><div class="line"><span class="comment">// 设置渐变色</span></div><div class="line">color.addColorStop(<span class="number">0</span>, <span class="string">"orange"</span>);</div><div class="line">color.addColorStop(<span class="number">0.5</span>, <span class="string">"tomato"</span>);</div><div class="line">color.addColorStop(<span class="number">1</span>, <span class="string">"pink"</span>);</div><div class="line"></div><div class="line">ctx.fillStyle = color;</div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxbz98ejrj30x8076weo.jpg" alt=""></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p><strong><code>createRadialGradient()</code></strong></p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createRadialGradient()</code>用来做径向渐变色。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createRadialGradient(x1, y1, r1, x2, y2, r2)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>x1</code>和<code>y1</code>：第一个圆的圆心位置坐标。</li>
+<li><code>r1</code>：第一个圆的半径。</li>
+<li><code>x2</code>和<code>y2</code>：第二个圆的圆心位置坐标。</li>
+<li><code>r2</code>：第二个圆的半径。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> color = ctx.createRadialGradient(<span class="number">200</span>, <span class="number">200</span>, <span class="number">50</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置渐变色</span></div><div class="line">color.addColorStop(<span class="number">0</span>, <span class="string">"orange"</span>);</div><div class="line">color.addColorStop(<span class="number">0.5</span>, <span class="string">"tomato"</span>);</div><div class="line">color.addColorStop(<span class="number">1</span>, <span class="string">"pink"</span>);</div><div class="line"></div><div class="line">ctx.fillStyle = color;</div><div class="line">ctx.arc(<span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjxc0hoc8hj30xa0deq3a.jpg" alt=""></p>
+<h2 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h2><p><code>&lt;canvas&gt;</code>的上下文提供了两种绘制文本的方式。</p>
+<h3 id="填充文字（实心）"><a href="#填充文字（实心）" class="headerlink" title="填充文字（实心）"></a>填充文字（实心）</h3><p><strong><code>filltext()</code></strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">filltext(text, x, y)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>text</code>：需要绘制的文本内容。</li>
+<li><code>x</code>和<code>y</code>：指定文本所在位置。</li>
+</ul>
+<h3 id="边框文字（空心）"><a href="#边框文字（空心）" class="headerlink" title="边框文字（空心）"></a>边框文字（空心）</h3><p><strong><code>strokeText()</code></strong></p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">strokeText(text, x, y)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>text</code>：需要绘制的文本内容。</li>
+<li><code>x</code>和<code>y</code>：指定文本所在位置。</li>
+</ul>
+<h3 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h3><p><code>&lt;canvas&gt;</code>的上下文提供了一系列的属性用来设置文本的样式。</p>
+<h4 id="font"><a href="#font" class="headerlink" title="font"></a>font</h4><p><code>font</code>属性用来设置字体样式。属性值的语法跟 CSS 的<code>font</code>属性语法一致。（默认属性值是<code>10px sans-serif</code>）</p>
+<blockquote>
+<p>注意：使用<code>font</code>属性时，属性值必须要有字体大小和字体类型，缺一不可。</p>
+</blockquote>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.font = <span class="string">"60px sans-serif"</span>;</div></pre></td></tr></table></figure>
+<h4 id="textAlign"><a href="#textAlign" class="headerlink" title="textAlign"></a>textAlign</h4><p><code>textAlign</code>属性用来设置文本水平对齐方式。属性值的取值有三种：</p>
+<ul>
+<li><code>left</code>：文本的左侧相对于起始点对齐。</li>
+<li><code>right</code>：文本的右侧相对于起始点对齐。</li>
+<li><code>center</code>：文本的中间相对于起始点对齐。</li>
+</ul>
+<p><code>&lt;canvas&gt;</code>中的这个属性有点二，跟我们之前 CSS 中<code>text-align</code>属性不太相同。我们通过例子来具体看一下这个属性二在哪里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置字体填充色</span></div><div class="line">ctx.fillStyle = <span class="string">"tomato"</span>;</div><div class="line"><span class="comment">// 设置字体边框色</span></div><div class="line">ctx.strokeStyle = <span class="string">"black"</span>;</div><div class="line"><span class="comment">// 设置字体大小和类型</span></div><div class="line">ctx.font = <span class="string">"60px sans-serif"</span>;</div><div class="line"><span class="comment">// 设置文本左对齐</span></div><div class="line">ctx.textAlign = <span class="string">"left"</span>;</div><div class="line">ctx.fillText(<span class="string">"文字测试1"</span>, <span class="number">300</span>, <span class="number">200</span>);</div><div class="line"><span class="comment">// 设置文本右对齐</span></div><div class="line">ctx.textAlign = <span class="string">"right"</span>;</div><div class="line">ctx.strokeText(<span class="string">"文字测试2"</span>,<span class="number">300</span>, <span class="number">300</span>);</div><div class="line"><span class="comment">// 设置文本剧中对齐</span></div><div class="line">ctx.textAlign = <span class="string">"center"</span>;</div><div class="line">ctx.fillText(<span class="string">"文字测试3"</span>,<span class="number">300</span>, <span class="number">400</span>);</div><div class="line">ctx.strokeText(<span class="string">"文字测试3"</span>,<span class="number">300</span>, <span class="number">400</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fjx814dn9xj30xa0i6abl.jpg" alt=""></p>
+<p>说明：在上图中我们画的一条黑色的线，就是添加文字时设置的文本 x 轴起始点 300 的位置。所以不管是哪种对齐方式，都是指的文本相对于起始点所在的这条线对齐。</p>
+<h4 id="textBaseline"><a href="#textBaseline" class="headerlink" title="textBaseline"></a>textBaseline</h4><p><code>textBaseline</code>属性用来设置文本垂直对齐方式。属性值的取值有三种：</p>
+<ul>
+<li><code>top</code>：文本的顶部相对于起始点对齐。</li>
+<li><code>bottom</code>：文本的底部相对于起始点对齐。</li>
+<li><code>middle</code>：文本的中间相对于起始点对齐。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ctx.fillStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.strokeStyle = <span class="string">"black"</span>;</div><div class="line">ctx.font = <span class="string">"60px sans-serif"</span>;</div><div class="line"></div><div class="line">ctx.textBaseline = <span class="string">"top"</span>;</div><div class="line">ctx.fillText(<span class="string">"文字测试1"</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"></div><div class="line">ctx.textBaseline = <span class="string">"bottom"</span>;</div><div class="line">ctx.strokeText(<span class="string">"文字测试2"</span>,<span class="number">100</span>, <span class="number">300</span>);</div><div class="line"></div><div class="line">ctx.textBaseline = <span class="string">"middle"</span>;</div><div class="line">ctx.fillText(<span class="string">"文字测试3"</span>,<span class="number">100</span>, <span class="number">400</span>);</div><div class="line">ctx.strokeText(<span class="string">"文字测试3"</span>,<span class="number">100</span>, <span class="number">400</span>);</div></pre></td></tr></table></figure>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjx8k5xxl3j30xa0kmtaa.jpg" alt=""></p>
+<p>说明：在上图中我们画的三条黑色的线，就是添加文字时设置的文本 y 轴起始点的位置。所以不管是哪种对齐方式，都是指的文本相对于起始点所在的这条线对齐。</p>
+<h4 id="measureText"><a href="#measureText" class="headerlink" title="measureText()"></a>measureText()</h4><p><code>measureText()</code>方法返回一个<code>TextMetrics</code>对象，其中包含关于文本宽度的信息。知道文本宽高后，我们就可以通过一系列的计算来使文本上下左右居中。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.font = <span class="string">"50px abc"</span>;</div><div class="line"><span class="keyword">let</span> textWidth = ctx.measureText(<span class="string">"测试文字"</span>).width;</div><div class="line">ctx.fillText(<span class="string">"测试文字"</span>, (myCanvas.width - textWidth)/<span class="number">2</span>, (myCanvas.height - <span class="number">50</span>)/<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><p><code>&lt;canvas&gt;</code>的上下文提供了四个属性用来设置文字阴影效果：</p>
+<ul>
+<li><code>shadowOffsetX</code>：阴影水平方向的偏移。</li>
+<li><code>shadowOffsetY</code>：阴影垂直方向的偏移。</li>
+<li><code>shadowBlur</code>：阴影的模糊程度。</li>
+<li><code>shadowColor</code>：阴影颜色。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.shadowOffsetX = <span class="number">20</span>;</div><div class="line">ctx.shadowOffsetY = <span class="number">20</span>;</div><div class="line">ctx.shadowBlur = <span class="number">30</span>;</div><div class="line">ctx.shadowColor = <span class="string">"tomato"</span>;</div><div class="line"></div><div class="line">ctx.font = <span class="string">"50px sans-serif"</span>;</div><div class="line">ctx.fillText(<span class="string">"测试文字"</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjxaf4adoxj30xa07a0t2.jpg" alt=""></p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/canvas/">canvas</a>
+            
+              <a href="/tags/画布/">画布</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/12/05/memory/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JavaScript 内存空间</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/09/10/canvasBasic/">
+        <span class="next-text nav-default">canvas 画布 - 基础</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jaelyn</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>
