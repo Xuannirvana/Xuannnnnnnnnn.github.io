@@ -443,7 +443,7 @@
 <p>注意：一般情况下，我们都会将<code>createPattern()</code>返回的对象作为<code>fillStyle</code>的属性值。</p>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">"dog-img.png"</span>;</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> pattern = ctx.createPattern(img, <span class="string">"repeat"</span>);</div><div class="line">    ctx.fillStyle = pattern;</div><div class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">500</span>, <span class="number">500</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><strong><code>createLinearGradient()</code></strong></p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><strong><code>createLinearGradient()</code></strong></p>
 <p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createLinearGradient()</code>用来做线性渐变色。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">createLinearGradient(x1, y1, x2, y2)</div></pre></td></tr></table></figure>
@@ -523,7 +523,7 @@
 <h4 id="measureText"><a href="#measureText" class="headerlink" title="measureText()"></a>measureText()</h4><p><code>measureText()</code>方法返回一个<code>TextMetrics</code>对象，其中包含关于文本宽度的信息。知道文本宽高后，我们就可以通过一系列的计算来使文本上下左右居中。</p>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.font = <span class="string">"50px abc"</span>;</div><div class="line"><span class="keyword">let</span> textWidth = ctx.measureText(<span class="string">"测试文字"</span>).width;</div><div class="line">ctx.fillText(<span class="string">"测试文字"</span>, (myCanvas.width - textWidth)/<span class="number">2</span>, (myCanvas.height - <span class="number">50</span>)/<span class="number">2</span>);</div></pre></td></tr></table></figure>
-<h4 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h4><p><code>&lt;canvas&gt;</code>的上下文提供了四个属性用来设置文字阴影效果：</p>
+<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><p><code>&lt;canvas&gt;</code>的上下文提供了四个属性用来设置文字阴影效果：</p>
 <ul>
 <li><code>shadowOffsetX</code>：阴影水平方向的偏移。</li>
 <li><code>shadowOffsetY</code>：阴影垂直方向的偏移。</li>
