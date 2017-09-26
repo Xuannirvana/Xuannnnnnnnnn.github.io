@@ -901,10 +901,10 @@
   
   <entry>
     <title>Event 事件 - 扩展</title>
-    <link href="http://yoursite.com/2017/09/22/event02/"/>
-    <id>http://yoursite.com/2017/09/22/event02/</id>
-    <published>2017-09-22T02:49:43.000Z</published>
-    <updated>2017-09-22T06:46:45.000Z</updated>
+    <link href="http://yoursite.com/2017/08/24/eventExpand/"/>
+    <id>http://yoursite.com/2017/08/24/eventExpand/</id>
+    <published>2017-08-24T02:49:43.000Z</published>
+    <updated>2017-09-26T15:24:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
 <a id="more"></a>
@@ -1101,10 +1101,10 @@
   
   <entry>
     <title>Event 事件 - 基础</title>
-    <link href="http://yoursite.com/2017/09/13/event01/"/>
-    <id>http://yoursite.com/2017/09/13/event01/</id>
-    <published>2017-09-13T02:41:30.000Z</published>
-    <updated>2017-09-22T06:46:16.000Z</updated>
+    <link href="http://yoursite.com/2017/08/23/eventBasic/"/>
+    <id>http://yoursite.com/2017/08/23/eventBasic/</id>
+    <published>2017-08-23T02:41:30.000Z</published>
+    <updated>2017-09-26T15:24:27.000Z</updated>
     
     <content type="html"><![CDATA[<p>Javascript 使我们可以动态的去创建操作一个页面。当我们在与浏览器交互的时候，浏览器就会触发各种事件。</p>
 <p>比如我们打开某一个网页的时候，浏览器需要加载完成这个网页，就会触发一个加载事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个点击事件。<br><a id="more"></a></p>

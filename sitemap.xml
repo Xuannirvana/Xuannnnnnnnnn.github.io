@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/08/24/eventExpand/</loc>
+    
+    <lastmod>2017-09-26T15:24:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/23/eventBasic/</loc>
+    
+    <lastmod>2017-09-26T15:24:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/10/canvasBasic/</loc>
     
     <lastmod>2017-09-26T15:23:05.000Z</lastmod>
@@ -40,20 +54,6 @@
     <loc>http://yoursite.com/2017/10/02/Array/</loc>
     
     <lastmod>2017-09-22T06:47:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/22/event02/</loc>
-    
-    <lastmod>2017-09-22T06:46:45.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/09/13/event01/</loc>
-    
-    <lastmod>2017-09-22T06:46:16.000Z</lastmod>
     
   </url>
   

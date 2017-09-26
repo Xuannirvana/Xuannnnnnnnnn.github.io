@@ -859,7 +859,7 @@
     
     <entry>
       <title><![CDATA[Event 事件 - 扩展]]></title>
-      <url>/2017/09/22/event02/</url>
+      <url>/2017/08/24/eventExpand/</url>
       <content type="html"><![CDATA[<p>我们在<a href="https://runjaelyn.github.io/2017/08/30/event01/" target="_blank" rel="external">《Event 事件 - 基础》</a>中讲了关于事件的“事件驱动的三要素”、“事件分类”和“事件绑定”等基础内容，接下来我们在前面内容的基础之上，再来对事件的知识点进行一些扩展的学习。</p>
 <a id="more"></a>
 <h2 id="事件中的-this"><a href="#事件中的-this" class="headerlink" title="事件中的 this"></a>事件中的 this</h2><p>在事件的处理函数中，可以通过 this 关键字来指代绑定该事件的标签。</p>
@@ -1057,7 +1057,7 @@
     
     <entry>
       <title><![CDATA[Event 事件 - 基础]]></title>
-      <url>/2017/09/13/event01/</url>
+      <url>/2017/08/23/eventBasic/</url>
       <content type="html"><![CDATA[<p>Javascript 使我们可以动态的去创建操作一个页面。当我们在与浏览器交互的时候，浏览器就会触发各种事件。</p>
 <p>比如我们打开某一个网页的时候，浏览器需要加载完成这个网页，就会触发一个加载事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个点击事件。<br><a id="more"></a></p>
 <h2 id="事件驱动三要素"><a href="#事件驱动三要素" class="headerlink" title="事件驱动三要素"></a>事件驱动三要素</h2><ul>
