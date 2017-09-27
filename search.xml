@@ -430,7 +430,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.shadowOffsetX = <span class="number">20</span>;</div><div class="line">ctx.shadowOffsetY = <span class="number">20</span>;</div><div class="line">ctx.shadowBlur = <span class="number">30</span>;</div><div class="line">ctx.shadowColor = <span class="string">"tomato"</span>;</div><div class="line"></div><div class="line">ctx.font = <span class="string">"50px sans-serif"</span>;</div><div class="line">ctx.fillText(<span class="string">"测试文字"</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjxaf4adoxj30xa07a0t2.jpg" alt=""></p>
-<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><h3 id="获取画布像素"><a href="#获取画布像素" class="headerlink" title="获取画布像素"></a>获取画布像素</h3><p>到目前为止，我们尚未深入了解 canvas 画布真实像素的原理。事实上，我们可以直接通过<code>ImageData</code>对象去操作像素数据，直接读取或将数据数组写入该对象中。</p>
+<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p>到目前为止，我们尚未深入了解 canvas 画布真实像素的原理。事实上，我们可以直接通过<code>ImageData</code>对象去操作像素数据，直接读取或将数据数组写入该对象中。</p>
 <h3 id="获取画布像素数据"><a href="#获取画布像素数据" class="headerlink" title="获取画布像素数据"></a>获取画布像素数据</h3><p><strong><code>getImageData()</code></strong></p>
 <p><code>&lt;canvas&gt;</code>的上下文提供了一<code>getImageData()</code>方法用来获取画布中当前选中区域的对象数据。</p>
 <p>语法结构：</p>
@@ -1716,9 +1716,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> document </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         
