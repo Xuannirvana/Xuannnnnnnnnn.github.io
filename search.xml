@@ -430,9 +430,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.shadowOffsetX = <span class="number">20</span>;</div><div class="line">ctx.shadowOffsetY = <span class="number">20</span>;</div><div class="line">ctx.shadowBlur = <span class="number">30</span>;</div><div class="line">ctx.shadowColor = <span class="string">"tomato"</span>;</div><div class="line"></div><div class="line">ctx.font = <span class="string">"50px sans-serif"</span>;</div><div class="line">ctx.fillText(<span class="string">"测试文字"</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjxaf4adoxj30xa07a0t2.jpg" alt=""></p>
-<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p>到目前为止，我们尚未深入了解 canvas 画布真实像素的原理。事实上，我们可以直接通过<code>ImageData</code>对象去操作像素数据，直接读取或将数据数组写入该对象中。</p>
+<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p>在前面我们讲了关于画布的基础和进阶阶段的大部分知识点，绘制各种图形、添加图片或者绘制各种动画效果。但实际上到目前为止，我们都还没有去了解关于<code>&lt;canvas&gt;</code>画布真实像素的原理。</p>
+<p>事实上，画布上的每一个像素点都有它的像素数据信息，而我们可以通过<code>&lt;canvas&gt;</code>上下文提供的 API 去获取、修改、创建这些像素信息。</p>
 <h3 id="获取画布像素数据"><a href="#获取画布像素数据" class="headerlink" title="获取画布像素数据"></a>获取画布像素数据</h3><p><strong><code>getImageData()</code></strong></p>
-<p><code>&lt;canvas&gt;</code>的上下文提供了一<code>getImageData()</code>方法用来获取画布中当前选中区域的对象数据。</p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了一<code>getImageData()</code>方法用来获取画布中当前选中区域的像素数据。</p>
 <p>语法结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getImageData(x, y, width, height)</div></pre></td></tr></table></figure>
 <p>参数说明：</p>
@@ -441,11 +442,10 @@
 <li><code>width</code>和<code>height</code>：所选取的图像数据矩形区域的宽高。</li>
 </ul>
 <p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 绘制一个宽高 100 的矩形</span></div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 获取左上角坐标为 (0,0)，宽高为 100 的矩形区域</span></div><div class="line"><span class="keyword">let</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log( imgData );   <span class="comment">// ImageData 对象</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置矩形的填充色为 orange</span></div><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line"><span class="comment">// 绘制一个宽高 100 的矩形</span></div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 获取左上角坐标为 (0,0)，宽高为 100 的矩形区域</span></div><div class="line"><span class="keyword">let</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log( imgData );   <span class="comment">// ImageData 对象</span></div></pre></td></tr></table></figure>
 <p>通过以上代码我们可以看到，<code>getImageData()</code>方法返回了一个<code>ImageData</code>对象。如下图所示：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fjyfnkv0amj315o07ojt0.jpg" alt=""></p>
-<p><strong><code>ImageData</code></strong></p>
-<p><code>ImageData</code>对象作为<code>getImageData()</code>方法的返回值，存储着<code>&lt;canvas&gt;</code>对象真实的像素数据。包含以下几个只读属性：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fjzjff10buj313402ejrz.jpg" alt=""></p>
+<h4 id="ImageData"><a href="#ImageData" class="headerlink" title="ImageData"></a>ImageData</h4><p><code>ImageData</code>对象作为<code>getImageData()</code>方法的返回值，存储着<code>&lt;canvas&gt;</code>对象真实的像素数据。包含以下几个只读属性：</p>
 <ul>
 <li><code>width</code>：选中区域宽度上的像素点个数（宽度）。</li>
 <li><code>height</code>：选中区域宽度上的像素点个数（高度）。</li>
@@ -457,6 +457,19 @@
 </ul>
 </li>
 </ul>
+<p>在上面的代码运行结果中我们看到，<code>data</code>是一个长度为 40000 的数组。那如果我们在调用<code>getImageData()</code>方法时把所获取区域的宽高都改成 50 呢？例如如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取左上角坐标为 (0,0)，宽高为 50 的矩形区域</span></div><div class="line"><span class="keyword">let</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="built_in">console</span>.log( imgData );   <span class="comment">// ImageData 对象</span></div></pre></td></tr></table></figure>
+<p>那么这个时候，我们再看一下<code>ImageData</code>对象的<code>data</code>属性，会发现数组的长度变为了 10000。</p>
+<p>效果展示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjzjpxzxryj313e024dgd.jpg" alt=""></p>
+<p>那么，这个数组的长度到底是根据什么来决定的呢？</p>
+<blockquote>
+<p><code>ImageData</code>对象的<code>data</code>属性里保存的是所选区域内所有像素点的<code>rgba</code>颜色值集合。</p>
+</blockquote>
+<p>例如，当我们所选区域的宽高都 100，那么这个时候所选区域中就应该有（100 <em> 100 = 10000）个像素点。而每个像素点又有四个颜色值（<code>rgba</code>），所以我们的数组中总共有（10000 </em> 4 = 40000）个元素。</p>
+<p>分析下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fjzk6bg8dwj31de07gacb.jpg" alt=""></p>
+<p>我们可以看到数组中的元素，每四个重复一次，实际上就是每四个元素为一个像素点的颜色值。</p>
 <h3 id="写入画布像素数据"><a href="#写入画布像素数据" class="headerlink" title="写入画布像素数据"></a>写入画布像素数据</h3><p>在上一个知识点中我们通过<code>getImageData()</code>方法获取到了所选区域的像素数据。那么，拿到这些像素数据有什么作用呢？</p>
 <p><strong><code>putImageData()</code></strong></p>
 <p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>putImageData()</code>用来写入画布的像素数据。也就是说，我们可以把我们在这个区域拿到的像素数据，绘制在另一块区域中去。</p>
@@ -471,6 +484,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.fillStyle = <span class="string">"orange"</span>;</div><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="keyword">let</span> imgData = ctx.getImageData(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 从 (100, 100) 开始绘制所得像素数据</span></div><div class="line">ctx.putImageData(imgData, <span class="number">100</span>, <span class="number">100</span>)</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjyg97ll3kj30xa0ckt8y.jpg" alt=""></p>
+<p>在这个例子中，我们只需要调用一个<code>putImageData()</code>方法，就可以将选中的区域复制一块出来。</p>
 <h3 id="新建画布像素数据"><a href="#新建画布像素数据" class="headerlink" title="新建画布像素数据"></a>新建画布像素数据</h3><p>在上一个知识点中，我们是将获取到的像素数据写入到了另一块区域中。那如果我们不获取呢？可不可以自己去创建像素数据呢。</p>
 <p><strong><code>createImageData()</code></strong></p>
 <p><code>&lt;canvas&gt;</code>的上下文提供了一个方法<code>createImageData()</code>用来创建新的像素数据。</p>
@@ -482,7 +496,7 @@
 <li><code>height</code>：绘制新建像素数据的区域高度。</li>
 </ul>
 <p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> imgData = ctx.createImageData(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log(imgData);   </div><div class="line"><span class="comment">// 把新创建出来的像素数据写入到画布(100,100)的位置</span></div><div class="line">ctx.putImageData(imgData, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建一个宽高各 100 的像素数据区域</span></div><div class="line"><span class="keyword">let</span> imgData = ctx.createImageData(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log(imgData);   </div><div class="line"><span class="comment">// 把新创建出来的像素数据写入到画布(100,100)的位置</span></div><div class="line">ctx.putImageData(imgData, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <p>运行上面的代码我们可以看到画布上并没有任何图形显示。实际上是因为当前像素数据的颜色是透明色。</p>
 <blockquote>
 <p>新创建出来的像素数据<code>rgba</code>值默认是<code>(0, 0, 0, 0)</code>，即黑色全透明。</p>
@@ -1716,9 +1730,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
