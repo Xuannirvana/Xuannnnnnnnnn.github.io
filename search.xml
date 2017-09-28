@@ -505,6 +505,36 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; imgData.data.length; i++)&#123;</div><div class="line">	<span class="comment">// 把每一个像素点的rgba值中的a值从0改成255</span></div><div class="line">    imgData.data[<span class="number">4</span> * i + <span class="number">3</span>] = <span class="number">255</span>;</div><div class="line">&#125;</div><div class="line">ctx.putImageData(imgData, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
 <p>效果展示：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjygqe7babj30xc08qglo.jpg" alt=""></p>
+<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p>合成就是指：当<code>&lt;canvas&gt;</code>中的多个图形之间发生重叠的时候，对于重叠部分的处理。</p>
+<h3 id="全局透明度"><a href="#全局透明度" class="headerlink" title="全局透明度"></a>全局透明度</h3><p><strong><code>globalAlpha</code></strong></p>
+<p><code>&lt;canvas&gt;</code>的上下文提供了一个属性<code>globalAlpha</code>来设置一个全局的透明度样式。</p>
+<p>语法结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">globalAlpha = value</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p><code>value</code>：透明度的值。取值范围在 0.0（透明）～ 1.0（不透明），默认是 1.0。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line"><span class="comment">// 设置一个全局的透明度</span></div><div class="line">ctx.globalAlpha = <span class="number">0.5</span>;</div><div class="line">ctx.fillStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.fillRect(<span class="number">50</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.fillRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjzr6rtda9j30x80bwaa9.jpg" alt=""></p>
+<h3 id="覆盖合成"><a href="#覆盖合成" class="headerlink" title="覆盖合成"></a>覆盖合成</h3><p><code>&lt;canvas&gt;</code>的上下文提供了一个属性<code>globalCompositeOperation</code>用来设置多个图形覆盖重叠时的最终显示效果。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">globalCompositeOperation = value;</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p><code>value</code>有两组常用的取值，其中<code>source</code>（源）代表后绘制的新图形，<code>destination</code>（目标）代表先绘制的图形。具体取值如下：</p>
+<ul>
+<li><code>source-over</code>：（默认值）源在上面，新的图像层级比较高。</li>
+<li><code>source-in</code>：只留下源与目标重叠部分（源的那一部分）。</li>
+<li><code>source-out</code>：只留下源超过目标的部分。</li>
+<li><code>source-atop</code>：裁掉源溢出的部分。</li>
+<li><code>destination-over</code>：目标在上面，旧的图像层级比较高。</li>
+<li><code>destination-in</code>：只留下目标与源重叠部分（目标的那一部分）。</li>
+<li><code>destination-out</code>：只留下目标超过源的部分。</li>
+<li><code>destination-atop</code>：裁掉目标溢出的部分。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">ctx.globalCompositeOperation = <span class="string">"source-out"</span>;</div><div class="line">ctx.fillStyle = <span class="string">"tomato"</span>;</div><div class="line">ctx.fillRect(<span class="number">50</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjzrbvllhbj30xa07omx8.jpg" alt=""></p>
 ]]></content>
       
         <categories>
