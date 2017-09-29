@@ -558,6 +558,7 @@
 <p>然后我们可以在控制台看到类似于如下结果：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fk0pvyjiiaj314o03uabj.jpg" alt=""></p>
 <p>将其全部复制，在新窗口打开就可以得到图片，然后再右键保存就可以了。</p>
+<p>关于 HTML5 <code>&lt;canvas&gt;</code>画布的知识点就讲到这了。再有也不讲了……心累……</p>
 ]]></content>
       
         <categories>
@@ -1783,9 +1784,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
