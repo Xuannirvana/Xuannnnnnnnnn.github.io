@@ -41,14 +41,14 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/05/scopeChian/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg">
-<meta property="og:updated_time" content="2017-10-06T15:47:26.000Z">
+<meta property="og:updated_time" content="2017-10-06T17:43:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域与作用域链">
 <meta name="twitter:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -216,7 +216,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与执行上下文的区别"><span class="toc-text">与执行上下文的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-text">作用域链</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译器和引擎"><span class="toc-text">编译器和引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与执行上下文的区别"><span class="toc-text">与执行上下文的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-text">作用域链</span></a></li></ol>
     </div>
   </div>
 
@@ -225,16 +225,56 @@
       
         <p>作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。</p>
 <a id="more"></a>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在 JavaScript 中，我们可以将作用域定义为一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
-<p>注：这里的标识符，指的是变量名或函数名。</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>JavaScript 中只有全局作用域与函数作用域（因为<code>eval</code>我们平时开发中几乎不会用到，所以这里不考虑）。</p>
-<h3 id="与执行上下文的区别"><a href="#与执行上下文的区别" class="headerlink" title="与执行上下文的区别"></a>与执行上下文的区别</h3><p>作用域与执行上下文是两个完全不同的概念。但是很多人在这两个概念上都很容易弄混淆，所以一定要仔细区分。</p>
+<h2 id="编译器和引擎"><a href="#编译器和引擎" class="headerlink" title="编译器和引擎"></a>编译器和引擎</h2><p>在讲解作用域这个概念之前，我们需要先了解另外两个东西：一个叫做编译器，一个叫做引擎。</p>
+<p>在前面我们讲<a href="https://runjaelyn.github.io/2017/10/02/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>这一章的时候，就已经知道整个代码的执行过程实际上分为了两个阶段：</p>
+<ul>
+<li>代码编译阶段：即将代码翻译成可执行代码，其中就包含了我们的变量提升和函数提升这两个过程。</li>
+<li>代码执行阶段：即执行第一步中翻译完成的可执行代码。</li>
+</ul>
+<p>而完成这两步工作的，就是我们的编译器和引擎。</p>
+<ul>
+<li>编译器：负责语法分析及代码生成等工作。</li>
+<li>引擎：负责整个 JS 程序的执行过程。</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>了解了编译器和引擎之后，接下来我们开始来看一下什么是作用域。</p>
+<p>“域”，我们一般都理解为“区域”，也就是“范围”。那么，作用域，我们也就可以理解为“作用区域”或“作用范围”。</p>
+<p>而我们的编译器在工作的时候，操作的无非也就是变量和函数这两样东西了。因此：</p>
 <blockquote>
-<p>JavaScript 代码在整个执行过程，分为两个阶段，代码<strong>编译阶段</strong>与代码<strong>执行阶段</strong>。<br>编译阶段由编译器完成，将代码翻译成可执行代码，这个阶段作用域规则会确定。<br>执行阶段由引擎完成，主要任务是执行可执行代码，执行上下文在这个阶段创建。</p>
+<p>作用域，指的就是变量或函数的作用范围。</p>
+</blockquote>
+<p>那么有了这个作用域，到底有什么作用呢？</p>
+<blockquote>
+<p>不同的作用域可以限制变量或函数不同的作用范围，因此，它可以用来管理编译器在工作时如何去对变量和函数进行查找和访问。</p>
+</blockquote>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>首先明确一个概念，JavaScript 中的作用域是通过函数取划分的，所以不存在块级作用域。</p>
+<blockquote>
+<p>注：这里我们讲的只针对 ES5。ES6中，因为加入了<code>let</code>关键字，用<code>let</code>声明的变量具有块级作用域。</p>
+</blockquote>
+<p>JavaScript 中只有<strong>全局作用域</strong>与<strong>局部（函数）作用域</strong>（因为<code>eval</code>我们平时开发中几乎不会用到，所以这里不考虑）。</p>
+<p>全局作用域中的所有的变量和函数可以在代码的任何地方访问和使用。而局部作用域中的所有的变量和函数只能在当前作用域内部使用。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line">	<span class="built_in">console</span>.log( b );    <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log( b );    <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
+<p>分析：</p>
+<ul>
+<li>变量<code>a</code>在函数外，因此它处于全局作用域内；而变量<code>b</code>在函数内，因此它处于局部作用域内。</li>
+<li>在<code>test</code>函数的局部作用域内可以访问到全局作用域的变量<code>a</code>。</li>
+<li>在全局作用域内访问不到<code>test</code>函数的局部作用域内的变量<code>b</code>。</li>
+</ul>
+<h3 id="与执行上下文的区别"><a href="#与执行上下文的区别" class="headerlink" title="与执行上下文的区别"></a>与执行上下文的区别</h3><p>作用域与执行上下文是两个完全不同的概念。但是很多人在这两个概念上都很容易弄混淆，所以一定要仔细区分。</p>
+<p><strong>产生时间的区别</strong></p>
+<p>前面我们提到了 JavaScript 代码在整个执行过程，分为了两个阶段。</p>
+<blockquote>
+<p>编译阶段由编译器完成，将代码翻译成可执行代码，这个阶段作用域的范围会确定，即<strong>作用域的范围在函数声明时确定</strong>。</p>
+<p>执行阶段由引擎完成，主要任务是执行可执行代码，执行上下文在这个阶段创建，即<strong>执行上下文在函数调用时创建</strong>。</p>
 </blockquote>
 <p>我们通过图解来具体看一下编译阶段和执行阶段分别发生了些什么。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg" alt=""></p>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/29/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg" alt=""></p>
+<p><strong>作用的区别</strong></p>
+<blockquote>
+<p>作用域的作用是用来控制变量和函数的作用范围。</p>
+<p>执行上下文的作用是用来控制代码的执行流程。</p>
+</blockquote>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
 <p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，这一篇文章，我们主要来分析一下作用域链。</p>
 <blockquote>
