@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="作用域与作用域链"/>
+
+
+
+
+  <meta name="keywords" content="作用域,作用域链," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/10/05/scopeChian/"/>
+
+
+<meta name="description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
+<meta name="keywords" content="作用域,作用域链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作用域与作用域链">
+<meta property="og:url" content="http://yoursite.com/2017/10/05/scopeChian/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg">
+<meta property="og:updated_time" content="2017-10-06T15:47:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="作用域与作用域链">
+<meta name="twitter:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: false,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> 作用域与作用域链 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          作用域与作用域链
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年10月5日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与执行上下文的区别"><span class="toc-text">与执行上下文的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-text">作用域链</span></a></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。</p>
+<a id="more"></a>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在 JavaScript 中，我们可以将作用域定义为一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
+<p>注：这里的标识符，指的是变量名或函数名。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>JavaScript 中只有全局作用域与函数作用域（因为<code>eval</code>我们平时开发中几乎不会用到，所以这里不考虑）。</p>
+<h3 id="与执行上下文的区别"><a href="#与执行上下文的区别" class="headerlink" title="与执行上下文的区别"></a>与执行上下文的区别</h3><p>作用域与执行上下文是两个完全不同的概念。但是很多人在这两个概念上都很容易弄混淆，所以一定要仔细区分。</p>
+<blockquote>
+<p>JavaScript 代码在整个执行过程，分为两个阶段，代码<strong>编译阶段</strong>与代码<strong>执行阶段</strong>。<br>编译阶段由编译器完成，将代码翻译成可执行代码，这个阶段作用域规则会确定。<br>执行阶段由引擎完成，主要任务是执行可执行代码，执行上下文在这个阶段创建。</p>
+</blockquote>
+<p>我们通过图解来具体看一下编译阶段和执行阶段分别发生了些什么。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg" alt=""></p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/29/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
+<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，这一篇文章，我们主要来分析一下作用域链。</p>
+<blockquote>
+<p>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
+</blockquote>
+<p>但看文字估计还是不太能理解到底什么是作用链，所以我们通过一个例子，结合代码和图解来具体进行分析说明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> b = a + <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">let</span> c = <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> b + c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inner();</div><div class="line">&#125;</div><div class="line"></div><div class="line">outer();</div></pre></td></tr></table></figure>
+<p>在这个例子中，全局上下文、<code>outer()</code>上下文、<code>inner()</code>上下文先后创建。而在它们各自的上下文中包含了它们自己的变量对象。分别是：<code>VO(global)</code>、<code>VO(outer)</code>、<code>VO(inner)</code>。而<code>inner</code>的作用域链，又同时包含了这三个变量对象。所以<code>inner</code>的执行上下文如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">innerEC = &#123;</div><div class="line">    VO(inner): &#123;...&#125;,  <span class="comment">// 自己的变量对象</span></div><div class="line">    scopeChain: [VO(inner), VO(outer), VO(global)]   <span class="comment">//作用域链</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以直接用一个数组来表示作用链，数组的第一项<code>scopeChain[0]</code>作为作用域链的最前端，而数组的最后一项，作为作用域链的最末端。因此，所有的作用域链的最末端都是全局变量对象。</p>
+<p>很多人在理解作用域链的时候会把当前作用域和上层作用域之间想象成包含关系。但其实我觉得另一种形容作用域链结构的描述可能更贴切：以最前端为起点，最末端为终点的单方向通道。如下图所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg" alt=""></p>
+<blockquote>
+<p>当执行上下文进入执行阶段时，变量对象就变成了活动对象（这一点我们在讲变量对象那一篇博客中已经讲过）。因此，上面的图解中我们用了<code>AO</code>（Active Object）来表示。</p>
+</blockquote>
+<p>是的，作用域链是由一系列变量对象组成，我们可以在这个单向通道中，查询变量对象中的标识符，这样就可以访问到上一层作用域中的变量了。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/作用域/">作用域</a>
+            
+              <a href="/tags/作用域链/">作用域链</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2017/10/04/VariableObject/">
+        <span class="next-text nav-default">变量对象（Variable Object）</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jaelyn</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>

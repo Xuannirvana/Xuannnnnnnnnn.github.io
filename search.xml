@@ -3,11 +3,61 @@
   
     
     <entry>
+      <title><![CDATA[作用域与作用域链]]></title>
+      <url>/2017/10/05/scopeChian/</url>
+      <content type="html"><![CDATA[<p>作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。</p>
+<a id="more"></a>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>在 JavaScript 中，我们可以将作用域定义为一套规则，这套规则用来管理引擎如何在当前作用域以及嵌套的子作用域中根据标识符名称进行变量查找。</p>
+<p>注：这里的标识符，指的是变量名或函数名。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>JavaScript 中只有全局作用域与函数作用域（因为<code>eval</code>我们平时开发中几乎不会用到，所以这里不考虑）。</p>
+<h3 id="与执行上下文的区别"><a href="#与执行上下文的区别" class="headerlink" title="与执行上下文的区别"></a>与执行上下文的区别</h3><p>作用域与执行上下文是两个完全不同的概念。但是很多人在这两个概念上都很容易弄混淆，所以一定要仔细区分。</p>
+<blockquote>
+<p>JavaScript 代码在整个执行过程，分为两个阶段，代码<strong>编译阶段</strong>与代码<strong>执行阶段</strong>。<br>编译阶段由编译器完成，将代码翻译成可执行代码，这个阶段作用域规则会确定。<br>执行阶段由引擎完成，主要任务是执行可执行代码，执行上下文在这个阶段创建。</p>
+</blockquote>
+<p>我们通过图解来具体看一下编译阶段和执行阶段分别发生了些什么。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fk0ui48qz6j316s0ikju1.jpg" alt=""></p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/29/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
+<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，这一篇文章，我们主要来分析一下作用域链。</p>
+<blockquote>
+<p>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
+</blockquote>
+<p>但看文字估计还是不太能理解到底什么是作用链，所以我们通过一个例子，结合代码和图解来具体进行分析说明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> b = a + <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">let</span> c = <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> b + c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inner();</div><div class="line">&#125;</div><div class="line"></div><div class="line">outer();</div></pre></td></tr></table></figure>
+<p>在这个例子中，全局上下文、<code>outer()</code>上下文、<code>inner()</code>上下文先后创建。而在它们各自的上下文中包含了它们自己的变量对象。分别是：<code>VO(global)</code>、<code>VO(outer)</code>、<code>VO(inner)</code>。而<code>inner</code>的作用域链，又同时包含了这三个变量对象。所以<code>inner</code>的执行上下文如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">innerEC = &#123;</div><div class="line">    VO(inner): &#123;...&#125;,  <span class="comment">// 自己的变量对象</span></div><div class="line">    scopeChain: [VO(inner), VO(outer), VO(global)]   <span class="comment">//作用域链</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以直接用一个数组来表示作用链，数组的第一项<code>scopeChain[0]</code>作为作用域链的最前端，而数组的最后一项，作为作用域链的最末端。因此，所有的作用域链的最末端都是全局变量对象。</p>
+<p>很多人在理解作用域链的时候会把当前作用域和上层作用域之间想象成包含关系。但其实我觉得另一种形容作用域链结构的描述可能更贴切：以最前端为起点，最末端为终点的单方向通道。如下图所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg" alt=""></p>
+<blockquote>
+<p>当执行上下文进入执行阶段时，变量对象就变成了活动对象（这一点我们在讲变量对象那一篇博客中已经讲过）。因此，上面的图解中我们用了<code>AO</code>（Active Object）来表示。</p>
+</blockquote>
+<p>是的，作用域链是由一系列变量对象组成，我们可以在这个单向通道中，查询变量对象中的标识符，这样就可以访问到上一层作用域中的变量了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 执行上下文 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 作用域 </tag>
+            
+            <tag> 作用域链 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[变量对象（Variable Object）]]></title>
-      <url>/2017/10/29/VariableObject/</url>
+      <url>/2017/10/04/VariableObject/</url>
       <content type="html"><![CDATA[<p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 解释器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
 <a id="more"></a>
-<h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在前面<a href="https://runjaelyn.github.io/2017/09/10/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>中我们已经知道，当调用一个函数时，一个新的执行上下文就会被创建。但前面没有讲到的是，一个执行上文的生命周期是可以分为两个阶段的。</p>
+<h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在前面<a href="https://runjaelyn.github.io/2017/10/08/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>中我们已经知道，当调用一个函数时，一个新的执行上下文就会被创建。但前面没有讲到的是，一个执行上文的生命周期是可以分为两个阶段的。</p>
 <ul>
 <li><strong>创建阶段</strong></li>
 </ul>
@@ -29,7 +79,7 @@
 </ol>
 <p>知道有些人看文字比较晕，我们通过图解再来理解一下：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fihwh2gtnjj31ji0fmn0g.jpg" alt=""></p>
-<p>其实在这个过程中，就涉及到了我们变量提升和函数提升，这个知识点我们在前面<a href="https://runjaelyn.github.io/2017/09/09/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>已经详细讲过了，这里就不再多说。</p>
+<p>其实在这个过程中，就涉及到了我们变量提升和函数提升，这个知识点我们在前面<a href="https://runjaelyn.github.io/2017/10/06/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>已经详细讲过了，这里就不再多说。</p>
 <h2 id="代码实例分析"><a href="#代码实例分析" class="headerlink" title="代码实例分析"></a>代码实例分析</h2><p>如果对于上面的描述还是不太能理解的，我们就通过一个简单的例子来帮助大家进一步的理解变量对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
 <p>在上例中，我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始创建。为了便于理解，我们换一个形式来表示：</p>
@@ -78,7 +128,7 @@
     
     <entry>
       <title><![CDATA[执行上下文（Execution Context）]]></title>
-      <url>/2017/10/08/ExecutionContext/</url>
+      <url>/2017/10/03/ExecutionContext/</url>
       <content type="html"><![CDATA[<p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
 <p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
 <a id="more"></a>
@@ -163,7 +213,7 @@
     
     <entry>
       <title><![CDATA[变量提升和函数提升]]></title>
-      <url>/2017/10/06/hoisting/</url>
+      <url>/2017/10/02/hoisting/</url>
       <content type="html"><![CDATA[<p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
 <a id="more"></a>
 <h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>我们先不急着解释“变量提升”是什么意思，先看几段代码：</p>
@@ -266,7 +316,7 @@
     
     <entry>
       <title><![CDATA[JavaScript 内存空间]]></title>
-      <url>/2017/10/05/memory/</url>
+      <url>/2017/10/01/memory/</url>
       <content type="html"><![CDATA[<p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
 <a id="more"></a>
 <h2 id="内存空间管理"><a href="#内存空间管理" class="headerlink" title="内存空间管理"></a>内存空间管理</h2><h3 id="JavaScript-的内存生命周期"><a href="#JavaScript-的内存生命周期" class="headerlink" title="JavaScript 的内存生命周期"></a>JavaScript 的内存生命周期</h3><ol>
@@ -1858,9 +1908,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
@@ -1979,7 +2029,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
