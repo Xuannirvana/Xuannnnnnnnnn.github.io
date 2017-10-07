@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg">
-<meta property="og:updated_time" content="2017-10-07T03:46:00.000Z">
+<meta property="og:updated_time" content="2017-10-07T08:14:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域与作用域链">
 <meta name="twitter:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄清楚我们前面几章讲的概念。">
@@ -284,14 +284,14 @@
 <p><strong>作用的区别：</strong></p>
 <blockquote>
 <p>作用域的作用是用来控制变量和函数的作用范围。</p>
-<p>执行上下文的作用是用来控制代码的执行流程。</p>
+<p>执行上下文的作用是用于跟踪代码的运行情况。</p>
 </blockquote>
 <p>关于作用域的分析讲解就到此结束，接下来我们来看一下 —— 作用域链。</p>
 <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
 <p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，所以这里，我们主要来分析一下作用域链。</p>
 <blockquote>
-<p>作用域链，是由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
+<p>作用域链，是由当前上下文与上层上下文中的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
 </blockquote>
 <p>但看文字估计还是不太能理解到底什么是作用链，所以我们通过一个例子，结合代码和图解来具体进行分析说明。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> b = a + <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">let</span> c = <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> b + c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inner();</div><div class="line">&#125;</div><div class="line"></div><div class="line">outer();</div></pre></td></tr></table></figure>

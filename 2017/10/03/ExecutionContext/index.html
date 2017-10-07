@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fih6npspxsj31kw0ikq7b.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fih6tgch25j31kw0gptdg.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fih963p8buj31kw0fuq79.jpg">
-<meta property="og:updated_time" content="2017-10-06T15:47:04.000Z">
+<meta property="og:updated_time" content="2017-10-07T08:35:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="执行上下文（Execution Context）">
 <meta name="twitter:description" content="执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。 但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。">
@@ -220,7 +220,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上下文的分类"><span class="toc-text">上下文的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局上下文"><span class="toc-text">全局上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部上下文"><span class="toc-text">局部上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval上下文"><span class="toc-text">eval上下文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文栈"><span class="toc-text">执行上下文栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码例子分析"><span class="toc-text">代码例子分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-text">练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#上下文"><span class="toc-text">上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行上下文"><span class="toc-text">执行上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文的分类"><span class="toc-text">执行上下文的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局上下文"><span class="toc-text">全局上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部上下文"><span class="toc-text">局部上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval上下文"><span class="toc-text">eval上下文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文栈"><span class="toc-text">执行上下文栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码例子分析"><span class="toc-text">代码例子分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-text">练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </div>
 
@@ -231,21 +231,19 @@
 <p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
 <a id="more"></a>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在理解执行上下文的内部原理之前，我们先来弄明白“执行上下文”的字面意思。</p>
-<p>“上下文”这个词不是我们第一次听说。在学生时代做语文阅读题的时候，我们常常会看到这种题目：</p>
+<h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><p>“上下文”这个词不是我们第一次听说。在学生时代做语文阅读题的时候，我们常常会看到这种题目：</p>
 <blockquote>
 <p>结合上下文，分析这句话作者想要表达什么意思？</p>
 </blockquote>
-<p>假设上面题目中需要我们分析的那句话是：“我谢谢你”。</p>
-<p>单看这四个字，我们能分析出这四个字要表达的意思吗？正常人应该都不能。所以这个时候要怎么办？一般情况下我们会去看文章中在这句话前后的一些其他描述，分析出当时说这句话时的情景。</p>
-<p>也就时说，题目中的“结合上下文“，其实就是让我们结合当时的情景。</p>
-<p>文章中一句话具体什么含义，取决于当时说这句话时的情景，其实也就是这句话的上下文。</p>
-<p>同样的，在 JavaScript 中，我们的一行代码，运行之后是什么结果，也取决于它当时所处的环境，也就是这行代码的上下文。</p>
-<p>所以，说了这么多，执行上下文到底是什么？</p>
+<p>说得通俗易懂一点，出题者实际上就是让你结合这句话出现时的环境，来分析这句话在当前环境中所表达的意思。</p>
+<p>所以，上下文 —— 其实就是“环境”的意思。</p>
+<h3 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h3><p>同理，执行上下文，自然就是“执行环境”的意思了。</p>
+<p>在 JavaScript 中，一段代码执行之后是什么结果，取决于它执行时所处的环境，即当前代码的执行上下文。</p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>所以，说了这么多，执行上下文到底是什么？</p>
 <blockquote>
-<p>站在代码之外的角度：执行上下文，就是说这句话或做的这件事时的所处情景。</p>
-<p>站在代码的角度：执行上下文，就是当前代码的执行环境。</p>
+<p>执行上下文，就是当前代码的执行环境。</p>
 </blockquote>
-<h2 id="上下文的分类"><a href="#上下文的分类" class="headerlink" title="上下文的分类"></a>上下文的分类</h2><p>在 JavaScript 中有三种代码运行的环境。也就是说执行上下文，分为了三类：</p>
+<h2 id="执行上下文的分类"><a href="#执行上下文的分类" class="headerlink" title="执行上下文的分类"></a>执行上下文的分类</h2><p>在 JavaScript 中有三种代码运行的环境。也就是说执行上下文，分为了三类：</p>
 <ul>
 <li>全局上下文</li>
 <li>局部上下文</li>
@@ -255,7 +253,10 @@
 <h3 id="局部上下文"><a href="#局部上下文" class="headerlink" title="局部上下文"></a>局部上下文</h3><p>当一个函数被调用时，会产生一个函数体内的执行环境，这个函数体内的执行环境就是我们所说的“局部上下文”。局部上下文属于函数，所以当函数执行完成后，当前局部上下文就会销毁掉。</p>
 <h3 id="eval上下文"><a href="#eval上下文" class="headerlink" title="eval上下文"></a>eval上下文</h3><p>用的少，也不推荐使用，所以不讲。ㄟ( ▔, ▔ )ㄏ</p>
 <h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>我们在前面提到：当浏览器打开时，就存在一个全局上下文，每次调用一个函数，又会产生局部上下文。当函数调用完成时，它的上下文以及其中的数据都会被消除，最终再重新回到全局上下文中。</p>
-<p>处于活动状态的执行上下文只有一个。</p>
+<blockquote>
+<p>因为 JavaScript 是单线程语言。因此，处于活动状态的执行上下文只有一个。</p>
+</blockquote>
+<p>那么，在一段代码中，除了全局上下文之外可能还会不断产生很多新的执行上下文，怎么才能让处于活动状态的执行上下文只有一个呢？</p>
 <p>其实这就是一个<strong>压栈出栈</strong>的过程 —— 执行上下文栈。如下图：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fih36fiku8j31d40ke41y.jpg" alt=""></p>
 <p>全局上下文在浏览器关闭之后出栈。</p>
@@ -278,17 +279,18 @@
 <blockquote>
 <p>注意：在函数中，如果遇到<code>return</code>会直接终止函数内可执行代码的执行，因此函数调用也会立即完成，所以函数的上下文也会立即从栈空间中销毁。</p>
 </blockquote>
+<p>通过上面的例子我们可以知道，处于活动状态的执行上下文永远都只有栈空间内最顶层的那一个。</p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>为了巩固对执行上下文的理解，我们最后再来分析一个代码例子。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> n = <span class="number">123</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( n );</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> result = foo();</div><div class="line">result(); <span class="comment">// 123</span></div></pre></td></tr></table></figure>
 <p>函数<code>bar</code>在函数<code>foo</code>中，并没有被调用执行。因此，执行<code>foo</code>的时，<code>bar</code>不会创建新的上下文，而是直到<code>result</code>执行时，才创建了一个新的。具体过程如下：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fih963p8buj31kw0fuq79.jpg" alt=""></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解完整个过程之后，我们就可以对执行上下文总结一些结论了。</p>
 <ul>
-<li>单线程</li>
-<li>同步执行，只要栈顶的上下文处于执行中，其他上下文需要等待</li>
-<li>全局上下文只有唯一的一个，在浏览器打开时创建入栈，在浏览器关闭时销毁出栈</li>
-<li>局部上下文个数没有限制，在每次函数被调用时创建入栈，函数执行完成后销毁出栈</li>
-<li>同一个函数被调用多少次，就会产生多少执行上下文，即使是自己调用自己</li>
+<li>单线程。</li>
+<li>同步执行，只要栈顶的上下文处于执行中，其他上下文需要等待。</li>
+<li>全局上下文只有唯一的一个，在浏览器打开时创建入栈，在浏览器关闭时销毁出栈。</li>
+<li>局部上下文个数没有限制，在每次函数被调用时创建入栈，函数执行完成后销毁出栈。</li>
+<li>同一个函数被调用多少次，就会产生多少执行上下文，即使是自己调用自己。</li>
 </ul>
 
       

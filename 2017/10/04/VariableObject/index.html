@@ -34,23 +34,25 @@
 <link rel="canonical" href="http://yoursite.com/2017/10/04/VariableObject/"/>
 
 
-<meta name="description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 解释器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
+<meta name="description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
 <meta name="keywords" content="执行上下文,生命周期,变量对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量对象（Variable Object）">
 <meta property="og:url" content="http://yoursite.com/2017/10/04/VariableObject/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 解释器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
+<meta property="og:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fihwh2gtnjj31ji0fmn0g.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fk9snyw14nj31eo0vytfo.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjgwwv1qqfj31820rwq7c.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fjgww0tpg1j316s0r4ae4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fk9zssoom0j31gk0hm42k.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjgkoj7hrrj318c0pi0xj.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fka002u89uj31fa0p4dmb.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fjgwzsntvgj316s0lywhn.jpg">
-<meta property="og:updated_time" content="2017-10-06T15:47:20.000Z">
+<meta property="og:updated_time" content="2017-10-07T13:23:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量对象（Variable Object）">
-<meta name="twitter:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 解释器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
+<meta name="twitter:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 
 
@@ -219,41 +221,42 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文生命周期"><span class="toc-text">执行上下文生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量对象创建过程"><span class="toc-text">变量对象创建过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实例分析"><span class="toc-text">代码实例分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-text">练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局上下文的变量对象"><span class="toc-text">全局上下文的变量对象</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#执行上下文生命周期"><span class="toc-text">执行上下文生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量对象"><span class="toc-text">变量对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量对象创建过程"><span class="toc-text">变量对象创建过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实例分析"><span class="toc-text">代码实例分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-text">练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局上下文的变量对象"><span class="toc-text">全局上下文的变量对象</span></a></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 解释器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
+        <p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
 <a id="more"></a>
-<h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在前面<a href="https://runjaelyn.github.io/2017/10/08/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>中我们已经知道，当调用一个函数时，一个新的执行上下文就会被创建。但前面没有讲到的是，一个执行上文的生命周期是可以分为两个阶段的。</p>
+<h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在前面<a href="https://runjaelyn.github.io/2017/10/08/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>中我们已经知道，当调用一个函数时，一个新的执行上下文就会被创建。但前面没有讲到的是，一个执行上下文的生命周期是可以分为两个阶段的。</p>
 <ul>
-<li><strong>创建阶段</strong></li>
+<li><p><strong>创建阶段</strong></p>
+<p>  在这个阶段中，执行上下文内会分别创建变量对象(VO)、建立作用域链(SC)，以及确定<code>this</code>的指向。</p>
+</li>
+<li><p><strong>代码执行阶段</strong></p>
+<p>  创建阶段完成后，就会开始执行代码。这个时候，会完成变量赋值、函数引用，以及执行其他代码。</p>
+<p>  <img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
+</li>
 </ul>
-<p>在这个阶段中，执行上下文会分别创建变量对象(VO)、建立作用域链(SC)，以及确定<code>this</code>的指向。</p>
-<ul>
-<li><strong>代码执行阶段</strong></li>
-</ul>
-<p>创建阶段完成后，就会开始执行代码，这个时候，会完成变量赋值、函数引用，以及执行其他代码。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
-<p>到这里我们就可以看出来详细了解执行上下文有多重要了。这里面涉及的变量对象、作用域链、this等等，恰好都是很多人一直弄不明白，但又极为重要的概念。所以这些概念我们后面都会一一详细总结，这篇博客我们先重点了解“变量对象（VO）”。</p>
-<h2 id="变量对象创建过程"><a href="#变量对象创建过程" class="headerlink" title="变量对象创建过程"></a>变量对象创建过程</h2><p>变量对象，Variable Object，简称 VO。它的创建，依次经历了以下几个过程：</p>
+<p>到这里我们就可以看出来详细了解执行上下文有多重要了。这里面涉及的变量对象、作用域链、this等等，恰好都是很多人一直弄不明白，但又极为重要的概念。所以这些概念我们后面都会一一详细总结，而这篇博客我们先重点了解“变量对象（VO）”。</p>
+<h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><p>变量对象，Variable Object，简称 VO。用来记录在当前执行环境中可以访问到的变量。</p>
+<h3 id="变量对象创建过程"><a href="#变量对象创建过程" class="headerlink" title="变量对象创建过程"></a>变量对象创建过程</h3><p>变量对象的创建，依次经历了以下几个过程：</p>
 <ol>
-<li><p>建立<code>arguments</code>对象。检查当前上下文中的函数参数，建立该对象下的属性名与属性值。</p>
+<li><p>建立<code>arguments</code>对象：检查当前上下文中的函数参数，建立该对象下的属性名与属性值。</p>
 </li>
-<li><p>检查当前上下文的声明式函数。在变量对象中以函数名建立一个属性，属性值为指向该函数所在的内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</p>
+<li><p>检查当前上下文的声明式函数：在变量对象中以函数名建立一个属性，属性值为指向该函数所在的内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</p>
 </li>
-<li><p>检查当前上下文中<code>var</code>的变量声明，每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
+<li><p>检查当前上下文中<code>var</code>的变量声明：chu每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
 </li>
 </ol>
 <p>知道有些人看文字比较晕，我们通过图解再来理解一下：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fihwh2gtnjj31ji0fmn0g.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fk9snyw14nj31eo0vytfo.jpg" alt=""></p>
 <p>其实在这个过程中，就涉及到了我们变量提升和函数提升，这个知识点我们在前面<a href="https://runjaelyn.github.io/2017/10/06/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>已经详细讲过了，这里就不再多说。</p>
 <h2 id="代码实例分析"><a href="#代码实例分析" class="headerlink" title="代码实例分析"></a>代码实例分析</h2><p>如果对于上面的描述还是不太能理解的，我们就通过一个简单的例子来帮助大家进一步的理解变量对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
-<p>在上例中，我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始创建。为了便于理解，我们换一个形式来表示：</p>
+<p>我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始进入创建阶段。为了便于理解，我们换一个形式来表示：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">VO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	SC: &#123;&#125;, <span class="comment">// 作用域链</span></div><div class="line">	<span class="keyword">this</span>: &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">VO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjgwwv1qqfj31820rwq7c.jpg" alt=""></p>
@@ -266,12 +269,12 @@
 <p>图解：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fjgww0tpg1j316s0r4ae4.jpg" alt=""></p>
 <p>因此，我们这个例子中代码的执行顺序就变成了下面这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">var</span> a;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	a = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fk9zssoom0j31gk0hm42k.jpg" alt=""></p>
 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>为了巩固对变量对象的理解，我们最后再来分析一个代码例子。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( foo );</div><div class="line">    <span class="built_in">console</span>.log( bar );</div><div class="line"></div><div class="line">    <span class="keyword">var</span> foo = <span class="string">'Hello'</span>;</div><div class="line">    <span class="built_in">console</span>.log( foo );</div><div class="line">    <span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'world'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">test();</div></pre></td></tr></table></figure>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjgkoj7hrrj318c0pi0xj.jpg" alt=""></p>
 <p>因此，这个例子中代码的执行顺序最后就变成了下面这样:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'hello'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> foo;</div><div class="line">    <span class="keyword">var</span> bar;</div><div class="line">    </div><div class="line">    <span class="built_in">console</span>.log( foo );</div><div class="line">    <span class="built_in">console</span>.log( bar );</div><div class="line">	</div><div class="line">    foo = <span class="string">'Hello'</span>;</div><div class="line">    <span class="built_in">console</span>.log( foo );</div><div class="line">    bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'world'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">test();</div></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fka002u89uj31fa0p4dmb.jpg" alt=""></p>
 <h2 id="全局上下文的变量对象"><a href="#全局上下文的变量对象" class="headerlink" title="全局上下文的变量对象"></a>全局上下文的变量对象</h2><p>以浏览器为例，全局对象为 window。</p>
 <p>全局上下文有一个特殊的地方，它的变量对象，就是 window 对象。而这个特殊，在<code>this</code>的指向上也同样适用，<code>this</code>也是指向 window。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fjgwzsntvgj316s0lywhn.jpg" alt=""></p>
