@@ -43,11 +43,11 @@
 <meta property="og:description" content="很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。 但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在《作用域（scope）》一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkb0h8rkntj31kw0w3qcv.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb6g3w2xij31jy12swoj.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkb1lnriqcj314i0ck75v.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb1r53eyij317i0i8tc4.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb213fllgj31d80ywwmt.jpg">
-<meta property="og:updated_time" content="2017-10-08T13:48:16.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb6kxmatoj317m0mi42s.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb6p6x43vj317k12wgtz.jpg">
+<meta property="og:updated_time" content="2017-10-08T14:01:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域链（Scope Chain）">
 <meta name="twitter:description" content="很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。 但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在《作用域（scope）》一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。">
@@ -251,7 +251,7 @@
 <p>案例一：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> food = <span class="string">"巧克力味的屎"</span>;</div><div class="line"><span class="keyword">var</span> eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"吃"</span> + food );</div><div class="line">&#125;;</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> food = <span class="string">"屎味的巧克力"</span>;</div><div class="line">	eat();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
 <p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkb0h8rkntj31kw0w3qcv.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb6g3w2xij31jy12swoj.jpg" alt=""></p>
 <p>我们案例一的代码图解就如上图所示：</p>
 <p>全局上下文在浏览器打开的同时产生，后面的两个局部上下文都是在函数调用时才产生。上下文创建好的同时，在上下文的内部创建出了变量对象和作用域链。</p>
 <p>那么，我们画出了作用域链有什么作用呢？</p>
@@ -268,7 +268,7 @@
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fkb1lnriqcj314i0ck75v.jpg" alt=""></p>
 <p>我们可以看到运行结果非常醒目的显示着吃屎。</p>
 <p>为什么代码运行结果跟我们分析出来的结果不一样呢？问题出在一个地方：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb1r53eyij317i0i8tc4.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb6kxmatoj317m0mi42s.jpg" alt=""></p>
 <blockquote>
 <p>每一个作用域链，它的前端始终是当前代码的执行上下文的变量对象，而它的末端也始终是全局上下文的变量对象。</p>
 </blockquote>
@@ -278,7 +278,7 @@
 </blockquote>
 <p>也就是说，<code>eat</code>函数声明时所在的上下文是全局上下文，所以，<code>eat</code>作用域链中的第二个变量对象应该是全局上下文中的变量对象。</p>
 <p>如下图所示：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb213fllgj31d80ywwmt.jpg" alt=""></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb6p6x43vj317k12wgtz.jpg" alt=""></p>
 <p>这样，我们<code>eat</code>函数在查找<code>food</code>变量时会沿着作用域链最终查找到 globalAO 中去，得到<code>food=&quot;巧克力味的屎&quot;</code>的结果。</p>
 
       

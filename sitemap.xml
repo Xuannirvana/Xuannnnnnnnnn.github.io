@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/04/VariableObject/</loc>
+    
+    <lastmod>2017-10-08T15:05:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/05/scopeChian/</loc>
     
-    <lastmod>2017-10-08T13:48:16.000Z</lastmod>
+    <lastmod>2017-10-08T14:01:13.000Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2017/10/03/scope/</loc>
     
     <lastmod>2017-10-08T13:32:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/04/VariableObject/</loc>
-    
-    <lastmod>2017-10-07T15:42:25.000Z</lastmod>
     
   </url>
   
