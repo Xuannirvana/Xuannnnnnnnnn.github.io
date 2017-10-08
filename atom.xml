@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-08T13:42:27.000Z</updated>
+  <updated>2017-10-08T13:44:32.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>作用域链</title>
+    <title>作用域链（Scope Chain）</title>
     <link href="http://yoursite.com/2017/10/05/scopeChian/"/>
     <id>http://yoursite.com/2017/10/05/scopeChian/</id>
     <published>2017-10-05T15:44:11.000Z</published>
-    <updated>2017-10-08T13:42:27.000Z</updated>
+    <updated>2017-10-08T13:44:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
 <p>但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。</p>
