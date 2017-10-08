@@ -3,15 +3,14 @@
   
     
     <entry>
-      <title><![CDATA[作用域与作用域链]]></title>
+      <title><![CDATA[作用域链]]></title>
       <url>/2017/10/05/scopeChian/</url>
-      <content type="html"><![CDATA[<p>作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄明白我们博客前面几章讲的概念。</p>
+      <content type="html"><![CDATA[<p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
+<p>但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。</p>
 <a id="more"></a>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是先学习作用域，再去学习作用域链。</p>
-<p>但是我们这次，先讲作用域链。</p>
 <p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
-<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，所以这里，我们主要来分析一下作用域链。</p>
+<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，所以这里，我们接着来分析作用域链。</p>
 <blockquote>
 <p>作用域链，是由当前上下文与上层上下文中的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
 </blockquote>
@@ -60,83 +59,6 @@
 <p>如下图所示：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb213fllgj31d80ywwmt.jpg" alt=""></p>
 <p>这样，我们<code>eat</code>函数在查找<code>food</code>变量时会沿着作用域链最终查找到 globalAO 中去，得到<code>food=&quot;巧克力味的屎&quot;</code>的结果。</p>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在讲解作用域这个概念之前，我们需要先了解另外两个东西：一个叫做编译器，一个叫做引擎。</p>
-<h3 id="编译器和引擎"><a href="#编译器和引擎" class="headerlink" title="编译器和引擎"></a>编译器和引擎</h3><p>在前面我们讲<a href="https://runjaelyn.github.io/2017/10/02/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>这一章的时候，就已经知道代码的执行过程实际上大致可以分为两个阶段：</p>
-<ul>
-<li><p>代码编译阶段：这个阶段，内部代码并未开始执行，只是将代码编译成了可执行的代码。</p>
-<ul>
-<li>函数提升</li>
-<li>变量提升</li>
-<li>… …</li>
-</ul>
-</li>
-<li><p>代码执行阶段：这个阶段，代码开始执行，即执行第一步中编译完成的可执行代码。</p>
-<ul>
-<li>变量赋值</li>
-<li>函数引用</li>
-<li>… …</li>
-</ul>
-</li>
-</ul>
-<p>而完成这两个阶段工作的，就是我们的编译器和引擎。</p>
-<ul>
-<li><strong>编译器</strong>：负责语法分析及代码生成等工作。</li>
-<li><strong>引擎</strong>：负责整个 JavaScript 程序的执行过程。</li>
-</ul>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg" alt=""></p>
-<p>了解了编译器和引擎之后，接下来我们开始来看一下什么是作用域。</p>
-<h3 id="作用域概念"><a href="#作用域概念" class="headerlink" title="作用域概念"></a>作用域概念</h3><p>我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。</p>
-<ul>
-<li>作用：访问、操作、调用…</li>
-<li>域：区域、范围、空间…</li>
-</ul>
-<blockquote>
-<p>因此，作用域就是变量和函数的可访问范围，或者说变量或函数起作用的区域。</p>
-</blockquote>
-<p>那么有了这个作用域，到底有什么作用呢？</p>
-<blockquote>
-<p>不同的作用域可以限制变量或函数不同的作用范围，因此，它可以用来管理编译器在工作时如何去对变量和函数进行查找和访问。</p>
-</blockquote>
-<h3 id="作用域分类"><a href="#作用域分类" class="headerlink" title="作用域分类"></a>作用域分类</h3><p>首先明确一个概念，JavaScript 中的作用域是通过函数取划分的，所以不存在块级作用域。</p>
-<p>[ 注：这里我们讲的只针对 ES5。ES6中，因为加入了<code>let</code>关键字，用<code>let</code>声明的变量具有块级作用域。]</p>
-<p>JavaScript 中的作用域只有两种（因为<code>eval</code>我们平时开发中几乎不会用到，所以这里不考虑）：</p>
-<ul>
-<li><strong>全局作用域</strong></li>
-<li><strong>局部（函数）作用域</strong></li>
-</ul>
-<blockquote>
-<p>全局作用域中的所有的变量和函数可以在代码的任何地方访问和使用，而局部作用域中的所有的变量和函数只能在当前作用域内部使用。</p>
-</blockquote>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line">	<span class="built_in">console</span>.log( b );    <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log( b );    <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
-<p>分析：</p>
-<ul>
-<li>变量<code>a</code>在函数外，因此它处于全局作用域内；而变量<code>b</code>在函数内，因此它处于局部作用域内。</li>
-<li>在<code>test</code>函数的局部作用域内可以访问到全局作用域的变量<code>a</code>。</li>
-<li>在全局作用域内访问不到<code>test</code>函数的局部作用域内的变量<code>b</code>。</li>
-</ul>
-<h2 id="作用域与执行上下文"><a href="#作用域与执行上下文" class="headerlink" title="作用域与执行上下文"></a>作用域与执行上下文</h2><p>我们已经分析讲解完了作用域和执行上下文这两个知识点，也基本知道作用域和执行上下文各自的职责，可以看出它们几乎是没有什么交集的。那么为什么很多人还是会把这两者弄混呢？它们两个之间到底什么联系和区别呢。</p>
-<h3 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h3><p>在一个函数被执行时，创建的执行上下文对象除了保存了些代码执行的信息，还会把当前的作用域保存在执行上下文中。所以它们的关系只是存储关系。</p>
-<p>图解：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fka44cs06oj314m0jyacv.jpg" alt=""></p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
-<li><p>产生时间的区别：</p>
-<blockquote>
-<p>作用域的范围在函数声明时确定。</p>
-<p>执行上下文在函数调用时创建。</p>
-</blockquote>
-</li>
-<li><p>作用的区别：</p>
-<blockquote>
-<p>作用域的作用是用来控制变量和函数的作用范围。</p>
-<p>执行上下文的作用是用于跟踪代码的运行情况。</p>
-</blockquote>
-</li>
-</ul>
-<p>关于作用域的分析讲解就到此结束，接下来我们来看一下 —— 作用域链。</p>
-<p>。。。。。。。。。。。。。</p>
-<h2 id="汇总分析"><a href="#汇总分析" class="headerlink" title="汇总分析"></a>汇总分析</h2><p>我们把上面这个例子从头到尾分析一下。</p>
 ]]></content>
       
         <categories>
@@ -147,8 +69,6 @@
         
         
         <tags>
-            
-            <tag> 作用域 </tag>
             
             <tag> 作用域链 </tag>
             
