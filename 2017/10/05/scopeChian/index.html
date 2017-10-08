@@ -41,14 +41,19 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/05/scopeChian/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄明白我们博客前面几章讲的概念。">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fka44cs06oj314m0jyacv.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg">
-<meta property="og:updated_time" content="2017-10-08T08:33:23.000Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkb0h8rkntj31kw0w3qcv.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkb1lnriqcj314i0ck75v.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb1r53eyij317i0i8tc4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb213fllgj31d80ywwmt.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fka44cs06oj314m0jyacv.jpg">
+<meta property="og:updated_time" content="2017-10-08T11:25:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域与作用域链">
 <meta name="twitter:description" content="作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄明白我们博客前面几章讲的概念。">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fka44cs06oj314m0jyacv.jpg">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -216,7 +221,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译器和引擎"><span class="toc-text">编译器和引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域概念"><span class="toc-text">作用域概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域分类"><span class="toc-text">作用域分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域与执行上下文"><span class="toc-text">作用域与执行上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域与执行上下文的关系"><span class="toc-text">作用域与执行上下文的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域与执行上下文的区别"><span class="toc-text">作用域与执行上下文的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-text">作用域链</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-text">作用域链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#综合练习"><span class="toc-text">综合练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译器和引擎"><span class="toc-text">编译器和引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域概念"><span class="toc-text">作用域概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域分类"><span class="toc-text">作用域分类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域与执行上下文"><span class="toc-text">作用域与执行上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#联系"><span class="toc-text">联系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区别"><span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#汇总分析"><span class="toc-text">汇总分析</span></a></li></ol>
     </div>
   </div>
 
@@ -225,22 +230,92 @@
       
         <p>作用域和作用域链一直是 JavaScript 中比较难弄明白的两个概念，除了它们自身的概念比较繁琐复杂外，还有一个原因就是因为它们还涉及到了很多其他零零散散的知识点。所以在学习作用域与作用域链之前，需要先弄明白我们博客前面几章讲的概念。</p>
 <a id="more"></a>
-<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在讲解作用域这个概念之前，我们需要先了解另外两个东西：一个叫做编译器，一个叫做引擎。</p>
-<h3 id="编译器和引擎"><a href="#编译器和引擎" class="headerlink" title="编译器和引擎"></a>编译器和引擎</h3><p>在前面我们讲<a href="https://runjaelyn.github.io/2017/10/02/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>这一章的时候，就已经知道整个代码的执行过程实际上大致可以分为两个阶段：</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是先学习作用域，再去学习作用域链。</p>
+<p>但是我们这次，先讲作用域链。</p>
+<p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
+<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，所以这里，我们主要来分析一下作用域链。</p>
+<blockquote>
+<p>作用域链，是由当前上下文与上层上下文中的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
+</blockquote>
+<p>但看文字估计还是不太能理解到底什么是作用链，所以我们通过一个例子，结合代码和图解来具体进行分析说明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> b = a + <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">let</span> c = <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> b + c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inner();</div><div class="line">&#125;</div><div class="line"></div><div class="line">outer();</div></pre></td></tr></table></figure>
+<p>在这个例子中，全局上下文、<code>outer()</code>上下文、<code>inner()</code>上下文先后创建。而在它们各自的上下文中包含了它们自己的变量对象。分别是：<code>VO(global)</code>、<code>VO(outer)</code>、<code>VO(inner)</code>。而<code>inner</code>的作用域链，又同时包含了这三个变量对象。所以<code>inner</code>的执行上下文如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">innerEC = &#123;</div><div class="line">    VO(inner): &#123;...&#125;,  <span class="comment">// 自己的变量对象</span></div><div class="line">    scopeChain: [VO(inner), VO(outer), VO(global)]   <span class="comment">//作用域链</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以直接用一个数组来表示作用链，数组的第一项<code>scopeChain[0]</code>作为作用域链的最前端，而数组的最后一项，作为作用域链的最末端。因此，所有的作用域链的最末端都是全局变量对象。</p>
+<p>很多人在理解作用域链的时候会把当前作用域和上层作用域之间想象成包含关系。但其实我觉得另一种形容作用域链结构的描述可能更贴切：以最前端为起点，最末端为终点的单方向通道。</p>
+<p>所以，上面这个例子中<code>inner</code>函数的作用域链如下图所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg" alt=""></p>
+<blockquote>
+<p>当执行上下文进入执行阶段时，变量对象就变成了活动对象（这一点我们在讲变量对象那一篇博客中已经讲过）。因此，上面的图解中我们用了<code>AO</code>（Active Object）来表示。</p>
+</blockquote>
+<p>所以，作用域链是由一系列变量对象组成，我们可以在这个单向通道中，查询变量对象中的标识符，这样就可以访问到上一层作用域中的变量了。</p>
+<h3 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h3><p>到此我们已经讲了执行上下文、变量对象和作用域链，所以我们通过一个例子，把这三者结合到一起来分析理解一下。</p>
+<p>案例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> food = <span class="string">"巧克力味的屎"</span>;</div><div class="line"><span class="keyword">var</span> eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"吃"</span> + food );</div><div class="line">&#125;;</div><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> food = <span class="string">"屎味的巧克力"</span>;</div><div class="line">	eat();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkb0h8rkntj31kw0w3qcv.jpg" alt=""></p>
+<p>我们案例一的代码图解就如上图所示：</p>
+<p>全局上下文在浏览器打开的同时产生，后面的两个局部上下文都是在函数调用时才产生。上下文创建好的同时，在上下文的内部创建出了变量对象和作用域链。</p>
+<p>那么，我们画出了作用域链有什么作用呢？</p>
+<p>我们看到，在最后一个函数<code>eat</code>调用后，内部有一行代码<code>console.log( &quot;吃&quot; + food )</code>会被执行，那么这个输出的结果会是什么呢？</p>
+<p>我们来分析一下：</p>
 <ul>
-<li>代码编译阶段：即将代码翻译成可执行代码，其中就包含了我们的变量提升和函数提升这两个过程。</li>
-<li>代码执行阶段：即执行第一步中翻译完成的可执行代码。</li>
+<li><code>eat</code>函数内需要访问变量<code>food</code>，在 eatAO 里面查找<code>food</code>发现没有该变量。</li>
+<li>沿着<code>eat</code>的作用域链 eatSC 找到 IIFEAO。</li>
+<li>在 IIFE 的局部上下文中发现它的变量对象 IIFEAO 里有变量<code>food</code>。</li>
+<li>得到<code>food</code>的值是<code>屎味的巧克力</code>。</li>
+<li><code>console.log( &quot;吃&quot; + food )</code>输出的结果应该是<code>吃屎味的巧克力</code>。</li>
+</ul>
+<p>我们运行代码，查看到结果如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fkb1lnriqcj314i0ck75v.jpg" alt=""></p>
+<p>我们可以看到运行结果非常醒目的显示着吃屎。</p>
+<p>为什么代码运行结果跟我们分析出来的结果不一样呢？问题出在一个地方：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fkb1r53eyij317i0i8tc4.jpg" alt=""></p>
+<blockquote>
+<p>每一个作用域链，它的前端始终是当前代码的执行上下文的变量对象，而它的末端也始终是全局上下文的变量对象。</p>
+</blockquote>
+<p>那么对于我们<code>eat</code>的作用域链，它的中间到底有没有 IIFEAO 这个活动对象？通过上面的代码运行结果我们可以知道，肯定是没有了。那为什么没有呢？</p>
+<blockquote>
+<p>作用域链中包含的每一个变量对象，都应该是前一个变量对象所在函数声明时所在的上下文内的变量对象。</p>
+</blockquote>
+<p>也就是说，<code>eat</code>函数声明时所在的上下文是全局上下文，所以，<code>eat</code>作用域链中的第二个变量对象应该是全局上下文中的变量对象。</p>
+<p>如下图所示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkb213fllgj31d80ywwmt.jpg" alt=""></p>
+<p>这样，我们<code>eat</code>函数在查找<code>food</code>变量时会沿着作用域链最终查找到 globalAO 中去，得到<code>food=&quot;巧克力味的屎&quot;</code>的结果。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在讲解作用域这个概念之前，我们需要先了解另外两个东西：一个叫做编译器，一个叫做引擎。</p>
+<h3 id="编译器和引擎"><a href="#编译器和引擎" class="headerlink" title="编译器和引擎"></a>编译器和引擎</h3><p>在前面我们讲<a href="https://runjaelyn.github.io/2017/10/02/hoisting/" target="_blank" rel="external">《变量提升和函数提升》</a>这一章的时候，就已经知道代码的执行过程实际上大致可以分为两个阶段：</p>
+<ul>
+<li><p>代码编译阶段：这个阶段，内部代码并未开始执行，只是将代码编译成了可执行的代码。</p>
+<ul>
+<li>函数提升</li>
+<li>变量提升</li>
+<li>… …</li>
+</ul>
+</li>
+<li><p>代码执行阶段：这个阶段，代码开始执行，即执行第一步中编译完成的可执行代码。</p>
+<ul>
+<li>变量赋值</li>
+<li>函数引用</li>
+<li>… …</li>
+</ul>
+</li>
 </ul>
 <p>而完成这两个阶段工作的，就是我们的编译器和引擎。</p>
 <ul>
-<li>编译器：负责语法分析及代码生成等工作。</li>
-<li>引擎：负责整个 JavaScript 程序的执行过程。</li>
+<li><strong>编译器</strong>：负责语法分析及代码生成等工作。</li>
+<li><strong>引擎</strong>：负责整个 JavaScript 程序的执行过程。</li>
 </ul>
+<p>图解：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fk91ivxvsfj314k0im0ve.jpg" alt=""></p>
 <p>了解了编译器和引擎之后，接下来我们开始来看一下什么是作用域。</p>
-<h3 id="作用域概念"><a href="#作用域概念" class="headerlink" title="作用域概念"></a>作用域概念</h3><p>“域”，我们一般都理解为“区域”，也就是“范围”。那么，作用域，我们也就可以理解为“作用区域”或“作用范围”。</p>
-<p>而我们的编译器在工作的时候，主要操作的无非也就是变量和函数这两样东西了。因此：</p>
+<h3 id="作用域概念"><a href="#作用域概念" class="headerlink" title="作用域概念"></a>作用域概念</h3><p>我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。</p>
+<ul>
+<li>作用：访问、操作、调用…</li>
+<li>域：区域、范围、空间…</li>
+</ul>
 <blockquote>
-<p>作用域，指的就是变量或函数的作用范围。</p>
+<p>因此，作用域就是变量和函数的可访问范围，或者说变量或函数起作用的区域。</p>
 </blockquote>
 <p>那么有了这个作用域，到底有什么作用呢？</p>
 <blockquote>
@@ -265,10 +340,10 @@
 <li>在全局作用域内访问不到<code>test</code>函数的局部作用域内的变量<code>b</code>。</li>
 </ul>
 <h2 id="作用域与执行上下文"><a href="#作用域与执行上下文" class="headerlink" title="作用域与执行上下文"></a>作用域与执行上下文</h2><p>我们已经分析讲解完了作用域和执行上下文这两个知识点，也基本知道作用域和执行上下文各自的职责，可以看出它们几乎是没有什么交集的。那么为什么很多人还是会把这两者弄混呢？它们两个之间到底什么联系和区别呢。</p>
-<h3 id="作用域与执行上下文的关系"><a href="#作用域与执行上下文的关系" class="headerlink" title="作用域与执行上下文的关系"></a>作用域与执行上下文的关系</h3><p>在一个函数被执行时，创建的执行上下文对象除了保存了些代码执行的信息，还会把当前的作用域保存在执行上下文中。所以它们的关系只是存储关系。</p>
+<h3 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h3><p>在一个函数被执行时，创建的执行上下文对象除了保存了些代码执行的信息，还会把当前的作用域保存在执行上下文中。所以它们的关系只是存储关系。</p>
 <p>图解：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fka44cs06oj314m0jyacv.jpg" alt=""></p>
-<h3 id="作用域与执行上下文的区别"><a href="#作用域与执行上下文的区别" class="headerlink" title="作用域与执行上下文的区别"></a>作用域与执行上下文的区别</h3><ul>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
 <li><p>产生时间的区别：</p>
 <blockquote>
 <p>作用域的范围在函数声明时确定。</p>
@@ -283,23 +358,8 @@
 </li>
 </ul>
 <p>关于作用域的分析讲解就到此结束，接下来我们来看一下 —— 作用域链。</p>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>回顾一下我们前面在<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>这一篇博客中对执行上下文的生命周期进行了分析。如下图：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fiheks8zdnj31dw0euacz.jpg" alt=""></p>
-<p>我们知道，当函数被调用激活时，会开始创建对应的执行上下文。在执行上下文生成的过程中，<strong>变量对象</strong>、<strong>作用域链</strong>、以及<strong><code>this</code></strong>的值会分别被确定。在前面我们已经详细讲解了关于变量对象的分析，所以这里，我们主要来分析一下作用域链。</p>
-<blockquote>
-<p>作用域链，是由当前上下文与上层上下文中的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。</p>
-</blockquote>
-<p>但看文字估计还是不太能理解到底什么是作用链，所以我们通过一个例子，结合代码和图解来具体进行分析说明。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> b = a + <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">let</span> c = <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> b + c;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> inner();</div><div class="line">&#125;</div><div class="line"></div><div class="line">outer();</div></pre></td></tr></table></figure>
-<p>在这个例子中，全局上下文、<code>outer()</code>上下文、<code>inner()</code>上下文先后创建。而在它们各自的上下文中包含了它们自己的变量对象。分别是：<code>VO(global)</code>、<code>VO(outer)</code>、<code>VO(inner)</code>。而<code>inner</code>的作用域链，又同时包含了这三个变量对象。所以<code>inner</code>的执行上下文如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">innerEC = &#123;</div><div class="line">    VO(inner): &#123;...&#125;,  <span class="comment">// 自己的变量对象</span></div><div class="line">    scopeChain: [VO(inner), VO(outer), VO(global)]   <span class="comment">//作用域链</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们可以直接用一个数组来表示作用链，数组的第一项<code>scopeChain[0]</code>作为作用域链的最前端，而数组的最后一项，作为作用域链的最末端。因此，所有的作用域链的最末端都是全局变量对象。</p>
-<p>很多人在理解作用域链的时候会把当前作用域和上层作用域之间想象成包含关系。但其实我觉得另一种形容作用域链结构的描述可能更贴切：以最前端为起点，最末端为终点的单方向通道。如下图所示：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fk1jk33jgbj31aw0jiq6l.jpg" alt=""></p>
-<blockquote>
-<p>当执行上下文进入执行阶段时，变量对象就变成了活动对象（这一点我们在讲变量对象那一篇博客中已经讲过）。因此，上面的图解中我们用了<code>AO</code>（Active Object）来表示。</p>
-</blockquote>
-<p>所以，作用域链是由一系列变量对象组成，我们可以在这个单向通道中，查询变量对象中的标识符，这样就可以访问到上一层作用域中的变量了。</p>
+<p>。。。。。。。。。。。。。</p>
+<h2 id="汇总分析"><a href="#汇总分析" class="headerlink" title="汇总分析"></a>汇总分析</h2><p>我们把上面这个例子从头到尾分析一下。</p>
 
       
     </div>
