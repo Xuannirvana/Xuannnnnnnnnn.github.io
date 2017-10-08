@@ -236,6 +236,7 @@
       <url>/2017/10/03/scope/</url>
       <content type="html"><![CDATA[<p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
 <p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
+<a id="more"></a>
 <h2 id="作用域的概念"><a href="#作用域的概念" class="headerlink" title="作用域的概念"></a>作用域的概念</h2><p>我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。</p>
 <ul>
 <li>作用：访问、操作、调用…</li>
@@ -1863,9 +1864,9 @@
         
         <tags>
             
-            <tag> element </tag>
-            
             <tag> dom </tag>
+            
+            <tag> element </tag>
             
         </tags>
         
@@ -2091,9 +2092,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> document </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         

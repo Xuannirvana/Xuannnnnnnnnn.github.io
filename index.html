@@ -291,63 +291,15 @@
       
         
         
+          
+        
 
         
           <p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
 <p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
-<h2 id="作用域的概念"><a href="#作用域的概念" class="headerlink" title="作用域的概念"></a>作用域的概念</h2><p>我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。</p>
-<ul>
-<li>作用：访问、操作、调用…</li>
-<li>域：区域、范围、空间…</li>
-</ul>
-<blockquote>
-<p>因此，作用域就是变量和函数的可访问范围，或者说变量或函数起作用的区域。</p>
-</blockquote>
-<h2 id="编译器和引擎"><a href="#编译器和引擎" class="headerlink" title="编译器和引擎"></a>编译器和引擎</h2><p>在完全理解作用域之前，我们还需要了解另外两个东西：一个是编译器，一个是引擎。</p>
-<p>在前面我们讲<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《变量提升和函数提升》</a>这一章的时候，就已经知道：代码的执行过程实际上大致分为两个阶段：</p>
-<ol>
-<li>代码编译阶段：这个阶段，内部代码并未开始执行，只是将代码编译成了可执行的代码。</li>
-<li>代码执行阶段：这个阶段，代码开始执行，即执行第一步中编译完成的可执行代码。</li>
-</ol>
-<p>而完成这两个阶段工作的，就是我们的编译器和引擎。</p>
-<ul>
-<li><strong>编译器</strong>：负责语法分析及代码生成等工作。</li>
-<li><strong>引擎</strong>：负责整个 JavaScript 程序的执行过程。</li>
-</ul>
-<h2 id="作用域的分类"><a href="#作用域的分类" class="headerlink" title="作用域的分类"></a>作用域的分类</h2><p>前面我们说了作用域就是一个范围，那么这个范围有多大呢？怎么去确定这个范围大小呢？</p>
-<p>作用域根据作用范围就分为两类：</p>
-<ul>
-<li>全局作用域</li>
-<li>局部作用域（也叫做函数作用域）</li>
-</ul>
-<p>通过这个分类我们就可以知道，JavaScript 中的作用域是通过函数来划分的，函数以内的范围就是局部作用域，函数以外的范围就是全局作用域。</p>
-<p>我们通过一个代码例子来具体看一下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line">	<span class="built_in">console</span>.log( b );    <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log( b );    <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
-<p>但是，以上情况都是只针对 ES5 来讲的。</p>
-<p>在 ES6 中，因为加入了<code>let</code>关键字，用<code>let</code>声明的变量具有块级作用域。所以，在 ES5 中不存在块级作用域，但在 ES6 中除了通过函数可以划分作用域以外，大括号也可以划分块级作用域。</p>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line">	<span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">	</div><div class="line">	<span class="built_in">console</span>.log( a );    <span class="comment">// 1</span></div><div class="line">	<span class="built_in">console</span>.log( b );    <span class="comment">// 2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( a );        <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log( b );        <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
-<p><code>if</code>语句的大括号让变量<code>b</code>的作用域范围只能在<code>if</code>的大括号内部。</p>
-<h2 id="作用域的产生"><a href="#作用域的产生" class="headerlink" title="作用域的产生"></a>作用域的产生</h2><p>我们知道了作用域的概念和分类。那么，作用域的产生呢？我们前面提到了代码的执行分为了两个阶段，那么作用域是在哪个阶段产生的呢？</p>
-<p>作用域就是一个范围，一个变量和函数可以任由你使用的范围。而我们的编译器在代码编译阶段就已经在解析我们的变量和函数了，因此：</p>
-<blockquote>
-<p>作用域的范围是在函数声明时确定的。</p>
-</blockquote>
-<h2 id="作用域与执行上下文"><a href="#作用域与执行上下文" class="headerlink" title="作用域与执行上下文"></a>作用域与执行上下文</h2><p>我们已经分析讲解完了作用域和执行上下文这两个知识点，也基本知道作用域和执行上下文各自的职责，可以看出它们几乎是没有什么交集的。那么为什么很多人还是会把这两者弄混呢？它们两个之间到底什么区别和联系呢。</p>
-<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>执行上下文的概念是指当前代码的执行环境。而作用域的概念是指变量和函数的作用范围。因此，执行上下文和作用域最大的区别就在于：</p>
-<ul>
-<li>执行上下文：是代码的执行环境，用来控制代码的运行情况。</li>
-<li>作用域：是代码的执行范围，用来控制代码的作用区域。</li>
-</ul>
-<p>我们在讲执行上下文的时候说过，执行上下文是在函数调用时产生的。而作用域，是在函数声明时产生的。</p>
-<p>所以，它们的第二个区别，产生时间的区别：</p>
-<ul>
-<li>执行上下文：执行上下文在函数调用时创建。</li>
-<li>作用域：作用域的范围在函数声明式确定。</li>
-</ul>
-<h3 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h3><p>在一个函数被执行时，创建的执行上下文对象除了保存了些代码执行的信息，还会把当前的作用域保存在执行上下文中。</p>
-<p>虽然作用域先出现，执行上下文后出现，但是作用域最终还是会保存在执行上下文中，所以它们的联系就是有一个存储关系。</p>
-
+          <div class="read-more">
+            <a href="/2017/10/03/scope/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>

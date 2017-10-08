@@ -34,17 +34,17 @@
 <link rel="canonical" href="http://yoursite.com/2017/10/03/scope/"/>
 
 
-<meta name="description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。 作用域的概念我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。  作用：访问、操作、调用… 域：区域、范围、空间…">
+<meta name="description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。">
 <meta name="keywords" content="执行上下文,作用域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="作用域（scope）">
 <meta property="og:url" content="http://yoursite.com/2017/10/03/scope/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。 作用域的概念我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。  作用：访问、操作、调用… 域：区域、范围、空间…">
-<meta property="og:updated_time" content="2017-10-08T13:30:51.000Z">
+<meta property="og:description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。">
+<meta property="og:updated_time" content="2017-10-08T13:32:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域（scope）">
-<meta name="twitter:description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。 作用域的概念我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。  作用：访问、操作、调用… 域：区域、范围、空间…">
+<meta name="twitter:description" content="在前一章我们刚刚讲了《执行上下文（Execution Context）》，然后这一章我们主要讲的是作用域（scope）。 为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -221,6 +221,7 @@
       
         <p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
 <p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
+<a id="more"></a>
 <h2 id="作用域的概念"><a href="#作用域的概念" class="headerlink" title="作用域的概念"></a>作用域的概念</h2><p>我们先来看“作用域”这三个字是什么意思。我们把“作用”和“域”拆开来看。</p>
 <ul>
 <li>作用：访问、操作、调用…</li>
