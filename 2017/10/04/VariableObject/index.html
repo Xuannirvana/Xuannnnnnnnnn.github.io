@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fk9zssoom0j31gk0hm42k.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fka3xdma5qj315w0jgn0r.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fka0890z76j31i20pen3p.jpg">
-<meta property="og:updated_time" content="2017-10-08T15:05:40.000Z">
+<meta property="og:updated_time" content="2017-10-09T05:22:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量对象（Variable Object）">
 <meta name="twitter:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
@@ -247,7 +247,7 @@
 </li>
 <li><p>检查当前作用域的声明式函数：在变量对象中以函数名建立一个属性，属性值为指向该函数所在的内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</p>
 </li>
-<li><p>检查当前作用域中<code>var</code>的变量声明：chu每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
+<li><p>检查当前作用域中<code>var</code>的变量声明：每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
 </li>
 </ol>
 <p>知道有些人看文字比较晕，我们通过图解再来理解一下：</p>

@@ -3,6 +3,90 @@
   
     
     <entry>
+      <title><![CDATA[闭包（closure）- 什么是闭包]]></title>
+      <url>/2017/10/07/closureDefinition/</url>
+      <content type="html"><![CDATA[<p>这几年，闭包几乎成为了前端面试必问的一个问题。它非常重要又难以掌握，而且还难以定义。所以，这篇文章我们主要说的就是关于闭包的定义。</p>
+<a id="more"></a>
+<h2 id="定义一"><a href="#定义一" class="headerlink" title="定义一"></a>定义一</h2><p>在犀牛书（《JavaScript 权威指南（第六版）》）的第 8 章（ 182页 ）讲到了闭包。在第 183 页阐述了对闭包的定义。</p>
+<p>书本内容截图如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fkcwtoyximj316801mmxx.jpg" alt=""><br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fkcwwddt14j3168030t9y.jpg" alt=""><br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fkcwh6dfovj312k06ggmk.jpg" alt=""></p>
+<blockquote>
+<p>闭包(closure)，是指函数对象通过作用域链互相关联，函数内的变量可以保存在函数作用域内，因此看起来是函数将变量“包裹”了起来。</p>
+</blockquote>
+<p>按照这种定义方式，那也就是说，包含变量的函数就是闭包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> n = <span class="number">10</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( n );    <span class="comment">// 报错：n is not defined</span></div></pre></td></tr></table></figure>
+<h2 id="定义二"><a href="#定义二" class="headerlink" title="定义二"></a>定义二</h2><blockquote>
+<p>闭包(closure)，是指可以访问其所在所用域的函数。</p>
+</blockquote>
+<p>按照这种定义方式，那也就是说，需要通过作用域链查找变量的函数就是闭包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> n = <span class="number">10</span>;</div><div class="line"><span class="comment">// fn 在全局作用域中</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 访问全局作用域中的变量 n</span></div><div class="line">	<span class="built_in">console</span>.log( n );</div><div class="line">&#125; </div><div class="line">fn();</div></pre></td></tr></table></figure>
+<h2 id="定义三"><a href="#定义三" class="headerlink" title="定义三"></a>定义三</h2><p>在红皮书（《JavaScript 高级程序设计（第 3 版）》）的第 7 章（ 第178页 ）讲到了闭包，并阐述了对闭包的定义。</p>
+<p>书本内容截图如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fkcxcbrxypj316i05sgny.jpg" alt=""></p>
+<blockquote>
+<p>闭包(closure)，是指有权访问另一个函数作用域中的变量的函数。</p>
+</blockquote>
+<p>按照这种定义方式，那也就是说，访问上层函数作用域内变量的内层函数也属于闭包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> n = <span class="number">10</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> m = <span class="number">20</span>;</div><div class="line">		<span class="built_in">console</span>.log( n );</div><div class="line">	&#125;</div><div class="line">	inner();</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
+<h2 id="定义四"><a href="#定义四" class="headerlink" title="定义四"></a>定义四</h2><p>在《你不知道的 JavaScript（上卷）》的第 5 章（ 第43页 ）讲到了闭包，在第 44 页阐述了对闭包的定义。</p>
+<p>书本内容截图如下：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fkcxmowvooj316805u0ui.jpg" alt=""></p>
+<p>定义四其实就跟定义三有些相似了。定义三描述的是“访问另一个作用域”，定义四描述的是“访问当前函数所在的作用域”。这两句话的区别在那里呢？</p>
+<p>定义三 例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line">	bar(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">	<span class="comment">// bar 访问另一个作用域 foo 中的变量 a</span></div><div class="line">	<span class="built_in">console</span>.log( a )</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>定义四 例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// bar 访问自身所在 foo 作用域中的变量 a</span></div><div class="line">		<span class="built_in">console</span>.log( a )</div><div class="line">	&#125;</div><div class="line">	bar();</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>通过上面两个例子我们就可以看出定义三和定义四的区别了。</p>
+<p>那么，定义四的这个例子就属于标准的闭包了吗？书中有一句是这么描述的：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fkcyb4otg6j30ww01i74q.jpg" alt=""></p>
+<p>为什么呢？因为通过这种方式定义的闭包并不能直接进行观察，也无法明白在这个代码片段中闭包是如何工作的。</p>
+<p>我们对定义四的例子稍微修改一下，就可以清晰的展示闭包了。</p>
+<p>例二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// bar 访问自身所在 foo 作用域中的变量 a</span></div><div class="line">		<span class="built_in">console</span>.log( a )</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line"><span class="comment">// bar 在全局作用域中调用</span></div><div class="line">baz();</div></pre></td></tr></table></figure>
+<p>这才是闭包的效果。</p>
+<p>函数<code>bar</code>作为返回值被<code>return</code>出来，然后在自己定义的作用域以外的地方被调用并正常执行。</p>
+<blockquote>
+<p>闭包（closure），是指函数可以记住并访问所在作用域的变量，同时该函数在当前作用域之外被调用。</p>
+</blockquote>
+<p>那么，满足这个闭包定义的，除了我们上面例二中将函数作为返回值这种情况之外，还有一种情况：将函数作为参数传递。</p>
+<p>例三：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// bar 访问自身所在 foo 作用域中的变量 a</span></div><div class="line">		<span class="built_in">console</span>.log( a )</div><div class="line">	&#125;</div><div class="line">	baz(bar);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">	<span class="comment">//bar 在 baz 作用域中调用</span></div><div class="line">	fn();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因此，无论通过何种手段，只要将内部函数传递到所在作用域以外，它都会持有对声明时所在所用域的引用。那么，无论在何处执行这个函数都会形成闭包。</p>
+<h2 id="IIFE（立即执行函数）"><a href="#IIFE（立即执行函数）" class="headerlink" title="IIFE（立即执行函数）"></a>IIFE（立即执行函数）</h2><p>很多人都认为 IIFE 时典型的闭包例子，那 IIFE 到底是不是闭包呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>按照定义二的描述来判断的话，<code>foo</code>在全局作用域中定义，同时又访问了全局作用域中的变量<code>a</code>，那么它应该是闭包。</p>
+<p>但是如果按照定义三和定义四来判断的话，它既没有访问另一个函数作用域中的函数，同时<code>foo</code>函数也没有在它本身的作用域以外调用，因此它应该又不是闭包。</p>
+<p>实际上，IIFE 本身虽然并不是观察闭包的恰当例子，但它确实是创建了闭包，并且也是最常用来创建可以被封闭起来的闭包的工具。</p>
+<p>在 IIFE 中最常见的操作就是通过<code>window.fn = fn</code>来暴露接口。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a = <span class="number">0</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( a );</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">window</span>.fn = fn;</div><div class="line">&#125;)();</div><div class="line">fn();</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>闭包的定义之所以混乱，可能也是因为不同的书籍有不同的解读，加上现在很多程序员们对于闭包也有自己的见解，所以导致我们每次看到的关于闭包的定义好像都不一样。这样对于初学者来说就是一件很麻烦的事了，所以也就导致闭包成了大部分初级程序员们头痛的问题。</p>
+<p>虽然我们上面列出了关于闭包的好几种定义，但是归纳一下也不难理解。</p>
+<p>一个函数要形成闭包需要满足以下几个条件：</p>
+<ul>
+<li>访问自身所在作用域；</li>
+<li>函数嵌套；</li>
+<li>在自身所在作用域以外被调用；</li>
+</ul>
+<p>严格来说，应该三个条件都满足才算是闭包，但是也有很多人认为满足三个条件其中一部分也可以形成闭包。</p>
+<p>这个并没有一个很权威的说法，所以，还是个人看个人的理解了…</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 闭包 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 闭包 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[作用域链（Scope Chain）]]></title>
       <url>/2017/10/05/scopeChian/</url>
       <content type="html"><![CDATA[<p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
@@ -99,7 +183,7 @@
 </li>
 <li><p>检查当前作用域的声明式函数：在变量对象中以函数名建立一个属性，属性值为指向该函数所在的内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</p>
 </li>
-<li><p>检查当前作用域中<code>var</code>的变量声明：chu每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
+<li><p>检查当前作用域中<code>var</code>的变量声明：每找到一个变量声明，就在变量对象中以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</p>
 </li>
 </ol>
 <p>知道有些人看文字比较晕，我们通过图解再来理解一下：</p>
@@ -2008,9 +2092,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> document </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         
