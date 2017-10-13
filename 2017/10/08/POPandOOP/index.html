@@ -12,8 +12,12 @@
 
 
 
+  <meta name="description" content="面向对象 - 面向过程和面向对象"/>
 
 
+
+
+  <meta name="keywords" content="面向对象,面向过程," />
 
 
 
@@ -27,15 +31,20 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/10/08/POPandOOP/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Komorebi">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
+<meta name="keywords" content="面向对象,面向过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象 - 面向过程和面向对象">
+<meta property="og:url" content="http://yoursite.com/2017/10/08/POPandOOP/index.html">
 <meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
+<meta property="og:updated_time" content="2017-10-13T09:11:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Komorebi">
+<meta name="twitter:title" content="面向对象 - 面向过程和面向对象">
+<meta name="twitter:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -64,7 +73,7 @@
 
 
 
-    <title> Komorebi </title>
+    <title> 面向对象 - 面向过程和面向对象 · Komorebi </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -184,56 +193,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/15/this/">JavaScript 中的 this</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月15日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p><code>this</code>在 JavaScript 中其实不算是太难的内容，但是仍然有很多人弄不清楚<code>this</code>的用法，大概是因为大部分人一直都没有全方位的去分析总结过关于<code>this</code>的可能出现的各种情况。因此，这篇文章我们对<code>this</code>进行一个全面的分析和总结。</p>
-          <div class="read-more">
-            <a href="/2017/10/15/this/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/08/POPandOOP/">面向对象 - 面向过程和面向对象</a>
+          面向对象 - 面向过程和面向对象
         
       </h1>
 
@@ -246,14 +211,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向过程"><span class="toc-text">面向过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象是什么"><span class="toc-text">对象是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象编程"><span class="toc-text">面向对象编程</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
+        <p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
 <p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
 <p>那么到底什么是面向对象？话说起来，面向对象的产生还得有产品经理的一份功劳。为什么这么说呢？因为一开始的时候，并没有面向对象，只有面向过程的概念。</p>
 <h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
@@ -294,382 +262,95 @@
 <p>这样，我们通过面向对象的方式同样可以完成“你女朋友进冰箱”的这个需求。</p>
 <p>这就是面向过程和面向对象的区别。我们接下来的重点肯定就是放在相面对象上了，后面的几篇文章我们会依次去分析讲解关于面向对象的各项知识点。</p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/07/closureDefinition/">闭包（closure）- 什么是闭包</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月7日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
         
-          <p>这几年，闭包几乎成为了前端面试必问的一个问题。它非常重要又难以掌握，而且还难以定义。所以，这篇文章我们主要说的就是关于闭包的定义。</p>
-          <div class="read-more">
-            <a href="/2017/10/07/closureDefinition/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/面向对象/">面向对象</a>
+            
+              <a href="/tags/面向过程/">面向过程</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/05/scopeChian/">作用域链（Scope Chain）</a>
         
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月5日
-        </span>
-      </div>
-    </header>
-
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/10/15/this/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JavaScript 中的 this</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
-<p>但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。</p>
-          <div class="read-more">
-            <a href="/2017/10/05/scopeChian/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/04/VariableObject/">变量对象（Variable Object）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月4日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
-          <div class="read-more">
-            <a href="/2017/10/04/VariableObject/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/scope/">作用域（scope）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
-<p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/scope/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/ExecutionContext/">执行上下文（Execution Context）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
-<p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/ExecutionContext/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/02/hoisting/">变量提升和函数提升</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月2日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
-          <div class="read-more">
-            <a href="/2017/10/02/hoisting/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/01/memory/">JavaScript 内存空间</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月1日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
-          <div class="read-more">
-            <a href="/2017/10/01/memory/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/09/12/canvasExpand/">canvas 画布 - 进阶</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年9月12日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在上一章<a href="https://runjaelyn.github.io/2017/11/10/canvasBasic/" target="_blank" rel="external">《canvas 画布 - 基础》</a>中我们讲了关于<code>&lt;canvas&gt;</code>的一些基础用法：</p>
-<ul>
-<li>绘制矩形</li>
-<li>绘制路径</li>
-<li>绘制其他图形（例如：三角形）</li>
-<li>路径和样式初始化</li>
-<li>绘制圆形</li>
-<li>绘制曲线</li>
-<li>变换效果</li>
-</ul>
-<p>这一章我们对<code>&lt;canvas&gt;</code>的用法再进行一些深入的扩展讲解。</p>
-          <div class="read-more">
-            <a href="/2017/09/12/canvasExpand/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2017/10/07/closureDefinition/">
+        <span class="next-text nav-default">闭包（closure）- 什么是闭包</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
 
         </div>  
       </main>
@@ -743,6 +424,8 @@
     </div>
 
     
+  
+
 
 
     
