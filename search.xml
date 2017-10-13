@@ -24,7 +24,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">fn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);    <span class="comment">// obj</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);  <span class="comment">// 10 </span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">obj.fn();</div></pre></td></tr></table></figure>
 <p>例二：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">fn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);     <span class="comment">// obj1</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);   <span class="comment">// 30</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">30</span></div><div class="line">&#125;</div><div class="line">obj1.fn = obj.fn;</div><div class="line">obj1.fn();</div></pre></td></tr></table></figure>
-<h3 id="函数作为事件中的事件处理函数"><a href="#函数作为事件中的事件处理函数" class="headerlink" title="函数作为事件中的事件处理函数"></a>函数作为事件中的事件处理函数</h3><p>在给元素绑定事件的时候，都需要定义函数作为事件处理函数。那么，当我们操作元素来调用函数去执行事件的时候，函数内的<code>this</code>指向我们操作（例如：点击、双击等）的当前元素。</p>
+<h3 id="函数作为事件处理函数"><a href="#函数作为事件处理函数" class="headerlink" title="函数作为事件处理函数"></a>函数作为事件处理函数</h3><p>在给元素绑定事件的时候，都需要定义一个函数作为事件处理函数。那么，当我们操作元素来调用函数去执行事件的时候，函数内的<code>this</code>就指向了我们操作（例如：点击、双击等）的当前元素。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"divEle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">divEle.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span> );    <span class="comment">// &lt;div id="divEle"&gt;&lt;/div&gt;</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
 <h2 id="自定义-this-的指向"><a href="#自定义-this-的指向" class="headerlink" title="自定义 this 的指向"></a>自定义 this 的指向</h2><p>有的时候，<code>this</code>默认的指向并不是我们需要的，所以这个时候，我们就希望能够自己手动的去设置<code>this</code>的指向。</p>
@@ -67,7 +67,10 @@
 <h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>我们在文章开篇一进来的时候，就让大家去记住一个结论：<code>this</code>的取值，是在函数被调用的时候确定的。实际上，这个结论在 ES6 出来以前是很适用的，但是 ES6 出来以后，这个结论就有一些问题了。</p>
 <p>箭头函数中的<code>this</code>，是在定义时就确定了其取值，而不是在调用的时候。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">"zhangsan"</span>,</div><div class="line">	<span class="attr">sayName</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span> )        <span class="comment">// window</span></div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span>.name )   <span class="comment">// undefined</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">obj.sayName();</div></pre></td></tr></table></figure>
-<p>什么叫做在定义的时候确定取值？也就是说：箭头函数定义哪个执行上下文中，那么，它的<code>this</code>就继承于这个执行上下文。</p>
+<p>什么叫做在定义的时候确定取值？也就是说：</p>
+<blockquote>
+<p>箭头函数定义哪个执行上下文中，那么，它的<code>this</code>就继承于这个执行上下文。</p>
+</blockquote>
 ]]></content>
       
         
@@ -76,6 +79,12 @@
             <tag> this </tag>
             
             <tag> 箭头函数 </tag>
+            
+            <tag> call </tag>
+            
+            <tag> apply </tag>
+            
+            <tag> bind </tag>
             
         </tags>
         
