@@ -114,11 +114,12 @@
     <link href="http://yoursite.com/2017/10/08/POPandOOP/"/>
     <id>http://yoursite.com/2017/10/08/POPandOOP/</id>
     <published>2017-10-08T02:15:01.000Z</published>
-    <updated>2017-10-13T09:17:14.000Z</updated>
+    <updated>2017-10-13T09:21:59.000Z</updated>
     
-    <content type="html"><![CDATA[<p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
-<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
+    <content type="html"><![CDATA[<p>首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。</p>
 <a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
+<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
 <p>那么到底什么是面向对象？话说起来，面向对象的产生还得有产品经理的一份功劳。为什么这么说呢？因为一开始的时候，并没有面向对象，只有面向过程的概念。</p>
 <h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
 <p>举个栗子：产品经理说要把你女朋友装进冰箱里。程序员接到需求后列了几个步骤：</p>
@@ -161,8 +162,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。&lt;/p&gt;
-&lt;p&gt;那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。&lt;/p&gt;
+      &lt;p&gt;首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。&lt;/p&gt;
     
     </summary>
     
@@ -374,7 +374,7 @@
 <h2 id="代码实例分析"><a href="#代码实例分析" class="headerlink" title="代码实例分析"></a>代码实例分析</h2><p>如果对于上面的描述还是不太能理解的，我们就通过一个简单的例子来帮助大家进一步的理解变量对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
 <p>我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始进入创建阶段。为了便于理解，我们换一个形式来表示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fka3q97cy0j314k0jgn06.jpg" alt=""></p>
 <p>未进入代码执行阶段之前，变量对象中的属性都不能访问。但是进入执行阶段之后，变量对象就会转变为活动对象，而活动对象里面的属性就都能被访问了，然后就可以开始进行代码执行阶段的操作。</p>
@@ -382,7 +382,7 @@
 <p>变量对象和活动对象，它们其实就是同一个对象，只是处于执行上下文不同的生命周期有不同的名字。</p>
 </blockquote>
 <p>所以，当处于执行阶段时，执行上下文的状态就变成了如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fka3s2jg64j314i0iqtbl.jpg" alt=""></p>
 <p>因此，我们这个例子中代码的执行顺序就变成了下面这样：</p>
@@ -2319,9 +2319,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
-    
       <category term="document" scheme="http://yoursite.com/tags/document/"/>
+    
+      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
     
   </entry>
   

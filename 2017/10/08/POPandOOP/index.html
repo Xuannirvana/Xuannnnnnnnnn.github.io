@@ -34,17 +34,17 @@
 <link rel="canonical" href="http://yoursite.com/2017/10/08/POPandOOP/"/>
 
 
-<meta name="description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
+<meta name="description" content="首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。">
 <meta name="keywords" content="面向对象,面向过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象 - 面向过程和面向对象">
 <meta property="og:url" content="http://yoursite.com/2017/10/08/POPandOOP/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
-<meta property="og:updated_time" content="2017-10-13T09:17:14.000Z">
+<meta property="og:description" content="首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。">
+<meta property="og:updated_time" content="2017-10-13T09:21:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象 - 面向过程和面向对象">
-<meta name="twitter:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
+<meta name="twitter:description" content="首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -214,16 +214,17 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向过程"><span class="toc-text">面向过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象是什么"><span class="toc-text">对象是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象编程"><span class="toc-text">面向对象编程</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向过程"><span class="toc-text">面向过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对象是什么"><span class="toc-text">对象是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象编程"><span class="toc-text">面向对象编程</span></a></li></ol></li></ol>
     </div>
   </div>
 
 
     <div class="post-content">
       
-        <p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
-<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
+        <p>首先，这篇文章主要只是讲一下面向过程和面向对象的区别，不看这篇文章并不会影响大家后面学习面向对象。所以，看见太多文字就容易头晕眼花的朋友可以直接进入下一章的学习。</p>
 <a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
+<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
 <p>那么到底什么是面向对象？话说起来，面向对象的产生还得有产品经理的一份功劳。为什么这么说呢？因为一开始的时候，并没有面向对象，只有面向过程的概念。</p>
 <h2 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h2><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
 <p>举个栗子：产品经理说要把你女朋友装进冰箱里。程序员接到需求后列了几个步骤：</p>
