@@ -41,7 +41,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/08/explainOOP/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
-<meta property="og:updated_time" content="2017-10-13T09:32:06.000Z">
+<meta property="og:updated_time" content="2017-10-13T09:34:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象 - 什么是面向对象">
 <meta name="twitter:description" content="JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。 那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对">
@@ -214,7 +214,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向过程和面向对象的区别"><span class="toc-text">面向过程和面向对象的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程"><span class="toc-text">面向过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象是什么"><span class="toc-text">对象是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象编程"><span class="toc-text">面向对象编程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解面向对象"><span class="toc-text">理解面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于类和基于原型的面向对象方式比较"><span class="toc-text">基于类和基于原型的面向对象方式比较</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向过程和面向对象"><span class="toc-text">面向过程和面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向过程"><span class="toc-text">面向过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象"><span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#对象是什么"><span class="toc-text">对象是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面向对象编程"><span class="toc-text">面向对象编程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解面向对象"><span class="toc-text">理解面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于类和基于原型的面向对象方式比较"><span class="toc-text">基于类和基于原型的面向对象方式比较</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -225,7 +225,7 @@
 <p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
 <a id="more"></a>
 <p>那么到底什么是面向对象？话说起来，面向对象的产生还得有产品经理的一份功劳。为什么这么说呢？因为一开始的时候，并没有面向对象，只有面向过程的概念。</p>
-<h2 id="面向过程和面向对象的区别"><a href="#面向过程和面向对象的区别" class="headerlink" title="面向过程和面向对象的区别"></a>面向过程和面向对象的区别</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
+<h2 id="面向过程和面向对象"><a href="#面向过程和面向对象" class="headerlink" title="面向过程和面向对象"></a>面向过程和面向对象</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
 <p>举个栗子：产品经理说要把你女朋友装进冰箱里。程序员接到需求后列了几个步骤：</p>
 <ul>
 <li>把冰箱门打开</li>
@@ -279,7 +279,7 @@
 <p>一方面，工人必须参照一张工程图纸，设计规定这辆车应该如何制造。这里的工程图纸就好比是语言中的 类 (<code>class</code>)，而车就是按照这个类（<code>class</code>）制造出来的。</p>
 <p>另一方面，工人和机器（相当于<code>constructor</code>) 利用各种零部件如发动机，轮胎，方向盘（相当于<code>prototype</code>的各个属性）将汽车构造出来。</p>
 <p>那么关于这两种方式谁更为彻底地表达了面向对象的思想呢？没有结论。</p>
-<p>但是因为现在 JavaScript 中也已经引入了类的概念。所以，对于 JavaScript 开发者来说，两种方式都是需要掌握的。</p>
+<p>但是因为现在 JavaScript 中也已经引入了类的概念。所以，对于 JavaScript 开发者来说，这两种方式都是需要掌握的。</p>
 
       
     </div>
