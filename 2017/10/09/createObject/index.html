@@ -34,17 +34,17 @@
 <link rel="canonical" href="http://yoursite.com/2017/10/09/createObject/"/>
 
 
-<meta name="description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。 创建对象在 JavaScr">
+<meta name="description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。">
 <meta name="keywords" content="面向对象,面向过程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象 - 如何实现面向对象编程（OOP）">
 <meta property="og:url" content="http://yoursite.com/2017/10/09/createObject/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。 创建对象在 JavaScr">
-<meta property="og:updated_time" content="2017-10-13T09:52:44.000Z">
+<meta property="og:description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。">
+<meta property="og:updated_time" content="2017-10-13T09:53:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象 - 如何实现面向对象编程（OOP）">
-<meta name="twitter:description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。 创建对象在 JavaScr">
+<meta name="twitter:description" content="JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - JSON(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。 应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -223,6 +223,7 @@
       
         <p>JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 - <strong>JSON</strong>(JavaScript Object Notation)，这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。</p>
 <p>应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。</p>
+<a id="more"></a>
 <h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>在 JavaScript 中如何实现面向对象编程，最基本就是学会如何去创建对象。</p>
 <p>JavaScript 创建对象的方法的产生是一个迭代的过程，因为已有方法的缺陷催生出了新的方法。</p>
 <h3 id="Object-构造函数"><a href="#Object-构造函数" class="headerlink" title="Object 构造函数"></a>Object 构造函数</h3><p>早期 JavaScript 程序员经常使用也是最简单的方法，就是通过 Object 构造函数来创建对象。</p>
