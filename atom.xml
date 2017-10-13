@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-10T05:52:24.000Z</updated>
+  <updated>2017-10-13T03:45:20.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,91 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的 this</title>
+    <link href="http://yoursite.com/2017/10/15/this/"/>
+    <id>http://yoursite.com/2017/10/15/this/</id>
+    <published>2017-10-15T02:15:01.000Z</published>
+    <updated>2017-10-13T03:45:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>this</code>在 JavaScript 中其实不算是太难的内容，但是仍然有很多人弄不清楚<code>this</code>的用法，大概是因为大部分人一直都没有全方位的去分析总结过关于<code>this</code>的可能出现的各种情况。因此，这篇文章我们对<code>this</code>进行一个全面的分析和总结。</p>
+<a id="more"></a>
+<h2 id="this-取值的确定"><a href="#this-取值的确定" class="headerlink" title="this 取值的确定"></a>this 取值的确定</h2><p>在前面<a href="https://runjaelyn.github.io/2017/10/04/VariableObject/" target="_blank" rel="external">《变量对象（Variable Object）》</a>一文中，我们讲执行上下文的生命周期的时候就提到过：执行上下文在创建的同时，其内部会确定<code>this</code>的指向。也就是说，<code>this</code>的指向，是在执行上下文创建的时候就已经确定了。而执行上下文，是在函数调用的时候创建的。因此，通过以上分析，我们得出一个非常重要的结论：</p>
+<blockquote>
+<p><code>this</code>的取值，是在函数被调用的时候确定的。</p>
+</blockquote>
+<p>知道了<code>this</code>的取值是在什么时候确定的，接下来我们重点来看一下，<code>this</code>都有哪些取值。</p>
+<h2 id="指向-window-对象的-this"><a href="#指向-window-对象的-this" class="headerlink" title="指向 window 对象的 this"></a>指向 window 对象的 this</h2><h3 id="全局环境中的-this"><a href="#全局环境中的-this" class="headerlink" title="全局环境中的 this"></a>全局环境中的 this</h3><p>全局环境中的<code>this</code>，是一个比较特殊的存在，它指向的是<code>window</code>对象。因此，这种情况也相对简单，没有太多复杂的情况需要去考虑。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在全局环境中输出</span></div><div class="line"><span class="built_in">console</span>.log( <span class="keyword">this</span> );    <span class="comment">// window</span></div><div class="line"><span class="built_in">console</span>.log( <span class="built_in">window</span> === <span class="keyword">this</span> );   <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h3 id="普通函数调用时的-this"><a href="#普通函数调用时的-this" class="headerlink" title="普通函数调用时的 this"></a>普通函数调用时的 this</h3><p>除了全局环境中的<code>this</code>指向<code>window</code>之外，还有一种情况下<code>this</code>也指向<code>window</code>，就是普通函数的调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span> );    <span class="comment">// window</span></div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.x );  <span class="comment">// 10</span></div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure>
+<p>注意以下情况：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">x</span>:<span class="number">10</span>,</div><div class="line">	<span class="attr">fn</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;         </div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;             </div><div class="line">			<span class="built_in">console</span>.log(<span class="keyword">this</span>);      <span class="comment">// window      </span></div><div class="line">			<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);    <span class="comment">// 20</span></div><div class="line">		&#125;</div><div class="line">		foo();</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">obj.fn();</div></pre></td></tr></table></figure>
+<p>虽然函数<code>foo</code>是在<code>obj</code>对象内部定义的，但是它仍然是一个普通函数，因此内部的<code>this</code>指向的还是<code>window</code>。</p>
+<h2 id="指向函数调用者的-this"><a href="#指向函数调用者的-this" class="headerlink" title="指向函数调用者的 this"></a>指向函数调用者的 this</h2><h3 id="函数作为对象的属性"><a href="#函数作为对象的属性" class="headerlink" title="函数作为对象的属性"></a>函数作为对象的属性</h3><p>当函数作为某个对象的一个属性并且被对象调用时，函数内的<code>this</code>指向该对象。</p>
+<p>例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">fn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);    <span class="comment">// obj</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);  <span class="comment">// 10 </span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">obj.fn();</div></pre></td></tr></table></figure>
+<p>例二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">10</span>,</div><div class="line">	<span class="attr">fn</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);     <span class="comment">// obj1</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.x);   <span class="comment">// 30</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">	<span class="attr">x</span>: <span class="number">30</span></div><div class="line">&#125;</div><div class="line">obj1.fn = obj.fn;</div><div class="line">obj1.fn();</div></pre></td></tr></table></figure>
+<h3 id="函数作为事件中的事件处理函数"><a href="#函数作为事件中的事件处理函数" class="headerlink" title="函数作为事件中的事件处理函数"></a>函数作为事件中的事件处理函数</h3><p>在给元素绑定事件的时候，都需要定义函数作为事件处理函数。那么，当我们操作元素来调用函数去执行事件的时候，函数内的<code>this</code>指向我们操作（例如：点击、双击等）的当前元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"divEle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">divEle.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span> );    <span class="comment">// &lt;div id="divEle"&gt;&lt;/div&gt;</span></div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
+<h2 id="自定义-this-的指向"><a href="#自定义-this-的指向" class="headerlink" title="自定义 this 的指向"></a>自定义 this 的指向</h2><p>有的时候，<code>this</code>默认的指向并不是我们需要的，所以这个时候，我们就希望能够自己手动的去设置<code>this</code>的指向。</p>
+<h3 id="函数用-call-或-apply-调用"><a href="#函数用-call-或-apply-调用" class="headerlink" title="函数用 call 或 apply 调用"></a>函数用 call 或 apply 调用</h3><p>JavaScript 内部提供了一种机制，让我们可以自行手动设置<code>this</code>的指向。它们就是<code>call</code>和<code>apply</code>。对于这二者而言，它们的作用是完全一样的，只是接受参数的形式不太一样。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">函数名.call( 指定<span class="keyword">this</span>指向, 参数<span class="number">1</span>, 参数<span class="number">2.</span>.. )</div><div class="line">函数名.apply( 指定<span class="keyword">this</span>指向, [参数<span class="number">1</span>, 参数<span class="number">2.</span>..] )</div></pre></td></tr></table></figure>
+<p>例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">"zhangsan"</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">username</span>: <span class="string">"lisi"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.username);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 普通调用</span></div><div class="line">sayName();           <span class="comment">// zhangsan</span></div><div class="line"><span class="comment">// 通过 call 调用</span></div><div class="line">sayName.call(obj);   <span class="comment">// lisi</span></div><div class="line"><span class="comment">// 通过 apply 调用</span></div><div class="line">sayName.apply(obj);  <span class="comment">// lisi</span></div></pre></td></tr></table></figure>
+<p>结论：</p>
+<ul>
+<li>当函数没有参数时，用<code>call</code>和<code>apply</code>都可以，没有任何区别。</li>
+<li>当参数数量确定时，用<code>call</code>。</li>
+<li>但参数数量不确定时，用<code>apply</code>，参数可以通过<code>push</code>方法添加到数组餐后传递进去。</li>
+</ul>
+<h3 id="函数用-bind-调用"><a href="#函数用-bind-调用" class="headerlink" title="函数用 bind 调用"></a>函数用 bind 调用</h3><p><code>bind</code>和<code>call</code>、<code>apply</code>的用法有些不同。</p>
+<p>例二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">"zhangsan"</span>;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">username</span>: <span class="string">"lisi"</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.username);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 普通调用</span></div><div class="line">sayName();      <span class="comment">// zhangsan</span></div><div class="line"><span class="comment">// 通过 bind 调用</span></div><div class="line"><span class="keyword">var</span> fn = sayName.bind(obj);</div><div class="line">fn();           <span class="comment">// lisi</span></div></pre></td></tr></table></figure>
+<p>我们看到，当函数通过<code>bind</code>调用后并不会立即执行，而是返回了一个修改过后的函数。因此，想要让函数执行，我们还必须再调用一次修改过后的函数。</p>
+<h3 id="三者区别"><a href="#三者区别" class="headerlink" title="三者区别"></a>三者区别</h3><p><code>call</code>和<code>apply</code>都是改变上下文中的<code>this</code>并立即执行当前函数，<code>bind</code>方法是改变<code>this</code>之后可以自己决定什么时候去调用改变后的新函数。</p>
+<h2 id="构造函数的-this"><a href="#构造函数的-this" class="headerlink" title="构造函数的 this"></a>构造函数的 this</h2><h3 id="函数内部的-this"><a href="#函数内部的-this" class="headerlink" title="函数内部的 this"></a>函数内部的 this</h3><p>在封装对象的时候，我们几乎都会用到<code>this</code>。但是，在这个过程中<code>this</code>的指向到底是什么样的呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 这里的 this 指向了谁</span></div><div class="line">	<span class="keyword">this</span>.name = <span class="string">"zhangsan"</span>;</div><div class="line">	<span class="keyword">this</span>.age = <span class="number">20</span>;	</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> foo1 = <span class="keyword">new</span> Foo();</div></pre></td></tr></table></figure>
+<p>我们在前面讲创建对象的时候就提到过，使用<code>new</code>操作符创建实例的对象的时候，会经历四个步骤：</p>
+<ol>
+<li>创建一个新对象；</li>
+<li>将构造函数的作用域赋给新对象（因此<code>this</code>就指向了这个新对象）；</li>
+<li>执行构造函数中的代码（为第 1 步创建出的新对象添加属性）；</li>
+<li>返回新对象。</li>
+</ol>
+<p>也就是说，当<code>new</code>操作符调用构造函数时，<code>this</code>其实指向的是这个新创建的对象，最后又将新对象返回出来，被实例对象的变量<code>foo1</code>接受。因此，我们可以得出结论：</p>
+<blockquote>
+<p>构造函数中的<code>this</code>，指向<code>new</code>出来的实例对象。</p>
+</blockquote>
+<h3 id="原型-prototype-中的-this"><a href="#原型-prototype-中的-this" class="headerlink" title="原型 prototype 中的 this"></a>原型 prototype 中的 this</h3><p>构造函数中的<code>this</code>我们知道了，那么原型上的<code>this</code>呢？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 这里的 this 又指向了谁</span></div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> foo1 = <span class="keyword">new</span> Foo(<span class="string">"zhangsan"</span>, <span class="number">20</span>);</div><div class="line">foo1.sayName();</div></pre></td></tr></table></figure>
+<p>根据我们前面讲<strong>指向函数调用者的 this</strong>中的定义，<code>foo1.sayName()</code>中最终是<code>foo1</code>调用了函数，因此，<code>sayName</code>中的<code>this</code>，指向<code>foo1</code>。也就是说：</p>
+<blockquote>
+<p>原型中的<code>this</code>，也指向的是当前实例对象。</p>
+</blockquote>
+<p>实际上不仅仅是在构造函数的<code>prototype</code>中，即便是在整个原型链中，<code>this</code>都是指向的当前实例对象。</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>我们在文章开篇一进来的时候，就让大家去记住一个结论：<code>this</code>的取值，是在函数被调用的时候确定的。实际上，这个结论在 ES6 出来以前是很适用的，但是 ES6 出来以后，这个结论就有一些问题了。</p>
+<p>箭头函数中的<code>this</code>，是在定义时就确定了其取值，而不是在调用的时候。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">"zhangsan"</span>,</div><div class="line">	<span class="attr">sayName</span>: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span> )        <span class="comment">// window</span></div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span>.name )   <span class="comment">// undefined</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">obj.sayName();</div></pre></td></tr></table></figure>
+<p>什么叫做在定义的时候确定取值？也就是说：箭头函数定义哪个执行上下文中，那么，它的<code>this</code>就继承于这个执行上下文。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;this&lt;/code&gt;在 JavaScript 中其实不算是太难的内容，但是仍然有很多人弄不清楚&lt;code&gt;this&lt;/code&gt;的用法，大概是因为大部分人一直都没有全方位的去分析总结过关于&lt;code&gt;this&lt;/code&gt;的可能出现的各种情况。因此，这篇文章我们对&lt;code&gt;this&lt;/code&gt;进行一个全面的分析和总结。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="this" scheme="http://yoursite.com/tags/this/"/>
+    
+      <category term="箭头函数" scheme="http://yoursite.com/tags/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>闭包（closure）- 什么是闭包</title>
@@ -214,7 +299,7 @@
 <h2 id="代码实例分析"><a href="#代码实例分析" class="headerlink" title="代码实例分析"></a>代码实例分析</h2><p>如果对于上面的描述还是不太能理解的，我们就通过一个简单的例子来帮助大家进一步的理解变量对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
 <p>我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始进入创建阶段。为了便于理解，我们换一个形式来表示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fka3q97cy0j314k0jgn06.jpg" alt=""></p>
 <p>未进入代码执行阶段之前，变量对象中的属性都不能访问。但是进入执行阶段之后，变量对象就会转变为活动对象，而活动对象里面的属性就都能被访问了，然后就可以开始进行代码执行阶段的操作。</p>
@@ -222,7 +307,7 @@
 <p>变量对象和活动对象，它们其实就是同一个对象，只是处于执行上下文不同的生命周期有不同的名字。</p>
 </blockquote>
 <p>所以，当处于执行阶段时，执行上下文的状态就变成了如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fka3s2jg64j314i0iqtbl.jpg" alt=""></p>
 <p>因此，我们这个例子中代码的执行顺序就变成了下面这样：</p>
@@ -2159,9 +2244,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="document" scheme="http://yoursite.com/tags/document/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
@@ -2534,73 +2619,6 @@
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建 Github 个人博客(一)：搭建博客基础页面</title>
-    <link href="http://yoursite.com/2017/06/09/signupBlog/"/>
-    <id>http://yoursite.com/2017/06/09/signupBlog/</id>
-    <published>2017-06-09T15:25:01.000Z</published>
-    <updated>2017-08-31T07:52:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p>
-<a id="more"></a>
-<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>要创建 GitHub 的个人技术博客，首先需要进入<a href="https://github.com/" target="_blank" rel="external">Github官网</a>注册一个 GitHub 的账号。</p>
-<p>（如果已经有 <code>github</code> 账号，可跳前两个步骤，直接进入第三步。）</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyl3w5wj31kw0yoaiu.jpg" alt=""></p>
-<h2 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h2><p>账号注册成功之后会跳到一个账户初始设置的页面，一般情况下我们采用默认设置就行。不用做任何更改，直接点击绿色 <code>Continue</code> 按钮。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcykhxlbj31kw0xggtm.jpg" alt=""></p>
-<h3 id="验证邮箱"><a href="#验证邮箱" class="headerlink" title="验证邮箱"></a>验证邮箱</h3><p>初始设置完成之后，打开你注册账号时填写的邮箱，查看 GitHub 发给你的邮件。</p>
-<p>我们需要对邮箱进行验证，后面生成的个人主页才会被接受和发布。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcylv8fkj31kw0dy42y.jpg" alt=""></p>
-<p>点击验证邮箱，验证成功后跳转到如下页面。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfc10zrt7j31kw0tcjx9.jpg" alt=""></p>
-<p>点击第二个按钮，创建一个新项目。</p>
-<h2 id="创建页面仓库"><a href="#创建页面仓库" class="headerlink" title="创建页面仓库"></a>创建页面仓库</h2><p>这个页面用来填写关于你新建的这个仓库的一些初始化设置。</p>
-<p>（找不到页面入口的可以点击这里<a href="https://github.com/new" target="_blank" rel="external">创建页面仓库</a>）</p>
-<p>注意：</p>
-<ol>
-<li><p>仓库名称尽量跟你的 GitHub 用户名（注册账号时填写的用户名）保持一致。</p>
-</li>
-<li><p>因为 Github Pages 发布的页面统一使用 <code>github.io</code> 域名，所以你的仓库名还需要在你的用户名后面加上后缀 <code>.github.io</code>。</p>
-</li>
-</ol>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfcymfif2j31kw0ypgu4.jpg" alt=""></p>
-<p>其他的一些可选选项根据自己需求填写，完成之后点击绿色按钮 <code>Create reponsitory</code> 创建仓库。</p>
-<h2 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h2><p>仓库创建好后，接下来就是在仓库中生成我们的页面。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyj5d3uj31kw0yrjyl.jpg" alt=""></p>
-<p>点击页面内的 <code>setting</code> ，进入设置页面。</p>
-<p>在生成完整的页面之前，我们需要先给我们的页面设置一个主题样式，所以滑到页面后面，可以看到有一个主题选择按钮，点击 <code>choose a theme</code>。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcyjvaofj317s0yi44h.jpg" alt=""></p>
-<p>在主题页面选择一个自己喜欢的主题，选定后点击 <code>select theme</code></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcymovenj31kw10gwok.jpg" alt=""></p>
-<p>主题设置成功后会跳转到一个“README“文件的配置页面。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcykpcpoj31kw0pjaeo.jpg" alt=""></p>
-<p>因为我们是将“README”作为我们博客的首页，所以选择直接将它提交到主分支即可。</p>
-<p>其他的设置在后面我们都可以修改，所以这里不做任何改动，采用默认设置。</p>
-<p>然后点击绿色 <code>Commit changes</code> 按钮。</p>
-<p>到这为止，我们的 GitHub 博客就已经搭建好了。</p>
-<h2 id="博客地址"><a href="#博客地址" class="headerlink" title="博客地址"></a>博客地址</h2><p>那么，别人要怎么访问我们的博客呢？</p>
-<p>还是进入到我们刚刚选择主题时的 <code>setting</code> 页面。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcyiik04j315u0zmq8v.jpg" alt=""></p>
-<p>在主题选择这一栏的上方，有一个链接。点击这个链接，就可以看到我们的博客首页了，里面有我们刚刚设置的博客主题，和“REANME”文件里的内容。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcympialj31kw0xigs1.jpg" alt=""></p>
-<p>这个链接地址就是我们的博客地址，别人也就可以通过这个地址来访问我们 GitHub 博客了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="github" scheme="http://yoursite.com/categories/github/"/>
-    
-    
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
   </entry>
   
