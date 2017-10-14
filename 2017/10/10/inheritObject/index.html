@@ -12,8 +12,12 @@
 
 
 
+  <meta name="description" content="面向对象 - 实现继承的三种形式"/>
 
 
+
+
+  <meta name="keywords" content="原型链,对象冒充,混合继承," />
 
 
 
@@ -27,15 +31,22 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/10/10/inheritObject/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Komorebi">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。 我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。 因此本文主要介绍几种面向对象中实现继承的形式。 原型链JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对">
+<meta name="keywords" content="原型链,对象冒充,混合继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象 - 实现继承的三种形式">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/inheritObject/index.html">
 <meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。 我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。 因此本文主要介绍几种面向对象中实现继承的形式。 原型链JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fkfgwvkrqsj31kw0zm477.jpg">
+<meta property="og:updated_time" content="2017-10-14T09:31:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Komorebi">
+<meta name="twitter:title" content="面向对象 - 实现继承的三种形式">
+<meta name="twitter:description" content="学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。 我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。 因此本文主要介绍几种面向对象中实现继承的形式。 原型链JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fkfgwvkrqsj31kw0zm477.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -64,7 +75,7 @@
 
 
 
-    <title> Komorebi </title>
+    <title> 面向对象 - 实现继承的三种形式 · Komorebi </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -184,56 +195,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/15/this/">JavaScript 中的 this</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月15日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p><code>this</code>在 JavaScript 中其实不算是太难的内容，但是仍然有很多人弄不清楚<code>this</code>的用法，大概是因为大部分人一直都没有全方位的去分析总结过关于<code>this</code>的可能出现的各种情况。因此，这篇文章我们对<code>this</code>进行一个全面的分析和总结。</p>
-          <div class="read-more">
-            <a href="/2017/10/15/this/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/10/inheritObject/">面向对象 - 实现继承的三种形式</a>
+          面向对象 - 实现继承的三种形式
         
       </h1>
 
@@ -246,14 +213,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链"><span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#借用构造函数（对象冒充）"><span class="toc-text">借用构造函数（对象冒充）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合（混合）继承"><span class="toc-text">组合（混合）继承</span></a></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
+        <p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
 <p>我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。</p>
 <p>因此本文主要介绍几种面向对象中实现继承的形式。</p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对象指向父类的实例以实现继承。</p>
@@ -269,374 +239,97 @@
 <h2 id="组合（混合）继承"><a href="#组合（混合）继承" class="headerlink" title="组合（混合）继承"></a>组合（混合）继承</h2><p>组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的 技术组合到一块，从而发挥二者之长的一种继承模式。实现的思路就是：使用原型链实现对原型的属性和方法的继承，同时通过借用构造函数来实现对实例属性的继承。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过借用构造函数继承实例的属性</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过原型链继承原型的方法</span></div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhang = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">22</span>);</div><div class="line">zhang.sayName();</div></pre></td></tr></table></figure>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/09/createObject/">面向对象 - 如何实现面向对象编程（OOP）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月9日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
         
-          <p>JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 —— <strong>JSON</strong>（JavaScript Object Notation），这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。</p>
-<p>应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。</p>
-          <div class="read-more">
-            <a href="/2017/10/09/createObject/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/原型链/">原型链</a>
+            
+              <a href="/tags/对象冒充/">对象冒充</a>
+            
+              <a href="/tags/混合继承/">混合继承</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/08/explainOOP/">面向对象 - 什么是面向对象</a>
         
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月8日
-        </span>
-      </div>
-    </header>
-
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/10/15/this/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JavaScript 中的 this</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
-<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
-          <div class="read-more">
-            <a href="/2017/10/08/explainOOP/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/07/closureDefinition/">闭包（closure）- 什么是闭包</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月7日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>这几年，闭包几乎成为了前端面试必问的一个问题。它非常重要又难以掌握，而且还难以定义。所以，这篇文章我们主要说的就是关于闭包的定义。</p>
-          <div class="read-more">
-            <a href="/2017/10/07/closureDefinition/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/05/scopeChian/">作用域链（Scope Chain）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月5日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
-<p>但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。</p>
-          <div class="read-more">
-            <a href="/2017/10/05/scopeChian/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/04/VariableObject/">变量对象（Variable Object）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月4日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
-          <div class="read-more">
-            <a href="/2017/10/04/VariableObject/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/scope/">作用域（scope）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
-<p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/scope/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/ExecutionContext/">执行上下文（Execution Context）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
-<p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/ExecutionContext/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/02/hoisting/">变量提升和函数提升</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月2日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
-          <div class="read-more">
-            <a href="/2017/10/02/hoisting/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2017/10/09/createObject/">
+        <span class="next-text nav-default">面向对象 - 如何实现面向对象编程（OOP）</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
 
         </div>  
       </main>
@@ -710,6 +403,8 @@
     </div>
 
     
+  
+
 
 
     
