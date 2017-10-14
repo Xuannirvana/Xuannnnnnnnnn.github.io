@@ -233,13 +233,13 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/10/prototype/">原型（prototype）</a>
+          <a class="post-link" href="/2017/10/11/prototype/">原型（prototype）</a>
         
       </h1>
 
       <div class="post-meta">
         <span class="post-time">
-          2017年10月10日
+          2017年10月11日
         </span>
       </div>
     </header>
@@ -251,98 +251,15 @@
       
         
         
+          
+        
 
         
           <p>在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。</p>
 <p>这篇文章我们主要针对原型进行进一步的介绍。</p>
-<h2 id="函数与对象的关系"><a href="#函数与对象的关系" class="headerlink" title="函数与对象的关系"></a>函数与对象的关系</h2><p>因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。</p>
-<h3 id="函数属于对象"><a href="#函数属于对象" class="headerlink" title="函数属于对象"></a>函数属于对象</h3><p>函数其实对象中的一种，通过<code>instanceof</code>运算符可以判断。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 返回 true，说明函数是对象类型</span></div><div class="line"><span class="built_in">console</span>.log( fn <span class="keyword">instanceof</span> <span class="built_in">Object</span> );   <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h3 id="函数创建对象"><a href="#函数创建对象" class="headerlink" title="函数创建对象"></a>函数创建对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">obj.a = <span class="number">20</span>;</div><div class="line">obj.b = <span class="number">30</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">arr[<span class="number">0</span>] = <span class="string">"hello"</span>;</div><div class="line">arr[<span class="number">1</span>] = <span class="string">"world"</span>;</div></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
-<p>对象是由函数创建的，而函数却又是一种对象。</p>
-</blockquote>
-<h2 id="原型（prototype）"><a href="#原型（prototype）" class="headerlink" title="原型（prototype）"></a>原型（prototype）</h2><h3 id="函数与原型的关系"><a href="#函数与原型的关系" class="headerlink" title="函数与原型的关系"></a>函数与原型的关系</h3><p>JavaScript 中创建一个函数，就会自动创建一个<code>prototype</code>属性。也就是说：</p>
-<blockquote>
-<p><strong>每一个函数都有一个<code>prototype</code>属性，称为原型。</strong></p>
-</blockquote>
-<p>这个<code>prototype</code>属性的值实际上是一个对象，这个对象会自动获得一个<code>constructor</code>（构造函数）的属性，而这个属性指向当前函数本身。</p>
-<p>我们通过一个代码例子来分析：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkelhj1qrlj314k0fejtz.jpg" alt=""></p>
-<h3 id="构造函数的属性和原型的属性的区别"><a href="#构造函数的属性和原型的属性的区别" class="headerlink" title="构造函数的属性和原型的属性的区别"></a>构造函数的属性和原型的属性的区别</h3><p>在讲创建对象的时候，我们提到了几种创建对象的方式。其中有两种：构造函数模式和原型模式。构造函数模式是在函数内部通过<code>this</code>定义属性，原型模式是通过<code>prototype</code>定义属性。</p>
-<p>那么这两种模式定义的属性有什么区别呢？</p>
-<ul>
-<li><strong>把属性定义在原型中比定义在构造函数中消耗的内存更小</strong></li>
-</ul>
-<p>因为在内存中一个构造函数的原型只有一个，写在原型中的行为可以被所有实例共享，实例化的时候并不会在内存中再复制一份。因此，如果没有特殊情况，在用混合模式创建对象的时候，我们一般把属性写在构造函数中，而行为写在原型中。</p>
-<ul>
-<li><strong>构造函数中定义的属性和方法比在原型中定义的属性和方法的优先级高</strong></li>
-</ul>
-<p>如果定义了同名称的属性和方法，构造函数中的将会覆盖原型中的。</p>
-<h3 id="原型的相关方法"><a href="#原型的相关方法" class="headerlink" title="原型的相关方法"></a>原型的相关方法</h3><p>原型作为一个对象，身上自带了很多相关的方法。</p>
-<ul>
-<li><code>isPrototypeOf()</code>：确认原型和实例之间的关系。</li>
-<li><code>Object.getPrototypeOf()</code>：获得实例的原型。</li>
-<li><code>hasOwnPrototype()</code>：检测某个属性是否存在于实例中。</li>
-</ul>
-<h2 id="隐式原型（-proto-）"><a href="#隐式原型（-proto-）" class="headerlink" title="隐式原型（__proto__）"></a>隐式原型（<code>__proto__</code>）</h2><p><code>__proto__</code>是对象的一个属性，也就是说：</p>
-<blockquote>
-<p><strong>每一个对象都有一个<code>__proto__</code>属性，称为隐式原型。</strong></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line"><span class="comment">// 输出实例对象</span></div><div class="line"><span class="built_in">console</span>.log( p1 );</div></pre></td></tr></table></figure>
-<p>代码运行结果如下：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkengzouybj314i04qmxe.jpg" alt=""></p>
-<p>展开这个实例对象，可以看到里面有一个<code>__proto__</code>属性，而它的属性值，是一个对象。</p>
-<blockquote>
-<p>隐式原型（<code>__proto__</code>）本身也属于对象。</p>
-</blockquote>
-<h2 id="隐式原型和原型的关系"><a href="#隐式原型和原型的关系" class="headerlink" title="隐式原型和原型的关系"></a>隐式原型和原型的关系</h2><p>通过前面的学习我们知道，每一个函数都有一个原型<code>prototype</code>，每一个对象都有一个隐式原型<code>__proto__</code>。那么它们之间有什么关系吗？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( Person.prototype );</div><div class="line"><span class="built_in">console</span>.log( p1.__proto__ );</div></pre></td></tr></table></figure>
-<p>代码运行结果如下：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkeoq789ohj314k0as75p.jpg" alt=""></p>
-<p>我们可以看到，对象的<code>__proto__</code>属性和函数的<code>prototype</code>属性结果是一样的。所以我们可以得出一个结论：</p>
-<blockquote>
-<p>每个对象都有一个<code>__proto__</code>属性，指向创建该对象的函数的<code>prototype</code>。</p>
-</blockquote>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkeqohkb9wj314k0g2tbe.jpg" alt=""></p>
-<p>知道了<code>__proto__</code>和<code>prototype</code>的关系，接下来，我们再来深入研究几个问题：</p>
-<p>（1）我们前面说了，<code>prototype</code>本身也是对象。那么现在新的问题来了，既然<code>prototype</code>是对象，作为对象那它也应该有<code>__proto__</code>属性。那这个<code>__proto__</code>属性又指向谁呢？</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fker123ohdj31kw0vxdn3.jpg" alt=""></p>
-<p>说明：</p>
-<ol>
-<li>函数的原型对象<code>prototype</code>本质上都是通过<code>Object</code>函数来创建的，所以它的<code>__proto__</code>指向的是<code>Object.prototype</code>。</li>
-<li><code>Object.prototype</code>的<code>__proto__</code>指向<code>null</code>。</li>
-</ol>
-<p>（2）我们知道，函数也是一种对象，既然它也是对象，那函数有<code>__proto__</code>吗？</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fkf9lvn95dj31kw0lqgt7.jpg" alt=""></p>
-<p>说明：</p>
-<p><code>Function</code>是一个函数，函数又是一种对象。当然也有<code>__proto__</code>属性。所有的函数，都是被<code>Function</code>创建出来的。所以，<code>Function</code>是被自身创建的，所以它的<code>__proto__</code>指向了自身的<code>prototype</code>。</p>
-<p>（3）<code>Function</code>的<code>prototype</code>属性也是一个对象，那它的<code>__proto__</code>又指向谁？</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fkf9zyq1u5j31kw0n47cl.jpg" alt=""></p>
-<p>说明：</p>
-<p><code>Function.prototype</code>是被<code>Object</code>创建的对象，它的<code>__proto__</code>指向的是<code>Object.prototype</code>。</p>
-<h2 id="原型知识点汇总"><a href="#原型知识点汇总" class="headerlink" title="原型知识点汇总"></a>原型知识点汇总</h2><p>通过以上所有的分析，我们对所有的结论做一个总结汇总：</p>
-<blockquote>
-<ol>
-<li>每一个函数都有一个<code>prototype</code>属性，称为原型。</li>
-<li>每一个对象都有一个<code>__proto__</code>属性，称为隐式原型。</li>
-<li>每一个原型<code>prototype</code>（包括隐式原型<code>__proto__</code>）都有一个<code>constructor</code>属性，指向当前函数。</li>
-<li><code>prototype</code>和<code>__proto__</code>本身也都属于对象。</li>
-<li>所有对象的<code>__proto__</code>都指向创建该对象的函数的<code>prototype</code>。</li>
-<li>每一个原型对象<code>prototype</code>身上都有一个<code>constructor</code>，指向当前函数本身。</li>
-<li>所有函数的<code>prototype</code>都是通过<code>Object</code>函数创建的。</li>
-<li>所有函数都是通过<code>Function</code>函数创建的。 </li>
-</ol>
-</blockquote>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>实例对象都有自己的属性和方法，而原型封装了所有实例共享的属性和方法。那这种共享是通过什么方式来实现的呢？就是我们的原型链。</p>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</div><div class="line">Person.prototype.name = <span class="string">"zhangsan"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fkfbhx0p1wj31660gowhs.jpg" alt=""></p>
-<p>当我们访问实例对象的某个属性时，解析器会执行一次搜索：首先从实例对象开始，如果在实例中找到了该属性，则直接返回对应的属性值。如果在实例中没有找到该属性，就会沿着<code>__proto__</code>找到它指向的<code>prototype</code>原型对象，然后在原型对象中查找该属性，然后得到对应的属性值。这就是原型链。</p>
-
+          <div class="read-more">
+            <a href="/2017/10/11/prototype/" class="read-more-link">阅读更多</a>
+          </div>
         
       
     </div>

@@ -111,13 +111,14 @@
   
   <entry>
     <title>原型（prototype）</title>
-    <link href="http://yoursite.com/2017/10/10/prototype/"/>
-    <id>http://yoursite.com/2017/10/10/prototype/</id>
-    <published>2017-10-10T02:15:01.000Z</published>
-    <updated>2017-10-14T14:23:28.000Z</updated>
+    <link href="http://yoursite.com/2017/10/11/prototype/"/>
+    <id>http://yoursite.com/2017/10/11/prototype/</id>
+    <published>2017-10-11T02:15:01.000Z</published>
+    <updated>2017-10-14T14:25:01.000Z</updated>
     
     <content type="html"><![CDATA[<p>在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。</p>
 <p>这篇文章我们主要针对原型进行进一步的介绍。</p>
+<a id="more"></a>
 <h2 id="函数与对象的关系"><a href="#函数与对象的关系" class="headerlink" title="函数与对象的关系"></a>函数与对象的关系</h2><p>因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。</p>
 <h3 id="函数属于对象"><a href="#函数属于对象" class="headerlink" title="函数属于对象"></a>函数属于对象</h3><p>函数其实对象中的一种，通过<code>instanceof</code>运算符可以判断。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 返回 true，说明函数是对象类型</span></div><div class="line"><span class="built_in">console</span>.log( fn <span class="keyword">instanceof</span> <span class="built_in">Object</span> );   <span class="comment">// true</span></div></pre></td></tr></table></figure>
@@ -211,7 +212,6 @@
     
       &lt;p&gt;在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。&lt;/p&gt;
 &lt;p&gt;这篇文章我们主要针对原型进行进一步的介绍。&lt;/p&gt;
-&lt;h2 id=&quot;函数与
     
     </summary>
     
@@ -2557,9 +2557,9 @@
       <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
     
     
-      <category term="document" scheme="http://yoursite.com/tags/document/"/>
-    
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
+    
+      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
