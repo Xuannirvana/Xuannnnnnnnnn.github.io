@@ -12,8 +12,12 @@
 
 
 
+  <meta name="description" content="原型（prototype）"/>
 
 
+
+
+  <meta name="keywords" content="原型链,隐式原型," />
 
 
 
@@ -27,15 +31,29 @@
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
+<link rel="canonical" href="http://yoursite.com/2017/10/10/prototype/"/>
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Komorebi">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。 这篇文章我们主要针对原型进行进一步的介绍。 函数与对象的关系因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。 函数属于对象函数其实对象中的一种，通过instanceof运算符可以判">
+<meta name="keywords" content="原型链,隐式原型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型（prototype）">
+<meta property="og:url" content="http://yoursite.com/2017/10/10/prototype/index.html">
 <meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。 这篇文章我们主要针对原型进行进一步的介绍。 函数与对象的关系因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。 函数属于对象函数其实对象中的一种，通过instanceof运算符可以判">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkelhj1qrlj314k0fejtz.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fkengzouybj314i04qmxe.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkeoq789ohj314k0as75p.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkeqohkb9wj314k0g2tbe.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fker123ohdj31kw0vxdn3.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fkf9lvn95dj31kw0lqgt7.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkf9zyq1u5j31kw0n47cl.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fkfbhx0p1wj31660gowhs.jpg">
+<meta property="og:updated_time" content="2017-10-14T14:23:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Komorebi">
+<meta name="twitter:title" content="原型（prototype）">
+<meta name="twitter:description" content="在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。 这篇文章我们主要针对原型进行进一步的介绍。 函数与对象的关系因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。 函数属于对象函数其实对象中的一种，通过instanceof运算符可以判">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fkelhj1qrlj314k0fejtz.jpg">
 
 
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
@@ -64,7 +82,7 @@
 
 
 
-    <title> Komorebi </title>
+    <title> 原型（prototype） · Komorebi </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -184,56 +202,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/15/this/">JavaScript 中的 this</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月15日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p><code>this</code>在 JavaScript 中其实不算是太难的内容，但是仍然有很多人弄不清楚<code>this</code>的用法，大概是因为大部分人一直都没有全方位的去分析总结过关于<code>this</code>的可能出现的各种情况。因此，这篇文章我们对<code>this</code>进行一个全面的分析和总结。</p>
-          <div class="read-more">
-            <a href="/2017/10/15/this/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/10/prototype/">原型（prototype）</a>
+          原型（prototype）
         
       </h1>
 
@@ -246,14 +220,17 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数与对象的关系"><span class="toc-text">函数与对象的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数属于对象"><span class="toc-text">函数属于对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数创建对象"><span class="toc-text">函数创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型（prototype）"><span class="toc-text">原型（prototype）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数与原型的关系"><span class="toc-text">函数与原型的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数的属性和原型的属性的区别"><span class="toc-text">构造函数的属性和原型的属性的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型的相关方法"><span class="toc-text">原型的相关方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式原型（-proto-）"><span class="toc-text">隐式原型（__proto__）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐式原型和原型的关系"><span class="toc-text">隐式原型和原型的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型知识点汇总"><span class="toc-text">原型知识点汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链"><span class="toc-text">原型链</span></a></li></ol>
+    </div>
+  </div>
+
 
     <div class="post-content">
       
-        
-        
-
-        
-          <p>在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。</p>
+        <p>在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。</p>
 <p>这篇文章我们主要针对原型进行进一步的介绍。</p>
 <h2 id="函数与对象的关系"><a href="#函数与对象的关系" class="headerlink" title="函数与对象的关系"></a>函数与对象的关系</h2><p>因为原型跟函数和对象都有关系，所以在讲解原型之前，我们先来弄清楚函数和对象的关系。</p>
 <h3 id="函数属于对象"><a href="#函数属于对象" class="headerlink" title="函数属于对象"></a>函数属于对象</h3><p>函数其实对象中的一种，通过<code>instanceof</code>运算符可以判断。</p>
@@ -343,376 +320,95 @@
 <p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fkfbhx0p1wj31660gowhs.jpg" alt=""></p>
 <p>当我们访问实例对象的某个属性时，解析器会执行一次搜索：首先从实例对象开始，如果在实例中找到了该属性，则直接返回对应的属性值。如果在实例中没有找到该属性，就会沿着<code>__proto__</code>找到它指向的<code>prototype</code>原型对象，然后在原型对象中查找该属性，然后得到对应的属性值。这就是原型链。</p>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/10/inheritObject/">面向对象 - 实现继承的三种形式</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月10日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
         
-          <p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
-<p>我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。</p>
-<p>因此本文主要介绍几种面向对象中实现继承的形式。</p>
-          <div class="read-more">
-            <a href="/2017/10/10/inheritObject/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/原型链/">原型链</a>
+            
+              <a href="/tags/隐式原型/">隐式原型</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
         
-          <a class="post-link" href="/2017/10/09/createObject/">面向对象 - 如何实现面向对象编程（OOP）</a>
         
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月9日
-        </span>
-      </div>
-    </header>
-
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/10/15/this/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">JavaScript 中的 this</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
     
     
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 —— <strong>JSON</strong>（JavaScript Object Notation），这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。</p>
-<p>应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。</p>
-          <div class="read-more">
-            <a href="/2017/10/09/createObject/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/08/explainOOP/">面向对象 - 什么是面向对象</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月8日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
-<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
-          <div class="read-more">
-            <a href="/2017/10/08/explainOOP/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/07/closureDefinition/">闭包（closure）- 什么是闭包</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月7日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>这几年，闭包几乎成为了前端面试必问的一个问题。它非常重要又难以掌握，而且还难以定义。所以，这篇文章我们主要说的就是关于闭包的定义。</p>
-          <div class="read-more">
-            <a href="/2017/10/07/closureDefinition/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/05/scopeChian/">作用域链（Scope Chain）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月5日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>很多人都认为作用域链跟作用域有很大的关系，所以每次学习这两个知识点的时候都是把两个概念混在一起研究，结果越弄越晕。</p>
-<p>但是实际上，这两个概念之间并没有太大的联系，所以，这次我们把这两个概念分开来讲。前面在<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>一章中我们已经对作用域进行了分析，所以这一章我们主要讲的是作用域链。</p>
-          <div class="read-more">
-            <a href="/2017/10/05/scopeChian/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/04/VariableObject/">变量对象（Variable Object）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月4日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。</p>
-          <div class="read-more">
-            <a href="/2017/10/04/VariableObject/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/scope/">作用域（scope）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>在前一章我们刚刚讲了<a href="https://runjaelyn.github.io/2017/10/03/ExecutionContext/" target="_blank" rel="external">《执行上下文（Execution Context）》</a>，然后这一章我们主要讲的是作用域（scope）。</p>
-<p>为什么会把这两个知识点放到一块儿来讲呢，因为我觉得，相比起“作用域和作用域链”来说，“作用域和执行上下文”才是更多人容易弄混淆的两个概念。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/scope/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/10/03/ExecutionContext/">执行上下文（Execution Context）</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年10月3日
-        </span>
-      </div>
-    </header>
-
-    
-    
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <p>执行上下文是 JavaScript 里很重要的一个概念，同时也是很多人一直理不清楚的一个知识点。因为它里面包含的不单单只是一个执行上下文的用法，还涉及到了很多其他大大小小的知识点。</p>
-<p>但是因为变量和函数都与执行上下文有密切的关系，弄明白执行上下文，对我们以后学习 JavaScript 都有很大的帮助。所以写了这篇文章，来对执行上下文进行一个大致的分析讲解。</p>
-          <div class="read-more">
-            <a href="/2017/10/03/ExecutionContext/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2017/10/10/inheritObject/">
+        <span class="next-text nav-default">面向对象 - 实现继承的三种形式</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
 
         </div>  
       </main>
@@ -786,6 +482,8 @@
     </div>
 
     
+  
+
 
 
     
