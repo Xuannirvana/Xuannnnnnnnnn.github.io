@@ -96,6 +96,7 @@
       <content type="html"><![CDATA[<p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
 <p>我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。</p>
 <p>因此本文主要介绍几种面向对象中实现继承的形式。</p>
+<a id="more"></a>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对象指向父类的实例以实现继承。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.age = <span class="number">20</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype.getPersonAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.age );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">"zhangsan"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 继承 Person</span></div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line">Student.prototype.constructor = Student;</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhangsan = <span class="keyword">new</span> Student();</div><div class="line">zhangsan.getPersonAge();    <span class="comment">// 20</span></div></pre></td></tr></table></figure>
 <p>上面的代码定义了两个构造函数<code>Person</code>和<code>Student</code>。其中<code>Student</code>继承了<code>Person</code>。也就是说，原来存在于<code>Person</code>的实例中的所有属性和方法，现在也存在于<code>Student.prototype</code>中了。</p>
@@ -2358,9 +2359,9 @@
         
         <tags>
             
-            <tag> dom </tag>
-            
             <tag> document </tag>
+            
+            <tag> dom </tag>
             
         </tags>
         
