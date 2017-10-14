@@ -110,11 +110,88 @@
   </entry>
   
   <entry>
+    <title>JavaScript 数据属性和访问器属性</title>
+    <link href="http://yoursite.com/2017/10/12/objectAttribute/"/>
+    <id>http://yoursite.com/2017/10/12/objectAttribute/</id>
+    <published>2017-10-12T02:15:01.000Z</published>
+    <updated>2017-10-14T14:30:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在 JavaScript 中，对象的属性分为两种类型：数据属性和访问器属性。</p>
+<a id="more"></a>
+<h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>它包含的是一个数据值的位置，在这可以对数据值进行读写。</p>
+<h3 id="定义数据属性"><a href="#定义数据属性" class="headerlink" title="定义数据属性"></a>定义数据属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line">person.name = <span class="string">"zhangsan"</span>;</div></pre></td></tr></table></figure>
+<p>在上面的代码中，我们通过赋值的方式给<code>person</code>对象添加了一个<code>name</code>的属性。</p>
+<p>事实上，除了上面的这种方法之外，我们还可以使用<code>Object.defineProperty()</code>方法来定义一个对象的新属性或者修改其原有的属性。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(obj, prop, descriptor)</div></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>obj</code>: 要操作其属性的目标对象</li>
+<li><code>prop</code>：要定义或修改的属性名称</li>
+<li><code>descriptor</code>：将被定义或修改的属性的描述符</li>
+</ul>
+<p>返回值：</p>
+<p>返回传递给函数的对象，即第一个参数<code>obj</code>。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">	<span class="attr">value</span>: <span class="string">"zhangsan"</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>既然两种方式都可以用来给对象添加属性，而第一种赋值操作明显更为简洁，那么我们为什么还要使用第二中方式来给对象添加属性呢？</p>
+<p><strong>说明：</strong></p>
+<p><code>Object.defineProperty()</code>方法允许精确添加或修改对象的属性。一般情况下，我们为对象添加属性是通过赋值来创建，并显示在属性枚举（<code>for...in</code>或<code>Object.keys</code>方法）中。但这种方式添加的属性值可以被修改，也可以被删除。而使用<code>Object.defineProperty()</code>方法，则可以通过设置其他的一些特性来限制属性是否能够被操作。例如：默认情况下，使用<code>Object.defineProperty()</code>增加的属性值是不可改变的。</p>
+<p>所以，接下来，我们来看一下数据属性有哪些特性。</p>
+<h3 id="数据属性的特性"><a href="#数据属性的特性" class="headerlink" title="数据属性的特性"></a>数据属性的特性</h3><p>每个对象的数据属性除了具有键值对的特性外，还包含了其他四个特性：</p>
+<ul>
+<li><strong>configurable</strong>：可配执性</li>
+<li><strong>enumerable</strong>：枚举性</li>
+<li><strong>writable</strong>：可读写性</li>
+<li><strong>value</strong>：数据值</li>
+</ul>
+<h4 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h4><p>控制属性能否被删除。只有当属性的<code>configurable</code>特性的值为<code>true</code>时，该属性才能够被删除。（默认值为<code>false</code>，即不可删除）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">	<span class="attr">configurable</span>: <span class="literal">false</span>, <span class="comment">// 不可删除</span></div><div class="line">	value: <span class="string">"zhangsan"</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// 将 name 属性删除</span></div><div class="line"><span class="keyword">delete</span> person.name;</div><div class="line"><span class="built_in">console</span>.log( person.name );    <span class="comment">// zhangsan</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"age"</span>, &#123;</div><div class="line">	<span class="attr">configurable</span>: <span class="literal">true</span>, <span class="comment">// 可删除</span></div><div class="line">	value: <span class="number">20</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// 将 age 属性删除</span></div><div class="line"><span class="keyword">delete</span> person.age;</div><div class="line"><span class="built_in">console</span>.log( person.age );    <span class="comment">// undefined</span></div><div class="line"><span class="comment">// 重新定义 age 属性</span></div><div class="line">person.age = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log( person.age );    <span class="comment">// 30</span></div></pre></td></tr></table></figure>
+<h4 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h4><p>控制属性能否被枚举（遍历）。只有当属性的<code>enumerable</code>特性的值为<code>true</code>时，该属性才会出现在对象的枚举属性中。（默认值为<code>false</code>，即不可枚举）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">	<span class="attr">enumerable</span>: <span class="literal">false</span>, <span class="comment">// 不可枚举</span></div><div class="line">	value: <span class="string">"zhangsan"</span></div><div class="line">&#125;)</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"age"</span>, &#123;</div><div class="line">	<span class="attr">enumerable</span>: <span class="literal">true</span>, <span class="comment">// 可枚举</span></div><div class="line">	value: <span class="number">20</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> item <span class="keyword">in</span> person)&#123;</div><div class="line">	<span class="built_in">console</span>.log( item );    <span class="comment">// age</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h4><p>控制属性能否被修改。只有当属性的<code>writable</code>特性的值为<code>true</code>时，该属性才能够通过赋值运算符对属性值进行修改。（默认值为<code>false</code>，即不可修改）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">	<span class="attr">writable</span>: <span class="literal">false</span>, <span class="comment">// 不可修改</span></div><div class="line">	value: <span class="string">"zhangsan"</span></div><div class="line">&#125;)</div><div class="line">person.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person.name);   <span class="comment">// zhangsan</span></div><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"age"</span>, &#123;</div><div class="line">	<span class="attr">writable</span>: <span class="literal">true</span>, <span class="comment">// 可修改</span></div><div class="line">	value: <span class="number">20</span></div><div class="line">&#125;)</div><div class="line">person.age = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(person.age);    <span class="comment">// 30</span></div></pre></td></tr></table></figure>
+<h4 id="value"><a href="#value" class="headerlink" title="value"></a>value</h4><p>设置属性对应的值。可以是任何有效的 JavaScript 值（数值、对象、函数等）。默认值为<code>undefined</code>。</p>
+<h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>这个属性不包含数据值，包含的是一对<code>get</code>和<code>set</code>方法。在读写访问器属性的时候，就是通过这两个方法来进行操作处理的。</p>
+<h3 id="访问器属性的特性"><a href="#访问器属性的特性" class="headerlink" title="访问器属性的特性"></a>访问器属性的特性</h3><ul>
+<li><strong>get</strong>：在读取对象属性时调用的函数（默认值为<code>undefined</code>）</li>
+<li><strong>set</strong>：在写入对象属性时调用的函数（默认值为<code>undefined</code>）</li>
+</ul>
+<p>注意：访问器属性不能直接定义，需要通过<code>Object.defineProperty()</code>方法来定义。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="keyword">var</span> age = <span class="number">20</span>;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"age"</span>, &#123;</div><div class="line">	get()&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;,</div><div class="line">	set(...args)&#123;</div><div class="line">		age = args[<span class="number">0</span>]</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log( person.age );   <span class="comment">// 20</span></div><div class="line">person.age = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log( person.age );   <span class="comment">// 30</span></div></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li>当执行<code>person.age</code>时，实际上是在调用<code>age</code>属性的<code>get</code>方法。</li>
+<li>当执行<code>person.age = 30</code>时，实际上是在调用<code>age</code>属性的<code>set</code>方法。</li>
+</ul>
+<h2 id="定义私有属性"><a href="#定义私有属性" class="headerlink" title="定义私有属性"></a>定义私有属性</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> _name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">		_name = name;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> _name;	</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>, <span class="number">21</span>);</div><div class="line"><span class="built_in">console</span>.log( person1 );  <span class="comment">// Person &#123;age: 21, setName: ƒ, getName: ƒ&#125;</span></div></pre></td></tr></table></figure>
+<p>以上代码，构造函数<code>Person</code>有一个<code>name</code>属性和一个<code>age</code>属性。我们并没有直接将<code>name</code>属性添加到<code>this</code>身上，而是赋给了<code>Person</code>函数内部的<code>_name</code>属性。</p>
+<p>根据函数的作用域关系，函数外部是无法访问函数内部定义的变量。因此可以让<code>name</code>属性变为私有。同时，如果希望外部能够获取或修改到<code>name</code>属性的值，添加<code>getName</code>和<code>setName</code>方法，通过方法的暴露来提供内部变量的访问。</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>除了以上方式，我们还可以使用<code>Object.defineProperty()</code>方法来定义私有属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> _name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, <span class="string">"name"</span>, &#123;</div><div class="line">		get()&#123;</div><div class="line">			<span class="keyword">return</span> _name;</div><div class="line">		&#125;,</div><div class="line">		set(name)&#123;</div><div class="line">			_name = name;</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 JavaScript 中，对象的属性分为两种类型：数据属性和访问器属性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://yoursite.com/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+      <category term="数据属性" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%B1%9E%E6%80%A7/"/>
+    
+      <category term="访问器属性" scheme="http://yoursite.com/tags/%E8%AE%BF%E9%97%AE%E5%99%A8%E5%B1%9E%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>原型（prototype）</title>
     <link href="http://yoursite.com/2017/10/11/prototype/"/>
     <id>http://yoursite.com/2017/10/11/prototype/</id>
     <published>2017-10-11T02:15:01.000Z</published>
-    <updated>2017-10-14T14:25:01.000Z</updated>
+    <updated>2017-10-14T14:27:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>在用构造函数创建对象的过程中我们遇到了一个问题：同一个构造函数的不同实例的相同方法是不一样的。所以我们后来用原型把构造函数中公共的属性和方法提取出来进行封装，达到让所有实例共享的目的。</p>
 <p>这篇文章我们主要针对原型进行进一步的介绍。</p>
@@ -200,7 +277,7 @@
 <li>所有函数都是通过<code>Function</code>函数创建的。 </li>
 </ol>
 </blockquote>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>实例对象都有自己的属性和方法，而原型封装了所有实例共享的属性和方法。那这种共享是通过什么方式来实现的呢？就是我们的原型链。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>实例对象都有自己的属性和方法，而原型封装了所有实例共享的属性和方法。那这种共享是通过什么方式来实现的呢？—— 就是我们的原型链。</p>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</div><div class="line">Person.prototype.name = <span class="string">"zhangsan"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
 <p>图解：</p>
@@ -2443,123 +2520,6 @@
       <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
     
       <category term="node" scheme="http://yoursite.com/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DOM - Document 对象</title>
-    <link href="http://yoursite.com/2017/08/18/document/"/>
-    <id>http://yoursite.com/2017/08/18/document/</id>
-    <published>2017-08-18T14:29:56.000Z</published>
-    <updated>2017-08-30T03:35:27.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Document 对象表示浏览器加载的 HTML 页面，并作为查找 HTML 页面内容的入口。它提供了全局函数，例如如何从 HTML 页面中查找指定标签或者在 HTML 页面中如何创建标签等。</p>
-<a id="more"></a>
-<p>我们通过如下代码来查看<code>document</code>对象：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( <span class="built_in">document</span> );</div></pre></td></tr></table></figure>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fib7kogp32j30qo0ci3zk.jpg" alt=""></p>
-<p>通过上面的测试结果，我们可以很清晰地看到，通过<code>document</code>对象可以得到整个 HTML 页面。所以，DOM 中很多的 API 都需要依赖<code>document</code>对象。</p>
-<h2 id="DOM-查询（获取元素节点）"><a href="#DOM-查询（获取元素节点）" class="headerlink" title="DOM 查询（获取元素节点）"></a>DOM 查询（获取元素节点）</h2><p>获取元素节点的方法有很多，这里我们总结了常用的五种方法如下：</p>
-<h3 id="id-属性值"><a href="#id-属性值" class="headerlink" title="id 属性值"></a>id 属性值</h3><p>通过标签的 id 属性值来获取元素。语法结构如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById( id属性值 )</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line"><span class="built_in">console</span>.log( box );        <span class="comment">// &lt;div id="box"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="class-属性值"><a href="#class-属性值" class="headerlink" title="class 属性值"></a>class 属性值</h3><p>通过标签的 class 属性值来获取元素。语法结构如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByClassName( <span class="class"><span class="keyword">class</span>属性值 )</span></div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> box = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"box"</span>);</div><div class="line"><span class="built_in">console</span>.log( box );        <span class="comment">// [div.box]</span></div><div class="line"><span class="built_in">console</span>.log( box[<span class="number">0</span>] );     <span class="comment">// &lt;div class="box"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<p>从上面代码结果可以看到，通过<code>class</code>获取到的元素结果是一个数组的形式。所以，如果要具体得到某一个元素，我们最终还需要通过数组下标去获取。</p>
-<h3 id="标签名"><a href="#标签名" class="headerlink" title="标签名"></a>标签名</h3><p>通过标签名来获取元素。语法结构如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByTagName( 标签名 )</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> divEle = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"div"</span>);</div><div class="line"><span class="built_in">console</span>.log( divEle );        <span class="comment">// [div]</span></div><div class="line"><span class="built_in">console</span>.log( divEle[<span class="number">0</span>] );     <span class="comment">// &lt;div&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<p>从上面代码结果可以看到，通过标签名获取到的元素结果也是一个数组的形式。所以，如果要具体得到某一个元素，我们最终还需要通过数组下标去获取。</p>
-<h3 id="name-属性值"><a href="#name-属性值" class="headerlink" title="name 属性值"></a>name 属性值</h3><p>通过标签的 name 属性值来获取元素。语法结构如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementsByName( name属性值 )</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> divEle = <span class="built_in">document</span>.getElementsByName(<span class="string">"username"</span>);</div><div class="line"><span class="built_in">console</span>.log( divEle );       <span class="comment">// [input]</span></div><div class="line"><span class="built_in">console</span>.log( divEle[<span class="number">0</span>] );    <span class="comment">// &lt;input type="text" name="username"&gt;</span></div></pre></td></tr></table></figure>
-<p>从上面代码结果可以看到，通过<code>name</code>属性获取到的元素结果也是一个数组的形式。所以，如果要具体得到某一个元素，我们最终还需要通过数组下标去获取。</p>
-<h3 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h3><p>在 HTML5 新特性中提供了两个可以通过 CSS 选择器方式来获取 HTML 页面标签的方法：</p>
-<p><strong><code>querySelector()</code></strong></p>
-<p>返回第一个选择器匹配的 HTML 页面元素。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> boxEle = <span class="built_in">document</span>.querySelector(<span class="string">".box"</span>);</div><div class="line"><span class="built_in">console</span>.log( boxEle );      <span class="comment">// &lt;div class="box"&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<p><strong><code>querySelectorAll()</code></strong></p>
-<p>返回全部选择器匹配的 HTML 页面元素。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> boxEle = <span class="built_in">document</span>.querySelectorAll(<span class="string">".box"</span>);</div><div class="line"><span class="built_in">console</span>.log( boxEle );      <span class="comment">// [div.box, div.box]</span></div></pre></td></tr></table></figure>
-<p>注意：这两个方法只能在 IE8 之后的版本才执行。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>DOM 查询方法我们大致可以分为以下两类：</p>
-<p>1）传统方式：<code>getElementById</code>、<code>getElementsByClassName</code>、<code>getElementsByTagName</code>、<code>getElementsByName</code></p>
-<ul>
-<li>优点：性能好、查询速度快</li>
-<li>缺点：使用麻烦</li>
-</ul>
-<p>2）HTML5 新增：<code>querySelector</code>、<code>querySelectorAll</code></p>
-<ul>
-<li>优点：使用便捷</li>
-<li>缺点：性能差、查询速度慢 </li>
-</ul>
-<h2 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h2><h3 id="创建元素节点"><a href="#创建元素节点" class="headerlink" title="创建元素节点"></a>创建元素节点</h3><p>通过<code>document</code>对象创建一个新的元素节点（标签），语法格式如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.createElement( 标签名 )</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> divEle = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line"><span class="built_in">console</span>.log( divEle );    <span class="comment">// &lt;div&gt;&lt;/div&gt;</span></div></pre></td></tr></table></figure>
-<p>从上面例子可以看到，我们创建出了一个<code>&lt;div&gt;</code>标签。</p>
-<p>这个时候我们再输出<code>document</code>对象查看整个 HTML 页面内容：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fioalwmjujj314u0dk407.jpg" alt=""></p>
-<p>可以看到，在我们的<code>body</code>标签内并没有发现刚刚创建出来的<code>&lt;div&gt;</code>标签。为什么呢？</p>
-<p>因为我们只是创建了这个标签，但并没有指定这个<code>&lt;div&gt;</code>标签创建出来后要添加到哪个地方，所以这个时候在页面上是找不到这个这个标签的。</p>
-<p>想要把这个新建出来的标签显示出来，我们还需要用到后面<a href="https://runjaelyn.github.io/2017/08/18/node/" target="_blank" rel="external">《DOM - Node 对象》</a>中的<code>appendChild()</code>方法把它插入到页面上去。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">divEle.appendChild( <span class="built_in">document</span>.body );</div></pre></td></tr></table></figure>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fioak5yj25j314u0fadi0.jpg" alt=""></p>
-<h3 id="创建文本节点"><a href="#创建文本节点" class="headerlink" title="创建文本节点"></a>创建文本节点</h3><p>元素创建出来了，但是元素里面没有文本内容。通过<code>document</code>对象创建一个新的文本节点（文本内容），语法格式如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.createTextNode( 文本内容 )</div></pre></td></tr></table></figure>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> divEle = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);             <span class="comment">// 创建 &lt;div&gt; </span></div><div class="line"><span class="built_in">document</span>.body.appendChild( divEle );                    <span class="comment">// 将其插入到 &lt;body&gt; 的末尾</span></div><div class="line">	</div><div class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"hello world"</span>);      <span class="comment">// 创建文本"hello world"</span></div><div class="line">divEle.appendChild( text );                             <span class="comment">// 将其插入到 &lt;div&gt; 中</span></div></pre></td></tr></table></figure>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fiba0yisyyj316s0latcg.jpg" alt=""></p>
-<p>从上面结果可以看到，<code>&lt;body&gt;</code>末尾新增了一个<code>&lt;div&gt;</code>标签并带有文字内容<code>hello world</code>。</p>
-<h3 id="创建属性节点"><a href="#创建属性节点" class="headerlink" title="创建属性节点"></a>创建属性节点</h3><p>通过<code>document</code>对象创建一个新的属性节点，语法格式如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.createAttribute( 属性名称 )</div></pre></td></tr></table></figure>
-<p>注意：由于属性节点并不是子节点，在实际开发中，创建属性节点使用的场景很少，只需要了解即可。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> node = <span class="built_in">document</span>.getElementById(<span class="string">"div"</span>);       <span class="comment">// 获取 &lt;div&gt; 标签</span></div><div class="line"><span class="keyword">let</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">"my_attr"</span>);  <span class="comment">// 创建属性节点</span></div><div class="line">attr.nodeValue = <span class="string">"属性值"</span>;                        <span class="comment">// 设置属性节点的 nodeValue</span></div><div class="line">node.setAttributeNode( attr );                   <span class="comment">// 将属性节点添加到 &lt;div&gt; 标签中</span></div></pre></td></tr></table></figure>
-<h2 id="补充内容"><a href="#补充内容" class="headerlink" title="补充内容"></a>补充内容</h2><h3 id="缓存-DOM-查询"><a href="#缓存-DOM-查询" class="headerlink" title="缓存 DOM 查询"></a>缓存 DOM 查询</h3><p>当我们通过 DOM 查询获取 HTML 页面中指定的标签后，如果需要多次操作同一个标签时，应该使用一个变量来保存 DOM 查询的结果。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> divEle = <span class="built_in">document</span>.getElementById(<span class="string">"div"</span>);            <span class="comment">// 获取 &lt;div&gt; 标签</span></div><div class="line"><span class="keyword">var</span> text = <span class="built_in">document</span>.createTextNode(<span class="string">"hello world"</span>);      <span class="comment">// 创建一个文本节点</span></div><div class="line">divEle.appendChild( text );                             <span class="comment">// 将文本节点添加到 &lt;div&gt; 节点中</span></div></pre></td></tr></table></figure>
-<p>当把 DOM 查询的结果保存在一个变量后，实际上是把获取的指定标签在 DOM 节点树中的位置保存在变量中。这个元素节点（标签）的属性和方法可以通过这个变量来使用。</p>
-<h3 id="动态和静态-NodeList"><a href="#动态和静态-NodeList" class="headerlink" title="动态和静态 NodeList"></a>动态和静态 NodeList</h3><p>NodeList 是指一组元素节点的集合，每个节点都有索引值（从 0 开始的数字，类似数组）。元素节点在 NodeList 中保存的顺序和它们在 HTML 页面中出现的顺序一致。</p>
-<p>我们前面讲了六种 DOM 查询的方法，其中以下四种查询方法返回的就是一个 NodeList 集合:</p>
-<ul>
-<li><code>getElementsByName()</code></li>
-<li><code>getElementsByTagName()</code></li>
-<li><code>getElementsByClassName()</code></li>
-<li><code>querySelectorAll()</code></li>
-</ul>
-<p>通过 NodeList 集合我们可以根据下标从中选择需要操作的元素，也可以遍历 NodeList 中的每个元素。</p>
-<h4 id="动态-NodeList"><a href="#动态-NodeList" class="headerlink" title="动态 NodeList"></a>动态 NodeList</h4><p>通过<code>getElementsByName()</code>、<code>getElementsByTagName()</code>和<code>getElementsByClassName()</code>方法获取的 NodeList 就是动态的 NodeList。</p>
-<p>在动态 NodeList 中，当脚本更新 HTML 页面之后，NodeList 也会同样进行更新。例如如下示例:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"li"</span>);       <span class="comment">// 获取所有的 li 元素</span></div><div class="line"><span class="built_in">console</span>.log( lis );                                  <span class="comment">// [ li, li, li, li ]    </span></div><div class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"ul"</span>)[<span class="number">0</span>];     <span class="comment">// 获取 ul 元素</span></div><div class="line"><span class="keyword">let</span> newLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);            <span class="comment">// 创建一个新的 li 元素</span></div><div class="line">ul.appendChild( newLi );                             <span class="comment">// 将新 li 添加到 ul 内</span></div><div class="line"><span class="built_in">console</span>.log( lis );                                  <span class="comment">// [ li, li, li, li, li ]</span></div></pre></td></tr></table></figure>
-<h4 id="静态-NodeList"><a href="#静态-NodeList" class="headerlink" title="静态 NodeList"></a>静态 NodeList</h4><p>通过<code>querySelectorAll()</code>方法获取的 NodeList 就是动态的 NodeList。</p>
-<p>在动态 NodeList 中，当脚本更新 HTML 页面之后，NodeList 也不会进行更新。例如如下示例:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> lis = <span class="built_in">document</span>.querySelectorAll(<span class="string">"li"</span>);           <span class="comment">// 获取所有的 li 元素</span></div><div class="line"><span class="built_in">console</span>.log( lis );                                  <span class="comment">// [ li, li, li, li ]    </span></div><div class="line"><span class="keyword">let</span> ul = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"ul"</span>)[<span class="number">0</span>];     <span class="comment">// 获取 ul 元素</span></div><div class="line"><span class="keyword">let</span> newLi = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);            <span class="comment">// 创建一个新的 li 元素</span></div><div class="line">ul.appendChild( newLi );                             <span class="comment">// 将新 li 添加到 ul 内</span></div><div class="line"><span class="built_in">console</span>.log( lis );                                  <span class="comment">// [ li, li, li, li ]</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Document 对象表示浏览器加载的 HTML 页面，并作为查找 HTML 页面内容的入口。它提供了全局函数，例如如何从 HTML 页面中查找指定标签或者在 HTML 页面中如何创建标签等。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="DOM" scheme="http://yoursite.com/categories/DOM/"/>
-    
-    
-      <category term="dom" scheme="http://yoursite.com/tags/dom/"/>
-    
-      <category term="document" scheme="http://yoursite.com/tags/document/"/>
     
   </entry>
   
