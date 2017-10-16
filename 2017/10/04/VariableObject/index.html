@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fk9zssoom0j31gk0hm42k.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fka3xdma5qj315w0jgn0r.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fka0890z76j31i20pen3p.jpg">
-<meta property="og:updated_time" content="2017-10-09T05:22:15.000Z">
+<meta property="og:updated_time" content="2017-10-16T02:01:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量对象（Variable Object）">
 <meta name="twitter:description" content="在 JavaScript 中，我们不可避免的需要声明变量和函数，可是 JavaScript 编译器是如何找到这些变量的呢？所以我们还需要对执行上下文有一个进一步的了解。">
@@ -233,7 +233,7 @@
 <a id="more"></a>
 <h2 id="执行上下文生命周期"><a href="#执行上下文生命周期" class="headerlink" title="执行上下文生命周期"></a>执行上下文生命周期</h2><p>在前面<a href="https://runjaelyn.github.io/2017/10/03/scope/" target="_blank" rel="external">《作用域（scope）》</a>中我们已经知道，代码的执行过程实际上分为代码编译过程和代码执行过程。但前面没有讲到的是，这两个阶段，其实就是一个执行上下文的生命周期。</p>
 <ul>
-<li><p><strong>代码编译阶段</strong></p>
+<li><p><strong>执行上下文创建阶段</strong></p>
 <p>  在这个阶段中，执行上下文创建，同时其内部会分别创建变量对象(VO)、建立作用域链(SC)，以及确定<code>this</code>的指向（之前确定好的作用域也会添加进来）。</p>
 </li>
 <li><p><strong>代码执行阶段</strong></p>
