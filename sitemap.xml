@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/09/createObject/</loc>
+    
+    <lastmod>2017-10-16T14:58:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/04/VariableObject/</loc>
     
     <lastmod>2017-10-16T02:01:24.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2017/10/10/inheritObject/</loc>
     
     <lastmod>2017-10-14T09:35:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/09/createObject/</loc>
-    
-    <lastmod>2017-10-14T07:34:52.000Z</lastmod>
     
   </url>
   
