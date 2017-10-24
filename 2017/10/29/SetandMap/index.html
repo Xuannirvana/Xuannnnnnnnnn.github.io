@@ -17,7 +17,7 @@
 
 
 
-  <meta name="keywords" content="数据属性,访问器属性," />
+  <meta name="keywords" content="set,map," />
 
 
 
@@ -35,7 +35,7 @@
 
 
 <meta name="description" content="ES6 中新增了两种新的数据结构 —— Set 和 Map。">
-<meta name="keywords" content="数据属性,访问器属性">
+<meta name="keywords" content="set,map">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Set 和 Map">
 <meta property="og:url" content="http://yoursite.com/2017/10/29/SetandMap/index.html">
@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fkreq7uhnwj314k03mglz.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fkrffofhk9j314k0a4t9k.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fks4qlta05j314k0augmx.jpg">
-<meta property="og:updated_time" content="2017-10-24T02:36:31.000Z">
+<meta property="og:updated_time" content="2017-10-24T02:40:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Set 和 Map">
 <meta name="twitter:description" content="ES6 中新增了两种新的数据结构 —— Set 和 Map。">
@@ -222,7 +222,7 @@
   <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-实例的属性和方法"><span class="toc-text">Set 实例的属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法"><span class="toc-text">操作方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历方法"><span class="toc-text">遍历方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转换为数组"><span class="toc-text">转换为数组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法-1"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-实例的属性和方法"><span class="toc-text">Map 实例的属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性-1"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法-1"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法-1"><span class="toc-text">操作方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历方法-1"><span class="toc-text">遍历方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他数据结构互换"><span class="toc-text">与其他数据结构互换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-转为数组"><span class="toc-text">Map 转为数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组转为-Map"><span class="toc-text">数组转为 Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-转为对象"><span class="toc-text">Map 转为对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象转为-Map"><span class="toc-text">对象转为 Map</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Set"><span class="toc-text">Set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性和方法"><span class="toc-text">属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法"><span class="toc-text">操作方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历方法"><span class="toc-text">遍历方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#转换为数组"><span class="toc-text">转换为数组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Map"><span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法-1"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性和方法-1"><span class="toc-text">属性和方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性-1"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法-1"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法-1"><span class="toc-text">操作方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遍历方法-1"><span class="toc-text">遍历方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与其他数据结构互换"><span class="toc-text">与其他数据结构互换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-转为数组"><span class="toc-text">Map 转为数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组转为-Map"><span class="toc-text">数组转为 Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-转为对象"><span class="toc-text">Map 转为对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象转为-Map"><span class="toc-text">对象转为 Map</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
@@ -241,7 +241,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);</div><div class="line"><span class="built_in">console</span>.log( s );</div></pre></td></tr></table></figure>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fkmqx1d6kbj314k03oq36.jpg" alt=""></p>
 <p>通过上面代码运行结果我们可以看到，Set 成员当中如果存在重复的值，会被自动删除掉。</p>
-<h2 id="Set-实例的属性和方法"><a href="#Set-实例的属性和方法" class="headerlink" title="Set 实例的属性和方法"></a>Set 实例的属性和方法</h2><p>Set 结构的实例有以下属性和操作方法。</p>
+<h2 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h2><p>Set 结构的实例有以下属性和操作方法。</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
 <li><code>size</code>：返回 Set 实例的成员总数。</li>
 </ul>
@@ -283,7 +283,7 @@
 <p>Map 函数也可以接受一个数组（或类似数组的对象）作为参数，用来进行初始化。但是更 Set 不同的是，Map 中该数组中的成员是一对对表示键值对的数组。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> m = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"name"</span>, <span class="string">"zhangsan"</span>], [<span class="string">"age"</span>, <span class="number">20</span>]]);</div><div class="line"><span class="built_in">console</span>.log( m );</div></pre></td></tr></table></figure>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fkreq7uhnwj314k03mglz.jpg" alt=""></p>
-<h2 id="Map-实例的属性和方法"><a href="#Map-实例的属性和方法" class="headerlink" title="Map 实例的属性和方法"></a>Map 实例的属性和方法</h2><p>Map 结构的实例有以下属性和方法。</p>
+<h2 id="属性和方法-1"><a href="#属性和方法-1" class="headerlink" title="属性和方法"></a>属性和方法</h2><p>Map 结构的实例有以下属性和方法。</p>
 <h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><ul>
 <li><code>size</code>：返回 Map 结构的成员总数。</li>
 </ul>
@@ -351,9 +351,9 @@
         
           <div class="post-tags">
             
-              <a href="/tags/数据属性/">数据属性</a>
+              <a href="/tags/set/">set</a>
             
-              <a href="/tags/访问器属性/">访问器属性</a>
+              <a href="/tags/map/">map</a>
             
           </div>
         
