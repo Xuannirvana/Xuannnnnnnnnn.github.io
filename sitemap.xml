@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/15/this/</loc>
+    
+    <lastmod>2017-10-24T02:47:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/07/closureDefinition/</loc>
+    
+    <lastmod>2017-10-24T02:47:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/07/closureFromEC/</loc>
     
     <lastmod>2017-10-24T02:45:01.000Z</lastmod>
@@ -54,20 +68,6 @@
     <loc>http://yoursite.com/2017/10/08/explainOOP/</loc>
     
     <lastmod>2017-10-13T09:39:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/15/this/</loc>
-    
-    <lastmod>2017-10-13T05:16:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/07/closureDefinition/</loc>
-    
-    <lastmod>2017-10-10T05:52:24.000Z</lastmod>
     
   </url>
   
