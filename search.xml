@@ -564,6 +564,69 @@
     </entry>
     
     <entry>
+      <title><![CDATA[闭包（closure）- 从执行上下文角度看闭包]]></title>
+      <url>/2017/10/07/closureFromEC/</url>
+      <content type="html"><![CDATA[<p>前一章我们从闭包的各种定义去学习了闭包，对于闭包也有了一个大致的了解。那么这一章我们主要是结合图解从执行上下文的角度来分析一下闭包，让大家对闭包有一个更深的认识。</p>
+<a id="more"></a>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p>我们直接通过一个代码案例，结合图解来学习。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();</div></pre></td></tr></table></figure>
+<p>分析：</p>
+<ol>
+<li><p>浏览器打开。创建全局上下文，同时在全局上下文内部创建变量对象和建立作用域链。然后执行全局上下文内的代码。</p>
+<p> <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fklhcytww1j31640k0tbv.jpg" alt=""></p>
+</li>
+<li><p>执行<code>var baz = foo()</code>时，调用函数<code>foo</code>。创建<code>foo</code>的上下文，同时在<code>foo</code>上下文内部创建变量对象和建立作用域链。然后执行<code>foo</code>内部代码。</p>
+<p> <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fkl6kd0l97j31jq0i6jw0.jpg" alt=""></p>
+</li>
+<li><p><code>foo</code>内部代码执行到<code>return bar</code>。按理说，这行代码执行完，函数<code>foo</code>的调用就已经完成了，这个时候<code>foo</code>的上下文也应该被销毁，然后等待垃圾回收。但是因为其返回值是<code>bar</code>函数。在<code>bar</code>函数中存在<strong>自由变量</strong><code>a</code>，需要通过作用域链到<code>foo</code>的变量对象中找到变量<code>a</code>的值。所以，虽然<code>foo</code>的执行上下文被销毁了，但是其变量对象不能被销毁。</p>
+<blockquote>
+<p><strong>自由变量：在当前作用域访问其他作用域内的变量，这个变量对于当前作用域来说，就是自由变量。</strong></p>
+</blockquote>
+</li>
+<li><p>回到全局上下文中，继续执行<code>var baz = foo()</code>，将函数<code>foo</code>的返回值<code>bar</code>赋值给变量<code>baz</code>。</p>
+<p> <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fklclx6qbyj317e0iaq63.jpg" alt=""></p>
+</li>
+<li><p>赋值完成后继续执行下一行代码<code>baz()</code>，即调用函数<code>bar</code>。创建<code>bar</code>的上下文，同时在<code>bar</code>上下文内部创建变量对象和建立作用域链。然后执行<code>bar</code>内部代码。</p>
+<p> <img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fklcuwde4lj31jc0qutek.jpg" alt=""></p>
+</li>
+<li><p>执行<code>bar</code>内部代码<code>console.log(a)</code>。在自身 AO(bar) 中找不到变量<code>a</code>，就沿着作用域链找到 AO(foo) 中的<code>a = 2</code>。所以代码最终在控制台的运行结果为<code>2</code>。</p>
+</li>
+<li><p><code>console.log(a)</code>执行完成后，<code>bar</code>的执行上下文销毁。回到全局上下文中。</p>
+</li>
+<li>当页面关闭时，所有执行上下文都被销毁。</li>
+</ol>
+<p>全流程图解：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fklh6df8myj31kw0vw19k.jpg" alt=""></p>
+<p><strong>小结：</strong></p>
+<p>从上面文字分析的第 3 步和图解分析中的第 5 步我们可以看出，由于闭包函数<code>bar</code>的原因，虽然函数<code>foo</code>的执行上下文被销毁了，但其变量对象却一直存在于内存中。就是为了让函数<code>bar</code>被调用时，可以通过作用域链访问到函数<code>foo</code>的变量对象中存储的变量值。直到页面关闭，函数<code>foo</code>的变量对象才会和全局的执行上下文一起被销毁，从而释放内存空间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过上面的例子分析，我们对闭包也有了进一步的了解。所以这里对闭包的优缺点做一个总结。</p>
+<p>优点：</p>
+<ul>
+<li>扩大了局部变量的作用域，使外部能够访问内部的变量。</li>
+<li>避免变量污染，发生命名冲突，隐藏数据。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>闭包滥用会导致内存浪费</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 执行上下文 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 闭包 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[闭包（closure）- 什么是闭包]]></title>
       <url>/2017/10/07/closureDefinition/</url>
       <content type="html"><![CDATA[<p>这几年，闭包几乎成为了前端面试必问的一个问题。它非常重要又难以掌握，而且还难以定义。所以，这篇文章我们主要说的就是关于闭包的定义。</p>
