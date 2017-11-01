@@ -116,7 +116,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[一次完整的 http 事务]]></title>
+      <title><![CDATA[一次完整的 HTTP 事务]]></title>
       <url>/2017/11/03/httpWork/</url>
       <content type="html"><![CDATA[<p>当我们在浏览器的地址栏中输入一个网站地址，然后回车。那么，从我们点击回车，到浏览器中显示出我们访问的网站页面。在这一个过程中，发生了一些什么事情？</p>
 <a id="more"></a>
