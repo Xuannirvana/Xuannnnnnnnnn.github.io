@@ -98,7 +98,7 @@
       
         <categories>
             
-            <category> ES6 </category>
+            <category> AJAX </category>
             
         </categories>
         
@@ -110,6 +110,103 @@
             <tag> 同步 </tag>
             
             <tag> 异步 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一次完整的 http 事务]]></title>
+      <url>/2017/11/03/httpWork/</url>
+      <content type="html"><![CDATA[<p>当我们在浏览器的地址栏中输入一个网站地址，然后回车。那么，从我们点击回车，到浏览器中显示出我们访问的网站页面。在这一个过程中，发生了一些什么事情？</p>
+<a id="more"></a>
+<ul>
+<li>域名解析</li>
+<li>建立连接</li>
+<li>发送数据</li>
+<li>关闭连接</li>
+</ul>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><ul>
+<li>首先，浏览器会分析地址栏上我们要访问的 URL 上面的域名。</li>
+<li>然后通过 DNS 服务器查询出域名映射的 IP 地址。</li>
+</ul>
+<h3 id="DNS-服务"><a href="#DNS-服务" class="headerlink" title="DNS 服务"></a>DNS 服务</h3><p>通常我们访问一个网站，使用的是主机名或者域名来进行访问的。因为相对于 IP 地址（一串纯数字）来说，域名更容易让人记住。但是，TCP/IP 协议使用的是 IP 地址进行访问，所以必须有一个机制或者服务把域名转换成 IP 地址。</p>
+<p>DNS 服务就是用来解决这个问题的，它提供了域名到 IP 地址之间的解析服务。</p>
+<p><strong>DNS 服务把域名解析成 IP 地址的过程：</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fl2estgw6lj31800wo43e.jpg" alt=""></p>
+<h3 id="TCP-IP-协议"><a href="#TCP-IP-协议" class="headerlink" title="TCP/IP 协议"></a>TCP/IP 协议</h3><p><strong>什么是协议</strong></p>
+<p>协议就是多个对象之间，为了实现某一个或者多个需求，而设置的约定（规则）。即：在什么时间，做什么事，具体怎么去做这件事。</p>
+<p>例如：</p>
+<p>张三跟李四约定，周末去找他拿一本书。</p>
+<p>两人周末见面拿书的这个约定，就是张三和李四之间的协议。</p>
+<p><strong>什么是 TCP/IP 协议</strong></p>
+<p>“周末拿书”这个协议，是为了满足张三“需要书”的这个需求，而在张三和李四之间设计的一个约定。</p>
+<blockquote>
+<p>TCP/IP 协议，就是为了满足世界上成千上万的网络设备之间的各种通信需求，而设计的一套约定。</p>
+</blockquote>
+<p>知道了 TCP/IP 协议的大致意思，我们再来扩展一下周末拿书的这个例子。</p>
+<p>假设，张三跟李四是网上聊天认识，两人并未见过面。那么，他要怎么按照约定成功的拿到书。</p>
+<p>因此，针对周末拿书的这件事，张三和李四之间还需要有一些小的约定协议。</p>
+<ul>
+<li>两人具体在哪个时间哪个地点见面</li>
+<li>两人通过什么交通工具走哪条线路去到约定地方</li>
+<li>到指定地方后通过什么特征找到对方</li>
+</ul>
+<p>再把这个例子映射到我们的网路协议里来，“周末拿书”这个大约定，就对应着我们的 TCP/IP 协议，而具体怎么拿到书的过程里的小约定，就是我们 TCP/IP 协议里面所包含的子协议。</p>
+<blockquote>
+<p>TCP/IP 协议，或者说 TCP/IP 协议模型（Transmission Control Protocol/Internet Protocol），包含了一系列构成互联网基础的网络协议，是 Internet 的核心协议。</p>
+</blockquote>
+<h4 id="TCP-IP-分层模型"><a href="#TCP-IP-分层模型" class="headerlink" title="TCP/IP 分层模型"></a>TCP/IP 分层模型</h4><p>TCP/IP 协议族是一组不同层次上的多个协议的组合，通常被认为是一个四层协议系统，与 OSI 的七层模型相对应。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fl2jqdg1tfj314s0o0go3.jpg" alt=""></p>
+<p>如上图所示，我们把 TCP/IP 协议族一共分为了四层，每一层都是为了完成一种功能。想要实现每一层的功能，就需要遵守每一层中包含的协议。</p>
+<p><strong>1） 应用层</strong></p>
+<p>应用层一般是我们编写的应用程序，它决定了向用户提供的应用服务。应用层可以通过系统调用与传输层进行通信。</p>
+<p>处于应用层的协议非常多。比如：</p>
+<ul>
+<li>FTP：文件传输协议（File Transfer Protocol）</li>
+<li>DNS：域名系统（Domain Names System）</li>
+<li>HTTP：超文本传输协议（HyperText Transfer Protocol）</li>
+<li>…</li>
+</ul>
+<p><strong>2） 传输层</strong></p>
+<p>传输层通过系统调用向应用层提供处于网络连接中的两台计算机之间的数据传输功能。</p>
+<p>在传输层有两个性质不同的协议：</p>
+<ul>
+<li>TCP：传输控制协议（Transmission Control Protocol）</li>
+<li>UDP：用户数据包协议（User Data Protocol）</li>
+</ul>
+<p><strong>3） 网络层</strong></p>
+<p>网络层用来处理在网络上流动的数据包，数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（传输路线）到达对方计算机，并把数据包传输给对方。</p>
+<ul>
+<li>IP：网际协议（Internet Protocol）</li>
+<li>…</li>
+</ul>
+<p><strong>4） 链路层</strong></p>
+<p>链路层用来处理链接网络的硬件部分。包括控制操作系统、硬件设备驱动、NIC（Network Interface Card 网络适配器）以及光纤等物理可见部分。硬件上的范畴均在链路层的作用范围之内。</p>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><p>使用 TCP/IP 协议进行通信的双方必须先建立连接，然后才能开始传输数据。为了确保连接双方可靠性，在双方建立连接时，TCP 协议采用了<strong>三次握手</strong>（Three-way handshaking）策略。</p>
+<h3 id="TCP-三次握手"><a href="#TCP-三次握手" class="headerlink" title="TCP 三次握手"></a>TCP 三次握手</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fl2nzntabmj319s0rmgps.jpg" alt=""></p>
+<p>图解说明：</p>
+<p><strong>第一次握手</strong>：客户端向服务端发送带有 SYN 标志的连接请求报文，进入连接请求的状态，并等待服务端的确认。</p>
+<p><strong>第二次握手</strong>：服务端接收到客户端的 SYN 报文后，回复 ACK 报文，此时服务端将会进入连接允许状态。</p>
+<p><strong>第三次握手</strong>：客户端接收到服务端的 ACK 报文后，再次向服务端发送 ACK 确认报文。这段报文发送完毕后，客户端和服务端都会进入连接建立完成状态。完成 TCP 三次握手。</p>
+<h2 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h2><p>当三次握手完成后，TCP 协议会为连接双方维持连接状态。开始传输数据，为了保证数据传输成功，接收端在接收到数据包后必须发送 ACK 报文作为确认。如果在指定时间内，发送端没有接收到接收端的 ACK 报文，那么就会重发超时的数据。</p>
+<h2 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h2><p>建立连接需要三次握手，那么关闭连接则需要四次挥手。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fl2qbb3n5dj31es0zu7bp.jpg" alt=""></p>
+<p>当客户端和服务端的连接都关闭后，一次完整的 HTTP 事务就结束了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> HTTP </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> HTTP </tag>
+            
+            <tag> TCP/IP </tag>
             
         </tags>
         
@@ -2835,9 +2932,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
