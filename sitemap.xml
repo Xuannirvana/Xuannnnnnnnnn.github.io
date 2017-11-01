@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/11/05/ajax/</loc>
+    
+    <lastmod>2017-11-01T02:41:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/29/SetandMap/</loc>
+    
+    <lastmod>2017-10-24T05:49:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/15/this/</loc>
     
     <lastmod>2017-10-24T02:47:37.000Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2017/10/07/closureFromEC/</loc>
     
     <lastmod>2017-10-24T02:45:01.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/29/SetandMap/</loc>
-    
-    <lastmod>2017-10-24T02:40:47.000Z</lastmod>
     
   </url>
   
