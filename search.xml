@@ -94,6 +94,17 @@
 <p>当<code>readyState</code>等于 4 且状态为 200 时，表示响应已就绪：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>( xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span> )&#123;</div><div class="line">		<span class="keyword">let</span> text = xhr.responseText;</div><div class="line">		<span class="built_in">console</span>.log( text );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>当我们接收到服务器响应回来的数据后，就可以用新的数据去更新我们的应用程序了。</p>
+<h2 id="JQuery-中的-AJAX"><a href="#JQuery-中的-AJAX" class="headerlink" title="JQuery 中的 AJAX"></a>JQuery 中的 AJAX</h2><p>JQuery 在原生 AJAX 的基础上对其进行了封装。</p>
+<p><code>$.ajax()</code>，这个是 JQuery 对 AJAX 封装的最基础步骤，通过使用这个函数就可以进行异步刷新的操作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">   <span class="attr">type</span>: <span class="string">"POST"</span>,</div><div class="line">   <span class="attr">url</span>: <span class="string">"test.json"</span>,</div><div class="line">   <span class="attr">async</span>: <span class="literal">true</span>,</div><div class="line">   <span class="attr">data</span>: <span class="string">"name=John&amp;location=Boston"</span>,</div><div class="line">   <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</div><div class="line">     <span class="built_in">console</span>.log( <span class="string">"Data Saved: "</span> + msg );</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>通过以上代码我们可以看到，<code>$.ajax()</code>函数接收一个对象作为参数。在这个对象里面添加了一些我们以后会比较常用到的几个属性。</p>
+<ul>
+<li><code>type</code>：发送请求的方式。<code>GET</code>或<code>POST</code>。</li>
+<li><code>url</code>：文件在服务器上的位置。</li>
+<li><code>async</code>：是否异步处理请求。默认为<code>true</code>，表示异步（除非我们需要使用同步方式，否则这个属性可以省略）。</li>
+<li><code>data</code>：发送到服务器的数据（如果没有数据要发送，该属性也可省略）。</li>
+<li><code>success</code>：请求成功之后执行的函数。函数内部的参数用来接收请求结果。</li>
+</ul>
 ]]></content>
       
         <categories>
@@ -2938,9 +2949,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
