@@ -94,6 +94,9 @@
 <p>当<code>readyState</code>等于 4 且状态为 200 时，表示响应已就绪：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>( xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span> )&#123;</div><div class="line">		<span class="keyword">let</span> text = xhr.responseText;</div><div class="line">		<span class="built_in">console</span>.log( text );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>当我们接收到服务器响应回来的数据后，就可以用新的数据去更新我们的应用程序了。</p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p>我们将上面分解的每一步整合在一起，就是一个完整的 AJAX 请求代码了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line"></div><div class="line">xhr.open(<span class="string">"GET"</span>, <span class="string">"./students.json"</span>, <span class="literal">true</span>);</div><div class="line"></div><div class="line">xhr.send(<span class="literal">null</span>);</div><div class="line"></div><div class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>( xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span> )&#123;</div><div class="line">		<span class="keyword">let</span> text = xhr.responseText;</div><div class="line">		<span class="built_in">console</span>.log( text );</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注：以上代码未考虑兼容性。</p>
 <h2 id="JQuery-中的-AJAX"><a href="#JQuery-中的-AJAX" class="headerlink" title="JQuery 中的 AJAX"></a>JQuery 中的 AJAX</h2><p>JQuery 对原生 AJAX 做了很好的封装，使用起来非常简单方便。具体的很多方法，如：<code>$.ajax()</code>、<code>$.post()</code>、<code>$.get()</code>、<code>$.getJSON()</code>等。相比起原生的 AJAX 来说，这些方法在写法上更加简洁，我们可以根据不同需要进行调用。</p>
 <p>但是为了兼顾各个方法，这里我们以一个通用的方法<code>$.ajax()</code>为例做一个简单的讲解。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">   <span class="attr">type</span>:    <span class="comment">// 数据的提交方式：GET 和 POST</span></div><div class="line">   url:     <span class="comment">// 请求地址      </span></div><div class="line">   <span class="keyword">async</span>:   <span class="comment">// 是否支持异步刷新，默认是 true</span></div><div class="line">   data:    <span class="comment">// 需要提交的数据   </span></div><div class="line">   success: <span class="function"><span class="keyword">function</span>(<span class="params"> msg </span>)</span>&#123;</div><div class="line">     </div><div class="line">   &#125;        <span class="comment">// 请求成功后的回调函数，参数 msg 就是服务器返回的数据</span></div><div class="line">   error: <span class="function"><span class="keyword">function</span>(<span class="params"> msg </span>) </span>&#123;</div><div class="line">   	</div><div class="line">   &#125;        <span class="comment">// 请求失败后的回调函数，根据需要可以不写，一般只写上面的 success 函数</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -111,7 +114,7 @@
 <li>无法进行操作的后退，即不支持浏览器的页面后退。</li>
 <li>对搜索引擎的支持比较弱。</li>
 <li>可能会影响程序中的异常处理机制。</li>
-<li>安全问题，对一些网站攻击，如csrf、xxs、sql注入等不能很好地防御。</li>
+<li>安全问题，对一些网站攻击，如 csrf、xxs、sql 注入等不能很好地防御。</li>
 </ol>
 ]]></content>
       
@@ -2957,9 +2960,9 @@
         
         <tags>
             
-            <tag> document </tag>
-            
             <tag> dom </tag>
+            
+            <tag> document </tag>
             
         </tags>
         
