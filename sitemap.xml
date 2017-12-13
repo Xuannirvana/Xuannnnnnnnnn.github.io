@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/10/inheritObject/</loc>
+    
+    <lastmod>2017-12-13T05:21:49.204Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/09/createObject/</loc>
+    
+    <lastmod>2017-12-13T05:21:20.938Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/10/03/ExecutionContext/</loc>
+    
+    <lastmod>2017-12-08T02:42:58.047Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/11/05/ajax/</loc>
     
     <lastmod>2017-11-09T14:53:03.000Z</lastmod>
@@ -44,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/09/createObject/</loc>
-    
-    <lastmod>2017-10-16T14:58:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/10/04/VariableObject/</loc>
     
     <lastmod>2017-10-16T02:01:24.000Z</lastmod>
@@ -72,13 +86,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/10/10/inheritObject/</loc>
-    
-    <lastmod>2017-10-14T09:35:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/10/08/explainOOP/</loc>
     
     <lastmod>2017-10-13T09:39:12.000Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>http://yoursite.com/2017/10/03/scope/</loc>
     
     <lastmod>2017-10-08T13:32:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/10/03/ExecutionContext/</loc>
-    
-    <lastmod>2017-10-07T08:35:03.000Z</lastmod>
     
   </url>
   
