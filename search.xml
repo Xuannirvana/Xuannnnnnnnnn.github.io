@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript 发展史]]></title>
+      <url>/2017/12/19/javaScriptHistory/</url>
+      <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2017/12/19/browserHistory/" target="_blank" rel="external">《浏览器发展史》</a>中我们大致介绍了关于浏览器的一些历史发展，有了这个基础，在这篇博客中，我们就主要介绍关于 JavaScript 的一些发展。</p>
+<h2 id="JavaScript-技术背景"><a href="#JavaScript-技术背景" class="headerlink" title="JavaScript 技术背景"></a>JavaScript 技术背景</h2><p>JavaScript 最开始的诞生，就是因为网景公司希望能有一门语言可以代替服务器来处理表单验证工作。可是明明已经有服务器来做表单验证的功能了，为什么还要花时间去研发一种新的语言来接手这个工作呢。</p>
+<p>因为在以前，我们注册账户的时候并不会像现在这样填完一项验证一项。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmkwcpkmcij31dq0howi1.jpg" alt=""></p>
+<p>如上图所示，当我们输入完用户名，就立马接收到提示该用户名是不可用的。</p>
+<p>但是在以前，是需要我们吭哧吭哧的填完所有信息之后，点击提交。然后再等待个十几分钟，最后弹出个窗口告诉你 —— “对不起，该用户名已被注册，请重新输入！”。你崩溃的点了确定，然后“唰”整个网页重新刷新，你之前填的所有资料全部没了。哇哔 ——，心态真的炸得天崩地裂了。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmkwkr41hxj30dc0a70tx.jpg" alt=""></p>
+<h2 id="JavaScript-诞生"><a href="#JavaScript-诞生" class="headerlink" title="JavaScript 诞生"></a>JavaScript 诞生</h2><p>所以，在 1995 年的时候，网景公司要求 Brendan Eich （布兰登·艾奇）在两周之内设计出这种新的语言。所以在 10 天之后，JavaScript 这门新语言诞生了。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmkwuu91cfj305906omx5.jpg" alt=""></p>
+<p>而 JavaScript 一开始不叫这个名字，而是叫做 LiveScript。为什么后面会改名字呢？是因为当 LiveScript 这个脚本语言推出来以后，很少有程序员去用它，导致这个语言一直火不起来。所以，网景公司找到了当时很厉害的一家公司，叫做 SUN。这家公司当时为什么厉害呢？因为他们公司有一款特别火的语言，叫做 Java。所以，网景公司找到这个 SUN 公司，并提出两家公司共同来研发 LiveScript 这个脚本语言。研发成功之后，就重新给这个语言改了个名字，叫做 JavaScript。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmkx2p0kpjj30c806xmxh.jpg" alt=""></p>
+<p>因为当时 Java 很火，所以相当于是蹭了个热度，但实际上这门语言跟 Java 没有任何关系。但这次改名确实也很成功，JavaScript 就这样火了起来。</p>
+<h2 id="JScript-诞生"><a href="#JScript-诞生" class="headerlink" title="JScript 诞生"></a>JScript 诞生</h2><p>微软公司在开发 IE3 的时候就注意到了一门叫做 JavaScript 的浏览器脚本语言。但是，这并不是他们公司研发出来的，而他们又不屑于去用别人的东西。所以，微软就自己做了一个 JavaScript 的复刻版本，叫做 JScript。</p>
+<h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><p>在当时市面上有三种 JavaScript 版本。IE 的 JScript、网景的 JavaScript、ScriptEase 中的 CEnvi。当时还没有标准规定 JavaScript 的语法和特性。随着版本不同暴露的问题日益加剧，JavaScript 的规范化最终被提上日程。</p>
+<ul>
+<li>1996 年 11 月 网景公司将 JavaScript 提交给欧洲计算机制造商协会（ECMA，European Computer Manufactures Association），希望这种语言能够成为国际标准。</li>
+<li>1997 年 06 月 ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种标准称为 ECMAScript，这个版本就是 1.0 版本。</li>
+</ul>
+<p>虽然 JavaScript 和 ECMAScript 通常被人用来表达相同的意思，但实际ECMAScript 和 JavaScript 的关系是：前者是后者的规范，后者是前者的一种实现（另外的 ECMAScript 方言还有 JScript 和 ActionScript）。不过在日常场合，大部分时候这两个词是可以互换的。</p>
+<p>自此以后 JavaScript 一统江湖。</p>
+<h2 id="JavaScript-转折"><a href="#JavaScript-转折" class="headerlink" title="JavaScript 转折"></a>JavaScript 转折</h2><p>你以为 JavaScript 就此走上人生巅峰了吗?</p>
+<p>并没有，在 2003 年以前，JavaScript 有个外号叫“牛皮藓”，可谓是臭名远扬。因为当时的什么浮动广告、小广告、小弹窗等都是它的杰作。一谈到 JavaScript，那简直就是祸害啊。</p>
+<p>但是！！！</p>
+<p>在 2004 年，JavaScript 的命运被改变。当时的谷歌公司开始重视 AJAX。什么是 AJAX？</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fm95pad03lj30br045dfs.jpg" alt=""></p>
+<p>比如我们想在网上查个信息，都会有相应的下拉的提示。这种效果就是通过 AJAX 技术完成的。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmlsyb1t4fj317u0aetaq.jpg" alt=""></p>
+<p>就是因为有了 AJAX，JavaScript 也就开始慢慢被重视起来。</p>
+<p>2007 年，乔布斯推出第一代苹果手机，打开了手机开启桌面级浏览器新时代，JavaScript 也迎来了他自出生而来的重大转折点。</p>
+<p>2010 年，推出 HTML5 的画布功能，工程师可以在 canvas 进行游戏制作，再往后开始流行 webapp，用页面技术开发手机应用，JavaScript 也就被应用的更加广泛了。</p>
+<p>到如今，JavaScript 已经成为前端领域里举足轻重的一部分了。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript 基础 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[浏览器发展史]]></title>
       <url>/2017/12/19/browserHistory/</url>
       <content type="html"><![CDATA[<p>写这篇关于浏览器的一个发展历程的博客，主要是为了引出后面关于 JavaScript 的发展史。</p>
