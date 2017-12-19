@@ -5,7 +5,8 @@
     <entry>
       <title><![CDATA[浏览器发展史]]></title>
       <url>/2017/12/19/browserHistory/</url>
-      <content type="html"><![CDATA[<p>JavaScript 作为一门在浏览器中运行的编程语言，想要了解 JavaScript 的发展历程，就避免不了的要先了解一下浏览器的发展。</p>
+      <content type="html"><![CDATA[<p>写这篇关于浏览器的一个发展历程的博客，主要是为了引出后面关于 JavaScript 的发展史。</p>
+<p>JavaScript 作为一门在浏览器中运行的编程语言，想要了解 JavaScript 的发展史，就避免不了的要先了解一下浏览器的发展。</p>
 <a id="more"></a>
 <h2 id="导航者浏览器"><a href="#导航者浏览器" class="headerlink" title="导航者浏览器"></a>导航者浏览器</h2><p>最早一代的浏览器是什么其实不重要，因为它跟 JavaScript 完全没有关系。而真正重要的一代浏览器，是网景公司（Netscape Corporation）在 1994 年底发布的 —— （Navigator）导航者浏览器（台湾译为领航员浏览器）1.0 版。</p>
 <p>网景的创始人马克·安德森（Marc Andreessen）最早在伊利诺伊大学主修计算机专业，并在学校的国家超级计算机应用中心兼职。在那里，他与其他几位同伴共同开发了一款浏览器（就是后来网景导航者浏览器的原型），一上线就大受网民的欢迎。于是，马克·安德森决定在硅谷创业，开发浏览器。只经过了不到一年的时间，在 1994 年的年底，网景导航者浏览器已经成为了浏览器市场占有率的首位。</p>
@@ -682,9 +683,9 @@
         
         <tags>
             
-            <tag> 隐式原型 </tag>
-            
             <tag> 原型链 </tag>
+            
+            <tag> 隐式原型 </tag>
             
         </tags>
         
