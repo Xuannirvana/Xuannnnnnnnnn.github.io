@@ -19,13 +19,15 @@
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmkx2p0kpjj30c806xmxh.jpg" alt=""></p>
 <p>因为当时 Java 很火，所以相当于是蹭了个热度，但实际上这门语言跟 Java 没有任何关系。但这次改名确实也很成功，JavaScript 就这样火了起来。</p>
 <h2 id="JScript-诞生"><a href="#JScript-诞生" class="headerlink" title="JScript 诞生"></a>JScript 诞生</h2><p>微软公司在开发 IE3 的时候就注意到了一门叫做 JavaScript 的浏览器脚本语言。但是，这并不是他们公司研发出来的，而他们又不屑于去用别人的东西。所以，微软就自己做了一个 JavaScript 的复刻版本，叫做 JScript。</p>
-<p>因此，在 1996 年 8 月，JavaScript 的复刻版本，JScript 伴随着 IE3 一起诞生了。</p>
+<p>因此，在 1996 年 8 月，JavaScript 的复刻版本 JScript 伴随着 IE3 一起诞生了。</p>
 <h2 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h2><p>在当时市面上有三种 JavaScript 版本。IE 的 JScript、网景的 JavaScript、ScriptEase 中的 CEnvi。当时还没有标准规定 JavaScript 的语法和特性。随着版本不同暴露的问题日益加剧，JavaScript 的规范化最终被提上日程。</p>
 <ul>
 <li>1996 年 11 月 网景公司将 JavaScript 提交给欧洲计算机制造商协会（ECMA，European Computer Manufactures Association），希望这种语言能够成为国际标准。</li>
 <li>1997 年 06 月 ECMA 发布 262 号标准文件（ECMA-262）的第一版，规定了浏览器脚本语言的标准，并将这种标准称为 ECMAScript，这个版本就是 1.0 版本。</li>
 </ul>
+<blockquote>
 <p>虽然 JavaScript 和 ECMAScript 通常被人用来表达相同的意思，但实际ECMAScript 和 JavaScript 的关系是：前者是后者的规范，后者是前者的一种实现（另外的 ECMAScript 方言还有 JScript 和 ActionScript）。不过在日常场合，大部分时候这两个词是可以互换的。</p>
+</blockquote>
 <p>自此以后 JavaScript 一统江湖。</p>
 <h2 id="JavaScript-转折"><a href="#JavaScript-转折" class="headerlink" title="JavaScript 转折"></a>JavaScript 转折</h2><p>你以为 JavaScript 就此走上人生巅峰了吗?</p>
 <p>并没有，在 2003 年以前，JavaScript 有个外号叫“牛皮藓”，可谓是臭名远扬。因为当时的什么浮动广告、小广告、小弹窗等都是它的杰作。一谈到 JavaScript，那简直就是祸害啊。</p>
