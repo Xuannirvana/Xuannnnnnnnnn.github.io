@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-19T02:51:10.199Z</updated>
+  <updated>2017-12-19T02:51:51.900Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2017/12/19/javaScriptHistory/"/>
     <id>http://yoursite.com/2017/12/19/javaScriptHistory/</id>
     <published>2017-12-19T02:49:00.000Z</published>
-    <updated>2017-12-19T02:51:10.199Z</updated>
+    <updated>2017-12-19T02:51:51.900Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2017/12/19/browserHistory/" target="_blank" rel="external">《浏览器发展史》</a>中我们大致介绍了关于浏览器的一些历史发展，有了这个基础，在这篇博客中，我们就主要介绍关于 JavaScript 的一些发展。</p>
+<a id="more"></a>
 <h2 id="JavaScript-技术背景"><a href="#JavaScript-技术背景" class="headerlink" title="JavaScript 技术背景"></a>JavaScript 技术背景</h2><p>JavaScript 最开始的诞生，就是因为网景公司希望能有一门语言可以代替服务器来处理表单验证工作。可是明明已经有服务器来做表单验证的功能了，为什么还要花时间去研发一种新的语言来接手这个工作呢。</p>
 <p>因为在以前，我们注册账户的时候并不会像现在这样填完一项验证一项。</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmkwcpkmcij31dq0howi1.jpg" alt=""></p>
@@ -57,7 +58,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;在&lt;a href=&quot;https://runjaelyn.github.io/2017/12/19/browserHistory/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《浏览器发展史》&lt;/a&gt;中我们大致介绍了关于浏览器的一些历史发展，有了这个基础，
+      &lt;p&gt;在&lt;a href=&quot;https://runjaelyn.github.io/2017/12/19/browserHistory/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《浏览器发展史》&lt;/a&gt;中我们大致介绍了关于浏览器的一些历史发展，有了这个基础，在这篇博客中，我们就主要介绍关于 JavaScript 的一些发展。&lt;/p&gt;
     
     </summary>
     
