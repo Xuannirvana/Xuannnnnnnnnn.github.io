@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-19T02:51:51.900Z</updated>
+  <updated>2017-12-19T02:53:59.205Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/12/19/javaScriptHistory/"/>
     <id>http://yoursite.com/2017/12/19/javaScriptHistory/</id>
     <published>2017-12-19T02:49:00.000Z</published>
-    <updated>2017-12-19T02:51:51.900Z</updated>
+    <updated>2017-12-19T02:53:59.205Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2017/12/19/browserHistory/" target="_blank" rel="external">《浏览器发展史》</a>中我们大致介绍了关于浏览器的一些历史发展，有了这个基础，在这篇博客中，我们就主要介绍关于 JavaScript 的一些发展。</p>
 <a id="more"></a>
@@ -30,7 +30,7 @@
 <p>如上图所示，当我们输入完用户名，就立马接收到提示该用户名是不可用的。</p>
 <p>但是在以前，是需要我们吭哧吭哧的填完所有信息之后，点击提交。然后再等待个十几分钟，最后弹出个窗口告诉你 —— “对不起，该用户名已被注册，请重新输入！”。你崩溃的点了确定，然后“唰”整个网页重新刷新，你之前填的所有资料全部没了。哇哔 ——，心态真的炸得天崩地裂了。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fmkwkr41hxj30dc0a70tx.jpg" alt=""></p>
-<h2 id="JavaScript-诞生"><a href="#JavaScript-诞生" class="headerlink" title="JavaScript 诞生"></a>JavaScript 诞生</h2><p>所以，在 1995 年的时候，网景公司要求 Brendan Eich （布兰登·艾奇）在两周之内设计出这种新的语言。所以在 10 天之后，JavaScript 这门新语言诞生了。</p>
+<h2 id="JavaScript-诞生"><a href="#JavaScript-诞生" class="headerlink" title="JavaScript 诞生"></a>JavaScript 诞生</h2><p>在 1995 年的时候，网景公司要求 Brendan Eich （布兰登·艾奇）在两周之内设计出一种新的语言，可以代替服务器来处理表单验证工作。所以在 10 天之后，JavaScript 这门新语言诞生了。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fmkwuu91cfj305906omx5.jpg" alt=""></p>
 <p>而 JavaScript 一开始不叫这个名字，而是叫做 LiveScript。为什么后面会改名字呢？是因为当 LiveScript 这个脚本语言推出来以后，很少有程序员去用它，导致这个语言一直火不起来。所以，网景公司找到了当时很厉害的一家公司，叫做 SUN。这家公司当时为什么厉害呢？因为他们公司有一款特别火的语言，叫做 Java。所以，网景公司找到这个 SUN 公司，并提出两家公司共同来研发 LiveScript 这个脚本语言。研发成功之后，就重新给这个语言改了个名字，叫做 JavaScript。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmkx2p0kpjj30c806xmxh.jpg" alt=""></p>
