@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-09T14:53:03.000Z</updated>
+  <updated>2017-12-19T02:31:37.626Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器发展史</title>
+    <link href="http://yoursite.com/2017/12/19/browserHistory/"/>
+    <id>http://yoursite.com/2017/12/19/browserHistory/</id>
+    <published>2017-12-19T02:31:00.000Z</published>
+    <updated>2017-12-19T02:31:37.626Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript 作为一门在浏览器中运行的编程语言，想要了解 JavaScript 的发展历程，就避免不了的要先了解一下浏览器的发展。</p>
+<a id="more"></a>
+<h2 id="导航者浏览器"><a href="#导航者浏览器" class="headerlink" title="导航者浏览器"></a>导航者浏览器</h2><p>最早一代的浏览器是什么其实不重要，因为它跟 JavaScript 完全没有关系。而真正重要的一代浏览器，是网景公司（Netscape Corporation）在 1994 年底发布的 —— （Navigator）导航者浏览器（台湾译为领航员浏览器）1.0 版。</p>
+<p>网景的创始人马克·安德森（Marc Andreessen）最早在伊利诺伊大学主修计算机专业，并在学校的国家超级计算机应用中心兼职。在那里，他与其他几位同伴共同开发了一款浏览器（就是后来网景导航者浏览器的原型），一上线就大受网民的欢迎。于是，马克·安德森决定在硅谷创业，开发浏览器。只经过了不到一年的时间，在 1994 年的年底，网景导航者浏览器已经成为了浏览器市场占有率的首位。</p>
+<p>因此在上个世纪 1995 年，当时的网景公司凭借着导航者浏览器成为了 Web 时代开启时最著名的第一代互联网公司。而他们公司就只有一款产品，就是浏览器。</p>
+<h2 id="IE-浏览器"><a href="#IE-浏览器" class="headerlink" title="IE 浏览器"></a>IE 浏览器</h2><p>网景导航者浏览器的成功，让微软公司意识到了危机。所以微软为了应对网景的日益强大，直接购买了网景导航者浏览器的原型版本的源代码，也就是马克·安德森在大学时期做的第一个版本的浏览器。然后，修改后就发布了。</p>
+<p>所以，1995 年 8 月 16 日，微软推出了 IE 1.0 浏览器。同年 11 月发布了其第二个版本 IE 2.0。但是 IE 的这两个版本都几乎没有人使用，因为做的很烂。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fml1ndc6n6j305k05k3ye.jpg" alt=""></p>
+<p>不过在 IE3 的版本，发生了质的改变。因为从 IE3 开始，微软将 IE 浏览器强制内置在了 Windows 的操作系统中。</p>
+<p>同时，微软也在商业市场发力，联合大型互联网服务提供商，美国在线、AT&amp;T 等，让他们放弃网景导航者浏览器而改用 IE 作为首选浏览器。盖茨还曾经问过美国在线的高管，“微软需要出多少钱才能让你们放弃网景而改用 IE 作为推荐浏览器？”</p>
+<p>而网景当时则想要通过快速增加自己浏览器的功能来获取更多的安装量。但是因为大量新增的功能，浏览器的性能不断下降，bug 频频出现，软件卡顿等等，导致客户失去了对导航者浏览器的信心。</p>
+<p>最后，因为网景产品的问题，加上微软的围追堵截，网景浏览器逐渐失去了市场份额，而 IE 基本垄断了浏览器的市场。从 8% 的市场占有率上升到了 80% 多的市场占有率，以至于最后把网景公司给挤死了。</p>
+<p>在 1998 年，网景最后被美国在线（AOL）以 42 亿美元收购。</p>
+<h2 id="火狐浏览器"><a href="#火狐浏览器" class="headerlink" title="火狐浏览器"></a>火狐浏览器</h2><p>实际上，网景并没有真正意义上的消失。因为网景公司在临死前又做了一件事，他们把公司唯一一款核心产品，也就是网景导航者浏览器的核心源代码开源了！！！</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fmkz98z7xej30ml0ett9y.jpg" alt=""></p>
+<p>网景的一批老员工们一起成立了一个组织，计划开发下一代的网景导航者浏览器，这个组织就是 Mozilla.org，叫做 Mozilla。但是不久后，导航者浏览器的源代码就差不多被全部抛弃， Mozilla 组织开发出了在稳定性和功能上更出色的新一代浏览器。这个浏览器就是 Mozilla Application Suite，简称 Mozilla。</p>
+<p>2002 年的时候，它们又从 Mozilla 浏览器项目中分支出来的一个实验性的项目，希望能够做出更轻便、快速、简单与高扩充性的浏览器。在 2004 年 2 月 9 日，该浏览器正式命名为”Mozilla Firefox”，并在 2004 年 11 月 9 日发布了 Firefox 的第一个正式版本 Firefox1.0。</p>
+<p>而微软这个时候在干啥呢？</p>
+<p>IE6 成功后，微软认为其技术已经绝对领先了，于是解散了技术团队。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fml0idx47tj308c07gwf9.jpg" alt=""></p>
+<p>因此在 21 世纪初，Mozilla Firefox 重创 IE6，IE6 的地位岌岌可危。而 Firefox 在 2009 年迎来了顶峰，市占率接近 30%。</p>
+<h2 id="谷歌浏览器"><a href="#谷歌浏览器" class="headerlink" title="谷歌浏览器"></a>谷歌浏览器</h2><p>在 Firefox 浏览器最辉煌的时候，迎来了让它逐步没落的对手 —— 2008 年 9 月 2 日，Google 发布了第一个 beta 版本的 Chrome 浏览器。</p>
+<p>事实上，就在多年以前，Google 和 Mozilla 达成一项合作协议，双方在浏览器技术方面合作，同时 Mozilla 浏览器的搜索引擎默认为 Google，为此，Google 需每年向 Mozilla 支付1亿美元，但是没想到哇！养虎为患哇！¥#%&amp;@*… … Google 在 Mozilla 技术上融会贯通，构建了自己的 V8 引擎。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fmkzv6kfvgj30b408cmx6.jpg" alt=""></p>
+<p>从 Chrome 出现的那一天开始，消费者们就发现替代 IE 最好浏览器是 Chrome，因此 Firefox 就开始失宠了。</p>
+<h2 id="其他浏览器"><a href="#其他浏览器" class="headerlink" title="其他浏览器"></a>其他浏览器</h2><p>非常要命的是，Chromium 是开源的，可以任意的裁剪编译，由此衍生出庞大的浏览器产业，我们今天熟知的 UC 浏览器、搜狗浏览器、QQ 浏览器等无一不是来自 Chromium。</p>
+<blockquote>
+<p>注：Chromium 是 Google Chrome 浏览器背后的引擎。相当于 Google Chrome 的工程版或称实验版，新功能会率先在Chromium 上实现，待验证后才会应用在 Google Chrome 上。</p>
+</blockquote>
+<h2 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h2><p><strong>Trident 内核</strong></p>
+<p>主流代表浏览器是 IE。此内核只能用于 Windows 平台，且不是开源的。 </p>
+<p>代表浏览器还有腾讯、Maxthon（遨游）、360 浏览器等。</p>
+<p><strong>Gecko 内核</strong></p>
+<p>代表浏览器是 Firefox（火狐浏览器）。最大优势是跨平台，在 Microsoft Windows、Linux、MacOs X 等主要操作系统中均能使用，并且开源。</p>
+<p><strong>Webkit 内核</strong></p>
+<p>代表浏览器是 Safari。还有曾经的 Chrome，是开源的项目。</p>
+<p><strong>Presto 内核</strong></p>
+<p>代表浏览器是 Opera，Presto 是由 Opera Software 开发的浏览器排版引擎，它是世界公认最快的渲染速度的引擎。但在 13 年之后，Opera 宣布加入谷歌阵营，弃用了 Presto。 </p>
+<p><strong>Blink 内核</strong></p>
+<p>由 Google 和 Opera Software 开发的浏览器排版引擎，2013 年 4 月发布。 </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript 作为一门在浏览器中运行的编程语言，想要了解 JavaScript 的发展历程，就避免不了的要先了解一下浏览器的发展。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="浏览器" scheme="http://yoursite.com/categories/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    
+      <category term="浏览器" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+      <category term="IE" scheme="http://yoursite.com/tags/IE/"/>
+    
+  </entry>
   
   <entry>
     <title>AJAX</title>
@@ -649,9 +713,9 @@
       <category term="面向对象" scheme="http://yoursite.com/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     
-      <category term="原型链" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    
       <category term="隐式原型" scheme="http://yoursite.com/tags/%E9%9A%90%E5%BC%8F%E5%8E%9F%E5%9E%8B/"/>
+    
+      <category term="原型链" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
@@ -660,7 +724,7 @@
     <link href="http://yoursite.com/2017/10/10/inheritObject/"/>
     <id>http://yoursite.com/2017/10/10/inheritObject/</id>
     <published>2017-10-10T02:15:01.000Z</published>
-    <updated>2017-12-13T05:21:49.204Z</updated>
+    <updated>2017-12-13T06:14:32.437Z</updated>
     
     <content type="html"><![CDATA[<p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
 <p>我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。</p>
@@ -675,8 +739,8 @@
 <h2 id="借用构造函数（对象冒充）"><a href="#借用构造函数（对象冒充）" class="headerlink" title="借用构造函数（对象冒充）"></a>借用构造函数（对象冒充）</h2><p>在解决原型中包含引用类型值所带来问题的过程中，开发人员开始使用一种叫做<strong>借用构造函数</strong>（constructor stealing）的技术（有时候也叫做伪造对象或经典继承）。</p>
 <p>这种技术的基本思想相当简单，即在子类构造函数内部调用父类构造函数，但是需要结合<code>apply()</code>和<code>call()</code>方法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="comment">// 继承 Person</span></div><div class="line">	Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">	<span class="comment">// Person.apply(this, [name, age]);</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> zhangsan = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">22</span>);</div><div class="line">zhangsan.sayName();    <span class="comment">// zhangsan</span></div></pre></td></tr></table></figure>
-<p>但是使用这中方式实现继承，也会有一个问题：<strong>子类无法继承父类定义在原型身上的属性和方法。</strong>也就是说，属性和方法都需要在构造函数内部定义，这样函数的复用就无从谈起了。并且每个对象实例都会保存相同的方法，这种方式也会造成内存的浪费。考虑到这些问题，借用构造函数的技术也是很少单独使用的。</p>
-<h2 id="组合（混合）继承"><a href="#组合（混合）继承" class="headerlink" title="组合（混合）继承"></a>组合（混合）继承</h2><p>组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的 技术组合到一块，从而发挥二者之长的一种继承模式。实现的思路就是：使用原型链实现对原型的属性和方法的继承，同时通过借用构造函数来实现对实例属性的继承。</p>
+<p>但是使用这中方式实现继承，也会有一个问题：<strong>子类无法继承父类定义在原型身上的属性和方法。</strong>也就是说，属性和方法都需要在构造函数内部定义。但是这样函数的复用就无从谈起了，并且每个对象实例都会保存相同的方法，这种方式也会造成内存的浪费。考虑到这些问题，借用构造函数的技术也是很少单独使用的。</p>
+<h2 id="组合（混合）继承"><a href="#组合（混合）继承" class="headerlink" title="组合（混合）继承"></a>组合（混合）继承</h2><p>组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的 技术组合到一块，从而发挥二者之长的一种继承模式。实现的思路就是：使用原型链实现对原型身上的方法的继承，同时通过借用构造函数来实现对实例属性的继承。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过借用构造函数继承实例的属性</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过原型链继承原型的方法</span></div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhang = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">22</span>);</div><div class="line">zhang.sayName();</div></pre></td></tr></table></figure>
 ]]></content>
     
@@ -2169,86 +2233,6 @@
       <category term="canvas" scheme="http://yoursite.com/tags/canvas/"/>
     
       <category term="画布" scheme="http://yoursite.com/tags/%E7%94%BB%E5%B8%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数组的循环和迭代</title>
-    <link href="http://yoursite.com/2017/09/02/handleArray/"/>
-    <id>http://yoursite.com/2017/09/02/handleArray/</id>
-    <published>2017-09-02T02:38:13.000Z</published>
-    <updated>2017-09-26T15:28:02.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 JavaScript 中，关于数组的操作方法有很多。其中，数组的遍历是我们需要掌握的一个重点。</p>
-<p>从 JavaScript 发展到现在，数组的遍历方式也越来越多，所以这篇文章我们主要是讲关于数组的这几种遍历方式的使用方法和分析它们的一些异同点。</p>
-<a id="more"></a>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p><strong>普通版<code>for</code>循环</strong></p>
-<p><code>for</code>循环是遍历数组最简单的一种，也是使用频率最高的一种。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++ ) &#123;</div><div class="line">	<span class="built_in">console</span>.log( arr[i] ); <span class="comment">// a b c d </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种<code>for</code>循环方式虽然性能不算差，但也仍有优化的空间。</p>
-<p><strong>优化版<code>for</code>循环</strong></p>
-<p>优化版的<code>for</code>循环，就是在普通版的<code>for</code>循环基础之上，使用临时变量，将数组的长度 <code>arr.length</code>缓存起来，避免重复获取数组长度。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++ ) &#123;</div><div class="line">	<span class="built_in">console</span>.log( arr[i] ); <span class="comment">// a b c d </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种方式在数组较大时优化效果才会比较明显，但是这种方式基本上也是所有循环遍历方法中性能最高的一种了。</p>
-<h3 id="for-in-循环"><a href="#for-in-循环" class="headerlink" title="for-in 循环"></a>for-in 循环</h3><p>这种循环方式很多人爱用，但实际上，经分析测试，在众多的循环遍历方式中，它的效率是最低的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> i <span class="keyword">in</span> arr ) &#123;</div><div class="line">	<span class="built_in">console</span>.log( arr[i] ); <span class="comment">// a b c d </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>说明：<code>for-in</code>循环实际是为了循环<strong>可枚举性</strong>（enumerable）对象而设计的。这里暂时不理解可枚举性没关系（在后面对象的文章中会细讲），但至少从这句话我们可以知道，虽然<code>for-in</code>也可以用来遍历数组，但实际上它更适合用来遍历对象。</p>
-<h3 id="for-of-循环"><a href="#for-of-循环" class="headerlink" title="for-of 循环"></a>for-of 循环</h3><p><code>for-of</code>是 ES6 引进的新语法，它既比传统的<code>for</code>循环方式简洁，同时弥补了<code>for-in</code>循环的不足。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>];</div><div class="line"></div><div class="line"><span class="keyword">for</span> ( <span class="keyword">let</span> item <span class="keyword">of</span> arr ) &#123;</div><div class="line">	<span class="built_in">console</span>.log( item ); <span class="comment">// a b c d </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>说明：</p>
-<ul>
-<li><code>for-in</code>是遍历集合对象的键名，<code>for-of</code>是直接遍历集合对象的键值。</li>
-<li><code>for-of</code>的遍历方式性能要高于<code>for-in</code>，但仍比不上普通的<code>for</code>循环。</li>
-<li><code>for-of</code>不仅支持数组的遍历，还支持大多数类数组对象。同时也支持 ES6 里新增的<code>Map</code>和<code>Set</code>对象。</li>
-</ul>
-<h2 id="数组迭代"><a href="#数组迭代" class="headerlink" title="数组迭代"></a>数组迭代</h2><p>ES5 为数组定义了几种迭代方法。</p>
-<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p>自 2009 年 ES5 正式发布后，我们开始可以使用<code>forEach</code>方法来遍历数组。 </p>
-<p>描述：按顺序让数组中每一项依次执行某种相同的操作。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( item );   <span class="comment">// 10 11 12 13 14</span></div><div class="line">	<span class="built_in">console</span>.log( index );  <span class="comment">// 0 1 2 3 4</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fhu3c7xbtrj313e0eijtj.jpg" alt=""></p>
-<p>说明：</p>
-<ul>
-<li>数组自带的<code>forEach</code>循环，使用频率较高，但实际上性能比普通<code>for</code>循环弱。</li>
-<li><code>forEach</code>不能使用<code>continue</code>和<code>break</code>语句中断循环，也不能使用<code>return</code>语句返回到外层函数。</li>
-</ul>
-<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>描述：按顺序让数组中每一项依次执行某种相同的操作，然后返回一个新数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> newArr = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> item * <span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log( newArr ); <span class="comment">// [20, 22, 24, 26, 28]</span></div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fhu3eseae8j30ys0nsgot.jpg" alt=""></p>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p>描述：按顺序让数组中每一项依次执行某种相同的操作，然后筛选出符合条件的元素，组成新数组并返回。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> newArr = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> item % <span class="number">2</span> == <span class="number">0</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">// [10, 12, 14]</span></div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fhu45uy6spj317o0p40wy.jpg" alt=""></p>
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a>reduce()</h3><p>描述：按顺序让数组中的前项和后项做某种计算，并累计返回最终值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, next</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> prev + next;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">// 60</span></div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fhu6l2qukbj318q0sy0xb.jpg" alt=""></p>
-<p>利用<code>reduce()</code>方法的特点，我们还可以通过该方法结合三目运算来求一个数组中的最大或最小值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">5</span>];</div><div class="line"></div><div class="line"><span class="keyword">let</span> result = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">prev, next</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> prev &gt; next ? prev : next;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result);</div></pre></td></tr></table></figure>
-<h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3><p>描述：按顺序让数组中每一项依次执行某种相同的操作，用来检测数组中每一项是否都符合条件。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> item % <span class="number">2</span> == <span class="number">0</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<p>说明：检测的元素中，如果全部都满足条件，返回<code>true</code>，只要有一项不满足条件，则返回<code>false</code>。即<strong>一假必假</strong>。</p>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fhu6w9sywij318m0rytdj.jpg" alt=""></p>
-<h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3><p>描述：按顺序让数组中每一项依次执行某种相同的操作，用来检测数组中某一项是否都符合条件。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> item % <span class="number">2</span> == <span class="number">0</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>说明：检测的元素中，只要有一项符合条件，就返回结果<code>true</code>，如果全部都不满足条件，则返回结果<code>false</code>。即<strong>一真必真</strong>。</p>
-<p>图解：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fhu70i4mncj319m0s0aez.jpg" alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1figzpknccgj31780wm0zg.jpg" alt=""></p>
-<p>附：本篇文章都只针对以上方法做了一些简单的讲解分析，并不全面。需要深入研究分析的朋友还需另查询其他资料。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 JavaScript 中，关于数组的操作方法有很多。其中，数组的遍历是我们需要掌握的一个重点。&lt;/p&gt;
-&lt;p&gt;从 JavaScript 发展到现在，数组的遍历方式也越来越多，所以这篇文章我们主要是讲关于数组的这几种遍历方式的使用方法和分析它们的一些异同点。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Array" scheme="http://yoursite.com/categories/Array/"/>
-    
     
   </entry>
   

@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/12/19/browserHistory/</loc>
+    
+    <lastmod>2017-12-19T02:31:37.626Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/10/10/inheritObject/</loc>
     
-    <lastmod>2017-12-13T05:21:49.204Z</lastmod>
+    <lastmod>2017-12-13T06:14:32.437Z</lastmod>
     
   </url>
   
