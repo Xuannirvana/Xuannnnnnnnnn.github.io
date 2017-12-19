@@ -37,9 +37,8 @@
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fm95pad03lj30br045dfs.jpg" alt=""></p>
 <p>比如我们想在网上查个信息，都会有相应的下拉的提示。这种效果就是通过 AJAX 技术完成的。</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fmlsyb1t4fj317u0aetaq.jpg" alt=""></p>
-<p>就是因为有了 AJAX，JavaScript 也就开始慢慢被重视起来。</p>
-<p>2007 年，乔布斯推出第一代苹果手机，打开了手机开启桌面级浏览器新时代，JavaScript 也迎来了他自出生而来的重大转折点。</p>
-<p>2010 年，推出 HTML5 的画布功能，工程师可以在 canvas 进行游戏制作，再往后开始流行 webapp，用页面技术开发手机应用，JavaScript 也就被应用的更加广泛了。</p>
+<p>就是因为有了 AJAX，JavaScript 也就开始慢慢被前端程序员们重视起来。</p>
+<p>2009 年，谷歌又以 V8 引擎为基础研发出了 Node.js，从此我们可以在服务端去编写 JavaScript 代码。自此，JavaScript 开始蓬勃发展。</p>
 <p>到如今，JavaScript 已经成为前端领域里举足轻重的一部分了。</p>
 ]]></content>
       
@@ -106,7 +105,7 @@
       
         <categories>
             
-            <category> 浏览器 </category>
+            <category> JavaScript 基础 </category>
             
         </categories>
         
