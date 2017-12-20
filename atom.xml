@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-19T09:17:44.624Z</updated>
+  <updated>2017-12-20T02:02:11.707Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/12/19/javaScriptIntroduce/"/>
     <id>http://yoursite.com/2017/12/19/javaScriptIntroduce/</id>
     <published>2017-12-19T09:17:00.000Z</published>
-    <updated>2017-12-19T09:17:44.624Z</updated>
+    <updated>2017-12-20T02:02:11.707Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 是一种轻量级的脚本语言，可以嵌入到 HTML 页面中，由来浏览器来解释执行，用来实现浏览器和用户的交互。</p>
 <a id="more"></a>
@@ -65,7 +65,7 @@
 <h2 id="JavaScript-特点"><a href="#JavaScript-特点" class="headerlink" title="JavaScript 特点"></a>JavaScript 特点</h2><p>JavaScript 脚本语言的基本特点如下：</p>
 <ul>
 <li><p><strong>解释性</strong></p>
-<p>  JavaScript 不同于一些编译性的程序语言，例如C、C++等，它是一种解释性的程序语言，它的源代码不需要经过编译，而直接在浏览器中运行时被解释。</p>
+<p>  JavaScript 不同于一些编译性的程序语言，例如 C、C++ 等，它是一种解释性的程序语言，它的源代码不需要经过编译，而直接在浏览器中运行时被解释。</p>
 </li>
 <li><p><strong>基于对象</strong></p>
 <p>  JavaScript 是一种基于对象的语言。这意味着它能运用自己已经创建的对象。因此，许多功能可以来自于脚本环境中对象的方法与脚本的相互作用。</p>
@@ -80,6 +80,29 @@
 <p>  JavaScript 是一种安全性语言，它不允许访问本地的硬盘，并不能将数据存入到服务器上，不允许对网络文档进行修改和删除，只能通过浏览器实现信息浏览或动态交互。这样可有效地防止数据的丢失。</p>
 </li>
 </ul>
+<h2 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h2><p>近年来，JavaScript 的使用范围，慢慢跨越了浏览器，正在向通用的系统语言发展。</p>
+<ol>
+<li><p><strong>浏览器的平台化</strong></p>
+<p> 随着 HTML5 的出现，浏览器本身的功能越来越强。不再仅仅能浏览网页，而是越来越像一个平台，JavaScript 因此得以调用许多系统功能。比如操作本地文件、操作图片、调用摄像头和麦克风等等。这使得 JavaScript 可以完成许多以前无法想象的事情。</p>
+</li>
+<li><p><strong>Node.js</strong></p>
+<p> Node.js 项目使得 JavaScript 可以用于开发服务器端的大型项目，网站的前后端都用 JavaScript 开发已经成为了现实。有些嵌入式平台（Raspberry Pi）能够安装 Node.js，于是 JavaScript 就能为这些平台开发应用程序。</p>
+</li>
+<li><p><strong>数据库操作</strong></p>
+<p> JavaScript 甚至也可以用来操作数据库。NoSQL 数据库这个概念，本身就是在 JSON 格式的基础上诞生的，大部分 NoSQL 数据库允许 JavaScript 直接操作。基于 SQL 语言的开源数据库 PostgreSQL 支持 JavaScript 作为操作语言，可以部分取代 SQL 查询语言。</p>
+</li>
+<li><p><strong>跨移动平台</strong> </p>
+<p> PhoneGap 项目使得 JavaScript 可以开发在多种移动平台（iOS 和 Android）上使用的应用程序；Mozilla 基金会的手机操作系统 Firefox OS，更是直接将 JavaScript 作为操作系统的平台语言。</p>
+</li>
+<li><p><strong>内嵌脚本语言</strong> </p>
+<p> 越来越多的应用程序，将 JavaScript 作为内嵌的脚本语言，比如 Adobe 公司的著名 PDF 阅读器 Acrobat、Linux 桌面环境 GNOME 3。</p>
+</li>
+<li><p><strong>跨平台的桌面应用程序</strong></p>
+<p> Chromium OS、Windows 8 等操作系统直接支持 JavaScript 编写应用程序。Mozilla 的 Open Web Apps 项目、Google 的 Chrome App 项目、以及TideSDK 项目，可以用来编写运行于 Windows、Mac OS 和 Android 等多个桌面平台的程序，不依赖浏览器。 </p>
+</li>
+</ol>
+<p>也就是说，JavaScript 能让你只用一种语言，就开发出适应不同平台（包括桌面端、服务器端、手机端）的程序。在 2015 年的时候有人统计过，JavaScript 是当时代码托管网站 GitHub 上使用量排名第一的语言。</p>
+<p>名程序员 Jeff Atwood 甚至提出了一条“Atwood 定律” —— 所有可以用JavaScript编写的程序，最终都会出现 JavaScript 的版本。（Any application that can be written in JavaScript will eventually be written in JavaScript.）</p>
 ]]></content>
     
     <summary type="html">
