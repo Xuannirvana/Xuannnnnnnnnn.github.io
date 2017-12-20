@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-20T02:04:50.318Z</updated>
+  <updated>2017-12-20T02:06:56.619Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/12/19/javaScriptIntroduce/"/>
     <id>http://yoursite.com/2017/12/19/javaScriptIntroduce/</id>
     <published>2017-12-19T09:17:00.000Z</published>
-    <updated>2017-12-20T02:04:50.318Z</updated>
+    <updated>2017-12-20T02:06:56.619Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 是一种轻量级的脚本语言，可以嵌入到 HTML 页面中，由来浏览器来解释执行，用来实现浏览器和用户的交互。</p>
 <a id="more"></a>
@@ -101,8 +101,8 @@
 <p> Chromium OS、Windows 8 等操作系统直接支持 JavaScript 编写应用程序。Mozilla 的 Open Web Apps 项目、Google 的 Chrome App 项目、以及TideSDK 项目，可以用来编写运行于 Windows、Mac OS 和 Android 等多个桌面平台的程序，不依赖浏览器。 </p>
 </li>
 </ol>
-<p>也就是说，JavaScript 能让你只用一种语言，就开发出适应不同平台（包括桌面端、服务器端、手机端）的程序。在 2015 年的时候有人统计过，JavaScript 是当时代码托管网站 GitHub 上使用量排名第一的语言。</p>
-<p>名程序员 Jeff Atwood 甚至提出了一条“Atwood 定律” —— 所有可以用JavaScript编写的程序，最终都会出现 JavaScript 的版本。（Any application that can be written in JavaScript will eventually be written in JavaScript.）</p>
+<p>也就是说，在以后，JavaScript 也许能让你只用一种语言，就开发出适应不同平台（包括桌面端、服务器端、手机端）的程序。在 2015 年的时候有人统计过，JavaScript 是当时代码托管网站 GitHub 上使用量排名第一的语言。</p>
+<p>名程序员 Jeff Atwood 甚至提出了一条“Atwood 定律” —— 所有可以用 JavaScript 编写的程序，最终都会出现 JavaScript 的版本。（Any application that can be written in JavaScript will eventually be written in JavaScript.）</p>
 ]]></content>
     
     <summary type="html">
