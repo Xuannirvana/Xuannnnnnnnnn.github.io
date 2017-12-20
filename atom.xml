@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-20T02:06:56.619Z</updated>
+  <updated>2017-12-20T08:13:52.277Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,113 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 基础语法</title>
+    <link href="http://yoursite.com/2017/12/20/basicGrammar/"/>
+    <id>http://yoursite.com/2017/12/20/basicGrammar/</id>
+    <published>2017-12-20T01:00:00.000Z</published>
+    <updated>2017-12-20T08:13:52.277Z</updated>
+    
+    <content type="html"><![CDATA[<p>这一章主要介绍 JavaScript 中的一些入门的基础语法规范和要求。 </p>
+<a id="more"></a>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>JavaScript 语法和 Java 语言类似，每个<strong>语句</strong>以<code>;</code>结束，<strong>语句块</strong>用<code>{}</code>包裹。</p>
+<p>但是，JavaScript 并不强制要求在每个语句的结尾加<code>;</code>，因为浏览器中负责执行 JavaScript 代码的引擎会自动在每个语句的结尾补上<code>;</code>。</p>
+<p><strong>注意：</strong></p>
+<p>让 JavaScript 引擎自动加分号在某些情况下会改变程序的语义，导致运行结果与期望不一致。所以一般情况下，每个该加<code>;</code>的语句我们都自己加上<code>;</code>。</p>
+<h3 id="代码语句"><a href="#代码语句" class="headerlink" title="代码语句"></a>代码语句</h3><p>例如，下面的一行代码就是一个完整的代码语句。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>下面的一行代码包含两个语句，每个语句用<code>;</code>表示语句结束。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>; <span class="keyword">var</span> y = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<p>但是<strong>不建议一行写多个语句</strong>。</p>
+<h3 id="语句块"><a href="#语句块" class="headerlink" title="语句块"></a>语句块</h3><p>语句块，也叫做代码块。它是一组代码语句的集合。</p>
+<p>表现形式是使用<code>{}</code>将多条相关的代码语句包裹在一起。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( <span class="number">2</span> &gt; <span class="number">1</span> ) &#123;</div><div class="line">	x = <span class="number">1</span>;</div><div class="line">	y = <span class="number">2</span>;</div><div class="line">	z = <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong><code>{}</code>内的语句具有缩进的格式，通常是按一下 Tab 键。缩进不是 JavaScript 语法要求必须的，但缩进有助于我们理解代码层次，所以<strong>编写代码时要遵守缩进规则</strong>。</p>
+<p><code>{}</code>还可以嵌套，形成层级结构。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="number">2</span> &gt; <span class="number">1</span>) &#123;</div><div class="line">    x = <span class="number">1</span>;</div><div class="line">    y = <span class="number">2</span>;</div><div class="line">    z = <span class="number">3</span>;</div><div class="line">    <span class="keyword">if</span> (x &lt; y) &#123;</div><div class="line">        z = <span class="number">4</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (x &gt; y) &#123;</div><div class="line">        z = <span class="number">5</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>JavaScript 本身对嵌套的层级数没有限制，但是过多的嵌套无疑会大大增加分析代码的难度。</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>注释是给开发人员看的，JavaScript 引擎在解析代码时会自动忽略。</p>
+<p>JavaScript 中的注释分为两种：</p>
+<ul>
+<li><p>单行注释，以<code>//</code>开头。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这是一行注释</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;  <span class="comment">// 这也是注释</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>多行注释，用<code>/*...*/</code>把多行字符包裹起来。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 从这里开始是多行注释</span></div><div class="line">仍然是注释</div><div class="line">仍然是注释</div><div class="line">多行注释结束 */</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>JavaScript 中的标识符就是指给变量、函数、和对象等指定的名字。</p>
+<p>构成标识符的字母是有一定的规范，JavaScript 语言中标识符的命名规则如下：</p>
+<ol>
+<li><p>区分大小写</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这是两个不同的标识符</span></div><div class="line"><span class="keyword">var</span> username = <span class="string">'zhangsan'</span>;</div><div class="line"><span class="keyword">var</span> userName = <span class="string">'zhangsan'</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>标识符由下划线<code>_</code>、美元符<code>$</code>、字母和数字组成。但是，<strong>首字符不能是数字</strong>。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> _username = <span class="string">'zhangsan'</span>;</div><div class="line"><span class="keyword">var</span> $username = <span class="string">'zhangsan'</span>;</div><div class="line"><span class="keyword">var</span> username1 = <span class="string">'zhangsan'</span>;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>常用的命名法则</p>
+<ul>
+<li>驼峰命名法：多个单词拼接时单词首字母大写（第一个单词除外）；</li>
+<li>蛇形命名法：多个单词拼接时单词间用<code>_</code>链接；</li>
+<li><p>匈牙利命名法：加上前缀用来表示当前数据的类型；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 驼峰命名法</span></div><div class="line"><span class="keyword">var</span> phoneNumber = <span class="number">18111111111</span>;</div><div class="line"><span class="comment">// 蛇形命名法</span></div><div class="line"><span class="keyword">var</span> phone_number = <span class="number">18111111111</span>;</div><div class="line"><span class="comment">// 匈牙利命名法：前缀 n 表示该条数据的类型是 number 数字类型</span></div><div class="line"><span class="keyword">var</span> n_phoneNumber = <span class="number">18111111111</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>**注意**：命名的标识符尽量跟数据的含义保持一致。
+</code></pre><ol>
+<li><p>标识符不能使用关键字和保留字。</p>
+<p> <strong>关键字：</strong>就是 JS 本身已经使用了的单词。它们具有一定特殊的含义和作用，就不能再用来充当变量名、方法名等。包括（按字母排序）：</p>
+<blockquote>
+<p>break、<br> case、catch、continue、<br> default、delete、do、<br> else、<br> finally、for、function、<br> if、in、instanceof、<br> new、<br> return、<br> switch、<br> this、throw、try、typeof、<br> var、void、<br>while、with 等</p>
+</blockquote>
+<p> <strong>保留字：</strong>实际上就是预留的“关键字”，意思是虽然现在还不是关键字（也就是本身还不具备特殊含义的），但是未来可能会成为关键字的，同样是不能使用它们当变量名、方法名的。包括（按字母排序）：</p>
+<blockquote>
+<p>abstract、<br> boolean、byte、<br> char、class、const、<br> debugger、double、<br> enum、export、extends、<br> fimal、float、<br> goto、<br> implements、import、int、interface、<br> long、<br> mative、<br> package、private、protected、public、<br> short、static、super、synchronized、<br> throws、transient、<br>volatile 等</p>
+</blockquote>
+</li>
+</ol>
+<pre><code>**JavaScript 中预定义的一些【全局变量】和【函数】：**
+
+&gt; arguments、Array、
+Boolean、
+Date、decodeURI、decodeURIComponent、
+encodeURI、encodeURIComponent、Error、eval、EvalError、
+Function、
+Infinity、isFinite、isNaN、
+JSON、
+Math、
+Number、NaN、
+Object、
+parseFloat、parseInt、
+RegExp、RangeError、ReferenceError、
+String、SyntaxError、
+TypeError、
+&gt; undefined、URIError 等
+</code></pre><h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>除了正常运行模式，ECMAscript 5 添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得 Javascript 在更严格的条件下运行。</p>
+<h3 id="进入严格模式"><a href="#进入严格模式" class="headerlink" title="进入严格模式"></a>进入严格模式</h3><p>进入”严格模式”的标志，就是下面这行语句：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="string">``</span><span class="string">`	</span></div><div class="line"></div><div class="line">可以针对整个`.js<span class="string">`文件，也可以针对某个函数。</span></div><div class="line"></div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">strict</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">	"use strict"</span>;</div><div class="line">	<span class="comment">// 这是严格模式</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">notStrict</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="comment">// 这是正常模式</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这里，我们对严格模式仅作了解。有兴趣深入研究的可以去看阮一峰的文章<a href="http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html" target="_blank" rel="external">《Javascript 严格模式详解》</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这一章主要介绍 JavaScript 中的一些入门的基础语法规范和要求。 &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript 基础" scheme="http://yoursite.com/categories/JavaScript-%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 简介</title>
@@ -1604,111 +1711,6 @@
       <category term="执行上下文" scheme="http://yoursite.com/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
     
       <category term="压栈出栈" scheme="http://yoursite.com/tags/%E5%8E%8B%E6%A0%88%E5%87%BA%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>变量提升和函数提升</title>
-    <link href="http://yoursite.com/2017/10/02/hoisting/"/>
-    <id>http://yoursite.com/2017/10/02/hoisting/</id>
-    <published>2017-10-02T07:10:05.000Z</published>
-    <updated>2017-10-06T15:46:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。</p>
-<a id="more"></a>
-<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>我们先不急着解释“变量提升”是什么意思，先看几段代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fig8e7r6czj31be01mt95.jpg" alt=""></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg" alt=""></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifize00alj314i03cwem.jpg" alt=""></p>
-<p>我们看到上面三段代码。第一段代码报错，因为<code>a</code>未定义，找不到变量<code>a</code>，这个比较容易理解。而第二段和第三段代码的运行结果都是<code>undefined</code>，那就说明，在浏览器执行<code>console.log(a)</code>时，就已经找到定义的变量<code>a</code>了，但是却没有找到它的值。</p>
-<p>为什么会有这样的结果呢？第三段代码中的<code>10</code>去哪里了呢？</p>
-<p>其实出现这样的结果就是因为我们的“变量提升”。</p>
-<h3 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h3><p>在 JavaScript 解释器正式开始执行 JavaScript 代码之前，浏览器会做一些“准备工作”。也就是说在代码执行之前，还有一个代码预解析的过程。</p>
-<p>在这个预解析过程中，浏览器会找到代码中所有通过<code>var</code>声明的变量，然后把这些变量的声明提升到代码头部。但因为只提升变量的声明，不提升变量的赋值，所以未赋值的变量默认值为<code>undefined</code>。而这一系列的操作，其实就是我们所说的“变量提升”。</p>
-<p>也就是说，我们的第三段代码，在正式执行之前，已经变成了下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log( a );</div><div class="line">a = <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<p>我们可以看到，在预解析的过程中，提升的只是变量的声明，赋值语句还是停留在原位置。这就是为什么我们的第三段代码运行结果<code>a</code>的值不是<code>10</code>。因为在执行输出<code>a</code>的时候，变量<code>a</code>的赋值还没执行。</p>
-<p>注：变量提升只针对通过<code>var</code>声明的变量。</p>
-<h2 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h2><p>其实在预解析过程中，除了做“变量提升”的准备工作之外，浏览器还要做一个“函数提升”的准备工作。前面弄明白了“变量提升”之后其实“函数提升”就很好理解了。</p>
-<p>在代码预解析过程中除了提升所有<code>var</code>声明的变量之外，还会把所有的声明式函数提升到代码头部，这个过程就叫做“函数提升”。</p>
-<p>我们通过代码来理解一下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fn();</div><div class="line"><span class="comment">// 声明式函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fifl2cd863j314m03k0sx.jpg" alt=""></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fn();</div><div class="line"><span class="comment">// 函数表达式</span></div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fifl54evdwj315o01mjrt.jpg" alt=""></p>
-<p>我们看到第一段代码，在定义函数之前调用函数<code>fn()</code>，可以正常的执行输出。就是因为我们的声明式函数被提升到了代码头部，也就是说在 JavaScript 解释器正式执行代码之前，我们的代码已经变成了如下样子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 声明式函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure>
-<p>但是第二段代码调用函数<code>fn()</code>就出现了报错。这是因为<strong>“函数提升”只针对声明式函数，函数表达式不会有“函数提升”的过程。</strong></p>
-<p>附：其实对于函数表达式，提升的是变量名，而不是函数。也就是说，我们的第二段代码，在 JavaScript 解释器正式执行代码之前，代码是如下样子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fn = <span class="literal">undefined</span>;</div><div class="line">fn();</div><div class="line"><span class="comment">// 函数表达式</span></div><div class="line">fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>所以在执行第四行赋值语句之前，<code>fn</code>只是一个值为<code>undefined</code>的普通变量，并不是函数名，所以调用变量名会报错。</p>
-<h2 id="变量提升和函数提升"><a href="#变量提升和函数提升" class="headerlink" title="变量提升和函数提升"></a>变量提升和函数提升</h2><p>前面我们分别解释“变量提升”和“函数提升”。那么，如果当两种情况同时存在呢？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line"><span class="keyword">var</span> foo = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> foo = <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<p>运行结果都是：</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fifm5nw8cgj314o05et97.jpg" alt=""></p>
-<p>那这样的结果是不是就说明是变量先提升，函数后提升呢？这样代码执行时后面的函数将前面的变量覆盖了，所以最终结果显示为函数。</p>
-<p>其实不是，在《你不知道的 JavaScript（上卷）》书中的第40页写道：</p>
-<blockquote>
-<p>函数声明和变量声明都会被提升。但是一个值的注意的细节（这个细节可以出现在有多个“重复”声明的代码中）是函数会首先提升，然后才是变量。</p>
-</blockquote>
-<p>我们上面的代码，在经过一系列的代码提升之后，变成了下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"hello world"</span> )</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> foo;</div><div class="line"><span class="built_in">console</span>.log( foo );</div><div class="line">foo = <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<p>正常情况下，发生“重复命名”时，后面的会覆盖前面的。但是，因为我们第四行的代码只是一个变量声明，并没有被赋值，所以当它跟函数声明重名时，是覆盖不了函数的，也就是说它是被忽略的。</p>
-<p>我们可以写个例子验证一下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> a;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fifrz1e3xdj314k03a0sw.jpg" alt=""></p>
-<p>但是，如果变量被赋值了，那么后面的就会覆盖前面的了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="string">"hello world"</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fifs0wlmlbj314s03qdfw.jpg" alt=""></p>
-<h2 id="函数内部的提升"><a href="#函数内部的提升" class="headerlink" title="函数内部的提升"></a>函数内部的提升</h2><p>JavaScript 在执行一个代码段之前，都会进行预解析过程中的这些“准备工作”。通过上面的例子我们可以发现，所有的代码都是在全局范围下执行的，也就是说，我们所有的变量提升或者函数提升都是将它们提升到全局范围的最头部。</p>
-<p>但是，这个“代码段”其实是分三种情况的 —— 全局代码、函数体代码、<code>eval()</code>代码。</p>
-<p>首先，全局代码应该很好理解了，就像我们前面的那些例子中的代码，直接写在某个外部的<code>.js</code>文件中，或者就是包含在<code>&lt;script&gt;</code>标签范围内的代码。这两种都属于全局范围中的代码。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line">	<span class="comment">// 全局范围的代码段</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>其次，函数体代码，就是指写在某个函数内部的代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">// 函数体内部的代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当预解析发生时，函数体内部如果也有<code>var</code>声明的变量或者声明式函数，那么它们同样的也会发生提升。但是，因为函数体内部的代码作用范围就只在函数体内部，所以它们的提升也只会提升到当前函数体内部的最头部。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>变量提升后：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> a;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	a = <span class="number">10</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后，<code>eval</code>函数，这种不常用，也不推荐大家使用。所以也不讲了。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>介绍完预解析过程中发生“变量提升”和“函数提升”的各种情况，我们来做一个总结。</p>
-<p>在预解析的过程中浏览器到底做了哪些准备工作：</p>
-<blockquote>
-<ul>
-<li>找到所有<code>var</code>声明的变量和声明式函数；</li>
-<li>将变量的声明和声明式函数提升到当前作用域（代码段范围内）头部；</li>
-<li>变量名和函数名重复时先提升函数声明，再提升变量声明（执行时未赋值的变量声明会被忽略）；</li>
-</ul>
-</blockquote>
-<p>附：总结里提到的“作用域”其实就是我们前文说的“代码段”的作用范围。但是担心有些人对作用域的概念也不是太明白，所以为了方便大家理解，我们前面都没有提到作用域这个概念。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;变量提升和函数提升本身不算是一个特别难的知识点，但是很多时候会跟一些比较难的知识点混合在一起使用，等那个时候再来挨着挨着去把每个知识点理顺就很头痛了。所以，今天把这个简单的知识点也单独的提出来写一篇博客。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="执行上下文" scheme="http://yoursite.com/categories/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
-    
-    
-      <category term="变量提升" scheme="http://yoursite.com/tags/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/"/>
-    
-      <category term="预解析" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E6%9E%90/"/>
-    
-      <category term="函数提升" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87/"/>
     
   </entry>
   
