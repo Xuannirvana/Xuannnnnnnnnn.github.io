@@ -242,6 +242,72 @@
   </entry>
   
   <entry>
+    <title>互联网与 JavaScript 大事记</title>
+    <link href="http://yoursite.com/2017/12/19/internetAndJavascript/"/>
+    <id>http://yoursite.com/2017/12/19/internetAndJavascript/</id>
+    <published>2017-12-19T01:00:00.000Z</published>
+    <updated>2017-12-20T08:07:31.420Z</updated>
+    
+    <content type="html"><![CDATA[<p>1996 年，样式表标准 CSS 第一版发布。</p>
+<p>1997 年，DHTML（Dynamic HTML，动态HTML）发布，允许动态改变网页内容。这标志着 DOM 模式（Document Object Model，文档对象模型）正式应用。</p>
+<p>1998 年，Netscape 公司开源了浏览器套件，这导致了 Mozilla 项目的诞生。几个月后，美国在线（AOL）宣布并购 Netscape。</p>
+<p>1999 年，IE 5 部署了 XMLHttpRequest 接口，允许 Javascript 发出 HTTP 请求，为后来大行其道的 AJAX 应用创造了条件。</p>
+<p>2000 年，KDE 项目重写了浏览器引擎 KHTML，为后来的 WebKit 和 Blink 引擎打下基础。同年的 10 月 23 日，KDE 2.0 发布，第一次将 KHTML 浏览器包括其中。</p>
+<p><strong>2001 年，微软公司时隔 5 年之后，发布了 IE 浏览器的下一个版本 Internet Explorer 6。这是当时最先进的浏览器，它后来统治了浏览器市场多年。</strong></p>
+<p>2001 年，Douglas Crockford 提出了 JSON 格式，用于取代 XML 格式，进行服务器和网页之间的数据交换。JavaScript 可以原生支持这种格式，不需要额外部署代码。</p>
+<p>2002 年，Mozilla 项目发布了它的浏览器的第一版，后来起名为 Firefox。</p>
+<p>2003 年，苹果公司发布了 Safari 浏览器的第一版。</p>
+<p>2004 年，Google 公司发布了 Gmail，促成了互联网应用程序（Web Application）这个概念的诞生。由于 Gmail 是在4月1日发布的，很多人起初以为这只是一个玩笑。</p>
+<p>2004 年，Dojo 框架诞生，为不同浏览器提供了同一接口，并为主要功能提供了便利的调用方法。这标志着 JavaScript 编程框架的时代开始来临。</p>
+<p>2004 年，WHATWG 组织成立，致力于加速 HTML 语言的标准化进程。</p>
+<p>2005 年，苹果公司在 KHTML 引擎基础上，建立了 WebKit 引擎。</p>
+<p><strong>2005 年，AJAX 方法（Asynchronous Javascript and XML）正式诞生</strong>，Jesse James Garrett 发明了这个词汇。它开始流行的标志是，2月份发布的 Google Maps 项目大量采用该方法。它几乎成了新一代网站的标准做法，<strong>促成了 Web 2.0 时代的来临。</strong></p>
+<p>2005 年，Apache 基金会发布了 CouchDB 数据库。这是一个基于 JSON 格式的数据库，可以用 Javascript 函数定义视图和索引。它在本质上有别于传统的关系型数据库，标识着 NoSQL 类型的数据库诞生。</p>
+<p>2006 年，jQuery 函数库诞生，作者为 John Resig。jQuery 为操作网页 DOM 结构提供了非常强大易用的接口，成为了使用最广泛的函数库，并且让 Javascript 语言的应用难度大大降低，推动了这种语言的流行。</p>
+<p>2006 年，微软公司发布 IE 7，标志重新开始启动浏览器的开发。</p>
+<p>2006 年，Google 推出 Google Web Toolkit 项目（缩写为 GWT），提供 Java 编译成 JavaScript 的功能，开创了将其他语言转为 JavaScript 的先河。</p>
+<p>2007 年，Webkit 引擎在 iPhone 手机中得到部署。它最初基于 KDE 项目，2003  年苹果公司首先采用，2005 年开源。这标志着 Javascript 语言开始能在手机中使用了，意味着有可能写出在桌面电脑和手机中都能使用的程序。</p>
+<p>2007 年，Douglas Crockford 发表了名为《JavaScript: The good parts》的演讲，次年由 O’Reilly 出版社出版。这标志着软件行业开始严肃对待 JavaScript 语言，对它的语法开始重新认识，</p>
+<p><strong>2008 年，V8 编译器诞生。这是 Google 公司为 Chrome 浏览器而开发的，它的特点是让 Javascript 的运行变得非常快。</strong>它提高了 JavaScript 的性能，推动了语法的改进和标准化，改变外界对 JavaScript 的不佳印象。同时，V8 是开源的，任何人想要一种快速的嵌入式脚本语言，都可以采用 V8，这拓展了 JavaScript 的应用领域。</p>
+<p>2009 年，Node.js 项目诞生，创始人为 Ryan Dahl，它标志着 Javascript 可以用于服务器端编程，从此网站的前端和后端可以使用同一种语言开发。并且，Node.js 可以承受很大的并发流量，使得开发某些互联网大规模的实时应用变得容易。</p>
+<p>2009 年，Jeremy Ashkenas 发布了 CoffeeScript 的最初版本。CoffeeScript 可以被转化为 JavaScript 运行，但是语法要比 JavaScript 简洁。这开启了其他语言转为 JavaScript 的风潮。</p>
+<p>2009 年，PhoneGap 项目诞生，它将 HTML5 和 JavaScript 引入移动设是备的应用程序开发，主要针对 iOS 和 Android 平台，使得 JavaScript 可以用于跨平台的应用程序开发。</p>
+<p>2010 年，三个重要的项目诞生，分别是 NPM、BackboneJS 和 RequireJS，标志着JavaScript 进入模块化开发的时代。</p>
+<p>2011 年，微软公司发布 Windows 8 操作系统，将 JavaScript 作为应用程序的开发语言之一，直接提供系统支持。</p>
+<p>2011 年，Google 发布了 Dart 语言，目的是为了结束 JavaScript 语言在浏览器中的垄断，提供更合理、更强大的语法和功能。Chromium 浏览器有内置的 Dart 虚拟机，可以运行 Dart 程序，但 Dart 程序也可以被编译成 JavaScript 程序运行。</p>
+<p>2011 年，微软工程师 Scott Hanselman 提出，JavaScript 将是互联网的汇编语言。因为它无所不在，而且正在变得越来越快。其他语言的程序可以被转成 JavaScript 语言，然后在浏览器中运行。</p>
+<p>2012 年，单页面应用程序框架（single-page app framework）开始崛起，AngularJS 项目和 Ember 项目都发布了 1.0 版本。</p>
+<p>2012 年，微软发布 TypeScript 语言。该语言被设计成 JavaScript 的超集，这意味着所有 JavaScipt 程序，都可以不经修改地在 TypeScript 中运行。同时，TypeScript 添加了很多新的语法特性，主要目的是为了开发大型程序，然后还可以被编译成 JavaScript 运行。</p>
+<p>2012 年，Mozilla 基金会提出 asm.js 规格。asm.js 是 JavaScript 的一个子集，所有符合 asm.js 的程序都可以在浏览器中运行，它的特殊之处在于语法有严格限定，可以被快速编译成性能良好的机器码。这样做的目的，是为了给其他语言提供一个编译规范，使其可以被编译成高效的 JavaScript 代码。同时，Mozilla 基金会还发起了 Emscripten 项目，目标就是提供一个跨语言的编译器，能够将 LLVM 的位代码（bitcode）转为 JavaScript 代码，在浏览器中运行。因为大部分 LLVM 位代码都是从 C / C++ 语言生成的，这意味着 C / C++ 将可以在浏览器中运行。此外，Mozilla 旗下还有 LLJS（将 JavaScript 转为 C 代码）项目和 River Trail（一个用于多核心处理器的 ECMAScript 扩展）项目。目前，在可以被编译成 JavaScript 的语言列表上，共有将近 40 种语言。</p>
+<p>2013 年，Mozilla 基金会发布手机操作系统 Firefox OS，该操作系统的整个用户界面都使用 JavaScript。</p>
+<p><strong>2013 年，ECMA 正式推出 JSON 的国际标准，这意味着 JSON 格式已经变得与 XML 格式一样重要和正式了。</strong></p>
+<p>2014 年，微软推出 JavaScript 的 Windows 库 WinJS，标志微软公司全面支持 JavaScript 与 Windows 操作系统的融合。</p>
+<p>2014 年 11 月，由于对 Joyent 公司垄断 Node 项目、以及该项目进展缓慢的不满，一部分核心开发者离开了 Node.js，创造了 io.js 项目，这是一个更开放、更新更频繁的 Node.js 版本，很短时间内就发布到了 2.0 版。三个月后，Joyent 公司宣布放弃对 Node 项目的控制，将其转交给新成立的开放性质的 Node 基金会。随后，io.js 项目宣布回归Node，两个版本将合并。</p>
+<p>2015 年 3 月，Facebook 公司发布了 React Native 项目，将 React 框架移植到了手机端，可以用来开发手机 App。它会将 JavaScript 代码转为 iOS 平台的 Object-C 代码，或者 Android 平台的 Java 代码，从而为 JavaScript 语言开发高性能的原生 App 打开了一条道路。</p>
+<p>2015 年 4 月，Angular 框架宣布，2.0 版将基于微软公司的 TypeScript 语言开发，这等于为 JavaScript 语言引入了强类型。</p>
+<p>2015 年 5 月，Node 模块管理器 NPM 超越 CPAN，标志着 JavaScript 成为世界上软件模块最多的语言。</p>
+<p>2015 年 5 月，Google 公司的 Polymer 框架发布 1.0 版。该项目的目标是生产环境可以使用 WebComponent 组件，如果能够达到目标，Web 开发将进入一个全新的以组件为开发基础的阶段。</p>
+<p>2015 年 6 月，ECMA 标准化组织正式批准了 ECMAScript 6 语言标准，JavaScript 语言正式进入了下一个阶段，成为一种企业级的、开发大规模应用的语言。这个标准从提出到批准，历时 10 年，而 JavaScript 语言从诞生至今也已经 20 年了。</p>
+<p>2015 年 6 月，Mozilla 在 asm.js 的基础上发布 WebAssembly 项目。这是一种 JavaScript 语言编译后的二进制格式，类似于 Java 的字节码，有利于移动设备加载 JavaScript 脚本，解析速度提高了 20+ 倍。这意味着将来的软件，会发布 JavaScript 二进制包。</p>
+<p>… …</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1996 年，样式表标准 CSS 第一版发布。&lt;/p&gt;
+&lt;p&gt;1997 年，DHTML（Dynamic HTML，动态HTML）发布，允许动态改变网页内容。这标志着 DOM 模式（Document Object Model，文档对象模型）正式应用。&lt;/p&gt;
+&lt;p&gt;1998 
+    
+    </summary>
+    
+      <category term="JavaScript 基础" scheme="http://yoursite.com/categories/JavaScript-%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>AJAX</title>
     <link href="http://yoursite.com/2017/11/05/ajax/"/>
     <id>http://yoursite.com/2017/11/05/ajax/</id>
@@ -1644,87 +1710,6 @@
       <category term="预解析" scheme="http://yoursite.com/tags/%E9%A2%84%E8%A7%A3%E6%9E%90/"/>
     
       <category term="函数提升" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0%E6%8F%90%E5%8D%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 内存空间</title>
-    <link href="http://yoursite.com/2017/10/01/memory/"/>
-    <id>http://yoursite.com/2017/10/01/memory/</id>
-    <published>2017-10-01T04:30:10.000Z</published>
-    <updated>2017-10-06T15:46:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。</p>
-<a id="more"></a>
-<h2 id="内存空间管理"><a href="#内存空间管理" class="headerlink" title="内存空间管理"></a>内存空间管理</h2><h3 id="JavaScript-的内存生命周期"><a href="#JavaScript-的内存生命周期" class="headerlink" title="JavaScript 的内存生命周期"></a>JavaScript 的内存生命周期</h3><ol>
-<li>分配你所需要的内存</li>
-<li>使用（读、写）分配到的内存 </li>
-<li>不需要时将内存释放、归还</li>
-</ol>
-<p>为了便于理解，我们使用一个简单的例子来解释这个周期。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;               <span class="comment">// 第一步：分配变量 a 所需要的空间</span></div><div class="line"><span class="built_in">console</span>.log(a + <span class="number">100</span>);     <span class="comment">// 第二步：使用分配到的内存空间</span></div><div class="line">a = <span class="literal">null</span>;                 <span class="comment">// 第三步：使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
-<p>前两步我们都很好理解，JavaScript 在定义变量的时候就完成了内存分配。第三步释放内存空间则是我们需要重点理解的一个点。</p>
-<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>JavaScript 有垃圾回收机制，那么这个机制的原理是什么呢？</p>
-<p><strong>垃圾回收机制</strong>：其实就是找到那些不再继续使用的变量，什么是不再使用？就是生命周期结束的变量，可能是全局的和局部的。找到之后，释放其占用的内存。垃圾收集器每隔固定的时间段就会执行一次释放操作。</p>
-<p>在 JavaScript 中，最常用的是通过<strong>标记清除</strong>算法来找到哪些变量是不再继续使用的，因此 <code>a = null</code> 其实仅仅只是做了一个释放引用的操作，让 a 原本对应的值失去引用，脱离执行环境。这个值会在下一次垃圾收集器执行操作时被找到，并释放。</p>
-<h2 id="栈（stack）和堆（heap）"><a href="#栈（stack）和堆（heap）" class="headerlink" title="栈（stack）和堆（heap）"></a>栈（stack）和堆（heap）</h2><p>在 JavaScript 中，每一个数据都需要一个内存空间。内存空间又被分为两种：<strong>栈内存(stock)与堆内存(heap)</strong>。</p>
-<p>栈（stack）为自动分配的内存空间，它由系统自动释放；而堆（heap）则是动态分配的内存，大小不定也不会自动释放。</p>
-<h3 id="栈内存"><a href="#栈内存" class="headerlink" title="栈内存"></a>栈内存</h3><p>要简单的理解栈对数据的存取方式，我们可以通过类比乒乓球盒子来分析。如下图左侧：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhkn1bcdozj31360p2tc1.jpg" alt=""></p>
-<p>这种乒乓球的存放方式与栈中存取数据的方式如出一辙。</p>
-<p>处于盒子中最顶层的乒乓球E，它一定是最后被放进去的，但可以最先被使用。而我们如果想要使用底层的乒乓球A，就必须将上面的4个乒乓球都取出来，让乒乓球A处于盒子开口处，这样才能拿到乒乓球A。</p>
-<p>这个取乒乓球的过程，就符合栈空间<strong>先进后出，后进先出</strong>的特点。上图右侧已经详细的表明了栈空间的存储原理。</p>
-<h3 id="堆内存"><a href="#堆内存" class="headerlink" title="堆内存"></a>堆内存</h3><p>堆存取数据的方式，则与书架和书非常相似。</p>
-<p>书虽然也整齐的存放在书架上，但是我们只要知道书的名字，我们就可以很方便的取出我们想要的书，而不用像从乒乓球盒子里取乒乓球一样，非得将上面的所有乒乓球都拿出来才能取到下面的某一个乒乓球。就比如在 JSON 格式的数据中，我们存储的 <code>key-value</code> 是可以无序的，因为顺序的不同并不影响我们的使用。所以对于书架上的书来说，我们也只需要关心书的名字。而堆存取数据，也就是这个特点。</p>
-<h3 id="基础数据类型与栈内存"><a href="#基础数据类型与栈内存" class="headerlink" title="基础数据类型与栈内存"></a>基础数据类型与栈内存</h3><p>JavaScript 有五种基础数据类型：<code>undefined</code>、<code>null</code>、<code>boolean</code>、<code>number</code>、<code>string</code>。</p>
-<p>JavaScript 中的基础数据类型，都是一些简单的数据段，这些值都有固定的大小，往往保存在栈内存中，由系统自动分配存储空间，我们可以直接操作保存在栈内存空间的值.</p>
-<blockquote>
-<p>因此，基础数据类型都是按值访问的。</p>
-</blockquote>
-<h3 id="引用数据类型与堆内存"><a href="#引用数据类型与堆内存" class="headerlink" title="引用数据类型与堆内存"></a>引用数据类型与堆内存</h3><p>JavaScript 的引用数据类型，比如数组 <code>Array</code>，他们值的大小是不固定的。<strong>引用数据类型的值是保存在堆内存中的对象。</strong>JavaScript 不允许直接访问堆内存中的位置，因此我们不能直接操作对象的堆内存空间。</p>
-<p>那么操作对象时，我们实际上是在操作对象的<strong>引用</strong>而不是实际的对象。这里的引用，我们可以粗浅地理解为保存在栈内存中的一个地址，该地址与堆内存的实际值相关联。</p>
-<blockquote>
-<p>因此，引用类型的值都是通过引用访问的。</p>
-</blockquote>
-<h3 id="图解举例"><a href="#图解举例" class="headerlink" title="图解举例"></a>图解举例</h3><p>为了更好的搞懂栈内存与堆内存，我们可以结合以下例子与图解进行理解。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">"hello world"</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> c = <span class="literal">null</span>;   <span class="comment">// 栈</span></div><div class="line">	</div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">m</span>: <span class="number">20</span> &#125;;   <span class="comment">// 变量 obj 存在于栈中，&#123; m: 20 &#125; 作为对象存在于堆内存中</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];   <span class="comment">// 变量 arr 存在于栈中，[1, 2, 3] 作为对象存在于堆内存中</span></div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhknbpz837j30za0j0q56.jpg" alt=""></p>
-<blockquote>
-<p>因此，当我们要访问堆内存中的引用数据类型（如对象，数组，函数等）时，实际上我们首先是从栈中获取该对象的地址引用（或者地址指针），然后再通过这个地址从堆内存中取得我们需要的数据。</p>
-</blockquote>
-<h3 id="扩展练习"><a href="#扩展练习" class="headerlink" title="扩展练习"></a>扩展练习</h3><p>大致了解了 JavaScript 的内存空间，我们就可以借助内存空间的特性来验证一下引用类型的特点了。</p>
-<p>例一：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg" alt=""></p>
-<p>在栈内存中的数据发生复制行为时，系统会自动为新的变量分配一个新值。<code>var b = a</code> 执行之后，<code>a</code> 和 <code>b</code> 的值虽然都等于 20，但是他们其实已经是相互独立互不影响的值了。所以，我们修改了 <code>b</code> 的值以后，<code>a</code> 的值并不会发生变化。</p>
-<p>例二：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;</div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
-<p>图解：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg" alt=""></p>
-<p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
-<p>因此，当我们改变 <code>person2</code> 的时候，就是在改变堆内存中 <code>person2</code> 指向的这个对象。而同时，<code>person1</code> 指向的也是这个对象，所以 <code>person1</code> 也会跟着发生变化。这就是引用类型的特性。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们通过一个表格对栈内存和堆内存做一个总结：</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fih0gklmthj316u0go0w6.jpg" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JS 解释器和 C#，Java 的运行环境一样有垃圾回收机制，程序员不需要手动跟踪释放内存。所以对于前端开发来说，内存空间并不是一个经常被提及的概念，很容易被大家忽视。但是，想要对 JavaScript 的理解更加深刻，就必须对内存空间有一个清晰的认知。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="执行上下文" scheme="http://yoursite.com/categories/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
-    
-    
-      <category term="内存生命周期" scheme="http://yoursite.com/tags/%E5%86%85%E5%AD%98%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
-    
-      <category term="垃圾回收机制" scheme="http://yoursite.com/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/"/>
-    
-      <category term="堆" scheme="http://yoursite.com/tags/%E5%A0%86/"/>
-    
-      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
     
   </entry>
   
