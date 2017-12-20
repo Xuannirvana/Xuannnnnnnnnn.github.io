@@ -39,7 +39,7 @@
 <li>…</li>
 </ul>
 <p>ECMAScript 自 2015 年起每年发布一个新版规范。</p>
-<h2 id="JavaScript-组成"><a href="#JavaScript-组成" class="headerlink" title="JavaScript 组成"></a>JavaScript 组成</h2><p>JavaScript 由三部分组成，ECMAScript 标准是它的核心语法。另外还有两个部分：</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>JavaScript 由三部分组成，ECMAScript 标准是它的核心语法。另外还有两个部分：</p>
 <ul>
 <li>BOM（浏览器对象模型）</li>
 <li>DOM（文档对象模型）</li>

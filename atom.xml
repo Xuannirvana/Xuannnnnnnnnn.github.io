@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-20T02:03:45.773Z</updated>
+  <updated>2017-12-20T02:04:50.318Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/12/19/javaScriptIntroduce/"/>
     <id>http://yoursite.com/2017/12/19/javaScriptIntroduce/</id>
     <published>2017-12-19T09:17:00.000Z</published>
-    <updated>2017-12-20T02:03:45.773Z</updated>
+    <updated>2017-12-20T02:04:50.318Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 是一种轻量级的脚本语言，可以嵌入到 HTML 页面中，由来浏览器来解释执行，用来实现浏览器和用户的交互。</p>
 <a id="more"></a>
@@ -56,7 +56,7 @@
 <li>…</li>
 </ul>
 <p>ECMAScript 自 2015 年起每年发布一个新版规范。</p>
-<h2 id="JavaScript-组成"><a href="#JavaScript-组成" class="headerlink" title="JavaScript 组成"></a>JavaScript 组成</h2><p>JavaScript 由三部分组成，ECMAScript 标准是它的核心语法。另外还有两个部分：</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>JavaScript 由三部分组成，ECMAScript 标准是它的核心语法。另外还有两个部分：</p>
 <ul>
 <li>BOM（浏览器对象模型）</li>
 <li>DOM（文档对象模型）</li>
