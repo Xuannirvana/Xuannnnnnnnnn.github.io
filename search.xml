@@ -902,188 +902,9 @@
         
         <tags>
             
-            <tag> 原型链 </tag>
-            
             <tag> 隐式原型 </tag>
             
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[面向对象 - 实现继承的三种形式]]></title>
-      <url>/2017/10/10/inheritObject/</url>
-      <content type="html"><![CDATA[<p>学习如何去创建对象是理解面向对象编程的第一步，而第二步就是理解“继承”。</p>
-<p>我们常常结合构造函数与原型来创建一个对象，因为构造函数和原型的不同特性，分别解决了我们不同的困扰。因此当我们想要实现继承时，就必须根据构造函数与原型的不同而采取不同的策略。</p>
-<p>因此本文主要介绍几种面向对象中实现继承的形式。</p>
-<a id="more"></a>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>JavaScript 使用原型链作为实现继承的主要方法。而实现的本质就是重写原型对象，使子类原型对象指向父类的实例以实现继承。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.age = <span class="number">20</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype.getPersonAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.age );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = <span class="string">"zhangsan"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 继承 Person</span></div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line">Student.prototype.constructor = Student;</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhangsan = <span class="keyword">new</span> Student();</div><div class="line">zhangsan.getPersonAge();    <span class="comment">// 20</span></div></pre></td></tr></table></figure>
-<p>上面的代码定义了两个构造函数<code>Person</code>和<code>Student</code>。其中<code>Student</code>继承了<code>Person</code>。也就是说，原来存在于<code>Person</code>的实例中的所有属性和方法，现在也存在于<code>Student.prototype</code>中了。</p>
-<p>在这个例子中，构造函数以及原型之间的关系如下图所示：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fkfgwvkrqsj31kw0zm477.jpg" alt=""></p>
-<p>通过上图我们可以看出，<code>zhangsan</code>指向<code>Student</code>的原型，<code>Student</code>的原型又指向<code>Person</code>的原型。<code>getPersonAge()</code>的方法仍然还在<code>Person.prototype</code>中，但<code>age</code>则位于<code>Student.prototype</code>中。这是因为<code>age</code>是一个实例属性，而<code>getPersonAge()</code>则是一个原型方法。既然<code>Student.prototype</code>现在是<code>Person</code>的实例，那么<code>age</code>当然就位于该实例中了。</p>
-<h2 id="借用构造函数（对象冒充）"><a href="#借用构造函数（对象冒充）" class="headerlink" title="借用构造函数（对象冒充）"></a>借用构造函数（对象冒充）</h2><p>在解决原型中包含引用类型值所带来问题的过程中，开发人员开始使用一种叫做<strong>借用构造函数</strong>（constructor stealing）的技术（有时候也叫做伪造对象或经典继承）。</p>
-<p>这种技术的基本思想相当简单，即在子类构造函数内部调用父类构造函数，但是需要结合<code>apply()</code>和<code>call()</code>方法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="comment">// 继承 Person</span></div><div class="line">	Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">	<span class="comment">// Person.apply(this, [name, age]);</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> zhangsan = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">22</span>);</div><div class="line">zhangsan.sayName();    <span class="comment">// zhangsan</span></div></pre></td></tr></table></figure>
-<p>但是使用这中方式实现继承，也会有一个问题：<strong>子类无法继承父类定义在原型身上的属性和方法。</strong>也就是说，属性和方法都需要在构造函数内部定义。但是这样函数的复用就无从谈起了，并且每个对象实例都会保存相同的方法，这种方式也会造成内存的浪费。考虑到这些问题，借用构造函数的技术也是很少单独使用的。</p>
-<h2 id="组合（混合）继承"><a href="#组合（混合）继承" class="headerlink" title="组合（混合）继承"></a>组合（混合）继承</h2><p>组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的 技术组合到一块，从而发挥二者之长的一种继承模式。实现的思路就是：使用原型链实现对原型身上的方法的继承，同时通过借用构造函数来实现对实例属性的继承。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="keyword">this</span>.name );</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过借用构造函数继承实例的属性</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 通过原型链继承原型的方法</span></div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhang = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">22</span>);</div><div class="line">zhang.sayName();</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> 面向对象 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
             <tag> 原型链 </tag>
-            
-            <tag> 对象冒充 </tag>
-            
-            <tag> 混合继承 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[面向对象 - 如何实现面向对象编程（OOP）]]></title>
-      <url>/2017/10/09/createObject/</url>
-      <content type="html"><![CDATA[<p>JavaScript 本身其实并不是一门很纯粹的面向对象的语言，为了实现面向对象，ECMAScript 设计出了一种非常成功的数据结构 —— <strong>JSON</strong>（JavaScript Object Notation），这一经典结构已经可以脱离语言而成为一种广泛应用的数据交互格式。</p>
-<p>应该说，具有数据类型和 JSON 构造语法的 ECMAScript 已经基本可以实现面向对象的编程了。</p>
-<a id="more"></a>
-<h2 id="创建对象（封装）"><a href="#创建对象（封装）" class="headerlink" title="创建对象（封装）"></a>创建对象（封装）</h2><p>在 JavaScript 中如何实现面向对象编程，最基本就是学会如何去创建对象，即如何把”属性”（property）和”方法”（method），封装成一个对象。因此，创建对象的过程，其实就是一个对象的封装过程。</p>
-<p>JavaScript 创建对象的方法的产生是一个迭代的过程，因为已有方法的缺陷催生出了新的方法。</p>
-<h3 id="Object-构造函数"><a href="#Object-构造函数" class="headerlink" title="Object 构造函数"></a>Object 构造函数</h3><p>早期 JavaScript 程序员经常使用也是最简单的方法，就是通过 Object 构造函数来创建对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">person.name = <span class="string">"zhangsan"</span>;</div><div class="line">person.age = <span class="number">30</span>;</div><div class="line">person.job = <span class="string">"Software Engineer"</span>;</div><div class="line">person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name )</div><div class="line">&#125;</div><div class="line">person.sayName(); <span class="comment">// my name is zhangsan</span></div></pre></td></tr></table></figure>
-<h3 id="字面量方式"><a href="#字面量方式" class="headerlink" title="字面量方式"></a>字面量方式</h3><p>早期JS开发人员经常使用new Object()创建对象，几年后对象字面量称为创建对象的首选模式。这是最普通也是最简单的一种创建对象的方式，也可称之为 “JSON式对象”。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">"zhangsan"</span>,           </div><div class="line">	<span class="attr">age</span>: <span class="number">30</span>,                     </div><div class="line">	<span class="attr">job</span>: <span class="string">"Software Engineer"</span>,    </div><div class="line">	<span class="attr">sayName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;        </div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name )</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">person.sayName();</div></pre></td></tr></table></figure>
-<p>对象字面量方式相对于 Object 构造函数方式的代码量少了一些。但是，当我们需要创建多个属性相同的对象时，这两种方法就会产生大量重复的代码。我们需要对重复的代码进行抽象，工厂模式就是在这种情况下产生的。</p>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>工厂模式是将创建具体对象的过程抽象了出来，其主要目的就是为了减少代码重复。</p>
-<p>事实上，通过类来创建多个实例可以减少代码重复，但是在 ES6 出来之前，JavaScript 中并没有类的概念，我们无法创建类。所以就采用封装函数，通过<code>return</code>关键字来获取到对象的方式，来创建对象的细节。</p>
-<p>方式一：直接返回 JSON 式对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		<span class="attr">name</span>: name,</div><div class="line">		<span class="attr">age</span>: age,</div><div class="line">		<span class="attr">job</span>: job,</div><div class="line">		<span class="attr">sayName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">			<span class="built_in">console</span>.log( <span class="string">"my name is"</span> + <span class="keyword">this</span>.name );</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> zhangsan = person(<span class="string">"zhangsan"</span>, <span class="number">30</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> lisi = person(<span class="string">"lisi"</span>, <span class="number">20</span>, <span class="string">"Doctor"</span>);</div><div class="line">zhangsan.sayName();</div><div class="line">lisi.sayName();</div></pre></td></tr></table></figure>
-<p>方式二：使用 Object 对象构建。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">	p.name = name;</div><div class="line">	p.age = age;</div><div class="line">	p.job = job;</div><div class="line">	p.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name )</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> zhangsan = person(<span class="string">"zhangsan"</span>, <span class="number">30</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> lisi = person(<span class="string">"lisi"</span>, <span class="number">20</span>, <span class="string">"Doctor"</span>);</div><div class="line">zhangsan.sayName();</div><div class="line">lisi.sayName();</div></pre></td></tr></table></figure>
-<p>使用工厂模式能够创建一个包含所有信息的对象，可以无数次的调用这个函数。虽然工厂模式减少了重复代码，但是不能够识别对象的类型，所有实例都是 object 类型。因此，出现了构造函数模式。</p>
-<h3 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h3><p>构造函数实际上也是函数的一种表现形式，它的功能是通过<code>new</code>关键字调用构造函数获得一个新的对象。</p>
-<p>方式一：先声明后定义。首先创建对象，对象创建完成后给对象的属性赋值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 构造函数：函数名第一个字母大写，用于区分普通函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="comment">// 获取对象</span></div><div class="line"><span class="keyword">var</span> zhangsan = <span class="keyword">new</span> Person();</div><div class="line"><span class="comment">// 对象初始化</span></div><div class="line">zhangsan.name = <span class="string">"zhangsan"</span>;</div><div class="line">zhangsan.age = <span class="number">30</span>;</div><div class="line">zhangsan.job = <span class="string">"Software Engineer"</span>;</div><div class="line">zhangsan.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name )</div><div class="line">&#125;</div><div class="line">zhangsan.sayName();</div></pre></td></tr></table></figure>
-<p>方式二：声明时定义。在创建对象的同时通过<code>this</code>给对象的属性赋值（<code>this</code>指向实例对象）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.job = job;</div><div class="line">	<span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name )</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 获得对象</span></div><div class="line"><span class="keyword">var</span> zhangsan = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>, <span class="number">30</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> lisi = <span class="keyword">new</span> Person(<span class="string">"lisi"</span>, <span class="number">20</span>, <span class="string">"Doctor"</span>);</div><div class="line">zhangsan.sayName();</div><div class="line">lisi.sayName();</div></pre></td></tr></table></figure>
-<p>要创建<code>Person</code>的新实例，就必须使用<code>new</code>操作符。通过这种方式调用构造函数实际上会经历以下 4 个步骤：</p>
-<ol>
-<li>创建一个新对象；</li>
-<li>将构造函数的作用域赋给新对象（因此<code>this</code>就指向了这个新对象）；</li>
-<li>执行构造函数中的代码（为第 1 步创建出的新对象添加属性）；</li>
-<li>返回新对象。</li>
-</ol>
-<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>原型模式就是把构造函数中方法拿出来的基础上，为了避免对全局环境的污染，再做了一层封装。但是毕竟是一种新的模式，它的封装更彻底，而且也不是把所有的函数都封装，而是恰到好处的把构造函数中公共的方法和属性进行了封装。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">Person.prototype.name = <span class="string">"zhangsan"</span>;</div><div class="line">Person.prototype.age = <span class="number">18</span>;</div><div class="line">Person.prototype.job = <span class="string">"Software Engineer"</span>;</div><div class="line"><span class="comment">//添加一个朋友的属性</span></div><div class="line">Person.prototype.friends = [<span class="string">"lisi"</span>, <span class="string">"wangwu"</span>]</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( <span class="string">"my name is "</span> + <span class="keyword">this</span>.name );</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> zhangsan1 = <span class="keyword">new</span> Person();</div><div class="line">zhangsan1.sayName();</div><div class="line"><span class="keyword">var</span> zhangsan2 = <span class="keyword">new</span> Person();</div><div class="line">zhangsan2.sayName();</div><div class="line"><span class="built_in">console</span>.log( zhangsan1.sayName() == zhangsan2.sayName() );  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>使用原型的好处是可以让所有的实例对象共享它所包含的属性和方法，完美的解决了构造函数的问题。</p>
-<p>但是原型模式也有它本身的问题，共享的属性值如果是引用类型，一个实例对该属性的修改会影响到其他实例。这也是原型模式很少单独使用的原因。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 给上例中实例对象 zhangsan1 再新增一个朋友</span></div><div class="line">zhangsan1.friends.push(<span class="string">"gouzi"</span>);</div><div class="line"><span class="built_in">console</span>.log( zhangsan1.friends ); <span class="comment">// "lisi", "wangwu", "gouzi"</span></div><div class="line"><span class="built_in">console</span>.log( zhangsan2.friends ); <span class="comment">// "lisi", "wangwu", "gouzi"</span></div></pre></td></tr></table></figure>
-<h3 id="构造函数和原型混合模式"><a href="#构造函数和原型混合模式" class="headerlink" title="构造函数和原型混合模式"></a>构造函数和原型混合模式</h3><p>创建自定义类型的最常见方式，就是组合使用构造函数模式和原型模式。构造函数模式用于定义实例属性，而原型模式用于定义共享的方法和属性。这样，每个实例都有一份实例属性的副本，同时又共享着对各种方法的引用，最大限度的节省了内存。另外，这种混合模式还支持向构造函数传递参数，可谓是集两种模式之长。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">	<span class="keyword">this</span>.job = job;</div><div class="line">	<span class="keyword">this</span>.friends = [<span class="string">"lisi"</span>, <span class="string">"wangwu"</span>]</div><div class="line">&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">	<span class="attr">constructor</span>: Person,</div><div class="line">	<span class="attr">sayName</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"my name is"</span> + <span class="keyword">this</span>.name );</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> zhangsan = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>, <span class="number">20</span>, <span class="string">"doctor"</span>);</div><div class="line"><span class="keyword">let</span> lisi = <span class="keyword">new</span> Person(<span class="string">"lisi"</span>, <span class="number">25</span>, <span class="string">"student"</span>);</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> 面向对象 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 面向对象 </tag>
-            
-            <tag> 面向过程 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[面向对象 - 什么是面向对象]]></title>
-      <url>/2017/10/08/explainOOP/</url>
-      <content type="html"><![CDATA[<p>JavaScript 从一开始只是一种简单的网页脚本语言，到如今，几乎变得无所不能。从前端到后端，有着各种各匪夷所思的用途，程序员也用它来完成越来越庞大的项目，因此，JavaScript 代码的复杂度也直线上升。单个网页包含几万行甚至几十万行代码都已司空见惯。</p>
-<p>那么，编写和维护如此复杂的代码，就必须使用模块化策略。如今业界的主流做法是采用“面向对象编程”。因此，JavaScript 如何实现面向对象编程，就成了很长一段时间内的热门课题。</p>
-<a id="more"></a>
-<p>那么到底什么是面向对象？话说起来，面向对象的产生还得有产品经理的一份功劳。为什么这么说呢？因为一开始的时候，并没有面向对象，只有面向过程的概念。</p>
-<h2 id="面向过程和面向对象"><a href="#面向过程和面向对象" class="headerlink" title="面向过程和面向对象"></a>面向过程和面向对象</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><p>面向过程很好理解，指的就是程序员接到需求，会把它拆成一个一个的命令，然后串起来交给计算机去执行。</p>
-<p>举个栗子：产品经理说要把你女朋友装进冰箱里。程序员接到需求后列了几个步骤：</p>
-<ul>
-<li>把冰箱门打开</li>
-<li>把你女朋友装进去</li>
-<li>把冰箱门关上</li>
-</ul>
-<p>上面的每一个步骤，程序员都会用一个函数<code>function</code>来实现，每一个函数实现一个功能。</p>
-<p>例如我们要定义一个打开冰箱门的函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">openTheDoor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	打开冰箱门;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当所有步骤的函数定义好了之后，依次调用就可以了：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 打开冰箱门</span></div><div class="line">openTheDoor();</div><div class="line"><span class="comment">// 把你装进去</span></div><div class="line">pushYou();</div><div class="line"><span class="comment">// 关闭冰箱门</span></div><div class="line">closeTheDoor();</div></pre></td></tr></table></figure>
-<p>程序员把需求分解开来，再一个过程一个过程的去完成，这一系列的操作，就是在面向过程。</p>
-<p>好，需求完成。程序员屁颠屁颠的去找产品经理交工。结果产品经理告诉程序员：这才是刚开始呢！</p>
-<ul>
-<li>“我还要把你女朋友再装进洗衣机里”</li>
-<li>“我还要把你也装进冰箱里”</li>
-<li>“我还要把你装进冰箱后，冰箱门开着”</li>
-<li>“… …”</li>
-</ul>
-<p>这个时候，如果程序员们还是用面向过程的方法来完成需求，那么下次、下下次…需求再发生变更，程序员就要每次都把整个系统代码通读一遍，然后留下可以用的代码，没有的又去重新定义，最后再来依次调用它们。这样反复折腾几次，代码就会越来越杂乱越来越难以管理。于是最终程序员们不堪重负，纷纷操起刀走上了犯罪的道路。</p>
-<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>面向对象，就是程序员们在操刀路上想出来应对需求不断更改问题的解决方案。它抛弃了面向过程编程中常用的函数，把<strong>对象</strong>作为了程序的基本单元。</p>
-<p>那么对象又到底是个什么东西呢？</p>
-<h4 id="对象是什么"><a href="#对象是什么" class="headerlink" title="对象是什么"></a>对象是什么</h4><blockquote>
-<p>对象，就是对事物的一种抽象描述。</p>
-</blockquote>
-<p>现实世界中的事物，都可以看作是对象，同时也都可以用“数据”和“能力”来对其进行描述。例如我们要描述一个人，“数据”就是他的年龄、性别、身高体重。“能力”就是他能做什么工作，承担什么样的责任。</p>
-<p>现在对象有了，如何进行面向对象的编程呢？</p>
-<h4 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h4><p>要进行面向对象的编程，很简单，依次向不同的对象发送命令，让它们执行自身的“能力”就可以了。回到上面的例子，我们现在用面向对象的方式来实现产品经理的需求。</p>
-<p>首先定义一个“冰箱”对象，它的“数据”可以是当前的温度，或者是该冰箱空间是否足够。“能力”就是开门、关门。然后还有一个“你女朋友”对象，你女朋友的数据可以是你女朋友的智商、体重、身高，“能力”可以是“自己跑到冰箱里去”。定义好之后我们就可以依次发送命令：</p>
-<ul>
-<li>向冰箱下达“开门”的命令；</li>
-<li>向你女朋友下达“进冰箱”的命令；</li>
-<li>向冰箱下达“关门”的命令；</li>
-</ul>
-<p>这样，我们通过面向对象的方式同样可以完成“你女朋友进冰箱”的这个需求。</p>
-<h2 id="理解面向对象"><a href="#理解面向对象" class="headerlink" title="理解面向对象"></a>理解面向对象</h2><p>为了更好的理解 JavaScript 中的面向对象，首先有必要从面向对象的概念入手，探讨一下面向对象中的几个概念：</p>
-<ul>
-<li>一切事物皆对象</li>
-<li>对象具有封装和继承特性</li>
-<li>对象与对象之间使用消息通信，各自存在信息隐藏</li>
-</ul>
-<p>以这三点做为依据，C++ 是半面向对象半面向过程语言，因为，虽然他实现了类的封装、继承和多态，但存在非对象性质的全局函数和变量。Java、C# 是完全的面向对象语言，它们通过类的形式组织函数和变量，使之不能脱离对象存在。但这里函数本身是一个过程，只是依附在某个类上。</p>
-<p>然而，<strong>面向对象仅仅是一个概念或者编程思想</strong>而已，它不应该依赖于某个语言存在。比如 Java 采用面向对象思想构造其语言，它实现了类、继承、派生、多态、接口等机制。但是这些机制，只是实现面向对象编程的一种手段，而非必须。换言之，一门语言可以根据其自身特性选择合适的方式来实现面向对象。但是，由于大多数程序员首先学习或者使用的是类似 Java、C++ 等高级编译型语言（Java 虽然是半编译半解释，但一般做为编译型来讲解），因而先入为主地接受了“类”这个面向对象实现方式，从而在学习脚本语言的时候，习惯性地用类式面向对象语言中的概念来判断该语言是否是面向对象语言，或者是否具备面向对象特性。但是在 ES6 以前，JavaScript 中并没有“类”的概念，所以这也成为了阻碍程序员深入学习并掌握 JavaScript 的重要原因之一。</p>
-<p>实际上，在 ES6 之前，JavaScript 语言是通过一种叫做<strong>原型（<code>prototype</code>）</strong>的方式来实现面向对象编程的。但是在 ES6 出来之后，JavaScript 中也引入了“类”的概念。下面就来讨论<strong>基于类的（class-based）面向对象</strong>和<strong>基于原型的 (prototype-based) 面向对象</strong>这两种方式在构造客观世界的方式上的差别。</p>
-<h3 id="基于类和基于原型的面向对象方式比较"><a href="#基于类和基于原型的面向对象方式比较" class="headerlink" title="基于类和基于原型的面向对象方式比较"></a>基于类和基于原型的面向对象方式比较</h3><ul>
-<li>在基于类的面向对象方式中，对象（<code>object</code>）依靠<strong>类（<code>class</code>）</strong>来产生。</li>
-<li>在基于原型的面向对象方式中，对象（<code>object</code>）则是依靠<strong>构造器（<code>constructor</code>）</strong>利用<strong>原型（<code>prototype</code>）</strong>构造出来的。</li>
-</ul>
-<p>举个客观世界的例子来说明二种方式认知的差异：</p>
-<p>例如工厂造一辆车。</p>
-<p>一方面，工人必须参照一张工程图纸，设计规定这辆车应该如何制造。这里的工程图纸就好比是语言中的 类 (<code>class</code>)，而车就是按照这个类（<code>class</code>）制造出来的。</p>
-<p>另一方面，工人和机器（相当于<code>constructor</code>) 利用各种零部件如发动机，轮胎，方向盘（相当于<code>prototype</code>的各个属性）将汽车构造出来。</p>
-<p>那么关于这两种方式谁更为彻底地表达了面向对象的思想呢？没有结论。</p>
-<p>但是因为现在 JavaScript 中也已经引入了类的概念。所以，对于 JavaScript 开发者来说，这两种方式都是需要掌握的。所以，这两种方式的具体用法我们后面都会讲到。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 面向对象 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 面向对象 </tag>
-            
-            <tag> 面向过程 </tag>
             
         </tags>
         
@@ -1342,7 +1163,7 @@
 <h2 id="代码实例分析"><a href="#代码实例分析" class="headerlink" title="代码实例分析"></a>代码实例分析</h2><p>如果对于上面的描述还是不太能理解的，我们就通过一个简单的例子来帮助大家进一步的理解变量对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">	<span class="built_in">console</span>.log( inner() );</div><div class="line">	</div><div class="line">	<span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
 <p>我们直接从函数<code>outer</code>的执行上下文开始分析。全局上下文中运行<code>outer()</code>时，<code>outer</code>函数的执行上下文开始进入创建阶段。为了便于理解，我们换一个形式来表示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fka3q97cy0j314k0jgn06.jpg" alt=""></p>
 <p>未进入代码执行阶段之前，变量对象中的属性都不能访问。但是进入执行阶段之后，变量对象就会转变为活动对象，而活动对象里面的属性就都能被访问了，然后就可以开始进行代码执行阶段的操作。</p>
@@ -1350,7 +1171,7 @@
 <p>变量对象和活动对象，它们其实就是同一个对象，只是处于执行上下文不同的生命周期有不同的名字。</p>
 </blockquote>
 <p>所以，当处于执行阶段时，执行上下文的状态就变成了如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: <span class="xml"><span class="tag">&lt;<span class="name">inner</span> <span class="attr">reference</span>&gt;</span>, // 表示 inner 的地址引用</span></div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// outer 的上下文 outerEC</span></div><div class="line">outerEC = &#123;</div><div class="line">	<span class="attr">outerVO</span>: &#123;&#125;, <span class="comment">// 变量对象</span></div><div class="line">	... ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">outerVO --&gt; outerAO (Active <span class="built_in">Object</span>)</div><div class="line">outerAO = &#123;</div><div class="line">	<span class="attr">arguments</span>: &#123;...&#125;,</div><div class="line">	<span class="attr">inner</span>: &lt;inner reference&gt;, // 表示 inner 的地址引用</div><div class="line">	a: 1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fka3s2jg64j314i0iqtbl.jpg" alt=""></p>
 <p>因此，我们这个例子中代码的执行顺序就变成了下面这样：</p>
