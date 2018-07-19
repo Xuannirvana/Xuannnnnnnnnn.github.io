@@ -64,7 +64,7 @@
       
         <categories>
             
-            <category> github </category>
+            <category> 博客 </category>
             
         </categories>
         
@@ -73,9 +73,11 @@
             
             <tag> 博客 </tag>
             
-            <tag> github </tag>
+            <tag> Github </tag>
             
             <tag> gitment </tag>
+            
+            <tag> 评论 </tag>
             
         </tags>
         
@@ -149,7 +151,7 @@
       
         <categories>
             
-            <category> github </category>
+            <category> 博客 </category>
             
         </categories>
         
@@ -270,7 +272,7 @@
       
         <categories>
             
-            <category> github </category>
+            <category> 博客 </category>
             
         </categories>
         
@@ -335,7 +337,7 @@
       
         <categories>
             
-            <category> github </category>
+            <category> 博客 </category>
             
         </categories>
         
@@ -344,7 +346,7 @@
             
             <tag> 博客 </tag>
             
-            <tag> github </tag>
+            <tag> Github </tag>
             
         </tags>
         
