@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-19T06:15:50.147Z</updated>
+  <updated>2018-07-19T06:49:53.228Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2017/07/16/commentBlog/"/>
     <id>http://yoursite.com/2017/07/16/commentBlog/</id>
     <published>2017-07-16T07:49:19.000Z</published>
-    <updated>2018-07-19T06:15:50.147Z</updated>
+    <updated>2018-07-19T06:49:53.228Z</updated>
     
-    <content type="html"><![CDATA[<p>之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。</p>
+    <content type="html"><![CDATA[<p>之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，终于是把这个功能是弄出来了。</p>
 <p>所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。</p>
 <a id="more"></a>
 <h2 id="评论系统选择"><a href="#评论系统选择" class="headerlink" title="评论系统选择"></a>评论系统选择</h2><p>现在很多的技术博客都是程序员们自己搭建的，所以博客本身并不带有评论功能。这时候我们就需要借助第三方的评论系统，来为自己的博客添加评论功能。</p>
@@ -36,7 +36,7 @@
 </ul>
 <p>我能找到的几个主流的评论系统基本上已经全军覆没了。无意中看到有很多人在推荐 <strong>gitment</strong>，所以就去搜了一下。</p>
 <blockquote>
-<p>gitment 是国内的大神<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">孙士权</a>基于 GitHub 的 Issues 开发的一款的评论系统。</p>
+<p>gitment 是国内的大神<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">孙士权</a>基于 GitHub 的 Issues 开发的一款评论系统。</p>
 </blockquote>
 <p>因此最终我选择了用 gitment 来搭建设置博客的评论功能（其实也没啥选择，只有这个能用）。</p>
 <h2 id="申请一个Github-OAuth-Application"><a href="#申请一个Github-OAuth-Application" class="headerlink" title="申请一个Github OAuth Application"></a>申请一个Github OAuth Application</h2><p>使用 gitment 的第一步，就是需要去申请一个 GitHub 的 OAuth Application。</p>
@@ -81,7 +81,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，还请教了朋友，终于是把这个功能是弄出来了。&lt;/p&gt;
+      &lt;p&gt;之前写了三篇关于怎么在 Github Pages 上使用 Hexo 搭建个人博客的教程。这两天自己想着给博客加一个评论的功能，上网搜了一下教程，发现网上关于这方面的文章比较少。东拼西凑的看了好几篇文章，终于是把这个功能是弄出来了。&lt;/p&gt;
 &lt;p&gt;所以，弄好之后干脆就把自己的操作过程整理一下，写一篇关于给博客添加评论系统的教程。&lt;/p&gt;
     
     </summary>
