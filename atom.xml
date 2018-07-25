@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-25T08:52:31.614Z</updated>
+  <updated>2018-07-25T09:30:08.342Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/12/30/memory/"/>
     <id>http://yoursite.com/2017/12/30/memory/</id>
     <published>2017-12-30T04:30:10.000Z</published>
-    <updated>2018-07-25T08:52:31.614Z</updated>
+    <updated>2018-07-25T09:30:08.342Z</updated>
     
     <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>但是对于前端开发来说，内存并不是一个经常被提及的概念，很容易被大家忽视。可如果想要对 JavaScript 的理解更加深刻，就必须对内存有一个清晰的认知。</p>
@@ -70,14 +70,14 @@
 <blockquote>
 <p>因此，当我们要访问堆内存中的引用数据类型（如对象，数组，函数等）时，实际上我们首先是从栈中获取该对象的地址引用（或者地址指针），然后再通过这个地址从堆内存中取得我们需要的数据。</p>
 </blockquote>
-<h2 id="扩展练习"><a href="#扩展练习" class="headerlink" title="扩展练习"></a>扩展练习</h2><p>大致了解了 JavaScript 的内存空间，我们就可以借助内存空间的特性来验证一下引用类型的特点了。</p>
+<h2 id="引用类型的特点"><a href="#引用类型的特点" class="headerlink" title="引用类型的特点"></a>引用类型的特点</h2><p>大致了解了 JavaScript 的内存空间，我们就可以借助内存空间的特性来验证一下引用类型的特点了。</p>
 <p>例一：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;  <span class="comment">// 将 a 的数据复制给 b</span></div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg" alt=""></p>
 <p>在栈内存中的数据发生复制行为时，系统会自动为新的变量分配一个新值。<code>var b = a</code> 执行之后，<code>a</code> 和 <code>b</code> 的值虽然都等于 20，但是他们其实已经是相互独立互不影响的值了。所以，我们修改了 <code>b</code> 的值以后，<code>a</code> 的值并不会发生变化。</p>
 <p>例二：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;</div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;  <span class="comment">// 将 person1 的值复制给 person2</span></div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
 <p>图解：</p>
 <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg" alt=""></p>
 <p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
