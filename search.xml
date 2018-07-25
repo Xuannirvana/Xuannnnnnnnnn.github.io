@@ -7,7 +7,7 @@
       <url>/2017/12/19/browserHistory/</url>
       <content type="html"><![CDATA[<p>作为一个前端开发人员，经常与浏览器打交道，了解浏览器的一些相关历史也非常有必要的。</p>
 <a id="more"></a>
-<h2 id="导航者浏览器的诞生"><a href="#导航者浏览器的诞生" class="headerlink" title="导航者浏览器的诞生"></a>导航者浏览器的诞生</h2><p>最早一代的浏览器是什么其实没有人关心，毕竟历史的长河中没有大作为的都是不重要的。而真正重要的一代浏览器，是网景公司（Netscape Corporation）在 1994 年底发布的 —— （Navigator）导航者浏览器（台湾译为领航员浏览器）1.0 版。</p>
+<h2 id="导航者浏览器的诞生"><a href="#导航者浏览器的诞生" class="headerlink" title="导航者浏览器的诞生"></a>导航者浏览器的诞生</h2><p>最早一代的浏览器是什么其实没有人关心，毕竟在历史的长河中没有大作为的都是不重要的。而真正重要的一代浏览器，是网景公司（Netscape Corporation）在 1994 年底发布的 —— （Navigator）导航者浏览器（台湾译为领航员浏览器）1.0 版。</p>
 <p>网景的创始人马克·安德森（Marc Andreessen）最早在伊利诺伊大学主修计算机专业，并在学校的国家超级计算机应用中心兼职。在那里，他与其他几位同伴共同开发了一款浏览器（就是后来网景导航者浏览器的原型），一上线就大受网民的欢迎。于是，马克·安德森决定在硅谷创业，开发浏览器。只经过了不到一年的时间，在 1994 年的年底，网景导航者浏览器从一发布就已经占领了浏览器市场占有率的首位。</p>
 <p>因此在 1995 年，网景公司凭借着导航者浏览器成为了 Web 时代开启时最著名的第一代互联网公司。而他们公司就只做一款产品，就是浏览器。</p>
 <h2 id="IE-浏览器的诞生"><a href="#IE-浏览器的诞生" class="headerlink" title="IE 浏览器的诞生"></a>IE 浏览器的诞生</h2><p>网景导航者浏览器的成功，让微软公司意识到了危机。所以微软为了应对网景的日益强大，直接购买了网景导航者浏览器原型版本的源代码（也就是马克·安德森在大学时期做的第一个版本的浏览器）。然后，稍作修改后就发布了。</p>
@@ -50,6 +50,125 @@
             <tag> 浏览器 </tag>
             
             <tag> IE </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript 内存空间]]></title>
+      <url>/2017/10/01/memory/</url>
+      <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
+<p>但是对于前端开发来说，内存并不是一个经常被提及的概念，很容易被大家忽视。可如果想要对 JavaScript 的理解更加深刻，就必须对内存有一个清晰的认知。</p>
+<a id="more"></a>
+<h2 id="内存生命周期"><a href="#内存生命周期" class="headerlink" title="内存生命周期"></a>内存生命周期</h2><p>在 JavaScript 中内存的生命周期分为三个阶段：</p>
+<ol>
+<li>分配你所需要的内存</li>
+<li>使用（读/写）分配到的内存 </li>
+<li>不需要时将内存释放、归还</li>
+</ol>
+<p>为了便于理解，我们使用一个简单的例子来解释这个周期。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">20</span>;               <span class="comment">// 第一阶段：分配变量 a 所需要的空间</span></div><div class="line"><span class="built_in">console</span>.log(a + <span class="number">100</span>);     <span class="comment">// 第二阶段：使用分配到的内存空间</span></div><div class="line">a = <span class="literal">null</span>;                 <span class="comment">// 第三阶段：使用完毕之后，释放内存空间</span></div></pre></td></tr></table></figure>
+<p>前两步我们都很好理解，JavaScript 在定义变量的时候就完成了内存分配。第三步释放内存空间则是我们需要重点理解的一个点。</p>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
+<p>不再用到的内存，没有及时释放，就叫做“内存泄漏”（memory leak）。</p>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><p>有些代码语言（比如 C 语言）必须手动释放内存，程序员负责内存管理。这样的话，对于程序员来说，其实是非常麻烦的。所以大多数代码语言（比如 JavaScript 和 C#，Java 等）都提供自动内存管理，以此来减轻程序员的负担。</p>
+<p>这种自动内存管理的操作，我们称之为“垃圾回收机制”（garbage collector）。</p>
+<blockquote>
+<p>原理：垃圾收集器会定期（周期性）找出那些不再继续使用的数据，然后释放其所占内存。</p>
+</blockquote>
+<p>最常见的回收方式分为两种：标记清除和引入计数。</p>
+<h2 id="堆（heap）和栈（stack）"><a href="#堆（heap）和栈（stack）" class="headerlink" title="堆（heap）和栈（stack）"></a>堆（heap）和栈（stack）</h2><p>堆和栈就是程序运行时内存中分配出来的数据区，用于保存程序运行过程中用到的所有数据。</p>
+<h3 id="基础数据类型与栈"><a href="#基础数据类型与栈" class="headerlink" title="基础数据类型与栈"></a>基础数据类型与栈</h3><p>JavaScript 有六种基础数据类型：<code>undefined</code>、<code>null</code>、<code>boolean</code>、<code>number</code>、<code>string</code>、<code>symbol</code>（ES6）。</p>
+<p>JavaScript 中的基础数据类型，都是一些简单的数据段，这些值都有固定的大小，往往保存在栈内存中，由系统自动分配存储空间，我们可以直接操作保存在栈内存空间的值.</p>
+<blockquote>
+<p>结论：基础数据类型都是按值访问的。</p>
+</blockquote>
+<h3 id="引用数据类型与堆"><a href="#引用数据类型与堆" class="headerlink" title="引用数据类型与堆"></a>引用数据类型与堆</h3><p>JavaScript 的引用数据类型，比如数组 <code>Array</code>，他们值的大小是不固定的。所以<strong>引用数据类型的值保存在堆内存中</strong>。但是 JavaScript 不允许直接操作堆内存空间里保存的数据。</p>
+<p>所以，引用类型的数据除了将实际的值保存在堆空间中以外，还在栈空间中保存了当前数据的引用。这里的引用，我们可以粗浅地理解为数据在堆空间中的地址。那么操作引用类型的数据时，实际上是在通过栈空间中的<strong>引用</strong>去找到堆空间中的数据然后才进行操作。</p>
+<blockquote>
+<p>结论：引用类型的值都是通过引用（地址）访问的。</p>
+</blockquote>
+<h2 id="数据存取方式"><a href="#数据存取方式" class="headerlink" title="数据存取方式"></a>数据存取方式</h2><p>数据在堆内存和栈内存中的存取方式是不一样的。</p>
+<h3 id="栈的数据存取"><a href="#栈的数据存取" class="headerlink" title="栈的数据存取"></a>栈的数据存取</h3><p>栈（stack）是系统自动分配的内存空间。它对数据的存取原则为“<strong>先进后出，后进先出</strong>”。</p>
+<p>我们可以通过类比乒乓球盒子来分析。如下图左侧：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhkn1bcdozj31360p2tc1.jpg" alt=""></p>
+<p>这种乒乓球的存放方式与栈中存取数据的方式如出一辙。</p>
+<p>处于盒子中最顶层的乒乓球E，它一定是最后被放进去的，但可以最先被使用。而我们如果想要使用底层的乒乓球A，就必须将上面的4个乒乓球都取出来，让乒乓球A处于盒子开口处，这样才能拿到乒乓球A。</p>
+<p>栈内存空间中的数据也一样，处于栈底部的数据<code>1</code>一定是最先保存的，处于栈顶部的数据<code>true</code>一定是最后保存的。我们只能操作处于栈顶部的数据，当垃圾回收机制要开始销毁栈内存中无用的数据时，也只能从栈顶部开始销毁。</p>
+<h3 id="堆的数据存取"><a href="#堆的数据存取" class="headerlink" title="堆的数据存取"></a>堆的数据存取</h3><p>堆（heap）是在程序运行时动态分配的内存空间。堆存取数据的方式，则与书架和书非常相似。</p>
+<p>对于存放在书架上的书来说，我们并不需要记住每一本放进书架的先后顺序。我们只要知道书的名字，就可以很方便的取出我们想要的书，而不用像从乒乓球盒子里取乒乓球一样，非得将上面的所有乒乓球都拿出来才能取到下面的某一个乒乓球。</p>
+<p>而堆存取数据，也就是这个特点，我们只需要知道堆中每一条数据的引用（地址），就可以通过引用（地址）找到对应的数据，而不用去关心数据存进堆中的先后顺序。</p>
+<h2 id="图解举例"><a href="#图解举例" class="headerlink" title="图解举例"></a>图解举例</h2><p>为了更好的搞懂栈内存与堆内存，我们可以结合以下例子与图解进行理解。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">"hello world"</span>;   <span class="comment">// 栈</span></div><div class="line"><span class="keyword">var</span> c = <span class="literal">null</span>;   <span class="comment">// 栈</span></div><div class="line">	</div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">m</span>: <span class="number">20</span> &#125;;   <span class="comment">// 变量 obj 存在于栈中，&#123; m: 20 &#125; 作为对象存在于堆内存中</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];   <span class="comment">// 变量 arr 存在于栈中，[1, 2, 3] 作为对象存在于堆内存中</span></div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhknbpz837j30za0j0q56.jpg" alt=""></p>
+<blockquote>
+<p>因此，当我们要访问堆内存中的引用数据类型（如对象，数组，函数等）时，实际上我们首先是从栈中获取该对象的地址引用（或者地址指针），然后再通过这个地址从堆内存中取得我们需要的数据。</p>
+</blockquote>
+<h2 id="扩展练习"><a href="#扩展练习" class="headerlink" title="扩展练习"></a>扩展练习</h2><p>大致了解了 JavaScript 的内存空间，我们就可以借助内存空间的特性来验证一下引用类型的特点了。</p>
+<p>例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;</div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg" alt=""></p>
+<p>在栈内存中的数据发生复制行为时，系统会自动为新的变量分配一个新值。<code>var b = a</code> 执行之后，<code>a</code> 和 <code>b</code> 的值虽然都等于 20，但是他们其实已经是相互独立互不影响的值了。所以，我们修改了 <code>b</code> 的值以后，<code>a</code> 的值并不会发生变化。</p>
+<p>例二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;</div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg" alt=""></p>
+<p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
+<p>因此，当我们改变 <code>person2</code> 的时候，就是在改变堆内存中 <code>person2</code> 指向的这个对象。而同时，<code>person1</code> 指向的也是这个对象，所以 <code>person1</code> 也会跟着发生变化。这就是引用类型的特性。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们通过一个表格对栈内存和堆内存做一个总结：</p>
+<table>
+<thead>
+<tr>
+<th>栈内存</th>
+<th>堆内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保存基本数据类型</td>
+<td>保存引用数据类型</td>
+</tr>
+<tr>
+<td>通过值访问</td>
+<td>通过地址访问</td>
+</tr>
+<tr>
+<td>保存的值大小固定</td>
+<td>保存的值大小不定，可动态调整</td>
+</tr>
+<tr>
+<td>由系统自动分配内存</td>
+<td>由程序员通过代码分配内存</td>
+</tr>
+<tr>
+<td>主要用来执行程序</td>
+<td>主要用来存放对象</td>
+</tr>
+<tr>
+<td>空间小，运行效率高</td>
+<td>空间大，运行效率较低</td>
+</tr>
+<tr>
+<td>存取顺序为先进后出</td>
+<td>无序存储，根据引用（地址）直接获取</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 内存 </tag>
+            
+            <tag> 垃圾回收机制 </tag>
+            
+            <tag> 堆 </tag>
+            
+            <tag> 栈 </tag>
             
         </tags>
         
