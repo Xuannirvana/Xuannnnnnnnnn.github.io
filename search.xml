@@ -3,6 +3,68 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript 中的变量和常量]]></title>
+      <url>/2018/01/10/variable/</url>
+      <content type="html"><![CDATA[<p>任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。在开发过程中，往往需要操作大量的数据。所以，为了更方便的操作和管理这些数据，我们一般会选择对数据进行命名并保存。</p>
+<p>在 JavaScript 中，变量和常量就可以看做是“有名字的保存数据的容器”。</p>
+<a id="more"></a>
+<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><p>想要保存数据，首先需要将容器创建出来。我们将创建容器的过程称之为“变量的声明”。</p>
+<p>变量的声明方式总共分为两种：</p>
+<ol>
+<li><code>var</code>：ES6 出来之前最常用的声明变量的方式。</li>
+<li><code>let</code>：ES6 中新增的声明变量的方式。</li>
+</ol>
+<p>两种声明方式的语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> 变量名;</div><div class="line"><span class="keyword">let</span> 变量名;</div></pre></td></tr></table></figure>
+<p>例如，我们要通过<code>var</code>声明一个名字叫做<code>num</code>的变量，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num;</div></pre></td></tr></table></figure>
+<p>同理，如果我们要通过<code>let</code>声明一个名字叫做<code>username</code>的变量，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> username;</div></pre></td></tr></table></figure>
+<h2 id="变量的赋值"><a href="#变量的赋值" class="headerlink" title="变量的赋值"></a>变量的赋值</h2><p>容器创建好之后，就可以将数据保存到容器里了。我们把数据保存进容器的过程称之为“变量的赋值”。</p>
+<p><code>var</code>和<code>let</code>的赋值方式一样，语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">变量名 = 数据;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：JavaScript 中的<code>=</code>和数学中的<code>=</code>含义并不相同。在 JavaScript 中，<code>=</code>叫做赋值符，表示将<code>=</code>右边的数据赋值给<code>=</code>左边的变量。</p>
+</blockquote>
+<p>例如：我们要将数字<code>100</code>赋值给变量<code>num</code>。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num;</div><div class="line">num = <span class="number">100</span>;</div></pre></td></tr></table></figure>
+<p>又例如：我们要将姓名<code>John</code>赋值给变量<code>name</code>。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> username;</div><div class="line">username = <span class="string">'John'</span>;</div></pre></td></tr></table></figure>
+<p>同一个变量可以进行多次赋值，后面赋值的数据会将前面赋值的数据覆盖掉，以此来实现变量值的修改。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> username;</div><div class="line">username = <span class="string">'John'</span>;   <span class="comment">// 第一次赋值</span></div><div class="line">username = <span class="string">'Lucy'</span>;   <span class="comment">// 第二次赋值</span></div></pre></td></tr></table></figure>
+<p>上面代码中，变量<code>username</code>最终保存的数据为<code>Lucy</code>。</p>
+<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>我们可以先创建容器，再保存数据。也可以在创建容器的同时就将数据保存进去。即声明变量的同时就对变量进行赋值，我们将这个声明和赋值同时进行的过程称之为“变量的初始化”。</p>
+<p>我们将上面两个例子改写成变量初始化的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</div><div class="line"><span class="keyword">let</span> username = <span class="string">'John'</span>;</div></pre></td></tr></table></figure>
+<h2 id="常量的初始化"><a href="#常量的初始化" class="headerlink" title="常量的初始化"></a>常量的初始化</h2><p>在 ES6 出来之前，并没有专门声明常量的方式。ES6 中才新增了关键字<code>const</code>用来声明常量。</p>
+<p>常量的使用要求在声明的同时必须赋值，否则程序会报错。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误语法</span></div><div class="line"><span class="keyword">const</span> num;</div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">// 正确语法</span></div><div class="line"><span class="keyword">const</span> num = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p> 注意：常量一旦被初始化，值就不能被改变。常量的使用只能进行读取操作。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> num = <span class="number">10</span>;</div><div class="line">num = <span class="number">20</span>;   <span class="comment">// 报错，常量不允许修改</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript 基础语法 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> let </tag>
+            
+            <tag> var </tag>
+            
+            <tag> const </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript 内存空间]]></title>
       <url>/2017/12/30/memory/</url>
       <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
