@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="JavaScript 的数据类型"/>
+
+
+
+
+  <meta name="keywords" content="简单数据类型,复杂数据类型," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.4.x" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2018/01/12/dataType/"/>
+
+
+<meta name="description" content="在《JavaScript 的变量和常量》一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。">
+<meta name="keywords" content="简单数据类型,复杂数据类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 的数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/dataType/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="在《JavaScript 的变量和常量》一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。">
+<meta property="og:updated_time" content="2018-07-31T05:54:31.144Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 的数据类型">
+<meta name="twitter:description" content="在《JavaScript 的变量和常量》一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.4.x" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+
+<script>
+  var CONFIG = {
+    search: true,
+    searchPath: "/search.xml",
+    fancybox: true,
+    toc: true,
+  }
+</script>
+
+
+
+
+  
+
+
+
+    <title> JavaScript 的数据类型 · Komorebi </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Komorebi</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/categories">
+        <li class="mobile-menu-item">
+          
+          
+            Categories
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Komorebi</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/categories">
+            
+            
+              分类
+            
+          </a>
+        </li>
+      
+      
+        <li class="menu-search">
+          <form>
+            <i class="iconfont icon-search" id="open-search"></i>
+            <input type="text" class="search-input" id="search-input" />
+            <i class="iconfont icon-close" id="close-search"></i>
+          </form>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JavaScript 的数据类型
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2018年1月12日
+        </span>
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型的分类"><span class="toc-text">数据类型的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单数据类型"><span class="toc-text">简单数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#number"><span class="toc-text">number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boolean"><span class="toc-text">boolean</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-text">undefined</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">null</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#symbol"><span class="toc-text">symbol</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂数据类型"><span class="toc-text">复杂数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#object"><span class="toc-text">object</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+    <div class="post-content">
+      
+        <p>在<a href="https://runjaelyn.github.io/2018/01/10/variable/" target="_blank" rel="external">《JavaScript 的变量和常量》</a>一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。</p>
+<a id="more"></a>
+<h2 id="数据类型的分类"><a href="#数据类型的分类" class="headerlink" title="数据类型的分类"></a>数据类型的分类</h2><p>截止到 ES6 为止，JavaScript 将所有的数据划分为了 7 种不同的数据类型。其中 6 种属于简单数据类型，1 种属于复杂数据类型。</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简单数据类型</td>
+<td>number</td>
+<td>数值</td>
+</tr>
+<tr>
+<td></td>
+<td>string</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td></td>
+<td>boolean</td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td></td>
+<td>undefined</td>
+<td>未定义</td>
+</tr>
+<tr>
+<td></td>
+<td>null</td>
+<td>空值</td>
+</tr>
+<tr>
+<td></td>
+<td>symbol</td>
+<td>唯一值</td>
+</tr>
+<tr>
+<td>复杂数据类型</td>
+<td>object</td>
+<td>对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h2><p>简单数据类型也称之为“基础数据类型“、”原始数据类型”。</p>
+<h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><p>number 类型即数值类型。我们数学中用到的所有数字都属于 number 类型。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">100</span>;   <span class="comment">// 整数</span></div><div class="line"><span class="number">0.1</span>;   <span class="comment">// 小数</span></div><div class="line"><span class="number">-50</span>;   <span class="comment">// 负数</span></div></pre></td></tr></table></figure>
+<p><strong>NaN</strong></p>
+<p>JavaScript 的 number 类型中除了数学中的数字外，还有一个特殊值 —— <code>NaN</code>。</p>
+<p><code>NaN</code>（Not a Number），表示“非数字”。它的特殊之处不仅仅在于“非数字”属于数值类型，<code>NaN</code>还有两个特点：</p>
+<ol>
+<li>任何跟<code>NaN</code>有关的操作，得到的结果都是<code>NaN</code>。</li>
+<li><code>NaN</code>跟任何数据都不相等，包括<code>NaN</code>自己。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> - <span class="number">10</span>;     <span class="comment">// NaN</span></div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;   <span class="comment">// false（JavaScript 中判断两个值是否相等用“==”，后面会详讲）</span></div></pre></td></tr></table></figure>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>string 类型即字符串类型。任何数据只要被引号包起来，那么就属于 string 类型。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>;</div><div class="line"><span class="string">'123'</span>;</div><div class="line"><span class="string">`false`</span>;</div></pre></td></tr></table></figure>
+<p>说明：第三种写法 ``（和波浪号同一按键）是 ES6 中新增的一种字符串的表现形式，叫做“模板字符串”。在后面《JavaScript 运算符》中还会详讲。</p>
+<blockquote>
+<p> 注意：在 JavaScript 中单双引号没有区别。但是同类型引号不能互相包含。</p>
+</blockquote>
+<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>boolean 类型即布尔值类型。这个类型中只有两条数据：<code>true</code>和<code>false</code>，分别表示“真”和“假”。</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>undefined 类型即未定义类型。这个类型中只有一条数据：<code>undefined</code>。</p>
+<p><code>undefined</code>这个值用于表示一个操作最原始的状态，而非人为赋值的结果。可以简单的理解为：有容器，没数据。</p>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>null 类型即空类型。这个类型中也只有一条数据：<code>null</code>。</p>
+<p><code>null</code>这个值用于表示将某条数据和其容器都置为空。可以简单的理解为：没容器，没数据。</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>symbol 类型即唯一值类型。这个类型是 ES6 中新增的一种数据类型，用来表示唯一的值。即在这个类型下的所有数据都是唯一的不相等的。</p>
+<h2 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h2><p>复杂数据类型也称之为“引用数据类型”。JavaScript 中的复杂数据类型只有一种：object。</p>
+<h3 id="object"><a href="#object" class="headerlink" title="object"></a>object</h3><p>object 类型即对象类型。在 JavaScript 中，只要是不属于 6 种简单类型的数据，都可以看做属于复杂类型。</p>
+<p>例如后面我们会讲到的<code>Array</code>、<code>Set</code>、<code>Map</code>等。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+  <div class="post-reward">
+    <input type="checkbox" name="reward" id="reward" hidden />
+    <label class="reward-button" for="reward">赞赏支持</label>
+    <div class="qr-code">
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" title="wechat">
+        </label>
+      
+      
+        <label class="qr-code-image" for="reward">
+          <img class="image" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" title="alipay">
+        </label>
+      
+    </div>
+  </div>
+
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/简单数据类型/">简单数据类型</a>
+            
+              <a href="/tags/复杂数据类型/">复杂数据类型</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2018/01/10/variable/">
+        <span class="next-text nav-default">JavaScript 的变量和常量</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+  <div id="gitmentContainer"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+      owner: 'runJaelyn',
+      repo: 'runJaelyn.github.io',
+      oauth: {
+          client_id: '82eade5c20915f7d2145',
+          client_secret: '5edb8f42b6dfe9846b1e7eca5df3d6323683f116',
+      },
+  });
+  gitment.render('gitmentContainer');
+  </script>
+  
+
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Jaelyn</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.4.x"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.4.x"></script>
+
+    
+  <script type="text/html" id="search-result">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">
+          <a href="$url$" class="post-link">
+            $title$
+          </a>
+        </h1>
+      </header>
+      <div class="post-content">
+        $content$
+        <div class="read-more">
+          <a href="$url$" class="read-more-link">
+            阅读更多
+          </a>
+        </div>
+      </div>
+    </article>
+  </script>
+  <script type="text/html" id="no-search-result">
+    <div class="no-result">
+      <h2>No result found!</h2>
+    </div>
+  </script>
+  <script type="text/javascript" src="/js/src/search.js?v=2.4.x"></script>
+
+  </body>
+</html>

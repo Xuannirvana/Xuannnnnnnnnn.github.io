@@ -3,6 +3,103 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript 的数据类型]]></title>
+      <url>/2018/01/12/dataType/</url>
+      <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2018/01/10/variable/" target="_blank" rel="external">《JavaScript 的变量和常量》</a>一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。</p>
+<a id="more"></a>
+<h2 id="数据类型的分类"><a href="#数据类型的分类" class="headerlink" title="数据类型的分类"></a>数据类型的分类</h2><p>截止到 ES6 为止，JavaScript 将所有的数据划分为了 7 种不同的数据类型。其中 6 种属于简单数据类型，1 种属于复杂数据类型。</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>简单数据类型</td>
+<td>number</td>
+<td>数值</td>
+</tr>
+<tr>
+<td></td>
+<td>string</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td></td>
+<td>boolean</td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td></td>
+<td>undefined</td>
+<td>未定义</td>
+</tr>
+<tr>
+<td></td>
+<td>null</td>
+<td>空值</td>
+</tr>
+<tr>
+<td></td>
+<td>symbol</td>
+<td>唯一值</td>
+</tr>
+<tr>
+<td>复杂数据类型</td>
+<td>object</td>
+<td>对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h2><p>简单数据类型也称之为“基础数据类型“、”原始数据类型”。</p>
+<h3 id="number"><a href="#number" class="headerlink" title="number"></a>number</h3><p>number 类型即数值类型。我们数学中用到的所有数字都属于 number 类型。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">100</span>;   <span class="comment">// 整数</span></div><div class="line"><span class="number">0.1</span>;   <span class="comment">// 小数</span></div><div class="line"><span class="number">-50</span>;   <span class="comment">// 负数</span></div></pre></td></tr></table></figure>
+<p><strong>NaN</strong></p>
+<p>JavaScript 的 number 类型中除了数学中的数字外，还有一个特殊值 —— <code>NaN</code>。</p>
+<p><code>NaN</code>（Not a Number），表示“非数字”。它的特殊之处不仅仅在于“非数字”属于数值类型，<code>NaN</code>还有两个特点：</p>
+<ol>
+<li>任何跟<code>NaN</code>有关的操作，得到的结果都是<code>NaN</code>。</li>
+<li><code>NaN</code>跟任何数据都不相等，包括<code>NaN</code>自己。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> - <span class="number">10</span>;     <span class="comment">// NaN</span></div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;   <span class="comment">// false（JavaScript 中判断两个值是否相等用“==”，后面会详讲）</span></div></pre></td></tr></table></figure>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>string 类型即字符串类型。任何数据只要被引号包起来，那么就属于 string 类型。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>;</div><div class="line"><span class="string">'123'</span>;</div><div class="line"><span class="string">`false`</span>;</div></pre></td></tr></table></figure>
+<p>说明：第三种写法 ``（和波浪号同一按键）是 ES6 中新增的一种字符串的表现形式，叫做“模板字符串”。在后面《JavaScript 运算符》中还会详讲。</p>
+<blockquote>
+<p> 注意：在 JavaScript 中单双引号没有区别。但是同类型引号不能互相包含。</p>
+</blockquote>
+<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>boolean 类型即布尔值类型。这个类型中只有两条数据：<code>true</code>和<code>false</code>，分别表示“真”和“假”。</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>undefined 类型即未定义类型。这个类型中只有一条数据：<code>undefined</code>。</p>
+<p><code>undefined</code>这个值用于表示一个操作最原始的状态，而非人为赋值的结果。可以简单的理解为：有容器，没数据。</p>
+<h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>null 类型即空类型。这个类型中也只有一条数据：<code>null</code>。</p>
+<p><code>null</code>这个值用于表示将某条数据和其容器都置为空。可以简单的理解为：没容器，没数据。</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>symbol 类型即唯一值类型。这个类型是 ES6 中新增的一种数据类型，用来表示唯一的值。即在这个类型下的所有数据都是唯一的不相等的。</p>
+<h2 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h2><p>复杂数据类型也称之为“引用数据类型”。JavaScript 中的复杂数据类型只有一种：object。</p>
+<h3 id="object"><a href="#object" class="headerlink" title="object"></a>object</h3><p>object 类型即对象类型。在 JavaScript 中，只要是不属于 6 种简单类型的数据，都可以看做属于复杂类型。</p>
+<p>例如后面我们会讲到的<code>Array</code>、<code>Set</code>、<code>Map</code>等。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript 基础语法 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 简单数据类型 </tag>
+            
+            <tag> 复杂数据类型 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript 的变量和常量]]></title>
       <url>/2018/01/10/variable/</url>
       <content type="html"><![CDATA[<p>任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。不管是日常的代码练习还是实际的项目开发，都会涉及到数据的操作（例如：增删改查）。为了更为方便的操作数据，开发者们对数据进行了命名保存，即把需要操作的数据保存在一个有名字的容器中。</p>
@@ -269,7 +366,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">    owner: 'Your GitHub username',</div><div class="line">    repo: 'The repo to store comments',</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: 'Your client ID',</div><div class="line">        client_secret: 'Your client secret',</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render('gitmentContainer');</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
