@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-06T02:42:34.080Z</updated>
+  <updated>2018-08-09T05:29:08.423Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2018/01/12/dataType/"/>
     <id>http://yoursite.com/2018/01/12/dataType/</id>
     <published>2018-01-12T02:00:00.000Z</published>
-    <updated>2018-08-06T02:42:34.080Z</updated>
+    <updated>2018-08-09T05:29:08.423Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2018/01/10/variable/" target="_blank" rel="external">《JavaScript 的变量和常量》</a>一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。</p>
 <a id="more"></a>
@@ -72,14 +72,24 @@
 <li>任何跟<code>NaN</code>有关的操作，得到的结果都是<code>NaN</code>。</li>
 <li><code>NaN</code>跟任何数据都不相等，包括<code>NaN</code>自己。</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> - <span class="number">10</span>;     <span class="comment">// NaN</span></div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;   <span class="comment">// false（JavaScript 中判断两个值是否相等用“==”，后面会详讲）</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> - <span class="number">10</span>);     <span class="comment">// NaN</span></div><div class="line"><span class="built_in">console</span>.log(<span class="literal">NaN</span> == <span class="literal">NaN</span>);   <span class="comment">// false（JavaScript 中判断两个值是否相等用“==”，后面会详讲）</span></div></pre></td></tr></table></figure>
 <h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>string 类型即“字符串类型”。任何数据只要被引号包起来，那么就属于 string 类型。例如：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>;</div><div class="line"><span class="string">'123'</span>;</div><div class="line"><span class="string">`false`</span>;</div></pre></td></tr></table></figure>
-<p>说明：第三种写法 ``（和波浪号同一按键）是 ES6 中新增的一种字符串的表现形式，叫做“模板字符串”。在后面《JavaScript 运算符》中还会详讲。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"hello"</span>;</div><div class="line"><span class="string">'123'</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p> 注意：在 JavaScript 中单双引号没有区别。但是同类型引号不能互相包含。</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误语法</span></div><div class="line"><span class="string">"hello, "</span>JavaScript<span class="string">""</span>;</div><div class="line"><span class="comment">// 正确语法</span></div><div class="line"><span class="string">"hello, my name is 'HanMeiMei'"</span>;</div><div class="line"><span class="string">'this is an "apple"'</span>;</div></pre></td></tr></table></figure>
+<h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h4><p>除了常见的单双引号外，ES6 中还新增了一种字符串的表现形式，叫做“模板字符串”。符号为 ``（与波浪号同一按键）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">`hello JavaScript`</span>;</div></pre></td></tr></table></figure>
+<p>模板字符串与普通字符串的区别：</p>
+<ol>
+<li><p>模板字符串内部支持回车换行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 错误语法（普通字符串内部不支持回车换行）</div><div class="line">let str1 = "how are you?</div><div class="line">		   I'm fine, thank you.";</div><div class="line">// 正确语法</div><div class="line">let str2 = `how are you?</div><div class="line">		   I'm fine, thank you.`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以解析模板字符串内部代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="string">"韩梅梅"</span>;</div><div class="line"><span class="keyword">let</span> str1 = <span class="string">"hello, name"</span>;     <span class="comment">// hello, name</span></div><div class="line"><span class="comment">// 在模板字符串中，将需要解析的代码用 $&#123;&#125; 包起来</span></div><div class="line"><span class="keyword">let</span> str2 = <span class="string">`hello, <span class="subst">$&#123;name&#125;</span>`</span>;  <span class="comment">// hello, 韩梅梅</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
 <h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>boolean 类型即“布尔值类型”。这个类型中只有两条数据：<code>true</code>和<code>false</code>，分别表示“真”和“假”。</p>
 <h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>undefined 类型即“未定义类型”。这个类型中只有一条数据：<code>undefined</code>。</p>
 <p><code>undefined</code>这个值一般用于表示”没有数据”。当没有数据而程序又在访问数据时，就会得到<code>undefined</code>这个值。</p>
