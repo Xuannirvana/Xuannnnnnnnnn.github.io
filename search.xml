@@ -214,13 +214,13 @@
 <td>a &amp;&amp; b = 2</td>
 </tr>
 <tr>
-<td>\</td>
-<td>\</td>
+<td>`</td>
 <td></td>
+<td>`</td>
 <td>从左往右依次判断，返回查找到的第一个结果为<code>true</code>的数据。</td>
-<td>a \</td>
-<td>\</td>
-<td>b = 4</td>
+<td>`a</td>
+<td></td>
+<td>b = 4`</td>
 </tr>
 <tr>
 <td>!</td>
