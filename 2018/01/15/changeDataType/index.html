@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/15/changeDataType/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="JavaScript 是一种动态数据类型语言。变量是没有类型的，可以随机被赋予任意类型的值。而数据本身和各种运算是有类型的，例如在做数学运算时我们就需要数据是 number 类型，但有时候实际参与数学运算的数据并不全是 number 类型，因此在进行某些运算时数据是需要转换类型的。大多数情况下，这种数据类型转换是自动的，但是有时也需要手动强制转换。">
-<meta property="og:updated_time" content="2018-08-17T07:01:47.605Z">
+<meta property="og:updated_time" content="2018-08-17T07:07:51.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据类型转换">
 <meta name="twitter:description" content="JavaScript 是一种动态数据类型语言。变量是没有类型的，可以随机被赋予任意类型的值。而数据本身和各种运算是有类型的，例如在做数学运算时我们就需要数据是 number 类型，但有时候实际参与数学运算的数据并不全是 number 类型，因此在进行某些运算时数据是需要转换类型的。大多数情况下，这种数据类型转换是自动的，但是有时也需要手动强制转换。">
@@ -378,29 +378,24 @@
 <tr>
 <th>数据类型</th>
 <th>解析规则</th>
-<th>举例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>布尔值</td>
 <td>1. <code>true</code>转换为 1<br>2. <code>false</code>转换为 0</td>
-<td>Number(true)</td>
 </tr>
 <tr>
 <td>null</td>
 <td>转换为 0</td>
-<td>Number(0)</td>
 </tr>
 <tr>
 <td>undefined</td>
 <td>转换为<code>NaN</code></td>
-<td>Number(undefined)</td>
 </tr>
 <tr>
 <td>字符串</td>
 <td>1. 空字符串<code>&quot;&quot;</code>转换为 0<br>2. 如果引号内整体为一个有效数字，则转换为对应的数字<br>3. 其他情况都转换为<code>NaN</code></td>
-<td>Number(“123px”)</td>
 </tr>
 </tbody>
 </table>
@@ -431,6 +426,9 @@
 <h3 id="转换为数字类型"><a href="#转换为数字类型" class="headerlink" title="转换为数字类型"></a>转换为数字类型</h3><p><strong>进行算术运算</strong></p>
 <p>当对数据进行数学运算操作（加减乘除等）时，如果参与运算的数据不是 number 类型，则会将数据<strong>隐式的调用<code>Number()</code>方法</strong>转为数字后再进行运算。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data1 = <span class="literal">null</span>;</div><div class="line"><span class="keyword">let</span> data2 = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> - data2);      <span class="comment">// 9</span></div><div class="line"><span class="built_in">console</span>.log(data1 + data2);   <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(data2 * <span class="number">10</span>);      <span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.log(--data1);         <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小技巧：给任意数据减去数字 0，可快速将当前数据转为 number 类型。</p>
+</blockquote>
 <p><strong>进行大小比较</strong></p>
 <p>当对数据进行大小比较时（大于小于等于等）时，如果参与比较的数据不能直接进行比较，则会将数据<strong>隐式的调用<code>Number</code></strong>转为数字后再进行比较。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">123</span> &gt; <span class="string">'13'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> &lt; <span class="literal">true</span>);</div></pre></td></tr></table></figure>
