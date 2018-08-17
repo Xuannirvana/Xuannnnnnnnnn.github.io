@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-16T08:16:34.488Z</updated>
+  <updated>2018-08-17T01:31:59.759Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2018/01/20/operator/"/>
     <id>http://yoursite.com/2018/01/20/operator/</id>
     <published>2018-01-20T02:00:00.000Z</published>
-    <updated>2018-08-16T08:16:34.488Z</updated>
+    <updated>2018-08-17T01:31:59.759Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 中提供了大量的运算符用于数据的操作。</p>
 <a id="more"></a>
@@ -214,13 +214,14 @@
 <blockquote>
 <p><code>a = a + b</code>和<code>a += b</code>运行结果一样，但后者效率高于前者。</p>
 </blockquote>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>逻辑运算符用于多条数据间逻辑真假的判断。</p>
-<p>给定<code>a = 4, b = 2</code>条件，所有逻辑运算符描述如下：</p>
-<p><table><br>    <tr><br>        <th>运算符</th><br>        <th>说明</th><br>        <th>举例</th><br>    </tr><br>    <tr><br>        <td>&amp;&amp;</td><br>        <td>从左往右依次判断，返回查找到的第一个结果为<code>fasle</code>的数据。</td><br>        <td>a &amp;&amp; b = 2</td><br>    </tr><br>    <tr><br>        <td>||</td><br>        <td>从左往右依次判断，返回查找到的第一个结果为<code>true</code>的数据。</td><br>        <td>a || b = 4</td><br>    </tr><br>    <tr><br>        <td>!</td><br>        <td>返回当前数据取反后的布尔值结果。</td><br>        <td>!a = false</td><br>    </tr></table></p>
-<table>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span> || <span class="string">''</span> || <span class="literal">false</span> || <span class="literal">null</span> || <span class="number">2</span> || <span class="literal">undefined</span>);    <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> &gt; <span class="number">5</span> &amp;&amp; <span class="number">10</span> &lt; <span class="number">20</span>);   <span class="comment">// true</span></div></pre></td></tr></table></figure>
-</table>]]></content>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>逻辑运算符用于数据间逻辑真假的判断。JavaScript 中的逻辑运算符分为三种：</p>
+<ul>
+<li>“与”运算符<code>&amp;&amp;</code>：<strong>找假</strong></li>
+<li>“或”运算符<code>||</code>：<strong>找真</strong></li>
+<li>“非”运算符<code>!</code>：<strong>取反</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span> || <span class="string">''</span> || <span class="literal">false</span> || <span class="literal">null</span> || <span class="number">2</span> || <span class="literal">undefined</span>);    <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> &gt; <span class="number">5</span> &amp;&amp; <span class="number">10</span> &lt; <span class="number">20</span>);   <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="number">10</span>);   <span class="comment">// false</span></div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
