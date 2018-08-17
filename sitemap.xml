@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/01/20/operator/</loc>
+    <loc>http://yoursite.com/2018/01/15/changeDataType/</loc>
     
-    <lastmod>2018-08-17T03:32:18.961Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/01/10/variable/</loc>
-    
-    <lastmod>2018-08-16T06:47:09.375Z</lastmod>
+    <lastmod>2018-08-17T07:01:47.605Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/01/12/dataType/</loc>
     
-    <lastmod>2018-08-16T06:46:52.439Z</lastmod>
+    <lastmod>2018-08-17T03:43:35.724Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/01/20/operator/</loc>
+    
+    <lastmod>2018-08-17T03:42:48.023Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/01/10/variable/</loc>
+    
+    <lastmod>2018-08-17T03:42:38.399Z</lastmod>
     
   </url>
   
