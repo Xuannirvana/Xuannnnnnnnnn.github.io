@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/03/17/loopStatements/</loc>
+    
+    <lastmod>2018-08-21T01:46:53.635Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/16/conditionalStatements/</loc>
     
-    <lastmod>2018-08-20T07:59:48.259Z</lastmod>
+    <lastmod>2018-08-20T08:23:02.255Z</lastmod>
     
   </url>
   

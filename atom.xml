@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-20T07:59:48.259Z</updated>
+  <updated>2018-08-21T01:46:53.635Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,18 +16,184 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>流程控制语句 - 循环语句</title>
+    <link href="http://yoursite.com/2018/03/17/loopStatements/"/>
+    <id>http://yoursite.com/2018/03/17/loopStatements/</id>
+    <published>2018-03-17T07:49:19.000Z</published>
+    <updated>2018-08-21T01:46:53.635Z</updated>
+    
+    <content type="html"><![CDATA[<p>前面提到流程控制语句主要分为顺序执行、选择执行和循环执行。</p>
+<p>循环语句，就是用来实现”循环执行“的代码执行顺序。</p>
+<a id="more"></a>
+<blockquote>
+<p>循环语句原理：通过判断某些条件是否成立，来决定某一部分代码反复执行的次数。</p>
+</blockquote>
+<p>循环语句主要分为三种形式：</p>
+<ol>
+<li>while 循环</li>
+<li>do while 循环</li>
+<li>for 循环</li>
+</ol>
+<h2 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h2><p>while 循环语句，由一个<code>while</code>构成，语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(条件)&#123;</div><div class="line">    代码块</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码执行顺序：</p>
+<ol>
+<li>判断小括号中条件是否成立；</li>
+<li>条件成立，执行代码块所有代码；</li>
+<li>重复第 1、2 步，直到小括号中条件不成立，循环结束。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = <span class="number">3</span>;</div><div class="line"><span class="keyword">while</span>(num &gt; <span class="number">1</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(num);</div><div class="line">    num--;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>代码执行顺序分析：</p>
+<ol>
+<li>执行第一行代码，创建一个变量<code>num</code>值为<code>3</code>；</li>
+<li>执行第二行代码，判断条件<code>num &gt; 1</code>是否成立：<code>3 &gt; 1</code>成立；</li>
+<li>进入<code>while</code>内部，执行第三、四行代码，输出<code>3</code>后<code>num</code>减 1 变成 2；</li>
+<li>执行第二行代码，继续判断条件<code>num &gt; 1</code>是否成立：<code>2 &gt; 1</code>成立；</li>
+<li>进入<code>while</code>内部，执行第三、四行代码，输出<code>2</code>后<code>num</code>减 1 变成 1；</li>
+<li>执行第二行代码，继续判断条件<code>num &gt; 1</code>是否成立：<code>1 &gt; 1</code>不成立；</li>
+<li>循环结束；</li>
+</ol>
+<h2 id="do-while-循环"><a href="#do-while-循环" class="headerlink" title="do while 循环"></a>do while 循环</h2><p>do while 循环语句，由一个<code>do</code>和一个<code>while</code>构成，语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    代码块</div><div class="line">&#125;<span class="keyword">while</span>(条件)</div></pre></td></tr></table></figure>
+<p>代码执行顺序：</p>
+<ol>
+<li>进入<code>do</code>，执行代码块中的所有代码；</li>
+<li>执行第三行代码，判断条件是否成立；</li>
+<li>条件成立，继续执行代码块所有代码；</li>
+<li>重复第 2、3 步，直到小括号中条件不成立，循环结束。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = <span class="number">3</span>;</div><div class="line"><span class="keyword">do</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num);</div><div class="line">    num--;</div><div class="line">&#125;<span class="keyword">while</span>(num &gt; <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>代码执行顺序分析：</p>
+<ol>
+<li>执行第一行代码，创建一个变量<code>num</code>值为<code>3</code>；</li>
+<li>进入<code>do</code>内部，执行第三、四行代码，输出<code>3</code>后<code>num</code>减 1 变成 2；</li>
+<li>执行第五行代码，判断条件<code>num &gt; 1</code>是否成立：<code>2 &gt; 1</code>成立；</li>
+<li>进入<code>do</code>内部，执行第三、四行代码，输出<code>2</code>后<code>num</code>减 1 变成 1；</li>
+<li>执行第五行代码，继续判断条件<code>num &gt; 1</code>是否成立：<code>1 &gt; 1</code>不成立；</li>
+<li>循环结束；</li>
+</ol>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><p><code>for</code>循环语句，由一个<code>for</code>构成，语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(表达式一; 表达式二; 表达式三)&#123;</div><div class="line">    代码块四</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>for</code>循环语句中包含了四个部分：</p>
+<ul>
+<li>表达式一：<strong>初始化表达式</strong>，初始化一个计数器（用于控制循环次数），在循环开始前记录初始状态。</li>
+<li>表达式二：<strong>条件判断表达式</strong>，判断给定的状态是否为 true。如果条件为 true，则执行循环体，否则跳出循环。</li>
+<li>表达式三：<strong>改变循环条件</strong>，修改计数器的值。</li>
+<li>代码块四：<strong>循环体</strong>，需要循环执行的代码块。</li>
+</ul>
+<p>代码执行顺序：</p>
+<ol>
+<li>执行表达式一（初始化表达式）；</li>
+<li>执行表达式二（条件判断表达式），判断条件是否成立；</li>
+<li>表达式二条件成立，执行代码块四（循环体）；</li>
+<li>执行表达式三（改变循环条件）；</li>
+<li>重复第 2、3、4 步，直到表达式二条件不成立，结束整个<code>for</code>循环；</li>
+</ol>
+<blockquote>
+<p>简单来说，<code>for</code>循环的执行顺序就是“一 二四三 二四三 二四三 … … 二”。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">0</span></div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<p>代码执行顺序分析：</p>
+<ol>
+<li>执行第一行代码中的<strong>表达式一</strong><code>let i = 0</code>；</li>
+<li>判断第一行代码中的<strong>表达式二</strong><code>i &lt; 2</code>是否成立：<code>0 &lt; 2</code>成立；</li>
+<li>执行第二行的<strong>代码块四</strong>，输出<code>i</code>的值<code>0</code>；</li>
+<li>执行第一行代码中的<strong>表达式三</strong><code>i++</code>，将<code>i</code>的值加 1 变成 1；</li>
+<li>判断第一行代码中的<strong>表达式二</strong><code>i &lt; 2</code>是否成立：<code>1 &lt; 2</code>成立；</li>
+<li>执行第二行的<strong>代码块四</strong>，输出<code>i</code>的值<code>1</code>；</li>
+<li>执行第一行代码中的<strong>表达式三</strong><code>i++</code>，将<code>i</code>的值加 1 变成 2；</li>
+<li>判断第一行代码中的<strong>表达式二</strong><code>i &lt; 2</code>是否成立：<code>2 &lt; 2</code>不成立；</li>
+<li><code>for</code>循环结束；</li>
+</ol>
+<h2 id="打断循环"><a href="#打断循环" class="headerlink" title="打断循环"></a>打断循环</h2><p>正常情况下，循环语句是在循环条件判断不成立后结束。除了通过这种方式结束循环外，JavaScript 还提供了两种语句用来打断循环。</p>
+<ul>
+<li>break</li>
+<li>continue</li>
+</ul>
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p><code>break</code>在<code>switch</code>语句中用于跳出<code>switch</code>语句，即结束整个<code>switch</code>。同理，在循环语句中使用<code>break</code>，也可以实现立即结束整个循环的效果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(count &lt; <span class="number">3</span>)&#123;</div><div class="line">    count++;</div><div class="line">    <span class="keyword">if</span>(count == <span class="number">2</span>)&#123;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(count);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<p>代码执行顺序分析：</p>
+<ol>
+<li>执行第一行代码，创建一个变量<code>count</code>值为<code>0</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>成立，进入<code>while</code>；</li>
+<li>执行第三行代码，<code>count</code>加 1 变为 1；</li>
+<li>执行第四行代码，判断条件<code>count == 2</code>是否成立：<code>1 == 2</code>不成立；</li>
+<li>跳过<code>if</code>，执行第七行代码，输出<code>1</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>成立，进入<code>while</code>；</li>
+<li>执行第三行代码，<code>count</code>加 1 变为 2；</li>
+<li>执行第四行代码，判断条件<code>count == 2</code>是否成立：<code>2 == 2</code>成立；</li>
+<li>进入<code>if</code>，执行第五行代码<code>break</code>；</li>
+<li>循环结束；</li>
+</ol>
+<blockquote>
+<p>一旦<code>break</code>语句执行，会立即结束离<code>break</code>最近的一个循环语句。</p>
+</blockquote>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p><code>continue</code>也可以用来结束循环，但是它只能结束当前这一次循环，会立即进行下一次的循环条件判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span>(count &lt; <span class="number">3</span>)&#123;</div><div class="line">    count++;</div><div class="line">    <span class="keyword">if</span>(count == <span class="number">2</span>)&#123;</div><div class="line">        <span class="keyword">continue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(count);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span></div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+<p>代码执行顺序分析：</p>
+<ol>
+<li>执行第一行代码，创建一个变量<code>count</code>值为<code>0</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>成立，进入<code>while</code>；</li>
+<li>执行第三行代码，<code>count</code>加 1 变为 1；</li>
+<li>执行第四行代码，判断条件<code>count == 2</code>是否成立：<code>1 == 2</code>不成立；</li>
+<li>跳过<code>if</code>，执行第七行代码，输出<code>1</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>成立，进入<code>while</code>；</li>
+<li>执行第三行代码，<code>count</code>加 1 变为 2；</li>
+<li>执行第四行代码，判断条件<code>count == 2</code>是否成立：<code>2 == 2</code>成立；</li>
+<li>进入<code>if</code>，执行第五行代码<code>continue</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>成立，进入<code>while</code>；</li>
+<li>执行第三行代码，<code>count</code>加 1 变为 3；</li>
+<li>执行第四行代码，判断条件<code>count == 2</code>是否成立：<code>3 == 2</code>不成立；</li>
+<li>跳过<code>if</code>，执行第七行代码，输出<code>3</code>；</li>
+<li>执行第二行代码，判断循环条件<code>count &lt; 3</code>不成立；</li>
+<li>循环结束；</li>
+</ol>
+<blockquote>
+<p> 一旦<code>continue</code>语句执行，会立即结束离<code>continue</code>最近的一个循环语句的当前这一次循环。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前面提到流程控制语句主要分为顺序执行、选择执行和循环执行。&lt;/p&gt;
+&lt;p&gt;循环语句，就是用来实现”循环执行“的代码执行顺序。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+      <category term="while" scheme="http://yoursite.com/tags/while/"/>
+    
+      <category term="do while" scheme="http://yoursite.com/tags/do-while/"/>
+    
+      <category term="for" scheme="http://yoursite.com/tags/for/"/>
+    
+  </entry>
+  
+  <entry>
     <title>流程控制语句 - 条件语句</title>
     <link href="http://yoursite.com/2018/03/16/conditionalStatements/"/>
     <id>http://yoursite.com/2018/03/16/conditionalStatements/</id>
     <published>2018-03-16T07:49:19.000Z</published>
-    <updated>2018-08-20T07:59:48.259Z</updated>
+    <updated>2018-08-20T08:23:02.255Z</updated>
     
     <content type="html"><![CDATA[<p>所谓流程控制，就是指对于流程的执行顺序进行控制。默认情况下，JavaScript 引擎会按照代码的编写顺序，从上往下依次执行代码语句。这种情况一般称之为“顺序执行”。</p>
 <p>但不是所有的程序都只靠顺序执行就能够完成的，所以除了顺序执行之外，还需要掌握其他的一些代码执行流程。</p>
 <a id="more"></a>
 <p>JavaScript 中代码的执行顺序大致可以分为三种：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fucsjlrgz8j31gc0kstad.jpg" alt=""></p>
-<h2 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h2><p>条件语句用来实现”选择执行“的代码执行顺序。</p>
+<p>而条件语句，就是用来实现”选择执行“的代码执行顺序。</p>
 <blockquote>
 <p>条件语句原理：通过判断某些条件是否成立，来决定执行哪一部分代码或者不执行哪一部分代码。</p>
 </blockquote>
@@ -38,7 +204,7 @@
 <li>多分支语句</li>
 <li>多分支等比语句</li>
 </ol>
-<h3 id="单分支语句"><a href="#单分支语句" class="headerlink" title="单分支语句"></a>单分支语句</h3><p>单分支条件语句，由一个<code>if</code>构成，语法结构如下：</p>
+<h2 id="单分支语句"><a href="#单分支语句" class="headerlink" title="单分支语句"></a>单分支语句</h2><p>单分支条件语句，由一个<code>if</code>构成，语法结构如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件)&#123;</div><div class="line">    代码块</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码执行顺序：</p>
 <ol>
@@ -56,7 +222,7 @@
 <li>进入<code>if</code>内部，执行第三行代码，输出<code>&quot;进入 if 语句&quot;</code>；</li>
 <li>执行第五行，输出<code>&quot;if 后面的语句&quot;</code>；</li>
 </ol>
-<h3 id="双分支语句"><a href="#双分支语句" class="headerlink" title="双分支语句"></a>双分支语句</h3><p>双分支条件语句，由一个<code>if</code>和一个<code>else</code>构成，语法结构如下：</p>
+<h2 id="双分支语句"><a href="#双分支语句" class="headerlink" title="双分支语句"></a>双分支语句</h2><p>双分支条件语句，由一个<code>if</code>和一个<code>else</code>构成，语法结构如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件)&#123;</div><div class="line">    代码块一</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    代码块二</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码执行顺序：</p>
 <ol>
@@ -75,7 +241,7 @@
 <li>进入<code>else</code>，执行第五行代码，输出<code>&quot;num &gt; 20 条件不成立&quot;</code>；</li>
 <li>执行第七行代码，输出<code>&quot;if else 后面的语句&quot;</code>；</li>
 </ol>
-<h3 id="多分支语句"><a href="#多分支语句" class="headerlink" title="多分支语句"></a>多分支语句</h3><p>多分支条件语句，即可以设置多个判断条件的语句。由一个<code>if</code>和多个<code>else if</code>组成，语法结构如下：</p>
+<h2 id="多分支语句"><a href="#多分支语句" class="headerlink" title="多分支语句"></a>多分支语句</h2><p>多分支条件语句，即可以设置多个判断条件的语句。由一个<code>if</code>和多个<code>else if</code>组成，语法结构如下：</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件一)&#123;</div><div class="line">    代码块一</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(条件二)&#123;</div><div class="line">    代码块</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(条件n)&#123;</div><div class="line">    代码块n</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码执行顺序：</p>
 <ol>
@@ -99,7 +265,7 @@
 <p>当前面所有条件都不成立时，就会执行<code>else</code>的代码。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> score = <span class="number">55</span>;</div><div class="line"><span class="keyword">if</span>(score &gt;= <span class="number">90</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"优秀"</span>);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(score &gt;= <span class="number">70</span>)&#123;</div><div class="line">    consle.log(<span class="string">"良好"</span>);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(score &gt;= <span class="number">60</span>)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"一般"</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"不及格"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>依次判断前面每一个条件，都不成立，最后进入<code>else</code>，输出<code>&quot;不及格&quot;</code>。</p>
-<h3 id="多分支等比语句"><a href="#多分支等比语句" class="headerlink" title="多分支等比语句"></a>多分支等比语句</h3><p>多分支等比语句，即可以设置多个判断条件（判断是否相等）的语句。一个完整的多分支等比语句由一个<code>switch</code>、多个<code>case</code>、多个<code>break</code>（可选）和一个<code>default</code>（可选）组成，语法结构如下：</p>
+<h2 id="多分支等比语句"><a href="#多分支等比语句" class="headerlink" title="多分支等比语句"></a>多分支等比语句</h2><p>多分支等比语句，即可以设置多个判断条件（判断是否相等）的语句。一个完整的多分支等比语句由一个<code>switch</code>、多个<code>case</code>、多个<code>break</code>（可选）和一个<code>default</code>（可选）组成，语法结构如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(匹配条件)&#123;</div><div class="line">    <span class="keyword">case</span> 匹配值<span class="number">1</span>:</div><div class="line">        代码块一</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> 匹配值<span class="number">2</span>:</div><div class="line">        代码块二</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> 匹配值n:</div><div class="line">        代码块n</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">        代码块n+<span class="number">1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>代码执行顺序：</p>
 <ol>
