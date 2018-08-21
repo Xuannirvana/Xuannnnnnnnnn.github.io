@@ -309,10 +309,10 @@
   
   <entry>
     <title>运算符</title>
-    <link href="http://yoursite.com/2018/01/20/operator/"/>
-    <id>http://yoursite.com/2018/01/20/operator/</id>
-    <published>2018-01-20T02:00:00.000Z</published>
-    <updated>2018-08-17T03:42:48.023Z</updated>
+    <link href="http://yoursite.com/2018/03/02/operator/"/>
+    <id>http://yoursite.com/2018/03/02/operator/</id>
+    <published>2018-03-02T02:00:00.000Z</published>
+    <updated>2018-08-21T02:29:30.198Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 中提供了大量的运算符用于数据的操作。</p>
 <a id="more"></a>
@@ -530,10 +530,10 @@
   
   <entry>
     <title>数据类型转换</title>
-    <link href="http://yoursite.com/2018/01/15/changeDataType/"/>
-    <id>http://yoursite.com/2018/01/15/changeDataType/</id>
-    <published>2018-01-15T02:00:00.000Z</published>
-    <updated>2018-08-17T07:07:51.902Z</updated>
+    <link href="http://yoursite.com/2018/02/24/changeDataType/"/>
+    <id>http://yoursite.com/2018/02/24/changeDataType/</id>
+    <published>2018-02-24T02:00:00.000Z</published>
+    <updated>2018-08-21T02:29:03.730Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript 是一种动态数据类型语言。变量是没有类型的，可以随机被赋予任意类型的值。而数据本身和各种运算是有类型的，例如在做数学运算时我们就需要数据是 number 类型，但有时候实际参与数学运算的数据并不全是 number 类型，因此在进行某些运算时数据是需要转换类型的。大多数情况下，这种数据类型转换是自动的，但是有时也需要手动强制转换。</p>
 <a id="more"></a>
@@ -651,10 +651,10 @@
   
   <entry>
     <title>数据类型</title>
-    <link href="http://yoursite.com/2018/01/12/dataType/"/>
-    <id>http://yoursite.com/2018/01/12/dataType/</id>
-    <published>2018-01-12T02:00:00.000Z</published>
-    <updated>2018-08-17T03:43:35.724Z</updated>
+    <link href="http://yoursite.com/2018/02/12/dataType/"/>
+    <id>http://yoursite.com/2018/02/12/dataType/</id>
+    <published>2018-02-12T02:00:00.000Z</published>
+    <updated>2018-08-21T02:28:49.521Z</updated>
     
     <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2018/01/10/variable/" target="_blank" rel="external">《变量和常量》</a>一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。</p>
 <a id="more"></a>
@@ -689,7 +689,7 @@
 </tr>
 <tr>
 <td>symbol</td>
-<td>唯一值</td>
+<td>符号</td>
 </tr>
 <tr>
 <td>object</td>
@@ -732,7 +732,7 @@
 <h3 id="null"><a href="#null" class="headerlink" title="null"></a>null</h3><p>null 类型即“空值类型”。这个类型中也只有一条数据：<code>null</code>。</p>
 <p><code>null</code>这个值用于表示”没有/空”，一般用于释放内存。当一个容器的数据值被设置为<code>null</code>后，内存中就不再为该数据分配储存空间。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = <span class="number">1000</span>;</div><div class="line">num = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>symbol 类型即唯一值类型。这个类型是 ES6 中新增的一种数据类型，用来表示唯一的值。即在这个类型下的所有数据都是不相等的。</p>
+<h3 id="symbol"><a href="#symbol" class="headerlink" title="symbol"></a>symbol</h3><p>symbol 类型即符号类型。这个类型是 ES6 中新增的一种数据类型，用来表示唯一的值。即在这个类型下的所有数据都是不相等的。</p>
 <h2 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h2><p>复杂数据类型也称之为“引用数据类型”。JavaScript 中的复杂数据类型只有一种：object。</p>
 <h3 id="object"><a href="#object" class="headerlink" title="object"></a>object</h3><p>object 类型即对象类型。在 JavaScript 中，只要是不属于 6 种简单类型的数据，都可以看做属于复杂类型。</p>
 <p>例如后面我们会讲到的<code>Array</code>、<code>Set</code>、<code>Map</code>等。</p>
@@ -755,10 +755,10 @@
   
   <entry>
     <title>变量和常量</title>
-    <link href="http://yoursite.com/2018/01/10/variable/"/>
-    <id>http://yoursite.com/2018/01/10/variable/</id>
-    <published>2018-01-10T02:00:00.000Z</published>
-    <updated>2018-08-17T03:42:38.399Z</updated>
+    <link href="http://yoursite.com/2018/02/10/variable/"/>
+    <id>http://yoursite.com/2018/02/10/variable/</id>
+    <published>2018-02-10T02:00:00.000Z</published>
+    <updated>2018-08-21T02:28:42.081Z</updated>
     
     <content type="html"><![CDATA[<p>任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。不管是日常的代码练习还是实际的项目开发，都会涉及到数据的操作（例如：数据的增删改查）。为了能够更方便的去操作数据，开发者们对数据进行了命名保存，即把需要操作的数据保存在一个有名字的容器中。</p>
 <p>在 JavaScript 中，变量和常量就可以看做是“有名字的保存数据的容器”。</p>
@@ -820,10 +820,10 @@
   
   <entry>
     <title>JavaScript 内存空间</title>
-    <link href="http://yoursite.com/2017/12/30/memory/"/>
-    <id>http://yoursite.com/2017/12/30/memory/</id>
-    <published>2017-12-30T04:30:10.000Z</published>
-    <updated>2018-08-09T09:18:25.619Z</updated>
+    <link href="http://yoursite.com/2018/01/19/memory/"/>
+    <id>http://yoursite.com/2018/01/19/memory/</id>
+    <published>2018-01-19T04:30:10.000Z</published>
+    <updated>2018-08-21T02:28:32.440Z</updated>
     
     <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>但是对于前端开发来说，内存并不是一个经常被提及的概念，很容易被大家忽视。可如果想要对 JavaScript 的理解更加深刻，就必须对内存有一个清晰的认知。</p>
@@ -946,10 +946,10 @@
   
   <entry>
     <title>浏览器发展史</title>
-    <link href="http://yoursite.com/2017/12/19/browserHistory/"/>
-    <id>http://yoursite.com/2017/12/19/browserHistory/</id>
-    <published>2017-12-19T02:31:00.000Z</published>
-    <updated>2018-07-24T05:23:06.324Z</updated>
+    <link href="http://yoursite.com/2018/01/09/browserHistory/"/>
+    <id>http://yoursite.com/2018/01/09/browserHistory/</id>
+    <published>2018-01-09T02:31:00.000Z</published>
+    <updated>2018-08-21T02:28:10.613Z</updated>
     
     <content type="html"><![CDATA[<p>作为一个前端开发人员，经常与浏览器打交道，了解浏览器的一些相关历史也非常有必要的。</p>
 <a id="more"></a>
@@ -1036,7 +1036,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
