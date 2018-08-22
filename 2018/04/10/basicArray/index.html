@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="for-of," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Komorebi" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。   JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。  数组的特点：  数组的作用就是可以将多条零散的数据结合成一个整体； 数组本身属于“引用数据类型”，即数组是“对象”。但是数组内部储存的数据可以是任意数据类型。 根据需要可以对数组内部的数据进行操作（例如：增、删、查、改）  定">
+<meta name="keywords" content="for-of">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组的基础语法">
+<meta property="og:url" content="http://yoursite.com/2018/04/10/basicArray/index.html">
+<meta property="og:site_name" content="Komorebi">
+<meta property="og:description" content="数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。   JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。  数组的特点：  数组的作用就是可以将多条零散的数据结合成一个整体； 数组本身属于“引用数据类型”，即数组是“对象”。但是数组内部储存的数据可以是任意数据类型。 根据需要可以对数组内部的数据进行操作（例如：增、删、查、改）  定">
+<meta property="og:updated_time" content="2018-08-22T05:52:51.500Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组的基础语法">
+<meta name="twitter:description" content="数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。   JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。  数组的特点：  数组的作用就是可以将多条零散的数据结合成一个整体； 数组本身属于“引用数据类型”，即数组是“对象”。但是数组内部储存的数据可以是任意数据类型。 根据需要可以对数组内部的数据进行操作（例如：增、删、查、改）  定">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/10/basicArray/"/>
+
+
+
+
+
+  <title>数组的基础语法 | Komorebi</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Komorebi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/basicArray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="有猫饼">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ws2.sinaimg.cn/large/0069RVTdgy1fubixhpovej30sg0q7dl9.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Komorebi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数组的基础语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T15:49:19+08:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/数组/" itemprop="url" rel="index">
+                    <span itemprop="name">数组</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。</p>
+<blockquote>
+<p> JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。</p>
+</blockquote>
+<p><strong>数组的特点：</strong></p>
+<ol>
+<li>数组的作用就是可以将多条零散的数据结合成一个整体；</li>
+<li>数组本身属于“引用数据类型”，即数组是“对象”。但是数组内部储存的数据可以是任意数据类型。</li>
+<li>根据需要可以对数组内部的数据进行操作（例如：增、删、查、改）</li>
+</ol>
+<h2 id="定义数组"><a href="#定义数组" class="headerlink" title="定义数组"></a>定义数组</h2><p>创建数组的方式分为两种：</p>
+<ol>
+<li><p>字面量方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[];</div></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通过以上两种方式都可以创建出一个还未储存数据的空数组。其中字面量方式效率更高一些。因为方括号是使用 JSON 格式的语法，可以被 JavaScript 引擎直接解释，而 new 关键字的方式则需要调用构造函数。</p>
+<p>一般情况下，为了方便后面对数组的操作使用，我们将数组创建好后都会赋值给一个变量保存起来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary1 = [];</div><div class="line"><span class="keyword">let</span> ary2 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+<h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><p>数组初始化即在创建数组的同时就将数据添加进去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary1 = [<span class="number">10</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="string">'hello'</span>, <span class="literal">undefined</span>];</div><div class="line"><span class="keyword">let</span> ary2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="string">'hello'</span>, <span class="literal">undefined</span>);</div></pre></td></tr></table></figure>
+<h2 id="数组的下标"><a href="#数组的下标" class="headerlink" title="数组的下标"></a>数组的下标</h2><p>前面提到，数组里面储存的数据是有顺序的。因此，每一条数据在数组中都有一个对应的位置编号，称之为“下标/索引”。</p>
+<blockquote>
+<p>下标的取值从 0 开始，依次递增 1。</p>
+</blockquote>
+<h3 id="下标的使用"><a href="#下标的使用" class="headerlink" title="下标的使用"></a>下标的使用</h3><p>通过下标，就可以找到并操作数组中的任意数据。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">数组名[下标]</div></pre></td></tr></table></figure>
+<p><strong>查看数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">0</span>]);    <span class="comment">// 100</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">1</span>]);    <span class="comment">// 200</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">2</span>]);    <span class="comment">// 300</span></div></pre></td></tr></table></figure>
+<p><strong>修改数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line">ary[<span class="number">0</span>] = <span class="string">'a'</span>;</div><div class="line">ary[<span class="number">1</span>] = <span class="string">'b'</span>;</div><div class="line">ary[<span class="number">2</span>] = <span class="string">'c'</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// ['a', 'b', 'c']</span></div></pre></td></tr></table></figure>
+<p><strong>新增数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line">ary[<span class="number">3</span>] = <span class="number">400</span>;</div><div class="line">ary[<span class="number">5</span>] = <span class="number">500</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// [100, 200, 300, 400, empty, 500];</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>下标 4 这个位置上没有赋值，当访问这个位置时会得到<code>undefined</code>的结果。</p>
+</blockquote>
+<p><strong>删除数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="keyword">delete</span> ary[<span class="number">0</span>];</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// [empty, 200, 300];</span></div></pre></td></tr></table></figure>
+<h2 id="数组的长度"><a href="#数组的长度" class="headerlink" title="数组的长度"></a>数组的长度</h2><p>数组的长度，即数组内保存的数据的条数。JavaScript 中为数组提供了一个<code>length</code>属性，用来设置或返回数组的长度。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">数组名.length</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="comment">// 获取长度</span></div><div class="line"><span class="built_in">console</span>.log(ary.length);     <span class="comment">// 3</span></div><div class="line"><span class="comment">// 设置长度</span></div><div class="line">ary.length = <span class="number">2</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);            <span class="comment">// [100, 200]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小技巧：想要快速清空一个数组，就可以将数组的长度赋值为 0。</p>
+</blockquote>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>JavaScript 中的数组有一个特点是可以储存任意类型的数据。也就意味着，数组里面的数据也可以是数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>], <span class="number">300</span>, <span class="number">400</span>];</div></pre></td></tr></table></figure>
+<p>这种数组里面嵌套数组的结构，就叫做多维数组。</p>
+<p>多维数组和普通数组的操作方式一样，都是通过下标来实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>], <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// 查看</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">2</span>][<span class="number">0</span>]);      <span class="comment">// 'a'</span></div><div class="line"><span class="comment">// 修改</span></div><div class="line">ary[<span class="number">2</span>][<span class="number">0</span>] = <span class="string">'A'</span>;</div><div class="line"><span class="comment">// 新增</span></div><div class="line">ary[<span class="number">5</span>] = [<span class="literal">true</span>, <span class="literal">false</span>];</div><div class="line"><span class="comment">// 删除</span></div><div class="line"><span class="keyword">delete</span> ary[<span class="number">2</span>][<span class="number">0</span>];</div></pre></td></tr></table></figure>
+<h2 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h2><p>数组的作用是可以批量保存多条数据，但是当我们需要对数据进行操作时，并不能通过直接操作数组来实现效果，还是需要将每一条数据从数组中取出来，然后再依次取对其进行操作。</p>
+<blockquote>
+<p> 数组的遍历就是指依次访问数组中每一项数据。</p>
+</blockquote>
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p><code>for</code>循环是遍历数组最简单的一种，也是使用频率最高的一种。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// i 即用来控制循环次数，也可用作数组的下标</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; ary.length; i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(ary[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优化版 for 循环</strong></p>
+<p>对于 for 循环的执行流程来说，<code>i &lt; ary.length</code>这个表达式会反复执行很多次，也就是说，数组的长度每次都要去重新获取。优化版 for 循环就是在普通版 for 循环基础之上，使用临时变量，将数组的长度<code>ary.length</code>缓存起来，避免重复获取数组长度。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = ary.length; i &lt; len; i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(ary[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="for-of"><a href="#for-of" class="headerlink" title="for-of"></a>for-of</h3><p>ES6 中新增了一种遍历数组的方法 for-of，相比起 for 循环来说它的代码更加简洁。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// 创建一个变量 value 用来接收数组中的每一个值</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> value <span class="keyword">of</span> ary)&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：效率上来说 for-of 还是比不上普通的 for 循环。但是 for-of 除了可以遍历数组外，还可以遍历大多数类数组对象。例如后面会讲到的 Set、Map。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>我 秦始皇 打钱</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://ws2.sinaimg.cn/large/006tKfTcgy1fi12xd8ywlj30j20j1mz1.jpg" alt="有猫饼 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://ws3.sinaimg.cn/large/006tKfTcgy1fi130oybncj30ad0addgn.jpg" alt="有猫饼 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/for-of/" rel="tag"># for-of</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/17/loopStatements/" rel="next" title="循环语句">
+                <i class="fa fa-chevron-left"></i> 循环语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://ws2.sinaimg.cn/large/0069RVTdgy1fubixhpovej30sg0q7dl9.jpg"
+                alt="有猫饼" />
+            
+              <p class="site-author-name" itemprop="name">有猫饼</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义数组"><span class="nav-number">1.</span> <span class="nav-text">定义数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组初始化"><span class="nav-number">1.1.</span> <span class="nav-text">数组初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的下标"><span class="nav-number">2.</span> <span class="nav-text">数组的下标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下标的使用"><span class="nav-number">2.1.</span> <span class="nav-text">下标的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的长度"><span class="nav-number">3.</span> <span class="nav-text">数组的长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维数组"><span class="nav-number">4.</span> <span class="nav-text">多维数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的遍历"><span class="nav-number">5.</span> <span class="nav-text">数组的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">5.1.</span> <span class="nav-text">for 循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-of"><span class="nav-number">5.2.</span> <span class="nav-text">for-of</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">有猫饼</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

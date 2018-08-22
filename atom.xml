@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-21T02:35:22.388Z</updated>
+  <updated>2018-08-22T05:52:51.500Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,102 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数组的基础语法</title>
+    <link href="http://yoursite.com/2018/04/10/basicArray/"/>
+    <id>http://yoursite.com/2018/04/10/basicArray/</id>
+    <published>2018-04-10T07:49:19.000Z</published>
+    <updated>2018-08-22T05:52:51.500Z</updated>
+    
+    <content type="html"><![CDATA[<p>数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。</p>
+<blockquote>
+<p> JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。</p>
+</blockquote>
+<p><strong>数组的特点：</strong></p>
+<ol>
+<li>数组的作用就是可以将多条零散的数据结合成一个整体；</li>
+<li>数组本身属于“引用数据类型”，即数组是“对象”。但是数组内部储存的数据可以是任意数据类型。</li>
+<li>根据需要可以对数组内部的数据进行操作（例如：增、删、查、改）</li>
+</ol>
+<h2 id="定义数组"><a href="#定义数组" class="headerlink" title="定义数组"></a>定义数组</h2><p>创建数组的方式分为两种：</p>
+<ol>
+<li><p>字面量方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[];</div></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>通过以上两种方式都可以创建出一个还未储存数据的空数组。其中字面量方式效率更高一些。因为方括号是使用 JSON 格式的语法，可以被 JavaScript 引擎直接解释，而 new 关键字的方式则需要调用构造函数。</p>
+<p>一般情况下，为了方便后面对数组的操作使用，我们将数组创建好后都会赋值给一个变量保存起来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary1 = [];</div><div class="line"><span class="keyword">let</span> ary2 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div></pre></td></tr></table></figure>
+<h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><p>数组初始化即在创建数组的同时就将数据添加进去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary1 = [<span class="number">10</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="string">'hello'</span>, <span class="literal">undefined</span>];</div><div class="line"><span class="keyword">let</span> ary2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="string">'hello'</span>, <span class="literal">undefined</span>);</div></pre></td></tr></table></figure>
+<h2 id="数组的下标"><a href="#数组的下标" class="headerlink" title="数组的下标"></a>数组的下标</h2><p>前面提到，数组里面储存的数据是有顺序的。因此，每一条数据在数组中都有一个对应的位置编号，称之为“下标/索引”。</p>
+<blockquote>
+<p>下标的取值从 0 开始，依次递增 1。</p>
+</blockquote>
+<h3 id="下标的使用"><a href="#下标的使用" class="headerlink" title="下标的使用"></a>下标的使用</h3><p>通过下标，就可以找到并操作数组中的任意数据。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">数组名[下标]</div></pre></td></tr></table></figure>
+<p><strong>查看数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">0</span>]);    <span class="comment">// 100</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">1</span>]);    <span class="comment">// 200</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">2</span>]);    <span class="comment">// 300</span></div></pre></td></tr></table></figure>
+<p><strong>修改数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line">ary[<span class="number">0</span>] = <span class="string">'a'</span>;</div><div class="line">ary[<span class="number">1</span>] = <span class="string">'b'</span>;</div><div class="line">ary[<span class="number">2</span>] = <span class="string">'c'</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// ['a', 'b', 'c']</span></div></pre></td></tr></table></figure>
+<p><strong>新增数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line">ary[<span class="number">3</span>] = <span class="number">400</span>;</div><div class="line">ary[<span class="number">5</span>] = <span class="number">500</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// [100, 200, 300, 400, empty, 500];</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>下标 4 这个位置上没有赋值，当访问这个位置时会得到<code>undefined</code>的结果。</p>
+</blockquote>
+<p><strong>删除数据</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="keyword">delete</span> ary[<span class="number">0</span>];</div><div class="line"><span class="built_in">console</span>.log(ary);     <span class="comment">// [empty, 200, 300];</span></div></pre></td></tr></table></figure>
+<h2 id="数组的长度"><a href="#数组的长度" class="headerlink" title="数组的长度"></a>数组的长度</h2><p>数组的长度，即数组内保存的数据的条数。JavaScript 中为数组提供了一个<code>length</code>属性，用来设置或返回数组的长度。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">数组名.length</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line"><span class="comment">// 获取长度</span></div><div class="line"><span class="built_in">console</span>.log(ary.length);     <span class="comment">// 3</span></div><div class="line"><span class="comment">// 设置长度</span></div><div class="line">ary.length = <span class="number">2</span>;</div><div class="line"><span class="built_in">console</span>.log(ary);            <span class="comment">// [100, 200]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小技巧：想要快速清空一个数组，就可以将数组的长度赋值为 0。</p>
+</blockquote>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>JavaScript 中的数组有一个特点是可以储存任意类型的数据。也就意味着，数组里面的数据也可以是数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>], <span class="number">300</span>, <span class="number">400</span>];</div></pre></td></tr></table></figure>
+<p>这种数组里面嵌套数组的结构，就叫做多维数组。</p>
+<p>多维数组和普通数组的操作方式一样，都是通过下标来实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>], <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// 查看</span></div><div class="line"><span class="built_in">console</span>.log(ary[<span class="number">2</span>][<span class="number">0</span>]);      <span class="comment">// 'a'</span></div><div class="line"><span class="comment">// 修改</span></div><div class="line">ary[<span class="number">2</span>][<span class="number">0</span>] = <span class="string">'A'</span>;</div><div class="line"><span class="comment">// 新增</span></div><div class="line">ary[<span class="number">5</span>] = [<span class="literal">true</span>, <span class="literal">false</span>];</div><div class="line"><span class="comment">// 删除</span></div><div class="line"><span class="keyword">delete</span> ary[<span class="number">2</span>][<span class="number">0</span>];</div></pre></td></tr></table></figure>
+<h2 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h2><p>数组的作用是可以批量保存多条数据，但是当我们需要对数据进行操作时，并不能通过直接操作数组来实现效果，还是需要将每一条数据从数组中取出来，然后再依次取对其进行操作。</p>
+<blockquote>
+<p> 数组的遍历就是指依次访问数组中每一项数据。</p>
+</blockquote>
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><p><code>for</code>循环是遍历数组最简单的一种，也是使用频率最高的一种。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// i 即用来控制循环次数，也可用作数组的下标</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; ary.length; i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(ary[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>优化版 for 循环</strong></p>
+<p>对于 for 循环的执行流程来说，<code>i &lt; ary.length</code>这个表达式会反复执行很多次，也就是说，数组的长度每次都要去重新获取。优化版 for 循环就是在普通版 for 循环基础之上，使用临时变量，将数组的长度<code>ary.length</code>缓存起来，避免重复获取数组长度。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>, len = ary.length; i &lt; len; i++)&#123;</div><div class="line">    <span class="built_in">console</span>.log(ary[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="for-of"><a href="#for-of" class="headerlink" title="for-of"></a>for-of</h3><p>ES6 中新增了一种遍历数组的方法 for-of，相比起 for 循环来说它的代码更加简洁。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>];</div><div class="line"><span class="comment">// 创建一个变量 value 用来接收数组中的每一个值</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> value <span class="keyword">of</span> ary)&#123;</div><div class="line">    <span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：效率上来说 for-of 还是比不上普通的 for 循环。但是 for-of 除了可以遍历数组外，还可以遍历大多数类数组对象。例如后面会讲到的 Set、Map。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;数组的
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+      <category term="数组" scheme="http://yoursite.com/categories/JavaScript/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="for-of" scheme="http://yoursite.com/tags/for-of/"/>
+    
+  </entry>
   
   <entry>
     <title>循环语句</title>
@@ -953,7 +1049,7 @@
     <link href="http://yoursite.com/2018/01/09/browserHistory/"/>
     <id>http://yoursite.com/2018/01/09/browserHistory/</id>
     <published>2018-01-09T02:31:00.000Z</published>
-    <updated>2018-08-21T02:28:10.613Z</updated>
+    <updated>2018-08-21T02:45:17.335Z</updated>
     
     <content type="html"><![CDATA[<p>作为一个前端开发人员，经常与浏览器打交道，了解浏览器的一些相关历史也非常有必要的。</p>
 <a id="more"></a>
@@ -993,8 +1089,6 @@
       &lt;p&gt;作为一个前端开发人员，经常与浏览器打交道，了解浏览器的一些相关历史也非常有必要的。&lt;/p&gt;
     
     </summary>
-    
-      <category term="发展史" scheme="http://yoursite.com/categories/%E5%8F%91%E5%B1%95%E5%8F%B2/"/>
     
     
       <category term="浏览器" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
@@ -1040,7 +1134,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">    owner: 'Your GitHub username',</div><div class="line">    repo: 'The repo to store comments',</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: 'Your client ID',</div><div class="line">        client_secret: 'Your client secret',</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render('gitmentContainer');</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
