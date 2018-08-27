@@ -3,6 +3,112 @@
   
     
     <entry>
+      <title><![CDATA[函数的基础语法]]></title>
+      <url>/2018/04/20/basicFunction/</url>
+      <content type="html"><![CDATA[<p>函数是 JavaScript 中一个非常重要的概念。里面涉及到的知识点也比较多，这里我们先讲一下函数的一些基本用法。</p>
+<h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>JavaScript 中创建函数的方式分为三种：</p>
+<ul>
+<li>声明式函数</li>
+<li>函数表达式</li>
+<li>构造函数</li>
+</ul>
+<p>其中第三种通过调用构造函数<code>new Function()</code>来创建函数的方式并不实用，所以这里我们只介绍另外两种常用的。</p>
+<h3 id="声明式函数"><a href="#声明式函数" class="headerlink" title="声明式函数"></a>声明式函数</h3><p>“声明式函数”是通过关键字 function 加上函数名来创建一个函数。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 函数内部要执行代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h3><p>”函数表达式“是将一个没有名字的函数赋值给一个变量，变量名就作为函数名使用。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> 函数名 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 函数内部要执行代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h2><p>函数创建好后内部的代码并不会执行。因为函数的创建仅仅只是封装好了一个功能，要使用功能还需要对函数进行调用。</p>
+<p>不管采用什么方式创建函数，调用的方法都是一样的。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">函数名()</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello foo"</span>);</div><div class="line">&#125;</div><div class="line">foo();  <span class="comment">// 调用函数 foo</span></div></pre></td></tr></table></figure>
+<h2 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h2><p>返回值是指可以将函数内部的一个值返回到函数外部去。</p>
+<h3 id="设置返回值"><a href="#设置返回值" class="headerlink" title="设置返回值"></a>设置返回值</h3><p>在函数体内部，通过<code>return</code>关键字来设置返回值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> num = <span class="number">100</span>;</div><div class="line">    <span class="keyword">return</span> num; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上例中，<code>num</code>就是函数<code>foo</code>的返回值。也就是说，我们将函数内部的数据 100 返回到了函数外部。</p>
+<h3 id="接收返回值"><a href="#接收返回值" class="headerlink" title="接收返回值"></a>接收返回值</h3><p>函数内部将数据<code>return</code>出来，外部还需要先接收才能使用。而外部接收返回值的地方就是函数的调用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(foo());    <span class="comment">// 100</span></div></pre></td></tr></table></figure>
+<p>也就是说，使用<code>函数名()</code>其实有两个功能：一是调用函数执行函数内部代码，二是接收函数内部的返回值。</p>
+<h3 id="return-特点"><a href="#return-特点" class="headerlink" title="return 特点"></a>return 特点</h3><ul>
+<li><p>设置返回值并不是必须的。当函数内没有定义<code>return</code>或<code>return</code>后面没有值时，当前函数的返回值默认为<code>undefined</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="built_in">console</span>.log(bar());   <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果设置返回值，<code>return</code>语句后面只能跟一个值。如果要返回多条数据时，只能考虑将其合并成一个整体（例如：数组）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">    <span class="keyword">let</span> c = <span class="number">3</span>;</div><div class="line">    <span class="keyword">return</span> [a, b, c];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>return</code>语句一旦执行完毕，会立即结束当前函数，即函数内<code>return</code>后面的语句不会再执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> a;</div><div class="line">    <span class="built_in">console</span>.log(a);    <span class="comment">// 不会执行</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><p>函数的参数可以看做是在函数内部使用的局部变量。</p>
+<h3 id="形参和实参"><a href="#形参和实参" class="headerlink" title="形参和实参"></a>形参和实参</h3><p>一个完整的函数参数由两部分组成：</p>
+<ul>
+<li>形参：形式参数，指在创建函数时定义的参数（类似于局部变量名）。</li>
+<li>实参：实际参数，指在调用函数时定义的参数（类似于局部变量值）。</li>
+</ul>
+<p>语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">形参<span class="number">1</span>, 形参<span class="number">2</span>, ..., 形参n</span>) </span>&#123;&#125;;  <span class="comment">// 创建函数</span></div><div class="line">foo(实参<span class="number">1</span>, 实参<span class="number">2</span>, ..., 实参n);              <span class="comment">// 调用函数</span></div></pre></td></tr></table></figure>
+<p>当函数调用时，会将实参传递给对应位置的形参，效果类似于变量赋值。</p>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">num1, num2</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num1, num2);    <span class="comment">// 100 200</span></div><div class="line">&#125;</div><div class="line">bar(<span class="number">100</span>, <span class="number">200</span>);</div></pre></td></tr></table></figure>
+<p>一般情况下，形参和实参的个数是相同的，这样就能一一对应进行传值操作。但在 JavaScript 中并不强求这一点，在特殊情况下，函数的形参和实参的个数可以不相同。</p>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">num1</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num1);    <span class="comment">// 1</span></div><div class="line">&#125;</div><div class="line">bar(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<p>在上例中，形参<code>num1</code>接收到了实参<code>1</code>。但是实参<code>2</code>和<code>3</code>因为没有对应的形参接收，因此函数内部是找不到这两条数据的。</p>
+<h3 id="arguments-对象"><a href="#arguments-对象" class="headerlink" title="arguments 对象"></a>arguments 对象</h3><p>函数中除了可以用形参来接收实参外，还可以用函数内部的 arguments 对象来接收所有的实参。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);   <span class="comment">//  &#123; '0': 100, '1': 200, '2': 300 &#125;</span></div><div class="line">&#125;</div><div class="line">bar(<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure>
+<p>arguments 是一个伪数组对象，它也可以通过下标来单独访问里面每一条数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]);   <span class="comment">//  100</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>]);   <span class="comment">//  200</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">2</span>]);   <span class="comment">//  300</span></div><div class="line">&#125;</div><div class="line">bar(<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure>
+<h3 id="不定参数"><a href="#不定参数" class="headerlink" title="不定参数"></a>不定参数</h3><p>关于函数的参数，ES6 中增加了一个新的特性，叫做 rest 参数，即“不定参数”。它的作用和 arguments 对象很类似，arguments 是用来接收所有的实参，rest 是用来接收没有形参对应的所有实参。</p>
+<p>语法结构：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">...不定参数名</span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">...nums</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(nums);    <span class="comment">// [ 100, 200, 300 ]</span></div><div class="line">&#125;</div><div class="line">foo(<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure>
+<p>在上例中，因为三个实参都没有对应的形参，所以不定参数<code>nums</code>用<strong>数组</strong>的形式接收了三个实参。</p>
+<blockquote>
+<p>注意：不定参数可以和普通形参同时存在，但是不定参数只能作为最后一个形参使用。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">num1, ...nums</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num1);    <span class="comment">// 100</span></div><div class="line">    <span class="built_in">console</span>.log(nums);    <span class="comment">// [ 200, 300 ]</span></div><div class="line">&#125;</div><div class="line">foo(<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当实参个数确定的情况下，我们用普通形参来接收实参;</p>
+<p>当实参个数不确定的情况下，我们可以用 arguments 对象或者不定参数来接收实参。</p>
+</blockquote>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>默认参数，指的是函数形参的默认值。当形参没有值时，就会采用默认值。</p>
+<p>我们在调用函数时，难免会存在忘记传实参的情况。一旦忘记传实参，就有可能对我们函数内部的代码造成影响。所以，一般情况下，为了避免因为忘记传参而造成的代码运行错误，我们都会给形参一个默认值。这样，当我们没有传实参的时候，形参可以采用默认值。</p>
+<p>在 ES6 之前，没有专门设置形参默认值的语法。而现在在 ES6 中，它已经自己提供了一个设置默认参数的功能。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">形参 = 默认值</span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">name = <span class="string">"HanMeiMei"</span></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);    </div><div class="line">&#125;</div><div class="line">foo();              <span class="comment">// hello HanMeiMei</span></div><div class="line">foo(<span class="string">"LiZiMing"</span>);    <span class="comment">// hello LiZiMing</span></div></pre></td></tr></table></figure>
+<h3 id="参数的应用场景"><a href="#参数的应用场景" class="headerlink" title="参数的应用场景"></a>参数的应用场景</h3><p>函数的参数并不是必须的，那到底什么时候需要使用参数？</p>
+<p>我们知道，封装函数的目的就是为了避免书写大量重复的代码。例如，我们要书写三个人的自我介绍的功能。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我的名字叫韩梅梅"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"性别女"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"今年20岁"</span>);</div><div class="line">&#125;</div><div class="line">introduce1();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我的名字叫马冬梅"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"性别女"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"今年30岁"</span>);</div><div class="line">&#125;</div><div class="line">introduce2();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce3</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我的名字叫李子明"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"性别男"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"今年18岁"</span>);</div><div class="line">&#125;</div><div class="line">introduce3();</div></pre></td></tr></table></figure>
+<p>在这三个方法中，存在大量重复的代码，按理说可以直接封装成一个函数。但是如果封装成一个函数，里面的姓名、年龄、性别又是不一样的，那这个时候怎么办？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">introduce</span>(<span class="params">name, gender, age</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"你好"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我的名字叫"</span> + name);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"性别"</span> + gender);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"今年"</span> + age + <span class="string">"岁"</span>);</div><div class="line">&#125;</div><div class="line">introduce(<span class="string">"韩梅梅"</span>, <span class="string">"女"</span>, <span class="number">20</span>);</div><div class="line">introduce(<span class="string">"马冬梅"</span>, <span class="string">"女"</span>, <span class="number">30</span>);</div><div class="line">introduce(<span class="string">"李子明"</span>, <span class="string">"男"</span>, <span class="number">18</span>);</div></pre></td></tr></table></figure>
+<p>函数的参数就能很好的解决这个问题。所以，当封装好的重复代码中，有小部分内容是不重复的，那么就把这小部分作为函数的参数，通过调用函数时传入不同的实参来实现这小部分代码的不重复。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+            <category> 函数 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 参数 </tag>
+            
+            <tag> 返回值 </tag>
+            
+            <tag> return </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[数组的基础语法]]></title>
       <url>/2018/04/10/basicArray/</url>
       <content type="html"><![CDATA[<p>数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。</p>
