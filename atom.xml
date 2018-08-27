@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-27T01:56:27.332Z</updated>
+  <updated>2018-08-27T01:57:37.684Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2018/04/20/basicFunction/"/>
     <id>http://yoursite.com/2018/04/20/basicFunction/</id>
     <published>2018-04-20T07:49:19.000Z</published>
-    <updated>2018-08-27T01:56:27.332Z</updated>
+    <updated>2018-08-27T01:57:37.684Z</updated>
     
     <content type="html"><![CDATA[<p>函数是 JavaScript 中一个非常重要的概念。里面涉及到的知识点也比较多，这里我们先讲一下函数的一些基本用法。</p>
+<a id="more"></a>
 <h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>JavaScript 中创建函数的方式分为三种：</p>
 <ul>
 <li>声明式函数</li>
@@ -107,7 +108,6 @@
     <summary type="html">
     
       &lt;p&gt;函数是 JavaScript 中一个非常重要的概念。里面涉及到的知识点也比较多，这里我们先讲一下函数的一些基本用法。&lt;/p&gt;
-&lt;h2 id=&quot;函数的定义&quot;&gt;&lt;a href=&quot;#函数的定义&quot; class=&quot;headerlink&quot; title=&quot;函数的定义&quot;&gt;&lt;/a&gt;函数的定义
     
     </summary>
     

@@ -6,6 +6,7 @@
       <title><![CDATA[函数的基础语法]]></title>
       <url>/2018/04/20/basicFunction/</url>
       <content type="html"><![CDATA[<p>函数是 JavaScript 中一个非常重要的概念。里面涉及到的知识点也比较多，这里我们先讲一下函数的一些基本用法。</p>
+<a id="more"></a>
 <h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>JavaScript 中创建函数的方式分为三种：</p>
 <ul>
 <li>声明式函数</li>
