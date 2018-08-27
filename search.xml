@@ -116,10 +116,8 @@
 <a id="more"></a>
 <h2 id="增删数据"><a href="#增删数据" class="headerlink" title="增删数据"></a>增删数据</h2><h3 id="数组末尾增删数据"><a href="#数组末尾增删数据" class="headerlink" title="数组末尾增删数据"></a>数组末尾增删数据</h3><p>JavaScript 中提供了一组方法，用于对数组末尾的数据进行增加或删除。</p>
 <ul>
-<li><p>push：向数组末尾增加<strong>多条</strong>数据；</p>
-</li>
-<li><p>pop：删除数组末尾的<strong>一条</strong>数据；</p>
-</li>
+<li>push：向数组末尾增加<strong>多条</strong>数据；</li>
+<li>pop：删除数组末尾的<strong>一条</strong>数据；</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</div><div class="line">ary.push(<span class="number">400</span>, <span class="number">500</span>, <span class="number">600</span>);</div><div class="line"><span class="built_in">console</span>.log(ary);   <span class="comment">//  [100, 200, 300, 400, 500, 600]</span></div><div class="line">ary.pop();</div><div class="line"><span class="built_in">console</span>.log(ary);   <span class="comment">//  [100, 200, 300, 400, 500]</span></div></pre></td></tr></table></figure>
 <h3 id="数组开头增删数据"><a href="#数组开头增删数据" class="headerlink" title="数组开头增删数据"></a>数组开头增删数据</h3><p>JavaScript 中提供了一组方法，用于对数组开头的数据进行增加或删除。</p>
@@ -170,10 +168,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="number">300</span>, <span class="number">200</span>, <span class="number">500</span>, <span class="number">400</span>];</div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(ary);    <span class="comment">// [ 100, 200, 300, 400, 500 ]</span></div><div class="line"></div><div class="line">ary.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> b - a;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(ary);    <span class="comment">// [ 500, 400, 300, 200, 100 ]</span></div></pre></td></tr></table></figure>
 <h2 id="数组和字符串转换"><a href="#数组和字符串转换" class="headerlink" title="数组和字符串转换"></a>数组和字符串转换</h2><p>JavaScript 中提供了一组方法用户数组和字符串之间的相互转换。</p>
 <ul>
-<li><p>join：数组拼接成字符串</p>
-</li>
-<li><p>split：字符串分割成数组（这是字符串的方法）</p>
-</li>
+<li>join：数组拼接成字符串</li>
+<li>split：字符串分割成数组（这是字符串的方法）</li>
 </ul>
 <p>语法结构如下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">数组名.join(拼接符);</div><div class="line">字符串名.split(分割符);</div></pre></td></tr></table></figure>
