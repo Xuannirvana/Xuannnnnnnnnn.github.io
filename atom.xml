@@ -1095,14 +1095,14 @@
   </entry>
   
   <entry>
-    <title>变量和常量</title>
+    <title>变量</title>
     <link href="http://yoursite.com/2018/02/10/variable/"/>
     <id>http://yoursite.com/2018/02/10/variable/</id>
     <published>2018-02-10T02:00:00.000Z</published>
-    <updated>2018-08-21T02:28:42.081Z</updated>
+    <updated>2018-08-28T08:26:46.443Z</updated>
     
     <content type="html"><![CDATA[<p>任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。不管是日常的代码练习还是实际的项目开发，都会涉及到数据的操作（例如：数据的增删改查）。为了能够更方便的去操作数据，开发者们对数据进行了命名保存，即把需要操作的数据保存在一个有名字的容器中。</p>
-<p>在 JavaScript 中，变量和常量就可以看做是“有名字的保存数据的容器”。</p>
+<p>在 JavaScript 中，变量就可以看做是“有名字的保存数据的容器”。</p>
 <a id="more"></a>
 <h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><p>想要保存数据，首先需要将容器创建出来。我们将创建容器的过程称之为“变量的声明”。</p>
 <p>变量的声明方式总共分为两种：</p>
@@ -1132,8 +1132,33 @@
 <h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>我们可以先创建容器，再保存数据。也可以在创建容器的同时就将数据保存进去。即声明变量的同时就对变量进行赋值，我们将这个声明和赋值同时进行的过程称之为“变量的初始化”。</p>
 <p>我们将上面两个例子改写成变量初始化的代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</div><div class="line"><span class="keyword">let</span> username = <span class="string">'John'</span>;</div></pre></td></tr></table></figure>
-<h2 id="常量的初始化"><a href="#常量的初始化" class="headerlink" title="常量的初始化"></a>常量的初始化</h2><p>保存数据的容器除了变量之外还有常量。在 ES6 出来之前，并没有专门声明常量的方式。ES6 中才新增了关键字<code>const</code>用来声明常量。</p>
-<p>常量的使用要求在声明的同时必须赋值，否则程序会报错。</p>
+<h2 id="let-和-var-的区别"><a href="#let-和-var-的区别" class="headerlink" title="let 和 var 的区别"></a>let 和 var 的区别</h2><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>“作用域”是指变量的作用范围。也就是说，变量只在声明时所在范围内有效。</p>
+<blockquote>
+<ul>
+<li>var 声明的变量，作用域通过函数来划分。</li>
+<li>let 声明的变量，作用域通过大括号来划分。</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;    <span class="comment">// a 的作用范围在函数内部</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a);   <span class="comment">// 报错</span></div><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> b = <span class="number">3</span>;    <span class="comment">// b 的作用范围是全局（大括号并不能限制 var 的范围）</span></div><div class="line">    <span class="keyword">let</span> c = <span class="number">2</span>;    <span class="comment">// c 的作用范围在大括号内部</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(b);    <span class="comment">// 3</span></div><div class="line"><span class="built_in">console</span>.log(c);    <span class="comment">// 报错</span></div></pre></td></tr></table></figure>
+<h3 id="重复声明"><a href="#重复声明" class="headerlink" title="重复声明"></a>重复声明</h3><p>“重复声明”是指在同一个作用域内，对同一个变量名进行多次声明。</p>
+<blockquote>
+<ul>
+<li>var 语法上允许重复声明，但后面的变量会覆盖掉前面。</li>
+<li>let 语法上不允许重复声明。</li>
+</ul>
+</blockquote>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">100</span>;</div><div class="line"><span class="keyword">var</span> num = <span class="number">200</span>;</div><div class="line"><span class="built_in">console</span>.log(num);   <span class="comment">// 200</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> num = <span class="number">300</span>;      <span class="comment">// 程序报错</span></div></pre></td></tr></table></figure>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>“变量提升”是指在代码运行之前，会有一个预解析的过程。在这个过程中，会将所有<code>var</code>的变量声明提升到代码头部（变量赋值留在原位置）。</p>
+<blockquote>
+<ul>
+<li>var 声明的变量会发生“变量提升”。</li>
+<li>let 声明的变量不会发生“变量提升”。</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(a);     <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(b);     <span class="comment">// 报错</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> b = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>除了可以用<code>var</code>和<code>let</code>来保存数据以外，ES6 中还新增了一种方式<code>const</code>，用来保存不可变的数据，我们将其称之为“常量”。</p>
+<p>声明常量的方式只有一种，就是通过关键字<code>const</code>。常量的使用要求在声明的同时必须赋值，否则程序会报错。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 错误语法</span></div><div class="line"><span class="keyword">const</span> num;</div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">// 正确语法</span></div><div class="line"><span class="keyword">const</span> num = <span class="number">10</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p> 注意：常量一旦被初始化，值就不能被改变。常量的使用只能进行读取操作。</p>
@@ -1144,7 +1169,7 @@
     <summary type="html">
     
       &lt;p&gt;任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。不管是日常的代码练习还是实际的项目开发，都会涉及到数据的操作（例如：数据的增删改查）。为了能够更方便的去操作数据，开发者们对数据进行了命名保存，即把需要操作的数据保存在一个有名字的容器中。&lt;/p&gt;
-&lt;p&gt;在 JavaScript 中，变量和常量就可以看做是“有名字的保存数据的容器”。&lt;/p&gt;
+&lt;p&gt;在 JavaScript 中，变量就可以看做是“有名字的保存数据的容器”。&lt;/p&gt;
     
     </summary>
     
@@ -1375,7 +1400,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    <span class="attr">owner</span>: <span class="string">'Your GitHub username'</span>,</div><div class="line">    <span class="attr">repo</span>: <span class="string">'The repo to store comments'</span>,</div><div class="line">    <span class="attr">oauth</span>: &#123;</div><div class="line">        <span class="attr">client_id</span>: <span class="string">'Your client ID'</span>,</div><div class="line">        <span class="attr">client_secret</span>: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
