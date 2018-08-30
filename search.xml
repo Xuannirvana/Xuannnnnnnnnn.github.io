@@ -3,8 +3,49 @@
   
     
     <entry>
+      <title><![CDATA[箭头函数]]></title>
+      <url>/2018/04/21/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+      <content type="html"><![CDATA[<p>箭头函数（Arrow Function），指的是从 ES6 开始新增加的一种声明函数的方式。之所以叫做箭头函数，是因为它的定义用一个箭头<code>=&gt;</code>取代了<code>function</code>关键字。</p>
+<h2 id="箭头函数的声明"><a href="#箭头函数的声明" class="headerlink" title="箭头函数的声明"></a>箭头函数的声明</h2><p>箭头函数的声明，其实就是将“函数表达式”中的关键字<code>function</code>换成了<code>=&gt;</code>。语法结构如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">	<span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello arrow function"</span>);</div><div class="line">&#125;</div><div class="line">foo();   <span class="comment">// hello arrow function</span></div></pre></td></tr></table></figure>
+<h2 id="箭头函数的简写"><a href="#箭头函数的简写" class="headerlink" title="箭头函数的简写"></a>箭头函数的简写</h2><p>上面所介绍的，是箭头函数的基本结构写法。实际上箭头函数根据形参数量和函数体的不同，可以进一步的简化结构。如下：</p>
+<ul>
+<li><p>当箭头函数只有一个形参时，小括号<code>()</code>可以省略。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fn = <span class="function"><span class="params">a</span> =&gt;</span> &#123;</div><div class="line">	<span class="built_in">console</span>.log( a );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当函数体内部只有一条<code>return</code>语句时，大括号<code>{}</code>和<code>return</code>关键字都可以省略。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fn = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a * b;</div><div class="line"></div><div class="line"><span class="comment">// 等同于</span></div><div class="line"><span class="keyword">let</span> fn = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</div><div class="line">	<span class="keyword">return</span> a * b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="箭头函数的-this"><a href="#箭头函数的-this" class="headerlink" title="箭头函数的 this"></a>箭头函数的 this</h2><p>ES6 中的箭头函数跟普通函数除了写法上有所不同以外，还有一个最大的区别 —— this。</p>
+<p>箭头函数是没有自己的 this 的。因此在箭头函数中访问 this 时，实际是访问的继承于父级的 this。</p>
+<blockquote>
+<p>箭头函数的父级，指的是函数定义时所在的执行上下文。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">let</span> bar = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">        bar();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">obj.foo();</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+            <category> 函数 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 箭头函数 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[函数的基础语法]]></title>
-      <url>/2018/04/20/basicFunction/</url>
+      <url>/2018/04/20/%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>函数是 JavaScript 中一个非常重要的概念。里面涉及到的知识点也比较多，这里我们先讲一下函数的一些基本用法。</p>
 <a id="more"></a>
 <h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><p>JavaScript 中创建函数的方式分为三种：</p>
@@ -111,7 +152,7 @@
     
     <entry>
       <title><![CDATA[数组的常用方法]]></title>
-      <url>/2018/04/13/arrayFunction/</url>
+      <url>/2018/04/13/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>数组作为一个引用数据类型的对象，包含了很多用于操作数组的方法。这里主要介绍一些比较常用的方法。</p>
 <a id="more"></a>
 <h2 id="增删数据"><a href="#增删数据" class="headerlink" title="增删数据"></a>增删数据</h2><h3 id="数组末尾增删数据"><a href="#数组末尾增删数据" class="headerlink" title="数组末尾增删数据"></a>数组末尾增删数据</h3><p>JavaScript 中提供了一组方法，用于对数组末尾的数据进行增加或删除。</p>
@@ -241,7 +282,7 @@
     
     <entry>
       <title><![CDATA[数组的基础语法]]></title>
-      <url>/2018/04/10/basicArray/</url>
+      <url>/2018/04/10/%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>数组对于每一门编程语言来说都是重要的数据结构之一，当然不同语言对数组的实现及处理也不尽相同。</p>
 <blockquote>
 <p> JavaScript 中的数组是一个可以储存多个任意类型数据的有序集合。</p>
@@ -332,7 +373,7 @@
     
     <entry>
       <title><![CDATA[循环语句]]></title>
-      <url>/2018/03/17/loopStatements/</url>
+      <url>/2018/03/17/%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/</url>
       <content type="html"><![CDATA[<p>前面提到流程控制语句主要分为顺序执行、选择执行和循环执行。</p>
 <p>循环语句，就是用来实现”循环执行“的代码执行顺序。</p>
 <a id="more"></a>
@@ -497,7 +538,7 @@
     
     <entry>
       <title><![CDATA[条件语句]]></title>
-      <url>/2018/03/16/conditionalStatements/</url>
+      <url>/2018/03/16/%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5/</url>
       <content type="html"><![CDATA[<p>所谓流程控制，就是指对于流程的执行顺序进行控制。默认情况下，JavaScript 引擎会按照代码的编写顺序，从上往下依次执行代码语句。这种情况一般称之为“顺序执行”。</p>
 <p>但不是所有的程序都只靠顺序执行就能够完成的，所以除了顺序执行之外，还需要掌握其他的一些代码执行流程。</p>
 <a id="more"></a>
@@ -621,8 +662,127 @@
     </entry>
     
     <entry>
+      <title><![CDATA[数据类型转换]]></title>
+      <url>/2018/02/24/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+      <content type="html"><![CDATA[<p>JavaScript 是一种动态数据类型语言。变量是没有类型的，可以随机被赋予任意类型的值。而数据本身和各种运算是有类型的，例如在做数学运算时我们就需要数据是 number 类型，但有时候实际参与数学运算的数据并不全是 number 类型，因此在进行某些运算时数据是需要转换类型的。大多数情况下，这种数据类型转换是自动的，但是有时也需要手动强制转换。</p>
+<a id="more"></a>
+<h2 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h2><p>显示转换，即通过调用一些函数方法进行强制转换。JavaScript 提供了以下几种转型函数：</p>
+<ul>
+<li>转换为数值类型：<code>parseInt()</code>、<code>parseFloat()</code>、<code>Number()</code></li>
+<li>转换为字符串类型：<code>toString()</code>、<code>String()</code></li>
+<li>转换为布尔值类型：<code>Boolean()</code></li>
+</ul>
+<h3 id="转换为数值类型"><a href="#转换为数值类型" class="headerlink" title="转换为数值类型"></a>转换为数值类型</h3><p><strong><code>parseInt()</code></strong></p>
+<p>该方法用于解析一个字符串，并返回一个 number 类型的整数。解析规则如下：</p>
+<ol>
+<li>忽略字符串前面的空格，直至找到第一个非空字符；</li>
+<li>如果第一个字符是 0，则忽略；</li>
+<li>如果第一个字符不是数字或者正负号，返回<code>NaN</code>；</li>
+<li>如果第一个字符是数字，则继续解析直到字符串解析完毕或者遇到一个非数字字符为止；</li>
+<li>如果是以 0x 开头，则将其当作十六进制来解析；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">'12345px'</span>);          <span class="comment">// 12345</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'hello parseInt'</span>);   <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">''</span>);                 <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// 11</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="number">123.3</span>);              <span class="comment">// 123</span></div></pre></td></tr></table></figure>
+<p><strong><code>parseFloat()</code></strong></p>
+<p>该方法用于解析一个字符串，并返回一个 number 类型的浮点数（小数）。解析规则与<code>parseInt()</code>基本相同，但也有点区别：</p>
+<ol>
+<li>解析到的第一个小数点<code>.</code>符号是有效的；</li>
+<li>如果字符串包含一个可解析为整数的数，则返回整数值而不是浮点数值；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'12345px'</span>);          <span class="comment">// 12345</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'hello parseInt'</span>);   <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">''</span>);                 <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// 11.22</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="number">123.3</span>);              <span class="comment">// 123.2</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>parseInt()</code>和<code>parseFloat()</code>的解析规则可以简单的理解为：从左往右依次解析，结果保留前面合法的，裁剪去后面不合法的。如果第一个就不合法，结果则为<code>NaN</code>。</p>
+</blockquote>
+<p><strong><code>Number()</code></strong></p>
+<p>该方法用于解析任意类型数据，并返回一个有效的 number 类型的值。解析规则如下：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>解析规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布尔值</td>
+<td>1. <code>true</code>转换为 1<br>2. <code>false</code>转换为 0</td>
+</tr>
+<tr>
+<td>null</td>
+<td>转换为 0</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>转换为<code>NaN</code></td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>1. 空字符串<code>&quot;&quot;</code>转换为 0<br>2. 如果引号内整体为一个有效数字，则转换为对应的数字<br>3. 其他情况都转换为<code>NaN</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>(<span class="string">'12345px'</span>);          <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'hello Number'</span>);     <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">''</span>);                 <span class="comment">// 0</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="number">123.3</span>);              <span class="comment">// 123.2</span></div></pre></td></tr></table></figure>
+<h3 id="转换为字符串类型"><a href="#转换为字符串类型" class="headerlink" title="转换为字符串类型"></a>转换为字符串类型</h3><p><strong><code>toString()</code></strong></p>
+<p>该方法用于解析除了 undefined 和 null 以外的任意类型数据，并返回一个 string 类型的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data = <span class="literal">true</span>;</div><div class="line">data.toString();      <span class="comment">// 'true'</span></div></pre></td></tr></table></figure>
+<p><strong><code>String()</code></strong></p>
+<p>该方法用于解析任意类型数据，并返回一个 string 类型的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data = <span class="literal">null</span>;</div><div class="line"><span class="built_in">String</span>(data);      <span class="comment">// 'null'</span></div></pre></td></tr></table></figure>
+<h3 id="转换为布尔值类型"><a href="#转换为布尔值类型" class="headerlink" title="转换为布尔值类型"></a>转换为布尔值类型</h3><p><strong><code>Boolean()</code></strong></p>
+<p>该方法用于解析任意类型数据，并返回一个 boolean 类型的值。解析规则如下：</p>
+<ul>
+<li><code>false</code></li>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li><code>0</code></li>
+<li><code>NaN</code></li>
+<li><code>&quot;&quot;</code></li>
+</ul>
+<p>除了以上六种数据转换结果为<code>false</code>外，其他所有数据转换结果都为<code>true</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>);    <span class="comment">// false</span></div><div class="line"><span class="built_in">Boolean</span>(<span class="number">1</span>);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>在 JavaScript 中很多操作都会存在数据自动转换的情况。即当参与操作的数据并不是预期的类型时，程序会对数据进行隐式转换。</p>
+<blockquote>
+<p>注意：隐式转换是得到一个转换后的新数据，不会改变原数据。</p>
+</blockquote>
+<p>以下列举几种常见的隐式转换的情况：</p>
+<h3 id="转换为数字类型"><a href="#转换为数字类型" class="headerlink" title="转换为数字类型"></a>转换为数字类型</h3><p><strong>进行算术运算</strong></p>
+<p>当对数据进行数学运算操作（加减乘除等）时，如果参与运算的数据不是 number 类型，则会将数据<strong>隐式的调用<code>Number()</code>方法</strong>转为数字后再进行运算。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data1 = <span class="literal">null</span>;</div><div class="line"><span class="keyword">let</span> data2 = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> - data2);      <span class="comment">// 9</span></div><div class="line"><span class="built_in">console</span>.log(data1 + data2);   <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(data2 * <span class="number">10</span>);      <span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.log(--data1);         <span class="comment">// -1</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小技巧：给任意数据减去数字 0，可快速将当前数据转为 number 类型。</p>
+</blockquote>
+<p><strong>进行大小比较</strong></p>
+<p>当对数据进行大小比较时（大于小于等于等）时，如果参与比较的数据不能直接进行比较，则会将数据<strong>隐式的调用<code>Number</code></strong>转为数字后再进行比较。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">123</span> &gt; <span class="string">'13'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> &lt; <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><strong><code>isNaN()</code></strong></p>
+<p><code>isNaN()</code>方法用于判断数据是否为“非数字”。但是在判断前会先将数据<strong>隐式的调用<code>Number()</code>方法</strong>转为数字后再进行判断。如果转换后的数据为“非数字”，则返回结果<code>true</code>，反之则<code>false</code>。 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'123'</span>));        <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'123px'</span>));      <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">undefined</span>));    <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">false</span>));        <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">null</span>));         <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h3 id="转换为字符串类型-1"><a href="#转换为字符串类型-1" class="headerlink" title="转换为字符串类型"></a>转换为字符串类型</h3><p>加号<code>+</code>除了用于数学加法运算外，还可以进行字符串的拼接。因此，当参与<code>+</code>操作的数据中存在一个 string 类型的值时，其他数据都会<strong>隐式的调用<code>String()</code>方法</strong>转换为字符串后进行拼接。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'2'</span>);       <span class="comment">// '12'</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'10'</span> + <span class="literal">true</span>);   <span class="comment">// '10true'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>小技巧：给任意数据拼接一个空字符串，可快速将当前数据转为 string 类型且不改变数据值。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> + <span class="string">''</span>);     <span class="comment">// '10'</span></div></pre></td></tr></table></figure>
+<h3 id="转换为布尔值类型-1"><a href="#转换为布尔值类型-1" class="headerlink" title="转换为布尔值类型"></a>转换为布尔值类型</h3><p>当进行逻辑判断时，如果参与判断的数据不是布尔值类型，则会<strong>隐式的调用<code>Boolean()</code>方法</strong>转换为布尔值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &amp;&amp; <span class="number">0</span>);   <span class="comment">// 0</span></div><div class="line"><span class="keyword">if</span>(<span class="string">''</span>)&#123;   </div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'hello'</span>);   <span class="comment">// 不会执行</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 数据类型转换 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[运算符]]></title>
-      <url>/2018/03/02/operator/</url>
+      <url>/2018/02/20/%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
       <content type="html"><![CDATA[<p>JavaScript 中提供了大量的运算符用于数据的操作。</p>
 <a id="more"></a>
 <h2 id="字符串拼接运算符"><a href="#字符串拼接运算符" class="headerlink" title="字符串拼接运算符"></a>字符串拼接运算符</h2><p>字符串拼接运算符用于 string（字符串）类型数据的合并。</p>
@@ -840,127 +1000,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[数据类型转换]]></title>
-      <url>/2018/02/24/changeDataType/</url>
-      <content type="html"><![CDATA[<p>JavaScript 是一种动态数据类型语言。变量是没有类型的，可以随机被赋予任意类型的值。而数据本身和各种运算是有类型的，例如在做数学运算时我们就需要数据是 number 类型，但有时候实际参与数学运算的数据并不全是 number 类型，因此在进行某些运算时数据是需要转换类型的。大多数情况下，这种数据类型转换是自动的，但是有时也需要手动强制转换。</p>
-<a id="more"></a>
-<h2 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h2><p>显示转换，即通过调用一些函数方法进行强制转换。JavaScript 提供了以下几种转型函数：</p>
-<ul>
-<li>转换为数值类型：<code>parseInt()</code>、<code>parseFloat()</code>、<code>Number()</code></li>
-<li>转换为字符串类型：<code>toString()</code>、<code>String()</code></li>
-<li>转换为布尔值类型：<code>Boolean()</code></li>
-</ul>
-<h3 id="转换为数值类型"><a href="#转换为数值类型" class="headerlink" title="转换为数值类型"></a>转换为数值类型</h3><p><strong><code>parseInt()</code></strong></p>
-<p>该方法用于解析一个字符串，并返回一个 number 类型的整数。解析规则如下：</p>
-<ol>
-<li>忽略字符串前面的空格，直至找到第一个非空字符；</li>
-<li>如果第一个字符是 0，则忽略；</li>
-<li>如果第一个字符不是数字或者正负号，返回<code>NaN</code>；</li>
-<li>如果第一个字符是数字，则继续解析直到字符串解析完毕或者遇到一个非数字字符为止；</li>
-<li>如果是以 0x 开头，则将其当作十六进制来解析；</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">'12345px'</span>);          <span class="comment">// 12345</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'hello parseInt'</span>);   <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">''</span>);                 <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// 11</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="number">123.3</span>);              <span class="comment">// 123</span></div></pre></td></tr></table></figure>
-<p><strong><code>parseFloat()</code></strong></p>
-<p>该方法用于解析一个字符串，并返回一个 number 类型的浮点数（小数）。解析规则与<code>parseInt()</code>基本相同，但也有点区别：</p>
-<ol>
-<li>解析到的第一个小数点<code>.</code>符号是有效的；</li>
-<li>如果字符串包含一个可解析为整数的数，则返回整数值而不是浮点数值；</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'12345px'</span>);          <span class="comment">// 12345</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'hello parseInt'</span>);   <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">''</span>);                 <span class="comment">// NaN</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// 11.22</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="number">123.3</span>);              <span class="comment">// 123.2</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p><code>parseInt()</code>和<code>parseFloat()</code>的解析规则可以简单的理解为：从左往右依次解析，结果保留前面合法的，裁剪去后面不合法的。如果第一个就不合法，结果则为<code>NaN</code>。</p>
-</blockquote>
-<p><strong><code>Number()</code></strong></p>
-<p>该方法用于解析任意类型数据，并返回一个有效的 number 类型的值。解析规则如下：</p>
-<table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>解析规则</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>布尔值</td>
-<td>1. <code>true</code>转换为 1<br>2. <code>false</code>转换为 0</td>
-</tr>
-<tr>
-<td>null</td>
-<td>转换为 0</td>
-</tr>
-<tr>
-<td>undefined</td>
-<td>转换为<code>NaN</code></td>
-</tr>
-<tr>
-<td>字符串</td>
-<td>1. 空字符串<code>&quot;&quot;</code>转换为 0<br>2. 如果引号内整体为一个有效数字，则转换为对应的数字<br>3. 其他情况都转换为<code>NaN</code></td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Number</span>(<span class="string">'12345px'</span>);          <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'hello Number'</span>);     <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">''</span>);                 <span class="comment">// 0</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'020'</span>);              <span class="comment">// 20</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'11.22.33'</span>);         <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="number">123.3</span>);              <span class="comment">// 123.2</span></div></pre></td></tr></table></figure>
-<h3 id="转换为字符串类型"><a href="#转换为字符串类型" class="headerlink" title="转换为字符串类型"></a>转换为字符串类型</h3><p><strong><code>toString()</code></strong></p>
-<p>该方法用于解析除了 undefined 和 null 以外的任意类型数据，并返回一个 string 类型的值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data = <span class="literal">true</span>;</div><div class="line">data.toString();      <span class="comment">// 'true'</span></div></pre></td></tr></table></figure>
-<p><strong><code>String()</code></strong></p>
-<p>该方法用于解析任意类型数据，并返回一个 string 类型的值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data = <span class="literal">null</span>;</div><div class="line"><span class="built_in">String</span>(data);      <span class="comment">// 'null'</span></div></pre></td></tr></table></figure>
-<h3 id="转换为布尔值类型"><a href="#转换为布尔值类型" class="headerlink" title="转换为布尔值类型"></a>转换为布尔值类型</h3><p><strong><code>Boolean()</code></strong></p>
-<p>该方法用于解析任意类型数据，并返回一个 boolean 类型的值。解析规则如下：</p>
-<ul>
-<li><code>false</code></li>
-<li><code>null</code></li>
-<li><code>undefined</code></li>
-<li><code>0</code></li>
-<li><code>NaN</code></li>
-<li><code>&quot;&quot;</code></li>
-</ul>
-<p>除了以上六种数据转换结果为<code>false</code>外，其他所有数据转换结果都为<code>true</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Boolean</span>(<span class="number">0</span>);    <span class="comment">// false</span></div><div class="line"><span class="built_in">Boolean</span>(<span class="number">1</span>);    <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>在 JavaScript 中很多操作都会存在数据自动转换的情况。即当参与操作的数据并不是预期的类型时，程序会对数据进行隐式转换。</p>
-<blockquote>
-<p>注意：隐式转换是得到一个转换后的新数据，不会改变原数据。</p>
-</blockquote>
-<p>以下列举几种常见的隐式转换的情况：</p>
-<h3 id="转换为数字类型"><a href="#转换为数字类型" class="headerlink" title="转换为数字类型"></a>转换为数字类型</h3><p><strong>进行算术运算</strong></p>
-<p>当对数据进行数学运算操作（加减乘除等）时，如果参与运算的数据不是 number 类型，则会将数据<strong>隐式的调用<code>Number()</code>方法</strong>转为数字后再进行运算。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data1 = <span class="literal">null</span>;</div><div class="line"><span class="keyword">let</span> data2 = <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> - data2);      <span class="comment">// 9</span></div><div class="line"><span class="built_in">console</span>.log(data1 + data2);   <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(data2 * <span class="number">10</span>);      <span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.log(--data1);         <span class="comment">// -1</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>小技巧：给任意数据减去数字 0，可快速将当前数据转为 number 类型。</p>
-</blockquote>
-<p><strong>进行大小比较</strong></p>
-<p>当对数据进行大小比较时（大于小于等于等）时，如果参与比较的数据不能直接进行比较，则会将数据<strong>隐式的调用<code>Number</code></strong>转为数字后再进行比较。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">1</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">true</span> == <span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">123</span> &gt; <span class="string">'13'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="literal">null</span> &lt; <span class="literal">true</span>);</div></pre></td></tr></table></figure>
-<p><strong><code>isNaN()</code></strong></p>
-<p><code>isNaN()</code>方法用于判断数据是否为“非数字”。但是在判断前会先将数据<strong>隐式的调用<code>Number()</code>方法</strong>转为数字后再进行判断。如果转换后的数据为“非数字”，则返回结果<code>true</code>，反之则<code>false</code>。 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'123'</span>));        <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="string">'123px'</span>));      <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">undefined</span>));    <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">false</span>));        <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(<span class="literal">null</span>));         <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<h3 id="转换为字符串类型-1"><a href="#转换为字符串类型-1" class="headerlink" title="转换为字符串类型"></a>转换为字符串类型</h3><p>加号<code>+</code>除了用于数学加法运算外，还可以进行字符串的拼接。因此，当参与<code>+</code>操作的数据中存在一个 string 类型的值时，其他数据都会<strong>隐式的调用<code>String()</code>方法</strong>转换为字符串后进行拼接。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span> + <span class="string">'2'</span>);       <span class="comment">// '12'</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'10'</span> + <span class="literal">true</span>);   <span class="comment">// '10true'</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>小技巧：给任意数据拼接一个空字符串，可快速将当前数据转为 string 类型且不改变数据值。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> + <span class="string">''</span>);     <span class="comment">// '10'</span></div></pre></td></tr></table></figure>
-<h3 id="转换为布尔值类型-1"><a href="#转换为布尔值类型-1" class="headerlink" title="转换为布尔值类型"></a>转换为布尔值类型</h3><p>当进行逻辑判断时，如果参与判断的数据不是布尔值类型，则会<strong>隐式的调用<code>Boolean()</code>方法</strong>转换为布尔值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &amp;&amp; <span class="number">0</span>);   <span class="comment">// 0</span></div><div class="line"><span class="keyword">if</span>(<span class="string">''</span>)&#123;   </div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'hello'</span>);   <span class="comment">// 不会执行</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-      
-        <categories>
-            
-            <category> JavaScript </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 数据类型转换 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[数据类型]]></title>
-      <url>/2018/02/12/dataType/</url>
+      <url>/2018/02/12/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
       <content type="html"><![CDATA[<p>在<a href="https://runjaelyn.github.io/2018/01/10/variable/" target="_blank" rel="external">《变量和常量》</a>一章中我们知道，开发者为了能够更方便的操作数据，会将数据进行命名保存。但是，仅仅是对每一条数据进行命名保存是不够的。因为在开发过程中，往往会涉及到大量的数据，任何东西一旦数量多了之后就会变得难以管理。所以，除了对数据进行命名保存外，开发者们还对所有的数据都进行了分类，让程序中用到的任何一条数据都是属于某一类数据类型的。</p>
 <a id="more"></a>
 <h2 id="数据类型的分类"><a href="#数据类型的分类" class="headerlink" title="数据类型的分类"></a>数据类型的分类</h2><p>截止到 ES6 为止，JavaScript 将所有的数据划分为了 7 种不同的数据类型。其中 6 种属于简单数据类型，1 种属于复杂数据类型。</p>
@@ -1062,7 +1103,7 @@
     
     <entry>
       <title><![CDATA[变量]]></title>
-      <url>/2018/02/10/variable/</url>
+      <url>/2018/02/10/%E5%8F%98%E9%87%8F/</url>
       <content type="html"><![CDATA[<p>任何程序的运行的都离不开数据。同理，任何程序的开发也离不开数据。不管是日常的代码练习还是实际的项目开发，都会涉及到数据的操作（例如：数据的增删改查）。为了能够更方便的去操作数据，开发者们对数据进行了命名保存，即把需要操作的数据保存在一个有名字的容器中。</p>
 <p>在 JavaScript 中，变量就可以看做是“有名字的保存数据的容器”。</p>
 <a id="more"></a>
@@ -1149,7 +1190,7 @@
     
     <entry>
       <title><![CDATA[JavaScript 内存空间]]></title>
-      <url>/2018/01/19/memory/</url>
+      <url>/2018/01/19/%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/</url>
       <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>但是对于前端开发来说，内存并不是一个经常被提及的概念，很容易被大家忽视。可如果想要对 JavaScript 的理解更加深刻，就必须对内存有一个清晰的认知。</p>
 <a id="more"></a>
@@ -1268,7 +1309,7 @@
     
     <entry>
       <title><![CDATA[浏览器发展史]]></title>
-      <url>/2018/01/09/browserHistory/</url>
+      <url>/2018/01/09/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%91%E5%B1%95%E5%8F%B2/</url>
       <content type="html"><![CDATA[<p>作为一个前端开发人员，经常与浏览器打交道，了解浏览器的一些相关历史也非常有必要的。</p>
 <a id="more"></a>
 <h2 id="导航者浏览器的诞生"><a href="#导航者浏览器的诞生" class="headerlink" title="导航者浏览器的诞生"></a>导航者浏览器的诞生</h2><p>最早一代的浏览器是什么其实没有人关心，毕竟在历史的长河中没有大作为的都是不重要的。而真正重要的一代浏览器，是网景公司（Netscape Corporation）在 1994 年底发布的 —— （Navigator）导航者浏览器（台湾译为领航员浏览器）1.0 版。</p>
@@ -1346,7 +1387,7 @@
 
 <p>记住自己的 <strong>Client ID</strong> 和 <strong>Client Secret</strong>，后面需要用到。</p>
 <h2 id="在博客中调用-gitment"><a href="#在博客中调用-gitment" class="headerlink" title="在博客中调用 gitment"></a>在博客中调用 gitment</h2><p>上一步中的 <strong>Client ID</strong> 和 <strong>Client Secret</strong> 得到之后，接下来我们需要在自己的博客页面（具体位置看后面解释）中添加如下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"><span class="keyword">var</span> gitment = <span class="keyword">new</span> Gitment(&#123;</div><div class="line">    owner: <span class="string">'Your GitHub username'</span>,</div><div class="line">    repo: <span class="string">'The repo to store comments'</span>,</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: <span class="string">'Your client ID'</span>,</div><div class="line">        client_secret: <span class="string">'Your client secret'</span>,</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render(<span class="string">'gitmentContainer'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitmentContainer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">var gitment = new Gitment(&#123;</div><div class="line">    owner: 'Your GitHub username',</div><div class="line">    repo: 'The repo to store comments',</div><div class="line">    oauth: &#123;</div><div class="line">        client_id: 'Your client ID',</div><div class="line">        client_secret: 'Your client secret',</div><div class="line">    &#125;,</div><div class="line">&#125;);</div><div class="line">gitment.render('gitmentContainer');</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>说明</strong>：以上代码有四个需要修改的地方：</p>
 <ol>
 <li><code>Your GitHub username</code>：填写你的博客所在的 GitHub 账户名；</li>
