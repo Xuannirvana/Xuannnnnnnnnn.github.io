@@ -20,9 +20,9 @@
 </li>
 </ul>
 <h2 id="箭头函数的-this"><a href="#箭头函数的-this" class="headerlink" title="箭头函数的 this"></a>箭头函数的 this</h2><p>ES6 中的箭头函数跟普通函数除了写法上有所不同以外，还有一个最大的区别 —— this。</p>
-<p>箭头函数是没有自己的 this 的。因此在箭头函数中访问 this 时，实际是访问的继承于父级的 this。</p>
+<p>箭头函数是没有自己的 this 的。因此在箭头函数中访问 this 时，实际是访问继承于父级的 this。</p>
 <blockquote>
-<p>箭头函数的父级，指的是函数定义时所在的执行上下文。</p>
+<p>箭头函数的父级，指的是箭头函数定义时所在的执行上下文。</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj = &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">let</span> bar = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">        &#125;</div><div class="line">        bar();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">obj.foo();</div></pre></td></tr></table></figure>]]></content>
       
