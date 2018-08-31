@@ -3,6 +3,89 @@
   
     
     <entry>
+      <title><![CDATA[对象]]></title>
+      <url>/2018/05/10/%E5%AF%B9%E8%B1%A1/</url>
+      <content type="html"><![CDATA[<p>在 JavaScript 中，数据类型一共分为了 7 种。其中包含 6 种简单数据类型：number、string、boolean、null、undefined、symbol，和 1 种复杂数据类型：object。</p>
+<blockquote>
+<p>JavaScript 中的对象是一个可以储存多个任意类型数据的无序集合。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="对象的分类"><a href="#对象的分类" class="headerlink" title="对象的分类"></a>对象的分类</h2><p>虽然复杂数据类型的分类只有一个对象，但是在这一个类型下面，却包含了很多种不同的数据结构。根据这些数据结构的特点，JavaScript 又将它们细分成了不同的几种对象：</p>
+<ul>
+<li>内置对象：由 JavaScript 内部提供的对象。<ul>
+<li>例如：Array、Function、Object…</li>
+</ul>
+</li>
+<li>宿主对象：由代码运行环境提供的对象。<ul>
+<li>例如：浏览器提供的 BOM、DOM。</li>
+</ul>
+</li>
+<li>自定义对象：开发人员自己定义的对象。</li>
+</ul>
+<p>这一章我们主要讲一下自定义对象的基本使用。</p>
+<h2 id="定义对象"><a href="#定义对象" class="headerlink" title="定义对象"></a>定义对象</h2><p>自定义对象的创建方式有两种：</p>
+<ul>
+<li><p>字面量方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>通过以上两种方式都可以创建出一个还未储存数据的空对象。一般情况下，为了方便后面对对象的操作使用，我们将对象创建好后都会赋值给一个变量保存起来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> obj1 = &#123;&#125;;</div><div class="line"><span class="keyword">let</span> obj2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure>
+<h2 id="对象初始化"><a href="#对象初始化" class="headerlink" title="对象初始化"></a>对象初始化</h2><p>对象初始化即在创建对象的同时就将数据添加进去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> student = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"HanMeiMei"</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">18</span>,</div><div class="line">    <span class="attr">gender</span>: <span class="string">"female"</span>,</div><div class="line">    <span class="attr">friends</span>: [<span class="string">"MaDongMei"</span>, <span class="string">"LiZiMing"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每一条数据在对象中的保存格式都是由“属性名:属性值”组成。其中，属性名作为数据的标识符，只能是字符串类型（可以不写引号）；属性值即要储存的数据，可以是任意数据类型。每条数据之间用逗号隔开。</p>
+<h2 id="对象的属性和方法"><a href="#对象的属性和方法" class="headerlink" title="对象的属性和方法"></a>对象的属性和方法</h2><blockquote>
+<ul>
+<li>当对象中某一条数据的值是非函数类型时，我们就将这条数据叫做对象的属性。</li>
+<li>当对象中某一条数据的值是函数类型时，我们就将这条数据叫做对象的方法。</li>
+</ul>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> student = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'HanMeiMei'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">introduce</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is HanMeiMei, I'm 20 years old."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，<code>name</code>和<code>age</code>对应的值都不是函数，因此<code>name</code>和<code>age</code>就是<code>student</code>对象的属性。而<code>introduce</code>对应的值是一个函数，那么<code>introduce</code>就是<code>student</code>对象的方法。</p>
+<h3 id="属性和方法的操作"><a href="#属性和方法的操作" class="headerlink" title="属性和方法的操作"></a>属性和方法的操作</h3><p>JavaScript 中提供了两种方式用来访问对象的属性和方法。</p>
+<ul>
+<li><p><code>.</code>运算符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(student.name);  <span class="comment">// 查看已有的属性</span></div><div class="line">student.gender = <span class="string">"female"</span>;  <span class="comment">// 新增没有的属性</span></div><div class="line">student.age = <span class="number">18</span>;           <span class="comment">// 修改已有的属性</span></div><div class="line">student.introduce();        <span class="comment">// 调用已有的方法</span></div><div class="line"><span class="keyword">delete</span> student.name;        <span class="comment">// 删除已有的属性</span></div><div class="line"><span class="keyword">delete</span> student.introduce;   <span class="comment">// 删除已有的方法</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>[]</code>中括号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(student[<span class="string">"name"</span>]);  <span class="comment">// 查看已有的属性</span></div><div class="line">student[<span class="string">"gender"</span>] = <span class="string">"female"</span>;  <span class="comment">// 新增没有的属性</span></div><div class="line">student[<span class="string">"age"</span>] = <span class="number">18</span>;           <span class="comment">// 修改已有的属性</span></div><div class="line">student[<span class="string">"introduce"</span>]();        <span class="comment">// 调用已有的方法</span></div><div class="line"><span class="keyword">delete</span> student[<span class="string">"name"</span>];        <span class="comment">// 删除已有的属性</span></div><div class="line"><span class="keyword">delete</span> student[<span class="string">"introduce"</span>];   <span class="comment">// 删除已有的方法</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：正常情况下，<code>.</code>点和<code>[]</code>中括号两种操作方式没有区别。但是有一种特殊情况：</p>
+<p>当对象的属性名是一个变量时，就只能通过<code>[]</code>中括号的方式去操作。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> key = <span class="string">"name"</span>;</div><div class="line"><span class="built_in">console</span>.log(student.key);     <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(student[key]);    <span class="comment">// HanMeiMei</span></div></pre></td></tr></table></figure>
+<h2 id="对象的遍历"><a href="#对象的遍历" class="headerlink" title="对象的遍历"></a>对象的遍历</h2><p>JavaScript 提供了 for-in 用来遍历对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> student = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'HanMeiMei'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">introduce</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is HanMeiMei, I'm 20 years old."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> student) &#123;</div><div class="line">    <span class="built_in">console</span>.log(key);   <span class="comment">// name  age  introduce</span></div><div class="line">    <span class="built_in">console</span>.log(student[key]);  <span class="comment">// 'HanMeiMei'  20  function()&#123;...&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="对象方法中的-this"><a href="#对象方法中的-this" class="headerlink" title="对象方法中的 this"></a>对象方法中的 this</h2><p>在对象的方法中可以使用 this 关键字。而这个 this 永远指向<strong>调用</strong>该方法的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123; </div><div class="line">	<span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line">foo.bar();           <span class="comment">// &#123; bar: [Function: bar] &#125;</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+            <category> 对象 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> for-in </tag>
+            
+            <tag> this </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[箭头函数]]></title>
       <url>/2018/04/21/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
       <content type="html"><![CDATA[<p>箭头函数（Arrow Function），指的是从 ES6 开始新增加的一种声明函数的方式。之所以叫做箭头函数，是因为它的定义用一个箭头<code>=&gt;</code>取代了<code>function</code>关键字。</p>
