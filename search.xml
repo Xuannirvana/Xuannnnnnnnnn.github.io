@@ -3,6 +3,55 @@
   
     
     <entry>
+      <title><![CDATA[JSON 对象]]></title>
+      <url>/2018/05/12/JSON/</url>
+      <content type="html"><![CDATA[<p>JSON（JavaScript Object Notation），是道格拉斯·克罗克福特（Douglas Crockford）于 2001 年发明的一种轻量级数据存储格式。易于阅读和编写，同时也易于解析和生成。</p>
+<a id="more"></a>
+<p>JSON 作为 JavaScript 的一个内置对象，同时 ActionScript、C、C#、ColdFusion、E、Java、JavaScript、ML、ObjectiveCAML、Perl、PHP、Python、Rebol、Ruby、Lua 等一系列的语言都提供支持。JSON 成为一个完全独立于语言的文本格式，因此成为数据交换的理想格式。</p>
+<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><p>在 JSON 出现之前，大家一直用 XML 来传递数据。因为 XML 是一种纯文本格式，所以它适合在网络上交换数据。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>ZhangSan<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">age</span>&gt;</span>20<span class="tag">&lt;/<span class="name">age</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">gender</span>&gt;</span>male<span class="tag">&lt;/<span class="name">gender</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>XML 本身不算太复杂，但是，加上 DTD、XSD、XPath、XSLT 等一大堆复杂的规范以后，任何正常的软件开发人员碰到 XML 都会感觉头大了，最后大家发现，即使你努力钻研几个月，也未必搞得清楚 XML 的规范。</p>
+<h2 id="JSON-语法"><a href="#JSON-语法" class="headerlink" title="JSON 语法"></a>JSON 语法</h2><p>JSON 作为 JavaScript 的一个子集，它所支持的数据类型也与 JavaScript 中数据类型基本一致：</p>
+<ul>
+<li>number：和 JavaScript 的 number 完全一致；</li>
+<li>boolean：和 JavaScript 的 boolean 完全一致；</li>
+<li>string：和 JavaScript 的 string 类似；</li>
+<li>null：和 JavaScript 的 null 完全一致；</li>
+<li>array：和 JavaScript 的数组表示方式<code>[]</code>完全一致；</li>
+<li>object：和 JavaScript 的对象表示方式<code>{}</code>类似；</li>
+</ul>
+<p>为了保证各种语言的统一解析，JSON 规定字符串必须用双引号<code>&quot;&quot;</code>，对象的键也必须用双引号<code>&quot;&quot;</code>。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"name"</span>: <span class="string">"ZhangSan"</span>,</div><div class="line">        <span class="attr">"age"</span>: <span class="number">20</span>,</div><div class="line">        <span class="attr">"friends"</span>: [<span class="string">"HanMeiMei"</span>, <span class="string">"LiZiMing"</span>],</div><div class="line">        <span class="attr">"isMarried"</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">"spouse"</span>: <span class="literal">null</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        <span class="attr">"name"</span>: <span class="string">"HanMeiMei"</span>,</div><div class="line">        <span class="attr">"age"</span>: <span class="number">30</span>,</div><div class="line">        <span class="attr">"friends"</span>: [<span class="string">"ZhangSan"</span>],</div><div class="line">        <span class="attr">"isMarried"</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">"spouse"</span>: <span class="string">"LiZiMing"</span></div><div class="line">    &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="JSON-与-JavaScript-对象"><a href="#JSON-与-JavaScript-对象" class="headerlink" title="JSON 与 JavaScript 对象"></a>JSON 与 JavaScript 对象</h2><p>JSON 中的<code>[]</code>与 JavaScript 中的数组对象、JSON 中的<code>{}</code>与 JavaScript 中的 JSON 式对象，他们并不是同一个东西。</p>
+<p>JSON 是 JavaScript 中对象的字符串表示方式，本质上是 string，而 JavaScript 中的数组和 JSON 式对象，本质上是 object。</p>
+<h2 id="JSON-与-JavaScript-对象互转"><a href="#JSON-与-JavaScript-对象互转" class="headerlink" title="JSON 与 JavaScript 对象互转"></a>JSON 与 JavaScript 对象互转</h2><p>JSON 作为一种数据存储格式变得日益流行。从 ES5 开始，就开始出现全局的 JSON 对象，该对象提供了两种方法，可以将 JSON 字符串和 JavaScript 对象进行相互转换。</p>
+<h3 id="stringify"><a href="#stringify" class="headerlink" title="stringify()"></a>stringify()</h3><p>JSON 对象的<code>stringify()</code>方法用于将 JavaScript 对象转换为 JSON 字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> data = [&#123; <span class="attr">name</span>: <span class="string">'HanMeiMei'</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;];</div><div class="line"><span class="keyword">let</span> JSONData = <span class="built_in">JSON</span>.stringify(data);</div></pre></td></tr></table></figure>
+<h3 id="parse"><a href="#parse" class="headerlink" title="parse()"></a>parse()</h3><p>JSON 对象的<code>parse()</code>方法用于将 JSON 字符串转换为 JavaScript 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> JSONData = <span class="string">'[&#123; "name": "HanMeiMei", "age": 20 &#125;]'</span>;</div><div class="line"><span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(JSONData);</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+            <category> 对象 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> XML </tag>
+            
+            <tag> parse </tag>
+            
+            <tag> stringify </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[对象]]></title>
       <url>/2018/05/10/%E5%AF%B9%E8%B1%A1/</url>
       <content type="html"><![CDATA[<p>在 JavaScript 中，数据类型一共分为了 7 种。其中包含 6 种简单数据类型：number、string、boolean、null、undefined、symbol，和 1 种复杂数据类型：object。</p>
@@ -62,8 +111,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> key = <span class="string">"name"</span>;</div><div class="line"><span class="built_in">console</span>.log(student.key);     <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(student[key]);    <span class="comment">// HanMeiMei</span></div></pre></td></tr></table></figure>
 <h2 id="对象的遍历"><a href="#对象的遍历" class="headerlink" title="对象的遍历"></a>对象的遍历</h2><p>JavaScript 提供了 for-in 用来遍历对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> student = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'HanMeiMei'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">introduce</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is HanMeiMei, I'm 20 years old."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> student) &#123;</div><div class="line">    <span class="built_in">console</span>.log(key);   <span class="comment">// name  age  introduce</span></div><div class="line">    <span class="built_in">console</span>.log(student[key]);  <span class="comment">// 'HanMeiMei'  20  function()&#123;...&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="对象方法中的-this"><a href="#对象方法中的-this" class="headerlink" title="对象方法中的 this"></a>对象方法中的 this</h2><p>在对象的方法中可以使用 this 关键字。而这个 this 永远指向<strong>调用</strong>该方法的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123; </div><div class="line">	<span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line">foo.bar();           <span class="comment">// &#123; bar: [Function: bar] &#125;</span></div></pre></td></tr></table></figure>
+<h2 id="对象方法中的-this"><a href="#对象方法中的-this" class="headerlink" title="对象方法中的 this"></a>对象方法中的 this</h2><p>对象方法中的 this 永远指向<strong>调用</strong>该方法的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123; </div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">    &#125; </div><div class="line">&#125;</div><div class="line">foo.bar();     <span class="comment">// 1</span></div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>

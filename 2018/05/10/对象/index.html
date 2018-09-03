@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/05/10/对象/index.html">
 <meta property="og:site_name" content="Komorebi">
 <meta property="og:description" content="在 JavaScript 中，数据类型一共分为了 7 种。其中包含 6 种简单数据类型：number、string、boolean、null、undefined、symbol，和 1 种复杂数据类型：object。  JavaScript 中的对象是一个可以储存多个任意类型数据的无序集合。">
-<meta property="og:updated_time" content="2018-08-31T09:42:35.974Z">
+<meta property="og:updated_time" content="2018-09-03T09:31:04.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对象">
 <meta name="twitter:description" content="在 JavaScript 中，数据类型一共分为了 7 种。其中包含 6 种简单数据类型：number、string、boolean、null、undefined、symbol，和 1 种复杂数据类型：object。  JavaScript 中的对象是一个可以储存多个任意类型数据的无序集合。">
@@ -411,8 +411,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> key = <span class="string">"name"</span>;</div><div class="line"><span class="built_in">console</span>.log(student.key);     <span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.log(student[key]);    <span class="comment">// HanMeiMei</span></div></pre></td></tr></table></figure>
 <h2 id="对象的遍历"><a href="#对象的遍历" class="headerlink" title="对象的遍历"></a>对象的遍历</h2><p>JavaScript 提供了 for-in 用来遍历对象。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> student = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'HanMeiMei'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">introduce</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"My name is HanMeiMei, I'm 20 years old."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> student) &#123;</div><div class="line">    <span class="built_in">console</span>.log(key);   <span class="comment">// name  age  introduce</span></div><div class="line">    <span class="built_in">console</span>.log(student[key]);  <span class="comment">// 'HanMeiMei'  20  function()&#123;...&#125;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="对象方法中的-this"><a href="#对象方法中的-this" class="headerlink" title="对象方法中的 this"></a>对象方法中的 this</h2><p>在对象的方法中可以使用 this 关键字。而这个 this 永远指向<strong>调用</strong>该方法的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123; </div><div class="line">	<span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">	&#125; </div><div class="line">&#125;</div><div class="line">foo.bar();           <span class="comment">// &#123; bar: [Function: bar] &#125;</span></div></pre></td></tr></table></figure>
+<h2 id="对象方法中的-this"><a href="#对象方法中的-this" class="headerlink" title="对象方法中的 this"></a>对象方法中的 this</h2><p>对象方法中的 this 永远指向<strong>调用</strong>该方法的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> foo = &#123; </div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">bar</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">    &#125; </div><div class="line">&#125;</div><div class="line">foo.bar();     <span class="comment">// 1</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -483,6 +483,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/12/JSON/" rel="prev" title="JSON 对象">
+                JSON 对象 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -563,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +589,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
