@@ -457,7 +457,7 @@
     <link href="http://yoursite.com/2018/04/13/%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/"/>
     <id>http://yoursite.com/2018/04/13/数组的方法/</id>
     <published>2018-04-13T07:49:19.000Z</published>
-    <updated>2018-08-27T07:04:30.551Z</updated>
+    <updated>2018-09-04T09:31:03.034Z</updated>
     
     <content type="html"><![CDATA[<p>数组作为一个引用数据类型的对象，包含了很多用于操作数组的方法。这里主要介绍一些比较常用的方法。</p>
 <a id="more"></a>
@@ -522,7 +522,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">数组名.join(拼接符);</div><div class="line">字符串名.split(分割符);</div></pre></td></tr></table></figure>
 <p>例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ary = [<span class="number">100</span>, <span class="literal">true</span>, <span class="string">'hello'</span>];</div><div class="line"><span class="keyword">let</span> result = ary.join(<span class="string">"-"</span>);</div><div class="line"><span class="built_in">console</span>.log(result);    <span class="comment">// 100-true-hello</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> str = <span class="string">"hello, nice to meet you"</span>;</div><div class="line"><span class="keyword">let</span> result = str.split(<span class="string">","</span>);</div><div class="line"><span class="built_in">console</span>.log(result);    <span class="comment">// [ 'hello', ' nice to meet you' ]</span></div></pre></td></tr></table></figure>
-<h2 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h2><p>在<a href="https://runjaelyn.github.io/2018/04/10/basicArray/" target="_blank" rel="external">《数组的基础语法》</a>中我们讲了数组两种最基本的遍历方式：for 循环和 for-of 。除了这两种以外，数组还提供了很多遍历的方法。</p>
+<h2 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h2><p>在<a href="https://runjaelyn.github.io/2018/04/10/数组基础语法/" target="_blank" rel="external">《数组的基础语法》</a>中我们讲了数组两种最基本的遍历方式：for 循环和 for-of 。除了这两种以外，数组还提供了很多遍历的方法。</p>
 <h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p>自 2009 年 ES5 正式发布后，我们开始可以使用<code>forEach</code>方法来遍历数组。 </p>
 <p>描述：按顺序让数组中每一项依次执行某种相同的操作。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>];</div><div class="line"></div><div class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log( item );   <span class="comment">// 10 11 12 13 14</span></div><div class="line">	<span class="built_in">console</span>.log( index );  <span class="comment">// 0 1 2 3 4</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
