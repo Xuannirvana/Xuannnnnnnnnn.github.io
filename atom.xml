@@ -155,6 +155,88 @@
   </entry>
   
   <entry>
+    <title>执行上下文</title>
+    <link href="http://yoursite.com/2018/04/22/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    <id>http://yoursite.com/2018/04/22/执行上下文/</id>
+    <published>2018-04-22T07:49:19.000Z</published>
+    <updated>2018-09-05T02:49:47.154Z</updated>
+    
+    <content type="html"><![CDATA[<p>执行上下文，指的是代码的运行环境。一段代码什么时候运行，运行结果是什么，取决于代码当前所处的运行环境，即当前的执行上下文。</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>在 JavaScript 中代码的运行环境分为三种：</p>
+<ul>
+<li>全局上下文：代码的默认运行环境。一旦代码被载入，就会立即产生一个全局上下文。</li>
+<li>局部上下文：当一个函数被调用时，就会产生一个函数体内的上下文，叫做局部上下文。</li>
+<li>eval 上下文：<code>eval</code>函数被调用时内部产生的上下文（不考虑）。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">fn1();</div><div class="line">fn2();</div></pre></td></tr></table></figure>
+<p>在上面这段代码中，包括全局上下文在内，总共产生了 3 个上下文环境。分别是：</p>
+<ol>
+<li>全局上下文</li>
+<li><code>fn1</code>的局部上下文</li>
+<li><code>fn2</code>的局部上下文</li>
+</ol>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>程序中产生的所有执行上下文都会保存在内存栈空间中。但是，如果一个程序一直产生很多的执行上下文，那内存空间万一不够了怎么办？</p>
+<h3 id="压栈出栈"><a href="#压栈出栈" class="headerlink" title="压栈出栈"></a>压栈出栈</h3><p>执行上下文在栈空间中的存储其实是有一个“压栈出栈”的过程的。</p>
+<blockquote>
+<p>“压栈”即当执行上下文产生后会存入栈空间中；“出栈”即当执行上下文中的代码运行完成后，该执行上下文会从栈空间中销毁。</p>
+</blockquote>
+<p>所以，栈空间中的执行上下文其实一直在不断的产生和销毁，所以一般情况下并不造成内存空间不足的情况。</p>
+<h3 id="压栈出栈过程"><a href="#压栈出栈过程" class="headerlink" title="压栈出栈过程"></a>压栈出栈过程</h3><p>因为 JavaScript 是单线程语言。单线程放在现实生活就表现为同一时间内只能做一件事。那么，在 JavaScript 中，单线程就体现在，同一时间内栈空间中处于活动状态的执行上下文只能有一个。</p>
+<p>但是，在一段程序中，产生的执行上下文肯定不止一个，那么怎么才能让栈内存中处于活动状态的执行上下文始终只有一个呢？</p>
+<p>栈空间的存储原理是<strong>先进后出</strong>。执行上下文压栈是从下往上压栈，即最先进入栈空间的执行上下文会被保存在最底部，最后进入栈空间的执行上下文会被保存在最顶部。而执行上下文出栈是从上往下出栈，即只能从最顶层开始往下销毁。因此，对于执行上下文来说，处于活动状态的永远都只能是最顶层的执行上下文。</p>
+<p>我们通过一段代码来具体看一下执行上下文的压栈出栈过程。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"inner"</span> );</div><div class="line">	&#125;</div><div class="line">	inner();</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
+<p><strong>第一步：全局上下文压栈。</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fih5cfc4azj31e00mmjuo.jpg" alt=""></p>
+<p>全局上下文压栈后，全局上下文进入活动状态，其内部可执行代码开始执行。执行到第 7 行代码<code>outer()</code>时，函数<code>outer</code>被调用，激活函数<code>outer</code>创建它自己的执行上下文。</p>
+<p><strong>第二步：函数<code>outer</code>的执行上下文压栈。</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fih68sa2o2j31e00mg0wa.jpg" alt=""></p>
+<p><code>outer</code>的上下文压栈后，<code>outer</code>的上下文进入活动状态，<code>outer</code>函数内部的可执行代码开始执行。执行到第 5 行代码<code>inner()</code>时，函数<code>inner</code>被调用，激活函数<code>inner</code>创建它自己的执行上下文。</p>
+<p><strong>第三步：函数<code>inner</code>的执行上下文压栈。</strong></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fih6grz45sj31e00mgtcn.jpg" alt=""></p>
+<p><code>inner</code>的上下文压栈后，<code>inner</code>的上下文进入活动状态，<code>inner</code>函数内部的可执行代码开始执行。然后没有再遇到其他能生成执行上下文的情况，因此函数<code>inner</code>内的代码顺利执行完毕，<code>inner</code>的上下文销毁出栈。</p>
+<p><strong>第四步：函数<code>inner</code>的执行上下文出栈。</strong></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fih6npspxsj31kw0ikq7b.jpg" alt=""></p>
+<p><code>inner</code>的上下文销毁之后，函数<code>outer</code>的执行上下文重新回到活动状态，继续执行其内部可执行代码，然后也没有再遇到其他能生成执行上下文的情况，因此函数<code>outer</code>内的代码也顺利执行完毕，<code>outer</code>上下文销毁出栈。</p>
+<p><strong>第五步：函数<code>outer</code>的执行上下文出栈。</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fih6tgch25j31kw0gptdg.jpg" alt=""></p>
+<p><code>outer</code>的上下文销毁之后，全局上下文重新回到活动状态，继续执行其内部可执行代码，然后也没有再遇到其他能生成执行上下文的情况。直到浏览器关闭，全局上下文销毁出栈。</p>
+<blockquote>
+<p>注意：在函数中，如果遇到<code>return</code>会直接终止函数内可执行代码的执行，因此函数调用也会立即完成，所以函数的上下文也会立即从栈空间中销毁。</p>
+</blockquote>
+<p>练习：</p>
+<p>为了巩固对执行上下文的理解，我们最后再来分析一个代码例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">'hello'</span> );</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> result = foo();</div><div class="line">result(); <span class="comment">// hello</span></div></pre></td></tr></table></figure>
+<p>函数<code>bar</code>在函数<code>foo</code>中，并没有被调用执行。因此，执行<code>foo</code>的时，<code>bar</code>不会创建新的上下文，而是直到<code>result</code>执行时，才创建了一个新的。具体过程如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fih963p8buj31kw0fuq79.jpg" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解完整个过程之后，我们就可以对执行上下文总结一些结论了。</p>
+<ul>
+<li>单线程。</li>
+<li>同步执行，处于活动状态的永远都只能是最顶层的执行上下文，只要栈顶的上下文处于执行中，其他上下文需要等待。</li>
+<li>全局上下文只有唯一的一个，在浏览器打开时创建入栈，在浏览器关闭时销毁出栈。</li>
+<li>局部上下文个数没有限制，在每次函数被调用时创建入栈，函数执行完成后销毁出栈。</li>
+<li>同一个函数被调用多少次，就会产生多少执行上下文，即使是自己调用自己。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;执行上下文，指的是代码的运行环境。一段代码什么时候运行，运行结果是什么，取决于代码当前所处的运行环境，即当前的执行上下文。&lt;/p&gt;
+&lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;p&gt;在
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+      <category term="函数" scheme="http://yoursite.com/categories/JavaScript/%E5%87%BD%E6%95%B0/"/>
+    
+    
+      <category term="执行上下文" scheme="http://yoursite.com/tags/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>箭头函数</title>
     <link href="http://yoursite.com/2018/04/21/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"/>
     <id>http://yoursite.com/2018/04/21/箭头函数/</id>
@@ -1980,73 +2062,6 @@
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建 Github 个人博客(一)：搭建博客基础页面</title>
-    <link href="http://yoursite.com/2017/06/09/signupBlog/"/>
-    <id>http://yoursite.com/2017/06/09/signupBlog/</id>
-    <published>2017-06-09T15:25:01.000Z</published>
-    <updated>2018-07-19T06:46:15.941Z</updated>
-    
-    <content type="html"><![CDATA[<p>现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。</p>
-<a id="more"></a>
-<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>要创建 GitHub 的个人技术博客，首先需要进入<a href="https://github.com/" target="_blank" rel="external">Github官网</a>注册一个 GitHub 的账号。</p>
-<p>（如果已经有 <code>github</code> 账号，可跳前两个步骤，直接进入第三步。）</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyl3w5wj31kw0yoaiu.jpg" alt=""></p>
-<h2 id="初始设置"><a href="#初始设置" class="headerlink" title="初始设置"></a>初始设置</h2><p>账号注册成功之后会跳到一个账户初始设置的页面，一般情况下我们采用默认设置就行。不用做任何更改，直接点击绿色 <code>Continue</code> 按钮。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcykhxlbj31kw0xggtm.jpg" alt=""></p>
-<h3 id="验证邮箱"><a href="#验证邮箱" class="headerlink" title="验证邮箱"></a>验证邮箱</h3><p>初始设置完成之后，打开你注册账号时填写的邮箱，查看 GitHub 发给你的邮件。</p>
-<p>我们需要对邮箱进行验证，后面生成的个人主页才会被接受和发布。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcylv8fkj31kw0dy42y.jpg" alt=""></p>
-<p>点击验证邮箱，验证成功后跳转到如下页面。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfc10zrt7j31kw0tcjx9.jpg" alt=""></p>
-<p>点击第二个按钮，创建一个新项目。</p>
-<h2 id="创建页面仓库"><a href="#创建页面仓库" class="headerlink" title="创建页面仓库"></a>创建页面仓库</h2><p>这个页面用来填写关于你新建的这个仓库的一些初始化设置。</p>
-<p>（找不到页面入口的可以点击这里<a href="https://github.com/new" target="_blank" rel="external">创建页面仓库</a>）</p>
-<p>注意：</p>
-<ol>
-<li><p>仓库名称尽量跟你的 GitHub 用户名（注册账号时填写的用户名）保持一致。</p>
-</li>
-<li><p>因为 Github Pages 发布的页面统一使用 <code>github.io</code> 域名，所以你的仓库名还需要在你的用户名后面加上后缀 <code>.github.io</code>。</p>
-</li>
-</ol>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fgfcymfif2j31kw0ypgu4.jpg" alt=""></p>
-<p>其他的一些可选选项根据自己需求填写，完成之后点击绿色按钮 <code>Create reponsitory</code> 创建仓库。</p>
-<h2 id="生成页面"><a href="#生成页面" class="headerlink" title="生成页面"></a>生成页面</h2><p>仓库创建好后，接下来就是在仓库中生成我们的页面。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcyj5d3uj31kw0yrjyl.jpg" alt=""></p>
-<p>点击页面内的 <code>setting</code> ，进入设置页面。</p>
-<p>在生成完整的页面之前，我们需要先给我们的页面设置一个主题样式，所以滑到页面后面，可以看到有一个主题选择按钮，点击 <code>choose a theme</code>。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcyjvaofj317s0yi44h.jpg" alt=""></p>
-<p>在主题页面选择一个自己喜欢的主题，选定后点击 <code>select theme</code></p>
-<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fgfcymovenj31kw10gwok.jpg" alt=""></p>
-<p>主题设置成功后会跳转到一个“README“文件的配置页面。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcykpcpoj31kw0pjaeo.jpg" alt=""></p>
-<p>因为我们是将“README”作为我们博客的首页，所以选择直接将它提交到主分支即可。</p>
-<p>其他的设置在后面我们都可以修改，所以这里不做任何改动，采用默认设置。</p>
-<p>然后点击绿色 <code>Commit changes</code> 按钮。</p>
-<p>到这为止，我们的 GitHub 博客就已经搭建好了。</p>
-<h2 id="博客地址"><a href="#博客地址" class="headerlink" title="博客地址"></a>博客地址</h2><p>那么，别人要怎么访问我们的博客呢？</p>
-<p>还是进入到我们刚刚选择主题时的 <code>setting</code> 页面。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fgfcyiik04j315u0zmq8v.jpg" alt=""></p>
-<p>在主题选择这一栏的上方，有一个链接。点击这个链接，就可以看到我们的博客首页了，里面有我们刚刚设置的博客主题，和“REANME”文件里的内容。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fgfcympialj31kw0xigs1.jpg" alt=""></p>
-<p>这个链接地址就是我们的博客地址，别人也就可以通过这个地址来访问我们 GitHub 博客了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在网络上技术类相关的博客由很多，很多类似于CSDN、博客园也都可以写文章。我们这篇教程主要介绍的是用 githubpages 搭建自己独立的技术博客。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="博客" scheme="http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
     
   </entry>
   
