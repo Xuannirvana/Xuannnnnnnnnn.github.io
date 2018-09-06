@@ -137,27 +137,27 @@
     <entry>
       <title><![CDATA[执行上下文]]></title>
       <url>/2018/04/22/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</url>
-      <content type="html"><![CDATA[<p>执行上下文，指的是代码的运行环境。一段代码什么时候运行，运行结果是什么，取决于代码当前所处的运行环境，即当前的执行上下文。</p>
-<h2 id="执行上下文的分类"><a href="#执行上下文的分类" class="headerlink" title="执行上下文的分类"></a>执行上下文的分类</h2><p>在 JavaScript 中，代码的运行环境分为三种：</p>
+      <content type="html"><![CDATA[<p>执行上下文（Execution Context，EC），指的是代码的运行环境。一段代码什么时候运行，运行结果是什么，取决于代码当前所处的运行环境，也就是执行上下文。</p>
+<a id="more"></a>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>在 JavaScript 中，执行上下文主要分为两类：</p>
 <ul>
-<li>全局上下文：代码的默认运行环境。一旦代码被载入，就会立即产生一个全局上下文。</li>
-<li>局部上下文：当一个函数被调用时，就会产生一个当前函数所对应的局部上下文。</li>
-<li>eval 上下文：<code>eval</code>函数被调用时内部产生的上下文（不考虑）。</li>
+<li>全局上下文：所有全局代码的默认运行环境。</li>
+<li>局部上下文：函数内部代码的运行环境。</li>
 </ul>
-<p>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">fn1();</div><div class="line">fn2();</div></pre></td></tr></table></figure>
-<p>在上面这段代码中，包括全局上下文在内，总共产生了 3 个上下文环境。分别是：</p>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>执行上下文的生命周期的分为三个阶段：</p>
 <ol>
-<li>全局上下文</li>
-<li><code>fn1</code>的局部上下文</li>
-<li><code>fn2</code>的局部上下文</li>
+<li><strong>执行上下文创建阶段</strong>：全局上下文是在浏览器打开时创建，局部上下文是在函数调用时创建；</li>
+<li><strong>代码执行阶段</strong>：执行上下文创建成功后，就开始进入代码执行阶段，即开始运行当前上下文中的所有代码；</li>
+<li><strong>执行上下文销毁阶段</strong>：待当前上下文中所有代码运行完成后，该上下文销毁；</li>
 </ol>
-<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>程序运行过程中产生的所有执行上下文都会保存在内存的<strong>栈</strong>空间中，但并不是一直保存。所有的上下文在完成任务后，都会自动从栈空间中销毁，释放内存。</p>
-<p>执行上下文在栈空间中保存和销毁的过程我们也称之为“压栈和出栈”。</p>
-<p>所以，栈空间中的执行上下文其实一直在不断的压栈和出栈，所以一般情况下并不造成内存空间不足的情况。</p>
-<h3 id="压栈出栈的过程"><a href="#压栈出栈的过程" class="headerlink" title="压栈出栈的过程"></a>压栈出栈的过程</h3><p>因为 JavaScript 是单线程语言。单线程放在现实生活就表现为同一时间内只能做一件事。那么，在 JavaScript 中，单线程就体现在：<strong>在栈空间中同一时间内处于活动状态的执行上下文只能有一个</strong>。</p>
-<p>在<a href="https://runjaelyn.github.io/2018/01/19/内存空间/" target="_blank" rel="external">《JavaScript 内存空间》</a>中我们知道，栈的存储方式是“先进后出，后进先出”。</p>
-<p>所以执行上下文压栈也是从下往上压栈，即最先进入栈空间的执行上下文会被保存在最底部，最后进入栈空间的执行上下文会被保存在最顶部。而执行上下文出栈是从上往下出栈，即只能从最顶层开始往下销毁。因此，对于执行上下文来说，处于活动状态的永远都只能是栈空间里最顶层的执行上下文。</p>
+<p>程序运行过程中，会不断的有上下文创建和销毁，那具体谁先创建谁先销毁，各个上下文之间有没有什么联系？</p>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>在 JavaScript 中，会利用执行上下文栈（Execution Context Stack，ECS）来管理所有的执行上下文。</p>
+<p>每当有一个执行上下文创建出来，就会保存进栈内存中，这个过程我们称为“压栈”。待到某一个上下文中的代码执行完毕，该上下文就会从栈内存中销毁，这个过程我们称为“出栈”。</p>
+<p>在<a href="https://runjaelyn.github.io/2018/01/19/内存空间/" target="_blank" rel="external">《JavaScript 内存空间》</a>中我们知道，栈内存的存储方式是“先进后出，后进先出”。也就是说，执行上下文在栈内存中的压栈出栈也要遵循这个规则。</p>
+<p>所以执行上下文压栈是从下往上压栈，即最先进入栈空间的执行上下文会被保存在最底部，最后进入栈空间的执行上下文会被保存在最顶部。而执行上下文出栈是从上往下出栈，即只能从最顶层开始往下销毁。</p>
+<p><img src="https://ws3.sinaimg.cn/large/0069RVTdgy1fuzwtgfkyaj31kw0k4jux.jpg" alt=""></p>
+<p>又因为 JavaScript 是单线程语言。单线程放在现实生活就表现为同一时间内只能做一件事。那么，在栈内存中，单线程就体现在：<strong>同一时间内处于活动状态的永远都只能是栈内存中最顶层的执行上下文</strong>。</p>
+<p>（活动状态即指可以进入执行上下文的代码执行阶段）</p>
 <p>我们通过一段代码来具体看一下执行上下文的压栈出栈过程。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">"inner"</span> );</div><div class="line">	&#125;</div><div class="line">	inner();</div><div class="line">&#125;</div><div class="line">outer();</div></pre></td></tr></table></figure>
 <p><strong>第一步：全局上下文压栈。</strong></p>
@@ -185,7 +185,7 @@
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fih963p8buj31kw0fuq79.jpg" alt=""></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解完整个过程之后，我们就可以对执行上下文总结一些结论了。</p>
 <ul>
-<li>处于活动状态的永远都只能是最顶层的执行上下文，只要栈顶的上下文中的代码处于执行中，其他上下文都需要等待。</li>
+<li>处于活动状态的永远都只能是最顶层的执行上下文。只要栈顶的上下文中的代码处于执行中，其他上下文都需要等待。</li>
 <li>全局上下文只有唯一的一个，在浏览器打开时创建入栈，在浏览器关闭时销毁出栈。</li>
 <li>局部上下文个数没有限制，在每次函数被调用时创建入栈，函数执行完成后销毁出栈。</li>
 <li>同一个函数被调用多少次，就会产生多少执行上下文，即使是自己调用自己。</li>
