@@ -135,6 +135,58 @@
     </entry>
     
     <entry>
+      <title><![CDATA[变量对象]]></title>
+      <url>/2018/04/24/%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1/</url>
+      <content type="html"><![CDATA[<p>变量对象（Variable Object，VO）用于记录在当前作用域中可以访问到的所有变量。</p>
+<a id="more"></a>
+<h2 id="变量对象的创建"><a href="#变量对象的创建" class="headerlink" title="变量对象的创建"></a>变量对象的创建</h2><p>在执行上下文的创建阶段，除了执行上下文自身被创建外，同时其内部会分别创建变量对象(VO)、建立作用域链(SC)，以及确定 this 的指向（之前确定好的作用域也会添加进来）。</p>
+<p>而变量对象在创建过程中也分为了三个阶段：</p>
+<ol>
+<li>检查当前作用域中的函数参数：建立 arguments 对象，将形参和实参作为该对象下的属性名与属性值。</li>
+<li>检查当前作用域中的声明式函数：以函数名建立一个属性，属性值为该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</li>
+<li>检查当前作用域中<code>var</code>声明的变量：以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</li>
+</ol>
+<p><strong>图解分析：</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvmxqcwqd6j31eo0vy7ay.jpg" alt=""></p>
+<p><strong>代码分析：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num);</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">    <span class="built_in">console</span>.log(inner());</div><div class="line">	</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">outer(<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>在全局代码<code>outer(10)</code>执行时，outer 函数被调用，产生局部上下文，同时其内部的变量对象也开始创建。为了便于理解，我们通过伪代码的形式来表示一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">outerEC = &#123;         <span class="comment">// outer 的执行上下文</span></div><div class="line">    outerVO: &#123;      <span class="comment">// outer 的变量对象</span></div><div class="line">        <span class="built_in">arguments</span>: &#123;<span class="attr">num</span>: <span class="number">10</span>&#125;,   <span class="comment">// 参数</span></div><div class="line">        inner: 地址,            <span class="comment">// 声明式函数</span></div><div class="line">        a: <span class="literal">undefined</span>            <span class="comment">// var 声明的变量 </span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h2><p>执行上下文未进入“代码执行阶段”前，变量对象中的属性都不能访问。一旦进入“代码执行阶段”，变量对象就会转换为活动对象（Active Object，AO），而活动对象中的属性就可以进行访问了。</p>
+<blockquote>
+<p>说明：变量对象和活动对象其实就是同一个对象，只是处于执行上下文不同的阶段有不同的名字。</p>
+</blockquote>
+<p>因此，当上面的例子进入“代码执行阶段”后，变量对象转换为活动对象，伪代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">outerEC = &#123;         </div><div class="line">    <span class="attr">outerAO</span>: &#123;      </div><div class="line">        <span class="attr">arguments</span>: &#123;<span class="attr">num</span>: <span class="number">10</span>&#125;,  </div><div class="line">        <span class="attr">inner</span>: 地址,          </div><div class="line">        <span class="attr">a</span>: <span class="number">1</span>            <span class="comment">// 变量 a 被赋值为 1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因此，当<code>console.log()</code>语句执行时，就会去变量对象中查询对应的数据并输出。其实”变量提升”和”函数提升”这两个概念的本质就是变量对象的创建过程。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>变量对象是在执行上下文建立阶段产生的。</li>
+<li>变量对象的建立分为了三个过程：查找参数、查找声明式函数、查找<code>var</code>变量。</li>
+<li>变量对象中的属性不能进行任何操作。</li>
+<li>变量对象在执行上下文激活阶段时变为活动对象，其内部属性才可以进行操作。</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> JavaScript </category>
+            
+            <category> 函数 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 变量对象 </tag>
+            
+            <tag> 活动对象 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[执行上下文]]></title>
       <url>/2018/04/22/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/</url>
       <content type="html"><![CDATA[<p>执行上下文（Execution Context，EC），指的是代码的运行环境。一段代码什么时候运行，运行结果是什么，取决于代码当前所处的运行环境，也就是执行上下文。</p>
