@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="运算符," />
+  <meta name="keywords" content="变量对象,活动对象," />
 
 
 
@@ -81,17 +81,19 @@
 
 
 
-<meta name="description" content="JavaScript 中提供了大量的运算符用于数据的操作。">
-<meta name="keywords" content="运算符">
+<meta name="description" content="变量对象（Variable Object，VO）用于记录在当前作用域中可以访问到的所有变量。">
+<meta name="keywords" content="变量对象,活动对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="运算符">
-<meta property="og:url" content="http://yoursite.com/2018/02/20/运算符/index.html">
+<meta property="og:title" content="变量对象">
+<meta property="og:url" content="http://yoursite.com/2018/05/24/变量对象/index.html">
 <meta property="og:site_name" content="Komorebi">
-<meta property="og:description" content="JavaScript 中提供了大量的运算符用于数据的操作。">
-<meta property="og:updated_time" content="2018-10-22T08:06:01.294Z">
+<meta property="og:description" content="变量对象（Variable Object，VO）用于记录在当前作用域中可以访问到的所有变量。">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fvmxqcwqd6j31eo0vy7ay.jpg">
+<meta property="og:updated_time" content="2018-10-30T09:21:07.068Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="运算符">
-<meta name="twitter:description" content="JavaScript 中提供了大量的运算符用于数据的操作。">
+<meta name="twitter:title" content="变量对象">
+<meta name="twitter:description" content="变量对象（Variable Object，VO）用于记录在当前作用域中可以访问到的所有变量。">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fvmxqcwqd6j31eo0vy7ay.jpg">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/20/运算符/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/24/变量对象/"/>
 
 
 
 
 
-  <title>运算符 | Komorebi</title>
+  <title>变量对象 | Komorebi</title>
   
 
 
@@ -254,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/20/运算符/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/24/变量对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="有猫饼">
@@ -271,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">运算符</h1>
+          <h1 class="post-title" itemprop="name headline">变量对象</h1>
         
 
         <div class="post-meta">
@@ -283,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-20T10:00:00+08:00">
-                2018-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T15:49:19+08:00">
+                2018-05-24
               </time>
             
 
@@ -308,6 +310,17 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/JavaScript/" itemprop="url" rel="index">
                     <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/函数/" itemprop="url" rel="index">
+                    <span itemprop="name">函数</span>
                   </a>
                 </span>
 
@@ -343,205 +356,34 @@
       
 
       
-        <p>JavaScript 中提供了大量的运算符用于数据的操作。</p>
+        <p>变量对象（Variable Object，VO）用于记录在当前作用域中可以访问到的所有变量。</p>
 <a id="more"></a>
-<h2 id="字符串拼接运算符"><a href="#字符串拼接运算符" class="headerlink" title="字符串拼接运算符"></a>字符串拼接运算符</h2><p>字符串拼接运算符用于 string（字符串）类型数据的合并。</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>将多个字符串拼接成一个整体</td>
-<td>“hello” + “world”</td>
-</tr>
-</tbody>
-</table>
-<p><code>+</code>是 JavaScript 中比较特殊的一个运算符。它除了具备数学中的加法运算功能外，当操作 string（字符串）类型的数据时，它还具备拼接数据的功能。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str1 = <span class="string">'hello'</span>;</div><div class="line"><span class="keyword">let</span> str2 = <span class="string">'HanMeiMei'</span>;</div><div class="line"><span class="keyword">let</span> str = str1 + str2;</div><div class="line"><span class="built_in">console</span>.log(str);   <span class="comment">// helloHanMeiMei</span></div></pre></td></tr></table></figure>
+<h2 id="变量对象的创建"><a href="#变量对象的创建" class="headerlink" title="变量对象的创建"></a>变量对象的创建</h2><p>在执行上下文的创建阶段，除了执行上下文自身被创建外，同时其内部会分别创建变量对象(VO)、建立作用域链(SC)，以及确定 this 的指向（之前确定好的作用域也会添加进来）。</p>
+<p>而变量对象在创建过程中也分为了三个阶段：</p>
+<ol>
+<li>检查当前作用域中的函数参数：建立 arguments 对象，将形参和实参作为该对象下的属性名与属性值。</li>
+<li>检查当前作用域中的声明式函数：以函数名建立一个属性，属性值为该函数所在内存地址的引用。如果函数名的属性已经存在，那么该属性将会被新的引用所覆盖。</li>
+<li>检查当前作用域中<code>var</code>声明的变量：以变量名建立一个属性，属性值为<code>undefined</code>。如果该变量名的属性已经存在，为了防止同名的函数被修改为<code>undefined</code>，则会直接跳过，原属性值不会被修改。</li>
+</ol>
+<p><strong>图解分析：</strong></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fvmxqcwqd6j31eo0vy7ay.jpg" alt=""></p>
+<p><strong>代码分析：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(num);</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">    <span class="built_in">console</span>.log(inner());</div><div class="line">	</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">outer(<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>在全局代码<code>outer(10)</code>执行时，outer 函数被调用，产生局部上下文，同时其内部的变量对象也开始创建。为了便于理解，我们通过伪代码的形式来表示一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">outerEC = &#123;         <span class="comment">// outer 的执行上下文</span></div><div class="line">    outerVO: &#123;      <span class="comment">// outer 的变量对象</span></div><div class="line">        <span class="built_in">arguments</span>: &#123;<span class="attr">num</span>: <span class="number">10</span>&#125;,   <span class="comment">// 参数</span></div><div class="line">        inner: 地址,            <span class="comment">// 声明式函数</span></div><div class="line">        a: <span class="literal">undefined</span>            <span class="comment">// var 声明的变量 </span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="活动对象"><a href="#活动对象" class="headerlink" title="活动对象"></a>活动对象</h2><p>执行上下文未进入“代码执行阶段”前，变量对象中的属性都不能访问。一旦进入“代码执行阶段”，变量对象就会转换为活动对象（Active Object，AO），而活动对象中的属性就可以进行访问了。</p>
 <blockquote>
-<p>注意：只要操作的数据中存在一个 string 类型，那么<code>+</code>就作为字符串拼接运算符使用。</p>
+<p>说明：变量对象和活动对象其实就是同一个对象，只是处于执行上下文不同的阶段有不同的名字。</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</div><div class="line"><span class="keyword">let</span> str = <span class="string">'20'</span>;</div><div class="line"><span class="keyword">let</span> sum = num + str;</div><div class="line"><span class="built_in">console</span>.log(sum);   <span class="comment">// 1020</span></div></pre></td></tr></table></figure>
-<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>算术运算符用于 number（数值）类型数据的数学计算。</p>
-<p>给定<code>a = 4, b = 2</code>条件，所有算术运算符描述如下：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>多个运算数相加</td>
-<td>a + b = 6</td>
-</tr>
-<tr>
-<td>-</td>
-<td>多个运算数相减</td>
-<td>a - b = 2</td>
-</tr>
-<tr>
-<td>*</td>
-<td>多个运算数相乘</td>
-<td>a * b = 8</td>
-</tr>
-<tr>
-<td>/</td>
-<td>多个运算数相除</td>
-<td>a / b = 2</td>
-</tr>
-<tr>
-<td>%</td>
-<td>计算多个运算数整除后的余数</td>
-<td>a % b = 0</td>
-</tr>
-<tr>
-<td>**</td>
-<td>求幂，计算当前运算数的 n 次方</td>
-<td>a ** b = 16</td>
-</tr>
-<tr>
-<td>++</td>
-<td>自增，当前运算数的值加 1</td>
-<td>a++</td>
-</tr>
-<tr>
-<td>–</td>
-<td>自减，当前运算数的值减 1</td>
-<td>–b</td>
-</tr>
-</tbody>
-</table>
-<p>自增（自减）运算符还分了两种情况：</p>
-<ul>
-<li><p><strong>前置型</strong>：运算符在变量前。例：<code>++a</code>。</p>
-<blockquote>
-<p>数据先自增（自减），再使用数据。</p>
-</blockquote>
-</li>
-<li><p><strong>后置型</strong>：运算符在变量后。例：<code>a++</code>。</p>
-<blockquote>
-<p>先使用数据，数据再自增（自减）。</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(a++);  <span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.log(a);    <span class="comment">// 11</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(++b);  <span class="comment">// 11</span></div><div class="line"><span class="built_in">console</span>.log(b);    <span class="comment">// 11</span></div></pre></td></tr></table></figure>
-<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><p>比较运算符用于 number（数值）类型和 string（字符串）类型数据的比较，比较结果为布尔值（<code>true</code>/<code>false</code>）。</p>
-<p>给定<code>a = 4, b = 2</code>条件，所有比较运算符描述如下：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&gt;</td>
-<td>判断左边是否大于右边</td>
-<td>a &gt; b</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>判断左边是否小于右边</td>
-<td>a &lt; b</td>
-</tr>
-<tr>
-<td>&gt;=</td>
-<td>判断左边是否大于等于右边</td>
-<td>a &gt;= b</td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>判断左边是否小于右边</td>
-<td>a &lt;= b</td>
-</tr>
-<tr>
-<td>==</td>
-<td>判断左右两边的数据值是否相等</td>
-<td>a == b</td>
-</tr>
-<tr>
-<td>===</td>
-<td>判断左右两边的数据值和数据类型是否都相等</td>
-<td>a == b</td>
-</tr>
-<tr>
-<td>!=</td>
-<td>判断左右两边的数据值是否不相等</td>
-<td>a != b</td>
-</tr>
-<tr>
-<td>!==</td>
-<td>判断左右两边的数据值或数据类型是否不相等</td>
-<td>a !== b</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</div><div class="line"><span class="keyword">let</span> b = <span class="string">'10'</span>;</div><div class="line"><span class="built_in">console</span>.log(a == b);   <span class="comment">// true  </span></div><div class="line"><span class="built_in">console</span>.log(a === b);  <span class="comment">// false </span></div><div class="line"><span class="built_in">console</span>.log(a != b);   <span class="comment">// false</span></div><div class="line"><span class="built_in">console</span>.log(a !== b);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><p>赋值运算符用于数据的赋值。</p>
-<p>给定<code>a = 4, b = 2</code>条件，所有赋值运算符描述如下：</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>说明</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>将右边的数据赋值给左边</td>
-<td>a = b</td>
-</tr>
-<tr>
-<td>+=</td>
-<td>将左右两边相加的结果赋值给左边</td>
-<td>a += b</td>
-</tr>
-<tr>
-<td>-=</td>
-<td>将左右两边相减的结果赋值给左边</td>
-<td>a -= b</td>
-</tr>
-<tr>
-<td>*=</td>
-<td>将左右两边相乘的结果赋值给左边</td>
-<td>a *= b</td>
-</tr>
-<tr>
-<td>/=</td>
-<td>将左右两边相除的结果赋值给左边</td>
-<td>a /= b</td>
-</tr>
-<tr>
-<td>%=</td>
-<td>将左右两边相除的余数赋值给左边</td>
-<td>a %= b</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><code>a = a + b</code>和<code>a += b</code>运行结果一样，但后者效率高于前者。</p>
-</blockquote>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>逻辑运算符用于数据间逻辑真假的判断。JavaScript 中的逻辑运算符分为三种：</p>
-<ul>
-<li>“与”运算符<code>&amp;&amp;</code>：<strong>找假</strong></li>
-<li>“或”运算符<code>||</code>：<strong>找真</strong></li>
-<li>“非”运算符<code>!</code>：<strong>取反</strong></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0</span> || <span class="string">''</span> || <span class="literal">false</span> || <span class="literal">null</span> || <span class="number">2</span> || <span class="literal">undefined</span>);    <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(<span class="number">10</span> &gt; <span class="number">5</span> &amp;&amp; <span class="number">10</span> &lt; <span class="number">20</span>);   <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(!<span class="number">10</span>);   <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>因此，当上面的例子进入“代码执行阶段”后，变量对象转换为活动对象，伪代码如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">outerEC = &#123;         </div><div class="line">    <span class="attr">outerAO</span>: &#123;      </div><div class="line">        <span class="attr">arguments</span>: &#123;<span class="attr">num</span>: <span class="number">10</span>&#125;,  </div><div class="line">        <span class="attr">inner</span>: 地址,          </div><div class="line">        <span class="attr">a</span>: <span class="number">1</span>            <span class="comment">// 变量 a 被赋值为 1</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因此，当<code>console.log()</code>语句执行时，就会去变量对象中查询对应的数据并输出。其实”变量提升”和”函数提升”这两个概念的本质就是变量对象的创建过程。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>变量对象是在执行上下文建立阶段产生的。</li>
+<li>变量对象的建立分为了三个过程：查找参数、查找声明式函数、查找<code>var</code>变量。</li>
+<li>变量对象中的属性不能进行任何操作。</li>
+<li>变量对象在执行上下文激活阶段时变为活动对象，其内部属性才可以进行操作。</li>
+</ol>
 
       
     </div>
@@ -588,7 +430,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/运算符/" rel="tag"># 运算符</a>
+            <a href="/tags/变量对象/" rel="tag"># 变量对象</a>
+          
+            <a href="/tags/活动对象/" rel="tag"># 活动对象</a>
           
         </div>
       
@@ -601,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/12/数据类型/" rel="next" title="数据类型">
-                <i class="fa fa-chevron-left"></i> 数据类型
+              <a href="/2018/05/22/执行上下文/" rel="next" title="执行上下文">
+                <i class="fa fa-chevron-left"></i> 执行上下文
               </a>
             
           </div>
@@ -610,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/24/数据类型转换/" rel="prev" title="数据类型转换">
-                数据类型转换 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -756,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串拼接运算符"><span class="nav-number">1.</span> <span class="nav-text">字符串拼接运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算术运算符"><span class="nav-number">2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较运算符"><span class="nav-number">3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值运算符"><span class="nav-number">4.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">5.</span> <span class="nav-text">逻辑运算符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量对象的创建"><span class="nav-number">1.</span> <span class="nav-text">变量对象的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动对象"><span class="nav-number">2.</span> <span class="nav-text">活动对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
