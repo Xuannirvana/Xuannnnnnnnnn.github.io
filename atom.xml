@@ -197,6 +197,51 @@
   </entry>
   
   <entry>
+    <title>基本类型和引用类型</title>
+    <link href="http://yoursite.com/2018/05/10/%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://yoursite.com/2018/05/10/基本类型和引用类型/</id>
+    <published>2018-05-10T07:49:19.000Z</published>
+    <updated>2018-10-31T05:38:57.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript 中基本类型的数据和引用类型的数据除了在表现形式上不同外，还有一个更大的区别在于数据存储。从<a href="https://runjaelyn.github.io/2018/01/19/内存空间/" target="_blank" rel="external">《JavaScript 内存空间》</a>中我们已经知道，基本类型的数据值保存在栈内存中，引用类型的数据值保存在堆内存中。</p>
+<p>那么数据的存储位置不同对于数据操作到底有什么影响呢？我们通过实际代码例子来分析一下：</p>
+<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> b = a;  <span class="comment">// 将 a 的数据复制给 b</span></div><div class="line">b = <span class="number">30</span>;</div><div class="line"><span class="built_in">console</span>.log(a);</div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fhknn2es7ej311m0iydhx.jpg" alt=""></p>
+<p>在栈内存中的数据发生复制行为时，系统会自动为新的变量分配一个新值。<code>var b = a</code> 执行之后，<code>a</code> 和 <code>b</code> 的值虽然都等于 20，但是他们其实已经是相互独立互不影响的值了。所以，我们修改了 <code>b</code> 的值以后，<code>a</code> 的值并不会发生变化。</p>
+<blockquote>
+<p>基本数据类型做赋值操作时，进行的“值传递”。</p>
+</blockquote>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>例二：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person1 = &#123; <span class="attr">name</span>: <span class="string">"zhangsan"</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</div><div class="line"><span class="keyword">var</span> person2 = person1;  <span class="comment">// 将 person1 的值复制给 person2</span></div><div class="line">person2.name = <span class="string">"lisi"</span>;</div><div class="line"><span class="built_in">console</span>.log(person1.name);</div></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhkt5ff5syj30xe10etcp.jpg" alt=""></p>
+<p>当我们通过 <code>var person2 = person1</code> 执行一次复制引用类型的操作时，引用类型的复制也会为新的变量分配一个新的值保存在栈内存中。但不同的是，这个新的值，仅仅只是引用类型的一个地址指针。当地址指针相同时，尽管他们相互独立，但是这两个地址指针指向的都是堆内存中的同一个地方，所以在堆内存中访问到的具体对象实际上是同一个。</p>
+<p>因此，当我们改变 <code>person2</code> 的时候，就是在改变堆内存中 <code>person2</code> 指向的这个对象。而同时，<code>person1</code> 指向的也是这个对象，所以 <code>person1</code> 也会跟着发生变化。这就是引用类型的特性。</p>
+<blockquote>
+<p>引用数据类型做赋值操作时，进行的“址传递”。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript 中基本类型的数据和引用类型的数据除了在表现形式上不同外，还有一个更大的区别在于数据存储。从&lt;a href=&quot;https://runjaelyn.github.io/2018/01/19/内存空间/&quot; target=&quot;_blank&quot; rel=&quot;exter
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+      <category term="数据类型" scheme="http://yoursite.com/categories/JavaScript/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    
+    
+      <category term="堆" scheme="http://yoursite.com/tags/%E5%A0%86/"/>
+    
+      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
+    
+  </entry>
+  
+  <entry>
     <title>对象</title>
     <link href="http://yoursite.com/2018/05/10/%E5%AF%B9%E8%B1%A1/"/>
     <id>http://yoursite.com/2018/05/10/对象/</id>
@@ -1648,7 +1693,7 @@
     <link href="http://yoursite.com/2018/01/19/%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4/"/>
     <id>http://yoursite.com/2018/01/19/内存空间/</id>
     <published>2018-01-19T04:30:10.000Z</published>
-    <updated>2018-09-06T09:24:34.943Z</updated>
+    <updated>2018-10-31T05:39:35.648Z</updated>
     
     <content type="html"><![CDATA[<p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <a id="more"></a>
@@ -1753,6 +1798,10 @@
       &lt;p&gt;程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。&lt;/p&gt;
     
     </summary>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+      <category term="对象" scheme="http://yoursite.com/categories/JavaScript/%E5%AF%B9%E8%B1%A1/"/>
     
     
       <category term="内存" scheme="http://yoursite.com/tags/%E5%86%85%E5%AD%98/"/>
@@ -1899,91 +1948,6 @@
       <category term="gitment" scheme="http://yoursite.com/tags/gitment/"/>
     
       <category term="评论" scheme="http://yoursite.com/tags/%E8%AF%84%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建 Github 个人博客(三)：设置 hexo 博客主题</title>
-    <link href="http://yoursite.com/2017/07/15/themeBlog/"/>
-    <id>http://yoursite.com/2017/07/15/themeBlog/</id>
-    <published>2017-07-15T09:10:43.000Z</published>
-    <updated>2018-08-16T01:54:23.637Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前写了两篇文章来教大家怎么去创建 GitHub 个人博客，然后再怎么配合 hexo 去开发博客。<br><a id="more"></a></p>
-<ul>
-<li><a href="https://runjaelyn.github.io/2017/06/09/signupBlog/" target="_blank" rel="external">搭建 Github 个人博客(一)：搭建博客基础页面</a> </li>
-<li><a href="https://runjaelyn.github.io/2017/06/25/hexoBlog/" target="_blank" rel="external">搭建 Github 个人博客(二)：配合使用 hexo 开发博客</a>  </li>
-</ul>
-<p>本来这个教程到此也差不多结束了。但是后来有些笨鸡娃子找到我说，不会设置博客主题，所以还是决定再写最后一篇教程讲一下怎么去用 hexo 去设置博客的主题。</p>
-<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>在设置主题之前，首先需要去找一款喜欢的主题样式。hexo 有自己的博客主题官网 <a href="https://hexo.io/themes/" target="_blank" rel="external">Themes | Hexo</a>，可以在官网里去找喜欢的主题样式。百度上也可以搜到一些开发者们自己写的一些好看主题。具体的自行百度，随便一搜就出来很多了。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fi147brqq9j30w20fan17.jpg" alt=""></p>
-<p>选择好主题后，找到该主题的地址。我们用官网的一个主题为例：</p>
-<p>（1）点击主题名字进入主题详情页面。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhzlcff7x5j31kw0th47f.jpg" alt=""></p>
-<ul>
-<li><p>详情页面里有一个<code>README.md</code>的主题说明的文档。大部分的主题在这个文档里都会有下载安装配置的流程说明。</p>
-<p>  <img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhzlgmy5d8j31ia0voq74.jpg" alt=""></p>
-<p>  例如我们当前选择的这个主题，详情页面往下拉就能看到下载安装主题需要执行的相关命令，直接按照文档里给出的命令依次去执行就可以了。</p>
-<p>  如果遇到文档没有写安装教程的，或者 … 看不懂英文的 … 那就继续看我们这个教程的下一步吧。</p>
-</li>
-</ul>
-<p>（2）点击详情页面的绿色按钮，复制红框中的主题地址。</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fhzjm91vxmj31kw0p77ac.jpg" alt=""></p>
-<p>在其他网站找的主题也一样的会有一个主题的地址，同样的复制下来就行。</p>
-<h2 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h2><p>有了主题地址之后，接下来我们就可以开始安装了。</p>
-<p>（1）打开命令行工具，进入到你的博客文件夹。然后执行以下格式的命令，将选中的主题克隆下来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone <span class="string">"url"</span> themes/<span class="string">"themeName"</span>    <span class="comment">// 不要复制这一行！！！看下面解释！！！</span></div></pre></td></tr></table></figure>
-<ul>
-<li><code>&quot;url&quot;</code>就是我们刚刚复制的主题地址。</li>
-<li><code>&quot;themeName&quot;</code>是我们当前选择的主题名字</li>
-</ul>
-<p>将你找到的主题地址和主题名字替换掉上面的<code>&quot;url&quot;</code>和<code>&quot;themeName&quot;</code>。</p>
-<p>例如我们刚刚在官网找到的那个主题，执行命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/levblanc/hexo-theme-aero-dual.git themes/aero-dual</div></pre></td></tr></table></figure>
-<ul>
-<li><code>themes/aero-dual</code>前面的<code>themes</code>是存储所有主题文件的文件夹名字，<code>aero-dual</code>是当前主题文件夹的名字，也是当前主题的名字。</li>
-</ul>
-<p>（2）看到出现类似下面这种 100% 的命令，就表示主题下载成功了。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhzjxhuws9j311m05o412.jpg" alt=""></p>
-<p>（3）下载成功之后，在我们的博客文件目录就可以看到我们刚刚下载好的主题文件。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fi14mvl2jjj30wg06mq3x.jpg" alt=""></p>
-<p>（4）用编辑器打开博客文件目录中的<code>_config.yml</code>文件。将主题配置改为当前选择的主题名字。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Extensions</span></div><div class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></div><div class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></div><div class="line"><span class="attr">theme:</span> <span class="string">aero-dual</span></div></pre></td></tr></table></figure>
-<p>（5）通过命令进入到当前主题文件夹，例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> themes/aero-dual</div></pre></td></tr></table></figure>
-<p><code>aero-dual</code>这是我的主题名字！你们自己换成你们自己选择的主题名字。</p>
-<p>（6）然后再执行下面的代码，将当前更改的信息进行合并。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
-<p>（7）最后，主题配置完成。回到博客文件目录执行以下命令重新部署整个博客。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>好，完成。重新打开博客就可以发现新的主题已经生效了。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fhzqf6q16dj31kw10bgzu.jpg" alt=""></p>
-<h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><p>到上一步，我们的主题其实就已经安装好了。博客基本上也可以正常使用了。</p>
-<p>但是有的时候，博客或者主题的一些默认配置并不是我们想要的，所以我们还可以根据自己的需求去更改一些配置。这里简单梳理几个常用的配置信息。</p>
-<h3 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h3><p>找到博客目录下的<code>_config.yml</code>文件。</p>
-<p>注意：以下所有配置，冒号后面都要有一个空格。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span>                       <span class="comment">## 博客主标题 </span></div><div class="line"><span class="attr">subtitle:</span>                    <span class="comment">## 博客副标题  </span></div><div class="line"><span class="attr">language:</span> <span class="string">zh-CN</span>              <span class="comment">## 语言 中文</span></div></pre></td></tr></table></figure>
-<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>每一个主题的文件目录下也都有一个<code>_config.yml</code>文件，这个就是主题配置文件。不同的主题配置信息也不一样。</p>
-<h4 id="评论功能"><a href="#评论功能" class="headerlink" title="评论功能"></a>评论功能</h4><p>因为添加评论功能的配置比较复杂，所以单独写了一篇博客来讲解。</p>
-<p><a href="https://runjaelyn.github.io/2017/07/16/commentBlog/" target="_blank" rel="external">《搭建 Github 个人博客(四)：配置博客评论功能》</a></p>
-<h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p><strong>文章摘要</strong></p>
-<p>有一些主题博客首页默认显示全文，如果只希望现实某一个段落在首页，可以在文章内容中插入<code>&lt;!--more--&gt;</code>以隐藏后面的内容。</p>
-<hr>
-<p>所有关于博客搭建的教程就写到这了。以后想到还有什么漏掉的再来修改。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前写了两篇文章来教大家怎么去创建 GitHub 个人博客，然后再怎么配合 hexo 去开发博客。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="博客" scheme="http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="theme" scheme="http://yoursite.com/tags/theme/"/>
     
   </entry>
   
